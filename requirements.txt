@@ -6,3 +6,4 @@ httpx
 python-dotenv
 openpyxl
 Pillow
+scipy
