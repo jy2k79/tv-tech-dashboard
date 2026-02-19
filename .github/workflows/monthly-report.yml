@@ -1,0 +1,43 @@
+name: Monthly Intelligence Report
+
+on:
+  schedule:
+    - cron: '30 13 * * 1'  # Every Monday 8:30 AM ET (30 min after weekly update)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Run even if not first Monday'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read  # Read-only — PDF is emailed, not committed
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate monthly report
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+        run: |
+          if [ "${{ inputs.force }}" = "true" ]; then
+            python monthly_report.py --force
+          else
+            python monthly_report.py
+          fi

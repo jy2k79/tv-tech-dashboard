@@ -16,6 +16,9 @@ data/*.xlsx
 data/raw/
 data/rtings_tv_data.json
 
+# Generated reports (large PDFs, emailed not committed)
+data/reports/
+
 # Logs
 data/launchd_*.log
 data/pricing_log.txt

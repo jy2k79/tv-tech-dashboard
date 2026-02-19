@@ -1003,6 +1003,45 @@ elif page == "Price Analyzer":
         st.warning("No priced TVs match the current filters.")
         st.stop()
 
+    # --- Headline: Technology Cost per m² with WLED premium ---
+    st.subheader("Technology Cost per m\u00b2")
+    st.caption("Median price per square meter by display technology, with premium over WLED baseline. "
+               "Size-normalized pricing gives the truest comparison across technologies.")
+
+    m2_data = (priced.dropna(subset=["price_per_m2"])
+               .groupby("color_architecture", observed=True)["price_per_m2"]
+               .median().reset_index())
+    m2_data.columns = ["Technology", "Median $/m\u00b2"]
+    wled_baseline = m2_data.loc[m2_data["Technology"] == "WLED", "Median $/m\u00b2"]
+    wled_val = float(wled_baseline.iloc[0]) if len(wled_baseline) > 0 else None
+
+    fig = px.bar(m2_data, x="Technology", y="Median $/m\u00b2", color="Technology",
+                 color_discrete_map=TECH_COLORS, text="Median $/m\u00b2")
+    fig.update_traces(texttemplate="$%{text:,.0f}", textposition="outside",
+                      textfont_size=14, textfont_weight=600, cliponaxis=False)
+    if wled_val:
+        fig.add_hline(y=wled_val, line_dash="dot", line_color=TECH_COLORS.get("WLED", "#888"),
+                      opacity=0.4, annotation_text="WLED baseline",
+                      annotation_position="top left",
+                      annotation_font_color="rgba(255,255,255,0.5)")
+    fig.update_layout(showlegend=False, height=400, **PL)
+    st.plotly_chart(fig, use_container_width=True)
+
+    # Premium metrics row
+    m2_col = "Median $/m\u00b2"
+    if wled_val and wled_val > 0:
+        techs_with_m2 = m2_data[m2_data["Technology"] != "WLED"].sort_values(m2_col)
+        mcols = st.columns(len(techs_with_m2))
+        for i, (_, row) in enumerate(techs_with_m2.iterrows()):
+            med_val = row[m2_col]
+            premium_pct = (med_val - wled_val) / wled_val * 100
+            with mcols[i]:
+                st.metric(str(row["Technology"]),
+                          f"${med_val:,.0f}/m\u00b2",
+                          delta=f"+{premium_pct:.0f}% vs WLED")
+
+    st.divider()
+
     tab1, tab2, tab3, tab4 = st.tabs(["Value Map", "Price/m\u00b2", "Best Deals", "Price Trends"])
 
     with tab1:

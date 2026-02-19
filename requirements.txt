@@ -8,3 +8,6 @@ openpyxl
 Pillow
 scipy
 matplotlib
+anthropic>=0.40.0
+fpdf2>=2.8.0
+jinja2>=3.1.0
