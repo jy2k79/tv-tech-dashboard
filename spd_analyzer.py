@@ -387,18 +387,42 @@ def analyze_spd(wavelengths, intensities, panel_type='', panel_sub_type=''):
             'notes': 'No peaks detected'
         }
 
-    # Calculate FWHM with overlap-aware measurement
+    # Calculate FWHM with overlap-aware measurement + asymmetry
     peak_data = []
     for idx in peaks_idx:
         wl = wavelengths[idx]
         fwhm_nm, method = _measure_fwhm_robust(
             wavelengths, intensities, idx, peaks_idx, samples_per_nm
         )
+        # Measure left/right HWHM for asymmetry detection
+        # Organic OLED emitters have vibronic sidebands → long red tails (ratio >> 1)
+        # QD emitters are symmetric Gaussians → ratio ≈ 1.0
+        half_max = intensities[idx] / 2.0
+        left_hwhm = None
+        for i in range(idx - 1, -1, -1):
+            if intensities[i] <= half_max:
+                frac = (intensities[i + 1] - half_max) / (intensities[i + 1] - intensities[i])
+                left_hwhm = (idx - (i + 1 - frac)) / samples_per_nm
+                break
+        right_hwhm = None
+        for i in range(idx + 1, len(intensities)):
+            if intensities[i] <= half_max:
+                frac = (intensities[i - 1] - half_max) / (intensities[i - 1] - intensities[i])
+                right_hwhm = (i - 1 + frac - idx) / samples_per_nm
+                break
+        if left_hwhm and right_hwhm and left_hwhm > 0:
+            asymmetry = right_hwhm / left_hwhm
+        else:
+            asymmetry = None
+
         peak_data.append({
             'wavelength': wl,
             'intensity': intensities[idx],
             'fwhm_nm': fwhm_nm,
             'fwhm_method': method,
+            'left_hwhm': left_hwhm,
+            'right_hwhm': right_hwhm,
+            'asymmetry': asymmetry,
             'index': idx,
         })
 
@@ -465,7 +489,16 @@ def classify_spd(all_peaks, blue, green, red, panel_type='', panel_sub_type=''):
         # Fallback SPD-based OLED classification
         if (blue and green and red
                 and green_fwhm < NARROW_FWHM and red_fwhm < NARROW_FWHM):
-            return 'QD-OLED', 'medium', '; '.join(notes) + '; narrow peaks suggest QD-OLED'
+            # Narrow peaks — could be QD-OLED or RGB Tandem WOLED.
+            # Discriminate via red peak asymmetry and position:
+            #   QD-OLED:       red ~638nm, symmetric (asymmetry ~1.0)
+            #   Tandem WOLED:  red ~626nm, asymmetric (long red tail, asymmetry >1.25)
+            red_asym = red.get('asymmetry')
+            if red_asym is not None and red_asym > 1.25 and red_wl < 632:
+                notes.append(f'red_asymmetry={red_asym:.2f}')
+                return 'WOLED', 'medium', '; '.join(notes) + '; narrow but asymmetric red → RGB Tandem WOLED'
+            notes.append(f'red_asymmetry={red_asym:.2f}' if red_asym else 'red_asymmetry=N/A')
+            return 'QD-OLED', 'medium', '; '.join(notes) + '; narrow symmetric peaks suggest QD-OLED'
         if green and green_fwhm >= BROAD_FWHM:
             return 'WOLED', 'medium', '; '.join(notes) + '; broad green suggests WOLED'
         return 'WOLED', 'low', '; '.join(notes) + '; OLED fallback'

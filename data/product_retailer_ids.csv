@@ -38,7 +38,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 56341,Samsung Q60D,10456,65.0,,,799.99,in_stock,2
 56341,Samsung Q60D,10457,70.0,,,999.99,in_stock,2
 56341,Samsung Q60D,10458,75.0,,,1199.99,in_stock,2
-56341,Samsung Q60D,10459,,B0CV9LXH45,,1513.13,third_party,2
+56341,Samsung Q60D,10459,,B0CV9LXH45,,1508.58,third_party,2
 49702,Samsung S95D OLED,10470,55.0,B0CVSJFPGH,,2399.99,in_stock,2
 49702,Samsung S95D OLED,10471,65.0,,,3099.99,in_stock,2
 49702,Samsung S95D OLED,10472,77.0,B0CVSGNZBZ,,4399.99,in_stock,2
@@ -48,7 +48,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 49540,LG B4 OLED,10787,,,,,no_link,2
 49540,LG B4 OLED,11493,,,,3999.99,in_stock,2
 49542,LG G4 OLED,10492,55.0,B0D3WKV3X7,6578049,1899.99,location_dependent,2
-49542,LG G4 OLED,10493,,B0CVRWSB8D,,2499.0,third_party,2
+49542,LG G4 OLED,10493,,B0CVRWSB8D,,2152.45,third_party,2
 49542,LG G4 OLED,10494,77.0,,6578047,2804.99,location_dependent,2
 49542,LG G4 OLED,10495,,B0D3W7ZJ75,,3999.99,in_stock,2
 49542,LG G4 OLED,10496,,B0D3WSDWVJ,,19999.99,in_stock,2
@@ -64,7 +64,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 56163,Samsung The Frame 2024,10545,65.0,B0CVSJKFNK,6576593,999.99,in_stock,2
 56163,Samsung The Frame 2024,10546,75.0,B0CVSJS9DM,6576594,2199.99,location_dependent,2
 56163,Samsung The Frame 2024,10547,,B0CVS9BFH4,,2585.0,third_party,2
-49719,Samsung QN85D,10567,55.0,B0CV9RG8Q5,,1119.54,third_party,2
+49719,Samsung QN85D,10567,55.0,B0CV9RG8Q5,,1116.18,third_party,2
 49719,Samsung QN85D,10568,65.0,B0CW27D646,,1599.99,in_stock,2
 49719,Samsung QN85D,10569,75.0,B0CW27SNZS,6576434,1624.99,location_dependent,2
 49719,Samsung QN85D,10570,85.0,,,2499.99,in_stock,2
@@ -74,7 +74,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 49720,Samsung QN90D,10612,65.0,B0CW27DXJX,,1699.99,in_stock,2
 49720,Samsung QN90D,10613,75.0,B0CW2557NX,6576427,1799.99,in_stock,2
 49720,Samsung QN90D,10614,85.0,B0CW26R7H8,,3499.99,in_stock,2
-49720,Samsung QN90D,10615,98.0,B0CV9GM5L3,,5546.38,third_party,2
+49720,Samsung QN90D,10615,98.0,B0CV9GM5L3,,5529.74,third_party,2
 50406,Hisense U8N,10616,,B0CY4TQ91Q,,,out_of_stock,2
 50406,Hisense U8N,10617,,B0CY4SM6P8,,,out_of_stock,2
 50406,Hisense U8N,10618,,B0CY4QVD4C,,,out_of_stock,2
@@ -96,7 +96,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 49704,Samsung S85D OLED,10758,77.0,B0CXQVQ5GQ,,2499.99,in_stock,2
 49704,Samsung S85D OLED,10759,83.0,B0CXR3KZLH,6578060,1954.99,location_dependent,2
 50405,Hisense U7N,10761,,,,,no_link,2
-50405,Hisense U7N,10762,,B0CY4RD4KT,,964.56,out_of_stock,2
+50405,Hisense U7N,10762,,B0CY4RD4KT,,1018.42,out_of_stock,2
 50405,Hisense U7N,10763,75.0,B0D1FQCHD2,6577008,899.99,location_dependent,2
 50405,Hisense U7N,11082,85.0,,6579196,1039.99,location_dependent,2
 57713,Hisense A7N,10766,,B0CY56VHS4,,310.37,third_party,2
@@ -228,7 +228,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 92241,Samsung QN90F,12552,55.0,,6613494,1299.99,location_dependent,2
 92241,Samsung QN90F,12553,65.0,,6613496,1599.99,in_stock,2
 92241,Samsung QN90F,12554,75.0,,6613455,1999.99,in_stock,2
-92241,Samsung QN90F,12555,85.0,,6613448,2499.99,location_dependent,2
+92241,Samsung QN90F,12555,85.0,,6613448,2499.99,in_stock,2
 92241,Samsung QN90F,12556,98.0,,,14999.99,in_stock,2
 92236,Samsung S85F OLED,12557,55.0,,6614344,1199.99,in_stock,2
 92236,Samsung S85F OLED,12558,,B0DXMZRG1Q,,1297.99,amazon,2
@@ -242,7 +242,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 96125,Hisense U8QG,13285,65.0,B0F5QVK3TR,6621215,899.99,in_stock,2
 96125,Hisense U8QG,13286,75.0,,6621214,1399.99,in_stock,2
 96125,Hisense U8QG,13287,85.0,,6621197,1999.99,in_stock,2
-96125,Hisense U8QG,13288,100.0,B0F5QQH44H,6621198,3999.99,in_stock,2
+96125,Hisense U8QG,13288,100.0,B0F5QQH44H,6621198,2999.99,in_stock,2
 92237,Samsung S90F OLED,13317,42.0,,6613495,999.99,location_dependent,2
 92237,Samsung S90F OLED,13318,48.0,B0DXN1BFQ4,,1097.99,amazon,2
 92237,Samsung S90F OLED,13319,55.0,B0DWTD3WF8,6613501,1199.99,location_dependent,2
@@ -272,7 +272,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 96118,Hisense U65QF,13742,100.0,,6621210,1799.99,in_stock,2
 92242,Samsung QN900F 8K,13768,65.0,,,3299.99,in_stock,2
 92242,Samsung QN900F 8K,13769,75.0,,6613453,3299.99,location_dependent,2
-92242,Samsung QN900F 8K,13770,85.0,,6613450,5299.99,in_stock,2
+92242,Samsung QN900F 8K,13770,85.0,,6613450,5299.99,location_dependent,2
 92761,Philips 974 Series OLED,13771,,,,,direct_link,2
 96128,Hisense QD6QF,13835,43.0,B0DYRL2984,6621192,179.99,location_dependent,2
 96128,Hisense QD6QF,13836,50.0,,6621201,239.99,location_dependent,2
@@ -364,7 +364,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 92233,LG QNED85A,15591,,B0DYR35J2G,,1596.99,out_of_stock,2
 92233,LG QNED85A,15592,,B0DYQZTVGT,,3496.99,amazon,2
 117450,Sony BRAVIA 5 98,15634,98.0,,6625581,4999.99,in_stock,2
-117447,Hisense 100U8QG,15662,100.0,B0F5QQH44H,6621198,3999.99,in_stock,2
+117447,Hisense 100U8QG,15662,100.0,B0F5QQH44H,6621198,2999.99,in_stock,2
 117449,TCL 98QM8K,15679,98.0,B0F2JKVCWF,6625840,3999.99,in_stock,2
 102827,Hisense 98QD5QG,15703,98.0,,6635801,1499.99,in_stock,2
 117448,Samsung 100QN80F,15756,100.0,,,5999.99,in_stock,2

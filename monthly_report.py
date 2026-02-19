@@ -30,8 +30,10 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from dotenv import load_dotenv
 
 ROOT = Path(__file__).parent
+load_dotenv(ROOT / ".env")
 DATA = ROOT / "data"
 REPORTS = DATA / "reports"
 
@@ -450,24 +452,42 @@ def build_pdf(sections, cover_chart, stats, output_path):
     """
     from fpdf import FPDF
 
+    # Dark theme constants
+    BG = (26, 26, 46)       # #1a1a2e
+    TEXT = (224, 224, 224)   # #e0e0e0
+    TEXT_DIM = (150, 150, 170)
+    ACCENT_BLUE = (144, 191, 255)
+
+    logo_white = ROOT / "logos" / "Nanosys Logo White Text 4X.png"
+
     class ReportPDF(FPDF):
         _in_cover = False
+
+        def _dark_bg(self):
+            """Fill current page with dark background."""
+            self.set_fill_color(*BG)
+            self.rect(0, 0, 210, 297, "F")
 
         def header(self):
             if self._in_cover or self.page_no() <= 1:
                 return
+            self._dark_bg()
+            # Small logo top-left
+            if logo_white.exists():
+                self.image(str(logo_white), x=10, y=8, w=28)
             self.set_font("Helvetica", "I", 9)
-            self.set_text_color(150, 150, 170)
-            self.cell(0, 8, "Display Technology Intelligence Report", align="L")
+            self.set_text_color(*TEXT_DIM)
+            self.set_y(10)
+            self.cell(0, 8, "Display Technology Intelligence Report", align="C")
             self.cell(0, 8, REPORT_MONTH, align="R", new_x="LMARGIN", new_y="NEXT")
-            self.ln(4)
+            self.ln(6)
 
         def footer(self):
             if self._in_cover:
                 return
             self.set_y(-15)
             self.set_font("Helvetica", "", 8)
-            self.set_text_color(120, 120, 140)
+            self.set_text_color(*TEXT_DIM)
             self.cell(0, 10, f"Page {self.page_no() - 1}", align="C")
 
     pdf = ReportPDF()
@@ -476,26 +496,30 @@ def build_pdf(sections, cover_chart, stats, output_path):
     # --- Cover page ---
     pdf._in_cover = True
     pdf.add_page()
-    pdf.set_fill_color(26, 26, 46)
-    pdf.rect(0, 0, 210, 297, "F")
+    pdf._dark_bg()
+
+    # Logo
+    if logo_white.exists():
+        x = (210 - 70) / 2
+        pdf.image(str(logo_white), x=x, y=20, w=70)
 
     # Title
-    pdf.set_y(50)
+    pdf.set_y(55)
     pdf.set_font("Helvetica", "B", 28)
-    pdf.set_text_color(255, 255, 255)
+    pdf.set_text_color(*TEXT)
     pdf.cell(0, 14, "Display Technology", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.cell(0, 14, "Intelligence Report", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(8)
 
     # Month
     pdf.set_font("Helvetica", "", 18)
-    pdf.set_text_color(144, 191, 255)
+    pdf.set_text_color(*ACCENT_BLUE)
     pdf.cell(0, 10, REPORT_MONTH, align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(12)
 
     # Stats line
     pdf.set_font("Helvetica", "", 12)
-    pdf.set_text_color(180, 180, 200)
+    pdf.set_text_color(*TEXT_DIM)
     n_priced = stats.get("n_priced", 0)
     n_8k = stats.get("n_8k_excluded", 0)
     stat_line = f"{stats.get('total_tvs', 0)} 4K TVs tracked  |  {n_priced} with pricing  |  6 technologies"
@@ -521,21 +545,31 @@ def build_pdf(sections, cover_chart, stats, output_path):
         pdf.add_page()
         r, g, b = section_colors[i] if i < len(section_colors) else (200, 200, 200)
 
-        # Section header bar
+        # Section header bar (pushed below header area)
         pdf.set_fill_color(r, g, b)
-        pdf.rect(10, 10, 190, 12, "F")
-        pdf.set_xy(14, 10)
+        pdf.rect(10, 28, 190, 12, "F")
+        pdf.set_xy(14, 28)
         pdf.set_font("Helvetica", "B", 14)
-        pdf.set_text_color(26, 26, 46)
+        pdf.set_text_color(*BG)
         pdf.cell(0, 12, f"  {i + 1}. {title}")
-        pdf.ln(20)
+        pdf.set_y(46)
 
         # Narrative text
         pdf.set_font("Helvetica", "", 11)
-        pdf.set_text_color(50, 50, 60)
+        pdf.set_text_color(*TEXT)
 
-        # Convert markdown bold to simple text (fpdf doesn't do inline bold easily)
+        # Sanitize for Helvetica (latin-1 only) and strip markdown bold
         clean_text = narrative.replace("**", "")
+        clean_text = (clean_text
+                      .replace("\u2014", " -- ")   # em dash
+                      .replace("\u2013", " - ")    # en dash
+                      .replace("\u2018", "'")       # left single quote
+                      .replace("\u2019", "'")       # right single quote
+                      .replace("\u201c", '"')       # left double quote
+                      .replace("\u201d", '"')       # right double quote
+                      .replace("\u2026", "...")     # ellipsis
+                      .replace("\u00b2", "2")       # superscript 2
+                      .encode("latin-1", errors="replace").decode("latin-1"))
         for paragraph in clean_text.split("\n\n"):
             paragraph = paragraph.strip()
             if not paragraph:

@@ -326,8 +326,13 @@ def axis_range(col, data_df=None):
 
 
 # ---------------------------------------------------------------------------
-# Sidebar — Global Filters (colored checkboxes for discoverability)
+# Sidebar — Branding & Global Filters
 # ---------------------------------------------------------------------------
+_logo_path = Path(__file__).parent / "logos" / "Nanosys Logo White Text 4X.png"
+if _logo_path.exists():
+    st.sidebar.image(str(_logo_path), use_container_width=True)
+    st.sidebar.caption("Display Technology Intelligence")
+    st.sidebar.divider()
 st.sidebar.title("Filters")
 
 # --- Technology checkboxes with color dots ---
