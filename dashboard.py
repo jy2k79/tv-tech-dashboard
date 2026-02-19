@@ -231,6 +231,12 @@ df = load_data()
 prices_df = load_size_prices()
 history_df = load_price_history()
 
+# Exclude 8K TVs globally — tiny market segment that skews scores and pricing
+_n_8k = 0
+if "resolution" in df.columns:
+    _n_8k = (df["resolution"] == "8k").sum()
+    df = df[df["resolution"] != "8k"].reset_index(drop=True)
+
 # ---------------------------------------------------------------------------
 # Nanosys brand color palette (colorblind-safe selections)
 # ---------------------------------------------------------------------------
@@ -381,6 +387,8 @@ else:
 
 fdf = df[mask].copy()
 st.sidebar.markdown(f"**Showing {len(fdf)}/{len(df)} TVs**")
+if _n_8k > 0:
+    st.sidebar.caption(f"{_n_8k} 8K sets excluded from all metrics")
 
 # Support deep-linking via ?page=...
 ALL_PAGES = ["Overview", "Technology Explorer", "Price Analyzer", "Comparison Tool", "TV Profiles"]
