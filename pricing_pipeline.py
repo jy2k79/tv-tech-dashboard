@@ -681,8 +681,11 @@ def append_price_history(prices_df, tv_db):
     else:
         snapshot.to_csv(history_path, index=False)
 
-    print(f"  Price history updated: {history_path} "
-          f"({len(snapshot)} rows for {snapshot['snapshot_date'].iloc[0]})")
+    if len(snapshot) > 0:
+        print(f"  Price history updated: {history_path} "
+              f"({len(snapshot)} rows for {snapshot['snapshot_date'].iloc[0]})")
+    else:
+        print(f"  Price history updated: {history_path} (0 rows)")
 
 
 def print_pricing_summary(tv_df, prices_df):

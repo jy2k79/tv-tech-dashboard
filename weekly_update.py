@@ -16,7 +16,6 @@ Usage:
 import os
 import sys
 import subprocess
-import traceback
 import platform
 import smtplib
 from email.mime.text import MIMEText
@@ -61,7 +60,7 @@ def run_script(name, abort_on_fail=True):
         log(f"{name} completed successfully")
         return True
     except subprocess.TimeoutExpired:
-        log(f"{name} timed out after 10 minutes", "ERROR")
+        log(f"{name} timed out after 20 minutes", "ERROR")
         if abort_on_fail:
             raise
         return False
