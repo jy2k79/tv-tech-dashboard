@@ -26,7 +26,7 @@ st.set_page_config(
     page_title="RTINGS TV Dashboard",
     page_icon="📺",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="auto",
 )
 
 # ---------------------------------------------------------------------------
@@ -49,6 +49,15 @@ button[data-baseweb="tab"] { font-weight: 600 !important; font-size: 1rem !impor
 /* Suppress tooltips */
 [role="tooltip"] {
     display: none !important;
+}
+/* Tighter sidebar spacing */
+.stSidebar [data-testid="stCheckbox"] { margin-bottom: -12px; }
+.stSidebar .filter-row { display: flex; align-items: center; gap: 6px; margin: 2px 0 -8px 0; }
+.stSidebar .filter-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+/* Mobile: collapse sidebar, tighter charts */
+@media (max-width: 768px) {
+    [data-testid="stSidebar"] { min-width: 0 !important; }
+    .stPlotlyChart { margin-left: -1rem; margin-right: -1rem; }
 }
 </style>
 """, unsafe_allow_html=True)
@@ -274,14 +283,10 @@ tech_all = st.sidebar.checkbox("All technologies", value=True, key="tech_all")
 selected_techs = []
 for tech in all_techs:
     color = TECH_COLORS.get(tech, "#888")
-    dot = f'<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:{color};margin-right:4px;vertical-align:middle"></span>'
-    # Checkbox label is plain text; color dot is shown above via markdown
-    col_dot, col_cb = st.sidebar.columns([0.12, 0.88])
-    with col_dot:
-        st.markdown(f'<div style="width:12px;height:12px;border-radius:50%;background:{color};margin-top:10px"></div>',
-                    unsafe_allow_html=True)
-    with col_cb:
-        checked = st.checkbox(tech, value=tech_all, key=f"tech_{tech}")
+    st.sidebar.markdown(
+        f'<div class="filter-row"><div class="filter-dot" style="background:{color}"></div></div>',
+        unsafe_allow_html=True)
+    checked = st.sidebar.checkbox(tech, value=tech_all, key=f"tech_{tech}")
     if checked:
         selected_techs.append(tech)
 
@@ -292,12 +297,10 @@ dt_all = st.sidebar.checkbox("All display types", value=True, key="dt_all")
 selected_display_types = []
 for dt in all_display_types:
     color = DISPLAY_TYPE_COLORS.get(dt, "#888")
-    col_dot, col_cb = st.sidebar.columns([0.12, 0.88])
-    with col_dot:
-        st.markdown(f'<div style="width:12px;height:12px;border-radius:50%;background:{color};margin-top:10px"></div>',
-                    unsafe_allow_html=True)
-    with col_cb:
-        checked = st.checkbox(dt, value=dt_all, key=f"dt_{dt}")
+    st.sidebar.markdown(
+        f'<div class="filter-row"><div class="filter-dot" style="background:{color}"></div></div>',
+        unsafe_allow_html=True)
+    checked = st.sidebar.checkbox(dt, value=dt_all, key=f"dt_{dt}")
     if checked:
         selected_display_types.append(dt)
 
