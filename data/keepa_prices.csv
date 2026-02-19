@@ -1,7 +1,7 @@
 amazon_asin,keepa_title,keepa_brand,amazon_price,new_3p_price,buy_box_price,list_price,amazon_price_90d_min,amazon_price_90d_avg,amazon_price_90d_max,amazon_price_history_points,new_3p_price_90d_min,new_3p_price_90d_avg,new_3p_price_90d_max,new_3p_price_history_points,list_price_90d_min,list_price_90d_avg,list_price_90d_max,list_price_history_points
 B0BYPLR5JQ,"Sony 55 Inch 4K Ultra HD TV X90L Series: BRAVIA XR Full Array LED Smart Google TV with Dolby Vision HDR and Exclusive Features for The PlayStation® 5 XR55X90L- Latest Model,Black",Sony,,,,,848.0,848.0,848.0,3546.0,848.0,848.0,848.0,6144.0,848.0,848.0,848.0,5100.0
 B0BYPLCFDS,"Sony 65 Inch 4K Ultra HD TV X90L Series: BRAVIA XR Full Array LED Smart Google TV with Dolby Vision HDR and Exclusive Features for The PlayStation® 5 XR65X90L- Latest Model,Black",Sony,848.0,848.0,,848.0,798.0,884.5671428571428,1198.0,5816.0,798.0,865.6315151515151,1198.0,8487.0,798.0,878.3979999999999,1198.0,7966.0
-B0BYPNLKP4,"Sony 75 Inch 4K Ultra HD TV X90L Series: BRAVIA XR Full Array LED Smart Google TV with Dolby Vision HDR and Exclusive Features for The PlayStation® 5 XR75X90L- Latest Model,Black",Sony,,,,,,,,4410.0,1198.0,1322.1013223140496,1549.0,6797.0,1198.0,1262.2857142857142,1448.0,6469.0
+B0BYPNLKP4,"Sony 75 Inch 4K Ultra HD TV X90L Series: BRAVIA XR Full Array LED Smart Google TV with Dolby Vision HDR and Exclusive Features for The PlayStation® 5 XR75X90L- Latest Model,Black",Sony,,,,,,,,4410.0,1198.0,1322.9082051282053,1549.0,6797.0,1198.0,1269.0526315789473,1448.0,6469.0
 B0BYPT328K,Sony QD-OLED 55 inch BRAVIA XR A95L Series 4K Ultra HD TV: Smart Google TV with Dolby Vision HDR and Exclusive Gaming Features for The PlayStation® 5 XR55A95L- Latest Model,Sony,,,,,,,,66.0,1998.0,1998.0,1998.0,555.0,,,,1417.0
 B0CLFQD1SN,"Roku 32"" Select Series 720p HD Smart RokuTV with Voice Remote, Bright Picture, Customizable Home Screen, and Free TV",Roku,,187.1,,,,,,163.0,159.99,187.69199999999998,204.66,142.0,,,,214.0
 B0CW3TLV11,"Roku 40"" Select Series Smart TV & Wireless Soundbar Bundle - RokuTV Audio",Roku,,,,,,,,37.0,,,,37.0,,,,55.0
@@ -10,14 +10,14 @@ B0CY1BKFLK,,,,,,,,,,,,,,,,,,
 B0CY17Y37N,,,,,,,,,,,,,,,,,,
 B0CY164YDC,,,,,,,,,,,,,,,,,,
 B0CY12ZXWJ,,,,,,,,,,,,,,,,,,
-B0CV9L3R7V,"Samsung 55-Inch Class OLED 4K S90D Series HDR+ Smart TV w/Dolby Atmos, Object Tracking Sound Lite, Motion Xcelerator, Real Depth Enhancer, 4K AI Upscaling, Alexa Built-in (QN55S90D, 2024 Model)",Samsung,,1027.95,,,,,,498.0,979.0,1085.9512686567166,1289.0,2728.0,979.0,1071.7011184210526,1289.0,3727.0
+B0CV9L3R7V,"Samsung 55-Inch Class OLED 4K S90D Series HDR+ Smart TV w/Dolby Atmos, Object Tracking Sound Lite, Motion Xcelerator, Real Depth Enhancer, 4K AI Upscaling, Alexa Built-in (QN55S90D, 2024 Model)",Samsung,,1027.95,,,,,,498.0,979.0,1085.9512686567166,1289.0,2728.0,979.0,1071.7011184210526,1289.0,3730.0
 B0CY3JS745,,,,,,,,,,,,,,,,,,
 B0CY3XNSFT,,,,,,,,,,,,,,,,,,
 B0CY3K5XFD,,,,,,,,,,,,,,,,,,
 B0CXRBW3YL,,,,,,,,,,,,,,,,,,
 B0CXQYYJDS,,,,,,,,,,,,,,,,,,
 B0CXR5KS5D,,,,,,,,,,,,,,,,,,
-B0CV9LXH45,"Samsung 85-Inch Class QLED 4K Q60D Series Quantum HDR Smart TV w/Object Tracking Sound Lite, Motion Xcelerator, Slim Design, Gaming Hub, Alexa Built-in (QN85Q60D, 2024 Model)",Samsung,,1513.13,,1513.13,1234.99,1920.823333333333,2297.99,432.0,1200.0,1322.1681412639407,2297.99,1690.0,1200.0,1326.5594444444444,2297.99,2112.0
+B0CV9LXH45,"Samsung 85-Inch Class QLED 4K Q60D Series Quantum HDR Smart TV w/Object Tracking Sound Lite, Motion Xcelerator, Slim Design, Gaming Hub, Alexa Built-in (QN85Q60D, 2024 Model)",Samsung,,1513.13,,1513.13,1234.99,1920.823333333333,2297.99,432.0,1200.0,1324.2942205323197,2297.99,1690.0,1200.0,1326.5594444444444,2297.99,2112.0
 B0CVSJFPGH,,,,,,,,,,,,,,,,,,
 B0CVSGNZBZ,,,,,,,,,,,,,,,,,,
 B0D3WSKZ1N,,,,,,,,,,,,,,,,,,
@@ -27,30 +27,32 @@ B0D3W7ZJ75,,,,,,,,,,,,,,,,,,
 B0D3WSDWVJ,,,,,,,,,,,,,,,,,,
 B0D3WVN6LH,,,,,,,,,,,,,,,,,,
 B0D3WKR4BN,,,,,,,,,,,,,,,,,,
+B0CVRDK4P6,"LG 55-Inch Class OLED evo C4 Series Smart TV 4K Processor Flat Screen with Magic Remote AI-Powered with Alexa Built-in (OLED55C4PUA, 2024)",LG,995.0,990.0,,995.0,969.0,1130.5602777777779,1463.0,168.0,967.0,1063.6123076923077,1100.0,1411.0,967.0,1056.12332326284,1149.0,3606.0
 B0D3WWGP6T,,,,,,,,,,,,,,,,,,
 B0CVSHY45W,,,,,,,,,,,,,,,,,,
-B0CV9JZBG9,"Samsung 50-Inch Class QLED 4K LS03D The Frame Series Quantum HDR Smart TV w/Dolby Atmos, Art Mode, Anti-Reflection, Customizable Frame, Slim Fit Wall Mount with Alexa Built-in (QN50LS03D, 2024 Model)",Samsung,,692.99,,692.99,,,,123.0,666.99,721.3625306122449,795.0,1567.0,685.58,726.5745864661654,795.0,2127.0
+B0CV9JZBG9,"Samsung 50-Inch Class QLED 4K LS03D The Frame Series Quantum HDR Smart TV w/Dolby Atmos, Art Mode, Anti-Reflection, Customizable Frame, Slim Fit Wall Mount with Alexa Built-in (QN50LS03D, 2024 Model)",Samsung,,693.0,,692.99,,,,123.0,666.99,720.1155785123966,787.95,1568.0,685.58,726.077037037037,795.0,2131.0
 B0CVSJ1ZBP,,,,,,,,,,,,,,,,,,
 B0CVSJKFNK,,,,,,,,,,,,,,,,,,
 B0CVSJS9DM,,,,,,,,,,,,,,,,,,
-B0CVS9BFH4,"Samsung 85-Inch Class QLED 4K LS03D The Frame Series Quantum HDR Smart TV w/Dolby Atmos, Art Mode, Anti-Reflection, Customizable Frame, Slim Fit Wall Mount with Alexa Built-in (QN85LS03D, 2024 Model)",Samsung,,1997.96,,2585.0,4297.99,4297.99,4297.99,82.0,1997.96,2209.0176050420164,2677.95,554.0,1997.96,2201.7808,2677.95,1519.0
+B0CVS9BFH4,"Samsung 85-Inch Class QLED 4K LS03D The Frame Series Quantum HDR Smart TV w/Dolby Atmos, Art Mode, Anti-Reflection, Customizable Frame, Slim Fit Wall Mount with Alexa Built-in (QN85LS03D, 2024 Model)",Samsung,,1997.96,,2585.0,4297.99,4297.99,4297.99,82.0,1997.96,2209.0176050420164,2677.95,554.0,1997.96,2201.842926829268,2677.95,1519.0
 B0CW27D646,,,,,,,,,,,,,,,,,,
 B0CW27SNZS,,,,,,,,,,,,,,,,,,
-B0CV9RV77Z,"Samsung 43-Inch Class Neo QLED 4K QN90D Series Mini LED, Neo Quantum HDR+ Smart TV w/Dolby Atmos, Object Tracking Sound+, Motion Xcelerator, Real Depth Enhancer Pro, Alexa Built-in (QN43QN90D, 2024)",Samsung,,674.95,,676.0,,,,93.0,674.95,847.516137724551,1297.99,1778.0,697.99,837.7999248120302,847.95,1944.0
+B0CV9RV77Z,"Samsung 43-Inch Class Neo QLED 4K QN90D Series Mini LED, Neo Quantum HDR+ Smart TV w/Dolby Atmos, Object Tracking Sound+, Motion Xcelerator, Real Depth Enhancer Pro, Alexa Built-in (QN43QN90D, 2024)",Samsung,,674.95,,676.0,,,,93.0,674.95,847.5135240963855,1297.99,1778.0,697.99,837.7999248120302,847.95,1944.0
 B0CW27DXJX,,,,,,,,,,,,,,,,,,
 B0CW2557NX,,,,,,,,,,,,,,,,,,
 B0CW26R7H8,,,,,,,,,,,,,,,,,,
-B0CY4TQ91Q,"Hisense 55-Inch Class U8 Series Mini-LED ULED 4K UHD Google Smart TV (55U8N) - QLED, Dolby Vision IQ, Dolby Atmos, Full Array Local Dimming Pro, 144Hz Game Mode Pro, Alexa Compatibility",Hisense,,1124.98,,,977.63,996.3831578947368,1011.0,548.0,749.99,886.0302272727271,1124.98,662.0,849.99,874.5518181818182,998.0,1147.0
-B0CY4SM6P8,"Hisense 65-Inch Class U8 Series Mini-LED ULED 4K UHD Google Smart TV (65U8N) - QLED, Dolby Vision IQ, Dolby Atmos, Full Array Local Dimming Pro, 144Hz Game Mode Pro, Alexa Compatibility",Hisense,,1420.99,,,,,,230.0,799.99,1145.1664705882354,1420.99,208.0,799.99,815.5863302752296,899.99,1527.0
+B0CY4TQ91Q,"Hisense 55-Inch Class U8 Series Mini-LED ULED 4K UHD Google Smart TV (55U8N) - QLED, Dolby Vision IQ, Dolby Atmos, Full Array Local Dimming Pro, 144Hz Game Mode Pro, Alexa Compatibility",Hisense,,1124.98,,,977.63,997.221875,1011.0,548.0,749.99,886.1519672131145,1124.98,662.0,849.99,872.863298969072,998.0,1147.0
+B0CY4SM6P8,"Hisense 65-Inch Class U8 Series Mini-LED ULED 4K UHD Google Smart TV (65U8N) - QLED, Dolby Vision IQ, Dolby Atmos, Full Array Local Dimming Pro, 144Hz Game Mode Pro, Alexa Compatibility",Hisense,,1420.99,,,,,,230.0,799.99,1141.74,1420.99,208.0,799.99,815.5863302752296,899.99,1527.0
 B0CY4QVD4C,"Hisense 75-Inch Class U8 Series Mini-LED ULED 4K UHD Google Smart TV (75U8N) - QLED, Dolby Vision IQ, Dolby Atmos, Full Array Local Dimming Pro, 144Hz Game Mode Pro, Alexa Compatibility",Hisense,,1534.98,,,,,,234.0,899.99,1214.0763636363636,1534.98,259.0,899.99,941.1467164179103,994.99,1038.0
-B0D3SX2PN4,"Hisense 85-Inch Class U8 Series Mini-LED ULED 4K UHD Google Smart TV (85U8N) - QLED, Dolby Vision IQ, Dolby Atmos, Full Array Local Dimming Pro, 144Hz Game Mode Pro, Alexa Compatibility",Hisense,2657.71,2199.98,,2199.98,1709.99,2205.200465116279,2657.71,322.0,1299.99,1849.5085714285717,2199.98,232.0,,,,960.0
+B0D3SX2PN4,"Hisense 85-Inch Class U8 Series Mini-LED ULED 4K UHD Google Smart TV (85U8N) - QLED, Dolby Vision IQ, Dolby Atmos, Full Array Local Dimming Pro, 144Hz Game Mode Pro, Alexa Compatibility",Hisense,2657.71,2199.98,,2199.98,1709.99,2192.6565853658535,2657.71,322.0,1299.99,1849.5085714285717,2199.98,232.0,,,,960.0
 B0CZ6VX5J4,,,,,,,,,,,,,,,,,,
-B0CVSK16G4,"LG 43-Inch Class UT75 Series LED Smart TV 4K Processor Flat Screen AI-Powered with Alexa Built-in (43UT7590PUA, 2024)",LG,,286.84,,286.84,,,,7.0,286.84,312.24875,319.95,148.0,286.84,309.20124999999996,318.98,175.0
+B0CVSK16G4,"LG 43-Inch Class UT75 Series LED Smart TV 4K Processor Flat Screen AI-Powered with Alexa Built-in (43UT7590PUA, 2024)",LG,,286.84,,286.84,,,,7.0,286.84,312.40200000000004,319.95,148.0,286.84,309.20124999999996,318.98,175.0
 B0D3WG1HCS,,,,,,,,,,,,,,,,,,
 B0D3WP2JLD,,,,,,,,,,,,,,,,,,
 B0CVSJ3HS7,"LG 70-Inch Class UT75 Series LED Smart TV 4K Processor Flat Screen AI-Powered with Alexa Built-in (70UT7590PUA, 2024)",LG,,,,,,,,5.0,,,,5.0,,,,7.0
 B0CXR1D43S,,,,,,,,,,,,,,,,,,
 B0CXQVQ5GQ,,,,,,,,,,,,,,,,,,
+B0CXR3KZLH,,,,,,,,,,,,,,,,,,
 B0CY4RD4KT,"Hisense 65-Inch Class U7 Series Mini-LED ULED 4K UHD Google Smart TV (65U7N) - QLED, Dolby Vision IQ, Dolby Atmos, Full Array Local Dimming, 144Hz Game Mode Pro, VRR, Alexa Compatibility",Hisense,964.56,964.56,,964.56,964.56,969.9700000000001,970.88,237.0,699.99,988.6827272727271,1292.31,667.0,970.88,970.88,970.88,672.0
 B0D1FQCHD2,,,,,,,,,,,,,,,,,,
 B0CY56VHS4,"Hisense A7 Series 43-Inch Class 4K UHD Smart Google TV with Voice Remote, Game Mode Plus, Chromecast Built-in (43A7N, 2024 Model)",Hisense,,298.0,,310.37,,,,318.0,292.0,316.6007142857143,449.0,849.0,292.48,308.7090909090909,310.37,621.0
@@ -60,17 +62,20 @@ B0CY4SW14M,"Hisense A7 Series 65-Inch Class 4K UHD Smart Google TV with Voice Re
 B0CVPSBMGY,Sony 55 Inch OLED 4K Ultra HD TV BRAVIA 8 Smart Google TV with Dolby Vision HDR and Exclusive Features for PlayStation 5 (K-55XR80),Sony,1498.0,1498.0,,1498.0,1198.0,1295.5052173913043,1798.0,181.0,1098.0,1289.2488888888888,1598.0,77.0,1198.0,1302.0375,1599.99,330.0
 B0CVQ6YLH7,Sony 65 Inch OLED 4K Ultra HD TV BRAVIA 8 Smart Google TV with Dolby Vision HDR and Exclusive Features for PlayStation 5 (K-65XR80),Sony,1898.0,1898.0,,1898.0,1498.0,1593.016140350877,1999.99,186.0,1398.0,1584.4444444444443,1998.0,530.0,1498.0,1551.607142857143,1998.0,1140.0
 B0D3WPVFBK,,,,,,,,,,,,,,,,,,
+B0D3WN592T,,,,,,,,,,,,,,,,,,
 B0D3X72M2M,,,,,,,,,,,,,,,,,,
-B0CZM7LZCM,"TCL 65-Inch QM85 QLED 4K Smart QD-Mini LED TV with Google TV (65QM851G, 2024 Model) Dolby Vision IQ HDR, Dolby Atmos, Game Accelerator up to 240Hz, Voice Remote, Works with Alexa, Streaming Television",TCL,1345.99,1345.99,,1345.99,949.99,1281.2308510638297,1499.99,246.0,949.99,1288.4317391304348,1499.99,261.0,949.99,1338.5195652173916,1499.99,825.0
+B0CZM7LZCM,"TCL 65-Inch QM85 QLED 4K Smart QD-Mini LED TV with Google TV (65QM851G, 2024 Model) Dolby Vision IQ HDR, Dolby Atmos, Game Accelerator up to 240Hz, Voice Remote, Works with Alexa, Streaming Television",TCL,1348.32,1345.99,,1348.32,949.99,1283.1940425531914,1499.99,247.0,949.99,1289.1513333333335,1499.99,261.0,949.99,1338.9279166666668,1499.99,826.0
 B0CZM95SG6,"TCL 75-Inch QM85 QLED 4K Smart QD-Mini LED TV with Google TV (75QM851G, 2024 Model) Dolby Vision IQ HDR, Dolby Atmos, Game Accelerator up to 240Hz, Voice Remote, Works with Alexa, Streaming Television",TCL,,2060.98,,2060.98,,,,639.0,,,,664.0,,,,1551.0
 B0CZM7RDTN,"TCL 85-Inch QM85 QLED 4K Smart QD-Mini LED TV with Google TV (85QM851G, 2024 Model) Dolby Vision IQ HDR, Dolby Atmos, Game Accelerator up to 240Hz, Voice Remote, Works with Alexa, Streaming Television",TCL,1799.99,1799.99,,,1449.99,1479.1566666666668,1799.99,391.0,1449.99,1979.986,2599.98,703.0,,,,1393.0
 B0CY4X5M8D,"Hisense 55-Inch Class U6 Series Mini-LED ULED 4K UHD Google Smart TV (55U6N) - QLED, Motion Rate 240, HDR 10+, Full Array Local Dimming, Game Mode Plus, Alexa Compatibility",Hisense,,,,,,,,265.0,599.99,656.9914285714285,799.0,266.0,,,,979.0
+B0D1DPL3PF,,,,,,,,,,,,,,,,,,
 B0D1FMXGW5,,,,,,,,,,,,,,,,,,
 B0CY4P8QRL,"Hisense 85-Inch Class U6 Series Mini-LED ULED 4K UHD Google Smart TV (85U6N) - QLED, Motion Rate 240, HDR 10+, Full Array Local Dimming, Game Mode Plus, Alexa Compatibility",Hisense,,,,,,,,162.0,1252.72,1253.7841176470588,1257.99,233.0,,,,457.0
 B0CY19RSV5,,,,,,,,,,,,,,,,,,
 B0CXZZN3VY,,,,,,,,,,,,,,,,,,
 B0CXZPHB58,,,,,,,,,,,,,,,,,,
 B0CXZNY3ZH,,,,,,,,,,,,,,,,,,
+B0D4Y381D7,,,,,,,,,,,,,,,,,,
 B0CZML9HLD,"TCL 75-Inch QM7 QLED 4K Smart QD-Mini LED TV with Google TV (75QM751G, 2024 Model) Dolby Vision IQ, Dolby Atmos, HDR, Game Accelerator up to 240Hz, Voice Remote, Works with Alexa, Streaming Television",TCL,,1654.99,,,1398.53,1496.7170967741931,1499.99,296.0,1398.53,1574.2426086956525,1654.99,469.0,1398.53,1529.183333333333,1654.99,873.0
 B0D4XKYVG1,,,,,,,,,,,,,,,,,,
 B0CZLXPR65,"TCL 98-Inch QM7 QLED 4K Smart QD-Mini LED TV with Google TV (98QM751G, 2024 Model) Dolby Vision IQ, Dolby Atmos, HDR, Game Accelerator up to 240Hz, Voice Remote, Works with Alexa, Streaming Television",TCL,,3387.11,,,,,,167.0,1799.99,2990.3300000000004,3387.11,282.0,,,,823.0
@@ -81,20 +86,20 @@ B0CZLZPQV8,"TCL 85-Inch Class S5 4K UHD LED Smart TV with Google TV (85S551G, 20
 B0CY18SS15,,,,,,,,,,,,,,,,,,
 B0CXZVSNRN,,,,,,,,,,,,,,,,,,
 B0CY1BNH61,,,,,,,,,,,,,,,,,,
-B0D2PNH494,"Hisense 55-Inch Class QLED 4K S7N CanvasTV Series Dolby Vision HDR Google Smart TV (55S7N) - 144Hz, Art Mode, Anti-Glare Panel, Hi-Matte Display, Frame & UltraSlim Wall Mount Included",Hisense,693.99,680.0,,693.99,693.92,808.1101923076923,997.99,287.0,599.99,689.365705128205,997.99,995.0,647.99,712.89175879397,838.86,1596.0
-B0D2PNVJFT,"Hisense 65-Inch Class QLED 4K S7N CanvasTV™ Series Dolby Vision HDR Google Smart TV (65S7N) - 144Hz, Art Mode, Anti-Glare Panel, Hi-Matte Display, Frame & UltraSlim Wall Mount Included",Hisense,897.99,897.99,,897.99,699.99,949.4097777777775,1097.99,283.0,699.99,914.1146086956521,1097.99,1161.0,699.99,919.6808280254778,1097.99,1878.0
+B0D2PNH494,"Hisense 55-Inch Class QLED 4K S7N CanvasTV Series Dolby Vision HDR Google Smart TV (55S7N) - 144Hz, Art Mode, Anti-Glare Panel, Hi-Matte Display, Frame & UltraSlim Wall Mount Included",Hisense,693.99,680.0,,693.99,693.92,808.1101923076923,997.99,287.0,599.99,690.5714851485147,997.99,995.0,647.99,713.2195454545455,838.86,1596.0
+B0D2PNVJFT,"Hisense 65-Inch Class QLED 4K S7N CanvasTV™ Series Dolby Vision HDR Google Smart TV (65S7N) - 144Hz, Art Mode, Anti-Glare Panel, Hi-Matte Display, Frame & UltraSlim Wall Mount Included",Hisense,897.99,897.99,,897.99,699.99,949.4097777777775,1097.99,283.0,699.99,915.016597633136,1097.99,1161.0,699.99,919.6808280254778,1097.99,1878.0
 B0F363GQZF,"Hisense 75-Inch Class QLED 4K S7N CanvasTV Series Dolby Vision HDR Google Smart TV (75S7N, 2025 Model) - 144Hz, Art Mode, Anti-Glare Panel, Hi-Matte Display, UltraSlim Wall Mount & Frame Included",Hisense,1299.99,1299.99,,1299.99,1249.99,1482.862916666667,2498.0,166.0,1229.99,1330.6270355731226,2498.0,313.0,1249.99,1365.085544554455,2498.0,831.0
-B0F35W3T1C,"Hisense 85-Inch Class QLED 4K S7N CanvasTV Series Dolby Vision HDR Google Smart TV (85S7N, 2025 Model) - 144Hz, Art Mode, Anti-Glare Panel, Hi-Matte Display, UltraSlim Wall Mount & Frame Included",Hisense,1897.99,1897.99,,1897.99,1797.99,2065.1699999999996,3999.99,71.0,1749.99,1882.6694623655912,3999.99,144.0,1749.99,1891.9233333333332,3999.99,186.0
+B0F35W3T1C,"Hisense 85-Inch Class QLED 4K S7N CanvasTV Series Dolby Vision HDR Google Smart TV (85S7N, 2025 Model) - 144Hz, Art Mode, Anti-Glare Panel, Hi-Matte Display, UltraSlim Wall Mount & Frame Included",Hisense,1897.99,1897.99,,1897.99,1797.99,2065.1699999999996,3999.99,71.0,1749.99,1885.058021978022,3999.99,144.0,1749.99,1891.9233333333332,3999.99,186.0
 B0D5Y36ZKL,"Hisense 65-Inch Class QD7 Series QLED 4K UHD Google Smart TV (65QD7N) - QLED, Native 144Hz, Motion Rate 240, Direct Full Array, Game Mode Pro, Alexa Compatibility",Hisense,,673.99,,,,,,133.0,572.63,643.8871428571427,673.99,199.0,,,,364.0
 B0D5Y5YCM1,"Hisense 75-Inch Class QD7 Series QLED 4K UHD Google Smart TV (75QD7N) - QLED, Native 144Hz, Motion Rate 240, Direct Full Array, Game Mode Pro, Alexa Compatibility",Hisense,,940.99,,,,,,186.0,699.0,838.3121428571427,940.99,226.0,,,,334.0
-B0D5Y5F1ZZ,"Hisense 85-Inch Class QD7 Series QLED 4K UHD Google Smart TV (85QD7N) - QLED, Native 144Hz, Motion Rate 240, Direct Full Array, Game Mode Pro, Alexa Compatibility",Hisense,,1184.99,,,798.99,798.99,798.99,211.0,798.99,968.5410769230767,1184.99,258.0,949.99,959.9874999999998,979.99,589.0
+B0D5Y5F1ZZ,"Hisense 85-Inch Class QD7 Series QLED 4K UHD Google Smart TV (85QD7N) - QLED, Native 144Hz, Motion Rate 240, Direct Full Array, Game Mode Pro, Alexa Compatibility",Hisense,,1184.99,,,798.99,798.9900000000001,798.99,211.0,798.99,976.6373333333332,1184.99,258.0,949.99,959.9874999999998,979.99,589.0
 B0DD2185NL,"Hisense 100-Inch Class QD7 Series QLED 4K UHD Google Smart TV (100QD7N, 2024 Model) - QLED, Native 144Hz, Motion Rate 240, Direct Full Array, Game Mode Pro, Alexa Compatibility",Hisense,2429.53,2429.53,,2429.53,2429.51,2429.5200000000004,2429.53,150.0,2299.99,2450.9922222222217,2499.98,165.0,2429.51,2429.51,2429.51,825.0
-B0D8SDKSWT,"Panasonic W95 Series 55-inch Mini LED 4K Ultra HD Smart Fire TV, Sport Stadium Mode, ATSC3.0, Dolby Vision IQ, Dolby Atmos, HDR10+ Adaptive, Press and Ask Alexa, 144Hz, Wall-mountable - 55W95AP",Panasonic,,549.99,,549.99,,,,66.0,399.0,518.6880000000001,847.58,142.0,449.0,477.7722222222222,547.99,273.0
+B0D8SDKSWT,"Panasonic W95 Series 55-inch Mini LED 4K Ultra HD Smart Fire TV, Sport Stadium Mode, ATSC3.0, Dolby Vision IQ, Dolby Atmos, HDR10+ Adaptive, Press and Ask Alexa, 144Hz, Wall-mountable - 55W95AP",Panasonic,,549.99,,549.99,,,,66.0,399.0,518.6880000000001,847.58,142.0,449.0,457.7099999999999,469.99,273.0
 B0D8RYJYB8,"Panasonic W95 Series 65-inch Mini LED 4K Ultra HD Smart Fire TV, Sport Stadium Mode, ATSC3.0, Dolby Vision IQ, Dolby Atmos, HDR10+ Adaptive, Press and Ask Alexa, 144Hz, Wall-mountable - 65W95AP",Panasonic,,797.99,,797.99,,,,134.0,797.99,797.9900000000001,797.99,110.0,797.99,797.9900000000001,797.99,271.0
-B0D8S12Q54,"Panasonic W95 Series 75-inch Mini LED 4K Ultra HD Smart Fire TV, Sport Stadium Mode, ATSC3.0, Dolby Vision IQ, Dolby Atmos, HDR10+ Adaptive, Press and Ask Alexa, 144Hz, Wall-mountable - 75W95AP",Panasonic,,,,,,,,517.0,658.49,834.3772857142854,897.99,286.0,699.99,827.3368,897.99,465.0
+B0D8S12Q54,"Panasonic W95 Series 75-inch Mini LED 4K Ultra HD Smart Fire TV, Sport Stadium Mode, ATSC3.0, Dolby Vision IQ, Dolby Atmos, HDR10+ Adaptive, Press and Ask Alexa, 144Hz, Wall-mountable - 75W95AP",Panasonic,,,,,,,,517.0,658.49,839.9838095238091,897.99,286.0,699.99,827.3368,897.99,465.0
 B0D8S8SR5R,"Panasonic W95 Series (2024 Model) 85-inch Mini LED 4K Ultra HD Smart Fire TV, Local Dimming, 144Hz Refresh Rate - 85W95AP",Panasonic,,,,,,,,128.0,1197.99,1197.99,1197.99,124.0,,,,214.0
-B0D8S669CY,"Panasonic Z85 Series (2024 Model) 65-inch OLED 4K Ultra HD Smart Fire TV, Dolby Vision IQ, HDR10+ Adaptive, 120Hz Refresh Rate - 65Z85AP",Panasonic,,1147.99,,1147.99,1097.99,1213.9971428571432,1403.99,475.0,878.39,1037.1278125,1197.99,154.0,897.99,1115.7966666666666,1197.99,499.0
-B0D8S2D1CZ,"Panasonic Z95 Series (2024 Model) 65-inch OLED 4K Ultra HD Smart Fire TV, Dolby Vision IQ, HDR10+ Adaptive, 144Hz Refresh Rate and Hands-Free Alexa - 65Z95AP",Panasonic,1597.99,1597.99,,1597.99,1497.99,1920.1706209150325,2610.28,940.0,1199.0,1821.1016040955633,2197.99,461.0,1299.0,1631.4171999999994,1897.99,1042.0
+B0D8S669CY,"Panasonic Z85 Series (2024 Model) 65-inch OLED 4K Ultra HD Smart Fire TV, Dolby Vision IQ, HDR10+ Adaptive, 120Hz Refresh Rate - 65Z85AP",Panasonic,,1147.99,,1147.99,1097.99,1215.6784057971017,1403.99,475.0,878.39,1067.9904761904768,1197.99,154.0,897.99,1117.4154545454544,1197.99,499.0
+B0D8S2D1CZ,"Panasonic Z95 Series (2024 Model) 65-inch OLED 4K Ultra HD Smart Fire TV, Dolby Vision IQ, HDR10+ Adaptive, 144Hz Refresh Rate and Hands-Free Alexa - 65Z95AP",Panasonic,1597.99,1582.01,,1582.01,1497.99,1914.2126245847173,2610.28,940.0,1199.0,1814.9721276595742,2197.99,462.0,1299.0,1631.4171999999994,1897.99,1044.0
 B0DCWTT39N,,,,,,,,,,,,,,,,,,
 B0D2PMNRBW,"Hisense 85-Inch Class U9 Series Mini-LED ULED 4K UHD Google Smart TV (85U9N) - QLED, Native 144Hz, Full Array Local Dimming, Game Mode Pro, Alexa Compatibility, 480 Motion Rate",Hisense,,,,,,,,311.0,1599.99,1599.99,1599.99,324.0,1599.99,1599.99,1599.99,663.0
 B0C7SRHGXF,"Amazon Fire TV 55"" Omni Mini-LED Series, QLED 4K UHD smart TV, Dolby Vision IQ, 144hz gaming mode, Ambient Experience, hands-free with Alexa, 2024 release",Amazon,819.99,819.99,,819.99,719.99,784.99,819.99,45.0,719.99,781.1011111111111,819.99,233.0,719.99,727.132857142857,769.99,360.0
@@ -107,33 +112,33 @@ B0DWHFN3WK,,,,,,,,,,,,,,,,,,
 B0DWHYR9TH,,,,,,,,,,,,,,,,,,
 B0DWHVTWBW,,,,,,,,,,,,,,,,,,
 B0DXMT5L8D,"Samsung 75-Inch Class QLED Q7F Series Samsung Vision AI Smart TV (2025 Model, 75Q7F) Quantum HDR, Object Tracking Sound Lite, Q4 AI Gen1 Processor, 4K upscaling, Gaming Hub, Alexa Built-in",Samsung,697.99,677.99,,697.99,649.99,657.3746153846153,697.99,316.0,647.99,670.6185714285716,697.99,538.0,649.99,660.615,697.99,603.0
-B0DZ249RM1,"Samsung 85-Inch Class QLED Q7F Series Samsung Vision AI Smart TV (2025 Model, 85Q7F) Quantum HDR, Object Tracking Sound Lite, Q4 AI Gen1 Processor, 4K upscaling, Gaming Hub, Alexa Built-in",Samsung,1297.99,1197.99,,1297.99,1049.99,1135.1463157894739,1297.99,106.0,1049.99,1104.6553333333334,1297.99,574.0,1077.95,1107.9379365079362,1297.99,898.0
+B0DZ249RM1,"Samsung 85-Inch Class QLED Q7F Series Samsung Vision AI Smart TV (2025 Model, 85Q7F) Quantum HDR, Object Tracking Sound Lite, Q4 AI Gen1 Processor, 4K upscaling, Gaming Hub, Alexa Built-in",Samsung,1297.99,1197.99,,1297.99,1049.99,1135.1463157894739,1297.99,106.0,1049.99,1104.7829186602871,1297.99,574.0,1077.95,1107.9379365079362,1297.99,898.0
 B0F2JL4TLZ,,,,,,,,,,,,,,,,,,
 B0F8DSGCCD,,,,,,,,,,,,,,,,,,
 B0F7J16S9S,,,,,,,,,,,,,,,,,,
 B0F8DWB273,,,,,,,,,,,,,,,,,,
 B0F7J14C5Q,,,,,,,,,,,,,,,,,,
 B0F8DW8D69,,,,,,,,,,,,,,,,,,
-B0DXMZRG1Q,"Samsung 65-Inch Class OLED 4K S85F Series, Vision AI Smart TV (2025 Model, 65S85F) Object Tracking Sound Lite w/Dolby Atmos, NQ4 AI Gen2 Processor, Contour Design, Color Booster Pro, Alexa Built-in",Samsung,1297.99,999.99,,1297.99,1039.96,1196.431111111111,1297.99,61.0,999.99,1113.1431228070176,1297.99,480.0,999.99,1073.5258399999996,1297.99,711.0
+B0DXMZRG1Q,"Samsung 65-Inch Class OLED 4K S85F Series, Vision AI Smart TV (2025 Model, 65S85F) Object Tracking Sound Lite w/Dolby Atmos, NQ4 AI Gen2 Processor, Contour Design, Color Booster Pro, Alexa Built-in",Samsung,1297.99,999.99,,1297.99,1039.96,1196.431111111111,1297.99,61.0,999.99,1113.1431228070176,1297.99,480.0,999.99,1072.9422222222217,1297.99,714.0
 B0DXN1BYQM,"SAMSUNG 77-Inch Class OLED S95F 4K Glare Free Smart TV (2025 Model) NQ4 AI Gen3 Processor, OLED HDR Pro, Motion Xcelerator 164Hz, Dolby Atmos, Samsung Vision AI, Alexa Built-in",Samsung,3497.99,3397.99,,3497.99,2997.99,3498.275714285713,3797.99,39.0,2997.99,3486.747142857141,3797.99,192.0,3244.99,3468.95,3747.99,348.0
 B0F5QVK3TR,,,,,,,,,,,,,,,,,,
 B0F5QQH44H,,,,,,,,,,,,,,,,,,
-B0DXN1BFQ4,"Samsung 48-Inch Class S90F 4K Smart TV (2025 Model) NQ4 Gen3 Processor, Upscaling Pro, HDR +, Motion Xcelerator 144Hz, Vision, Alexa Built-in",Samsung,1097.99,997.99,,1097.99,997.99,1097.99,1197.99,37.0,914.8,1026.3263829787231,1197.99,154.0,914.8,1028.4764285714284,1197.99,177.0
+B0DXN1BFQ4,"Samsung 48-Inch Class S90F 4K Smart TV (2025 Model) NQ4 Gen3 Processor, Upscaling Pro, HDR +, Motion Xcelerator 144Hz, Vision, Alexa Built-in",Samsung,1097.99,997.99,,1097.99,997.99,1097.99,1197.99,37.0,914.8,1028.2524444444443,1197.99,154.0,914.8,1028.4764285714284,1197.99,177.0
 B0DWTD3WF8,,,,,,,,,,,,,,,,,,
 B0DXMSX56Y,"Samsung 83-Inch Class OLED S90F 4K Smart TV (2025 Model) NQ4 Gen3 Processor, Upscaling Pro, HDR +, Motion Xcelerator 144Hz, Vision, Alexa Built-in",Samsung,3297.99,2997.99,,3297.99,3297.99,3485.74,3797.99,75.0,2989.4,3331.5943749999997,3797.99,226.0,2989.4,3392.4347368421054,3797.99,216.0
 B0DYK871WY,"Sony BRAVIA 5 85 Inch TV, Mini LED, 4K Smart Google TV, XR Processor with AI Technology,120hz Television with Dolby Vision/Atmos, Exclusive Features for PlayStation®5, K-85XR50, 2025 Model",Sony,2398.0,2398.0,,2398.0,1698.0,1769.591020408163,2399.99,114.0,1594.79,1728.7504615384614,2398.0,137.0,1698.0,1833.676451612903,2399.99,279.0
 B0DYK7MWJ1,"Sony BRAVIA 5 98 Inch TV, Mini LED, 4K Smart Google TV, XR Processor with AI Technology,120hz Television with Dolby Vision/Atmos, Exclusive Features for PlayStation®5, K-98XR50, 2025 Model",Sony,4999.99,4998.0,,4998.0,3998.0,4120.048292682926,4999.99,90.0,3998.0,4086.235294117647,4998.0,138.0,4998.0,4998.0,4998.0,226.0
 B0DYRL2984,"Hisense 43"" Class QD6 Series (43QD6QF, 2025 Model) QLED 4K UHD Smart Fire TV, Voice Remote with Alexa, Dolby Vision, Dolby Atmos, Motion Rate 120, HDR 10+, Game Mode Plus, MEMC, VRR, ALLM",Hisense,,259.59,,,299.99,299.99,299.99,76.0,184.99,237.6364039408867,265.97,312.0,199.99,241.92,299.99,474.0
-B0DYS29P6M,"Hisense 55"" Class QD6 Series (55QD6QF, 2025 Model) QLED 4K UHD Smart Fire TV, Voice Remote with Alexa, Dolby Vision, Dolby Atmos, Motion Rate 120, HDR 10+, Game Mode Plus, MEMC, VRR, ALLM",Hisense,,340.0,,,209.99,229.54555555555555,229.99,375.0,209.99,300.73788461538464,354.99,181.0,,,,574.0
+B0DYS29P6M,"Hisense 55"" Class QD6 Series (55QD6QF, 2025 Model) QLED 4K UHD Smart Fire TV, Voice Remote with Alexa, Dolby Vision, Dolby Atmos, Motion Rate 120, HDR 10+, Game Mode Plus, MEMC, VRR, ALLM",Hisense,,340.0,,,209.99,229.52488372093023,229.99,375.0,209.99,300.73788461538464,354.99,181.0,,,,574.0
 B0DYRDKGSM,"Hisense 65-Inch Class QD6 Series QLED 4K UHD Smart Fire TV (65QD6QF, 2025 Model) - QLED, Dolby Vision, Dolby Atmos, Motion Rate 120, HDR 10+, Game Mode Plus, Alexa Built in",Hisense,,545.0,,,299.99,356.31454545454545,453.33,68.0,299.99,447.1988888888889,590.0,144.0,453.33,453.33,453.33,175.0
 B0DYRPHL6N,"Hisense 75-Inch Class QD6 Series QLED 4K UHD Smart Fire TV (75QD6QF, 2025 Model) - QLED, Dolby Vision, Dolby Atmos, Motion Rate 120, HDR 10+, Game Mode Plus, Alexa Built in",Hisense,,,,,379.99,462.39375,639.22,76.0,379.99,462.39375,639.22,76.0,,,,118.0
 B0DYRLTZXL,"Hisense 100-Inch Class QD6 Series QLED 4K UHD Smart Fire TV (100QD6QF, 2025 Model) - QLED, Native 144Hz, Dolby Vision IQ, Dolby Atmos, Motion Rate 240, HDR 10+, Game Mode Plus, Alexa Built in",Hisense,,2480.0,,,1199.99,1491.1378260869567,1699.99,129.0,1199.99,1888.4551999999999,2885.99,206.0,1299.99,1568.858,2480.0,351.0
-B0DXMVX717,"Samsung 65-Inch Class Neo QLED 4K QN80F Series, Vision AI, Mini LED Smart TV (2025 Model, 65QN80F) Neo Quantum HDR, Object Tracking Sound Lite w/Dolby Atmos, NQ4 AI Gen2 Processor, Alexa Built-in",Samsung,1197.99,1147.99,,,797.99,1131.5455555555557,1397.99,123.0,797.99,1134.71241813602,1397.99,1885.0,997.99,1142.0952631578946,1397.99,2509.0
-B0DXN3RB8Z,"Samsung 75-Inch Class Neo QLED 4K QN80F Series, Vision AI, Mini LED Smart TV (2025 Model, 75QN80F) Neo Quantum HDR, Object Tracking Sound Lite w/Dolby Atmos, NQ4 AI Gen2 Processor, Alexa Built-in",Samsung,1597.99,1547.99,,,1299.99,1541.570645161291,1697.99,967.0,1267.94,1526.872219251337,1697.99,1644.0,1299.99,1516.2448148148146,1697.99,2239.0
+B0DXMVX717,"Samsung 65-Inch Class Neo QLED 4K QN80F Series, Vision AI, Mini LED Smart TV (2025 Model, 65QN80F) Neo Quantum HDR, Object Tracking Sound Lite w/Dolby Atmos, NQ4 AI Gen2 Processor, Alexa Built-in",Samsung,1197.99,1147.99,,,797.99,1131.5455555555557,1397.99,123.0,797.99,1135.7534517766496,1397.99,1885.0,997.99,1143.1869696969698,1397.99,2512.0
+B0DXN3RB8Z,"Samsung 75-Inch Class Neo QLED 4K QN80F Series, Vision AI, Mini LED Smart TV (2025 Model, 75QN80F) Neo Quantum HDR, Object Tracking Sound Lite w/Dolby Atmos, NQ4 AI Gen2 Processor, Alexa Built-in",Samsung,1597.99,1547.99,,,1299.99,1541.747085020243,1697.99,967.0,1267.94,1527.0275,1697.99,1644.0,1299.99,1516.4400534759357,1697.99,2242.0
 B0F8DJ7FBV,,,,,,,,,,,,,,,,,,
 B0DYVXN9HT,"Hisense 55"" Class QD7 Series Mini-LED 4K UHD Smart Fire TV (55QD7QF, 2025 Model) - QLED, HDR10+, Dolby Vision, Dolby Atmos, Game Mode Plus, ALLM, Alexa Built in with Voice Remote, Streaming TV, Black",Hisense,329.99,329.99,,329.99,327.96,372.90416666666664,499.99,39.0,319.99,362.72025974025973,499.99,181.0,319.99,388.21807017543864,499.99,220.0
 B0DXR9MP63,,,,,,,,,,,,,,,,,,
-B0DXMJNLHT,"Samsung 75-Inch Class The Frame Pro LS03FW 4K Neo QLED Mini LED Smart TV (2025 Model) Slim Fit Wall Mount, Modern Frame Design, Wireless One Connect, NQ4 AI Gen3 Processor, Art Mode, Alexa Built-in",Samsung,2497.99,1997.99,,2497.99,1997.99,2273.24,2697.99,43.0,1797.99,2081.884736842105,2697.99,200.0,1897.99,2053.8471428571424,2697.99,346.0
+B0DXMJNLHT,"Samsung 75-Inch Class The Frame Pro LS03FW 4K Neo QLED Mini LED Smart TV (2025 Model) Slim Fit Wall Mount, Modern Frame Design, Wireless One Connect, NQ4 AI Gen3 Processor, Art Mode, Alexa Built-in",Samsung,2497.99,1997.99,,2497.99,1997.99,2273.24,2697.99,43.0,1797.99,2086.6201369863015,2697.99,200.0,1897.99,2057.767777777777,2697.99,346.0
 B0DX4HHBRC,,,,,,,,,,,,,,,,,,
 B0DX3JC9ND,,,,,,,,,,,,,,,,,,
 B0DYVMS2VK,"Samsung 58-Inch Class Crystal UHD U8000F 4K Smart TV (2025 Model) Endless Free Content, Crystal Processor 4K, MetalStream Design, Knox Security, Alexa Built-in",Samsung,377.99,377.99,,377.99,329.99,379.99,397.99,40.0,329.99,376.79,397.99,55.0,329.99,363.3233333333333,379.99,75.0
@@ -143,9 +148,9 @@ B0DX4717LG,,,,,,,,,,,,,,,,,,
 B0DW378JR5,"Panasonic W70 Series (2025 Model) 43"" LED 4K Ultra HD Smart Fire TV, Press & Ask Alexa, Apple AirPlay, HDR10+, HDMI 2.1, and Bluetooth Support - 43W70BP",Panasonic,286.75,267.99,,267.99,199.99,279.785294117647,292.79,97.0,199.99,296.1450000000001,468.17,91.0,249.99,281.6231578947368,292.25,196.0
 B0DW3XW927,"Panasonic W70 Series (2025 Model) 50"" LED 4K Ultra HD Smart Fire TV, Press & Ask Alexa, Apple AirPlay, HDR10+, HDMI 2.1, and Bluetooth Support - 50W70BP",Panasonic,318.85,297.99,,318.85,247.99,293.39612903225816,347.49,62.0,247.99,271.75909090909084,297.99,44.0,247.99,292.4536363636364,318.85,145.0
 B0DW3YPBL1,"Panasonic W70 Series (2025 Model) 55"" LED 4K Ultra HD Smart Fire TV, Press & Ask Alexa, Apple AirPlay, HDR10+, HDMI 2.1, and Bluetooth Support - 55W70BP",Panasonic,327.99,287.99,,287.99,264.83,332.4749206349207,372.35,106.0,257.99,309.6873076923077,347.99,70.0,277.99,311.60062500000004,347.99,133.0
-B0DW4232K1,"Panasonic W70 Series (2025 Model) 65"" LED 4K Ultra HD Smart Fire TV, Press & Ask Alexa, Apple AirPlay, HDR10+, HDMI 2.1, and Bluetooth Support - 65W70BP",Panasonic,,369.99,,369.99,347.99,421.7157407407407,549.99,251.0,347.99,390.9644186046512,447.99,106.0,347.99,412.9330555555555,497.99,381.0
-B0DW3RQY9Z,"Panasonic W70 Series (2025 Model) 70"" LED 4K Ultra HD Smart Fire TV, Press & Ask Alexa, Apple AirPlay, HDR10+, HDMI 2.1, and Bluetooth Support - 70W70BP",Panasonic,557.1,469.99,,469.99,399.99,528.9951351351351,584.34,84.0,399.99,536.9989655172413,741.73,81.0,449.0,498.2179999999999,565.99,303.0
-B0DW3V53B7,"Panasonic W70 Series (2025 Model) 75"" LED 4K Ultra HD Smart Fire TV, Press & Ask Alexa, Apple AirPlay, HDR10+, HDMI 2.1, and Bluetooth Support - 75W70BP",Panasonic,597.99,497.99,,497.99,497.99,630.3081132075471,799.99,152.0,447.99,537.3977142857144,647.99,88.0,447.99,559.1807500000001,647.99,790.0
+B0DW4232K1,"Panasonic W70 Series (2025 Model) 65"" LED 4K Ultra HD Smart Fire TV, Press & Ask Alexa, Apple AirPlay, HDR10+, HDMI 2.1, and Bluetooth Support - 65W70BP",Panasonic,,369.99,,369.99,347.99,421.7157407407407,549.99,251.0,347.99,390.9644186046512,447.99,106.0,347.99,412.43929577464803,497.99,381.0
+B0DW3RQY9Z,"Panasonic W70 Series (2025 Model) 70"" LED 4K Ultra HD Smart Fire TV, Press & Ask Alexa, Apple AirPlay, HDR10+, HDMI 2.1, and Bluetooth Support - 70W70BP",Panasonic,572.55,469.99,,469.99,399.99,530.1413157894737,584.34,85.0,399.99,536.9989655172413,741.73,81.0,449.0,498.2179999999999,565.99,303.0
+B0DW3V53B7,"Panasonic W70 Series (2025 Model) 75"" LED 4K Ultra HD Smart Fire TV, Press & Ask Alexa, Apple AirPlay, HDR10+, HDMI 2.1, and Bluetooth Support - 75W70BP",Panasonic,597.99,497.99,,497.99,497.99,629.9821153846154,799.99,152.0,447.99,534.1664705882354,647.99,88.0,447.99,556.9223076923079,647.99,790.0
 B0DW3XDNR9,"Panasonic W70 Series (2025 Model) 85"" LED 4K Ultra HD Smart Fire TV, Press & Ask Alexa, Apple AirPlay, HDR10+, HDMI 2.1, and Bluetooth Support - 85W70BP",Panasonic,1007.71,747.99,,747.99,697.99,922.1635714285713,1099.99,74.0,697.99,764.865,847.99,56.0,747.99,789.4566666666666,799.99,351.0
 B0F2JLZPL3,,,,,,,,,,,,,,,,,,
 B0F2JKWWFH,,,,,,,,,,,,,,,,,,
@@ -153,19 +158,19 @@ B0F2JMFHRM,,,,,,,,,,,,,,,,,,
 B0F2JKVCWF,,,,,,,,,,,,,,,,,,
 B0DYKBNW89,"Sony BRAVIA 2 II 43 Inch 4K Ultra HD LED Smart TV with Google TV and Exclusive Features for PlayStation®5 (K-43S20M2), 2025 Model",Sony,398.0,398.0,,398.0,368.0,373.1863768115942,399.99,130.0,368.0,372.1605813953488,478.0,167.0,368.0,372.38288461538457,398.0,205.0
 B0F8M9QPJP,"Panasonic Z95 Series (2025 Model) 55-inch OLED 4K Ultra HD Smart Fire TV, HDR10+ Adaptive, Dolby Vision IQ, 360 Soundscape Pro, 144Hz Refresh Rate and Hands-Free Alexa - 55Z95BP",Panasonic,,1897.99,,1897.99,1697.99,1955.1724528301886,2304.33,105.0,1697.99,1903.2558064516124,1999.99,62.0,1797.99,1902.848048780488,1999.99,403.0
-B0F8MW11YS,"Panasonic Z95 Series (2025 Model) 65-inch OLED 4K Ultra HD Smart Fire TV, HDR10+ Adaptive, Dolby Vision IQ, 360 Soundscape Pro, 144Hz Refresh Rate and Hands-Free Alexa - 65Z95BP",Panasonic,2697.97,2497.99,,2497.99,2297.99,2735.5165454545454,3048.59,82.0,2297.99,2728.2946808510637,3048.59,75.0,2297.99,2603.612727272727,2976.75,351.0
-B0F8N24XYR,"Panasonic Z95 Series (2025 Model) 77-inch OLED 4K Ultra HD Smart Fire TV, HDR10+ Adaptive, Dolby Vision IQ, 360 Soundscape Pro, 144Hz Refresh Rate and Hands-Free Alexa - 77Z95BP",Panasonic,,,,,3999.99,4272.2769565217395,4431.22,98.0,3997.99,4228.4325,4431.22,53.0,3997.99,4228.4325,4431.22,132.0
-B0DYQRNPJ8,"LG 65-Inch Class QNED evo AI QNED92A Series Mini LED 4K Smart TV w/Dolby Atmos, Dolby Vision, HDR10, AI Super Upscaling 4K, Filmmaker Mode, Wow Orchestra, Alexa Built-in (65QNED92AUA, 2025)",LG,899.99,896.95,,896.99,846.99,1023.8700000000001,1396.99,75.0,781.95,890.1480269058296,1396.99,463.0,785.99,921.6894174757284,1396.99,811.0
+B0F8MW11YS,"Panasonic Z95 Series (2025 Model) 65-inch OLED 4K Ultra HD Smart Fire TV, HDR10+ Adaptive, Dolby Vision IQ, 360 Soundscape Pro, 144Hz Refresh Rate and Hands-Free Alexa - 65Z95BP",Panasonic,2699.41,2497.99,,2497.99,2297.99,2734.871785714286,3048.59,83.0,2297.99,2728.2946808510637,3048.59,75.0,2297.99,2603.612727272727,2976.75,351.0
+B0F8N24XYR,"Panasonic Z95 Series (2025 Model) 77-inch OLED 4K Ultra HD Smart Fire TV, HDR10+ Adaptive, Dolby Vision IQ, 360 Soundscape Pro, 144Hz Refresh Rate and Hands-Free Alexa - 77Z95BP",Panasonic,,,,,3999.99,4271.108181818183,4431.22,98.0,3997.99,4228.4325,4431.22,53.0,3997.99,4228.4325,4431.22,132.0
+B0DYQRNPJ8,"LG 65-Inch Class QNED evo AI QNED92A Series Mini LED 4K Smart TV w/Dolby Atmos, Dolby Vision, HDR10, AI Super Upscaling 4K, Filmmaker Mode, Wow Orchestra, Alexa Built-in (65QNED92AUA, 2025)",LG,899.99,896.95,,,846.99,1023.8700000000001,1396.99,75.0,781.95,890.1480269058296,1396.99,463.0,785.99,921.6894174757284,1396.99,813.0
 B0F8DNL96X,,,,,,,,,,,,,,,,,,
 B0F6B1K6K3,,,,,,,,,,,,,,,,,,
 B0F69LDR17,,,,,,,,,,,,,,,,,,
 B0F69Q9RJ3,,,,,,,,,,,,,,,,,,
 B0F6B3GF3L,,,,,,,,,,,,,,,,,,
 B0F69YCRR8,,,,,,,,,,,,,,,,,,
-B0DYVPQZRH,"Samsung 55-Inch Class QLED Q8F 4K UHD Smart TV (2025 Model) Q4 AI Processor, 100% Color Volume with Quantum Dot, AirSlim Design, Endless Free Content, Samsung Vision AI, Alexa Built-in",Samsung,597.99,587.99,,,597.99,602.5200550964187,697.99,1409.0,543.99,603.1393535353534,697.99,1983.0,577.99,601.9330838323352,697.99,2649.0
+B0DYVPQZRH,"Samsung 55-Inch Class QLED Q8F 4K UHD Smart TV (2025 Model) Q4 AI Processor, 100% Color Volume with Quantum Dot, AirSlim Design, Endless Free Content, Samsung Vision AI, Alexa Built-in",Samsung,597.99,587.99,,,597.99,602.5578055555554,697.99,1409.0,543.99,603.1813034623217,697.99,1983.0,577.99,601.9568373493973,697.99,2652.0
 B0F8DT9N6X,,,,,,,,,,,,,,,,,,
 B0F8DD4XW4,,,,,,,,,,,,,,,,,,
 B0DYR35J2G,"LG 86-Inch Class QNED evo AI QNED85A Series Mini LED 4K Smart TV w/AI Picture, Sound, Super Upscaling 4K, HDR10, Filmmaker Mode, Wow Orchestra, Alexa Built-in (86QNED85AUA, 2025)",LG,1596.99,1576.99,,1576.99,1396.99,1496.8637735849065,1796.99,128.0,1396.99,1567.5874999999999,1979.99,88.0,1396.99,1533.5056521739132,1796.99,183.0
-B0DYQZTVGT,"LG 100-Inch Class QNED evo AI QNED85A Series Mini LED 4K Smart TV w/AI Picture, AI Sound, HDR10, AI Super Upscaling 4K, Filmmaker Mode, Wow Orchestra, Alexa Built-in (100QNED85AU, 2025)",LG,3496.99,3446.99,,3446.99,2996.99,3795.9004477611925,4496.99,260.0,2946.99,3429.9039726027386,3996.99,189.0,2946.99,3520.9142372881342,3999.99,382.0
+B0DYQZTVGT,"LG 100-Inch Class QNED evo AI QNED85A Series Mini LED 4K Smart TV w/AI Picture, AI Sound, HDR10, AI Super Upscaling 4K, Filmmaker Mode, Wow Orchestra, Alexa Built-in (100QNED85AU, 2025)",LG,3496.99,3446.99,,3446.99,2996.99,3808.00515151515,4496.99,260.0,2946.99,3429.9039726027386,3996.99,189.0,2946.99,3519.682166666665,3999.99,385.0
 B0DWH3R4MG,"Roku Smart TV 2025 – 65-Inch Pro Series, Mini-LED TV – RokuTV with Backlit Voice Remote Pro – Flat Screen 4K QLED Television with 120Hz Refresh Rate & Dolby Vision IQ, Live News, Sports, Entertainment",Roku,898.0,898.0,,898.0,798.0,943.354,1199.99,40.0,798.0,921.6588888888889,1199.99,40.0,798.0,888.7950000000001,1199.99,73.0
-B0DWHGPJFG,"Roku Smart TV 2025 – 75-Inch Pro Series, Mini-LED TV – RokuTV with Backlit Voice Remote Pro – Flat Screen 4K QLED Television with 120Hz Refresh Rate & Dolby Vision IQ, Live News, Sports, Entertainment",Roku,1198.0,1198.0,,1198.0,997.99,1157.9217647058822,1698.0,82.0,997.99,1139.8782352941178,1698.0,61.0,997.99,1098.5381818181818,1698.0,168.0
+B0DWHGPJFG,"Roku Smart TV 2025 – 75-Inch Pro Series, Mini-LED TV – RokuTV with Backlit Voice Remote Pro – Flat Screen 4K QLED Television with 120Hz Refresh Rate & Dolby Vision IQ, Live News, Sports, Entertainment",Roku,1198.0,1198.0,,1198.0,997.99,1167.9175,1698.0,82.0,998.0,1148.74625,1698.0,61.0,997.99,1108.5929999999998,1698.0,168.0
