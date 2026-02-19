@@ -61,6 +61,17 @@ components.html("""
 (function() {
     var doc = window.parent.document;
 
+    var ligatures = {
+        'keyboard_double_arrow_right': '\u25B6',
+        'keyboard_double_arrow_left': '\u25C0',
+        'arrow_right': '\u25B8',
+        'arrow_drop_down': '\u25BE',
+        'arrow_forward_ios': '\u25B8',
+        'expand_more': '\u25BE',
+        'expand_less': '\u25B4',
+        'chevron_right': '\u25B8'
+    };
+
     function fix() {
         var walker = doc.createTreeWalker(
             doc.body, NodeFilter.SHOW_TEXT, null, false
@@ -68,17 +79,13 @@ components.html("""
         var node;
         while (node = walker.nextNode()) {
             var t = node.textContent.trim();
-            if (t === 'keyboard_double_arrow_right' ||
-                t === 'keyboard_double_arrow_left') {
+            if (ligatures[t]) {
                 var el = node.parentElement;
                 if (el && !el.getAttribute('data-fixed')) {
                     el.setAttribute('data-fixed', '1');
-                    // Replace text directly with a visible chevron
-                    var chevron = t.indexOf('right') !== -1
-                        ? '\u25B6' : '\u25C0';
                     el.textContent = '';
                     var span = doc.createElement('span');
-                    span.textContent = chevron;
+                    span.textContent = ligatures[t];
                     span.style.fontSize = '12px';
                     span.style.color = '#999';
                     span.style.cursor = 'pointer';
