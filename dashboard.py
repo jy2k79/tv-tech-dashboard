@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-RTINGS TV Display Technology Dashboard
+TV Display Technology Dashboard
 =======================================
 Interactive Streamlit dashboard for exploring TV display technologies,
-pricing, and performance metrics from RTINGS.com data.
+pricing, and performance metrics.
 
 Branding: Nanosys (Inter font, brand color palette)
 
@@ -23,11 +23,32 @@ from pathlib import Path
 # Page config
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="RTINGS TV Dashboard",
+    page_title="TV Display Technology Dashboard",
     page_icon="📺",
     layout="wide",
     initial_sidebar_state="auto",
 )
+
+# ---------------------------------------------------------------------------
+# Password gate — requires password set in .streamlit/secrets.toml
+# ---------------------------------------------------------------------------
+def check_password():
+    """Return True if the user has entered the correct password."""
+    if "authenticated" in st.session_state and st.session_state.authenticated:
+        return True
+    pwd = st.text_input("Password", type="password", key="pwd_input")
+    if pwd:
+        if pwd == st.secrets.get("app_password", ""):
+            st.session_state.authenticated = True
+            st.rerun()
+        else:
+            st.error("Incorrect password")
+    else:
+        st.info("Enter the dashboard password to continue.")
+    return False
+
+if not check_password():
+    st.stop()
 
 # ---------------------------------------------------------------------------
 # Nanosys branding — Inter font, larger base sizes, heavier weights
@@ -372,8 +393,8 @@ page = st.sidebar.radio("View", ALL_PAGES, index=default_idx)
 # PAGE: Overview
 # ============================================================================
 if page == "Overview":
-    st.title("RTINGS TV Display Technology Dashboard")
-    st.caption(f"Database: {len(df)} TVs from RTINGS.com test bench v2.0+")
+    st.title("TV Display Technology Dashboard")
+    st.caption(f"Database: {len(df)} TVs — test bench v2.0+")
 
     priced = fdf[fdf["price_best"].notna()]
     c1, c2, c3, c4, c5 = st.columns(5)
@@ -1439,4 +1460,4 @@ elif page == "TV Profiles":
                 st.dataframe(size_display, use_container_width=True, hide_index=True)
 
     if pd.notna(tv.get("review_url")):
-        st.markdown(f"[View full review on RTINGS.com]({tv['review_url']})")
+        st.markdown(f"[View full review]({tv['review_url']})")

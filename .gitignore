@@ -1,5 +1,6 @@
-# API keys
+# Secrets (API keys, dashboard password)
 .env
+.streamlit/secrets.toml
 
 # Large binary files (downloaded fresh each pipeline run)
 spd_images/

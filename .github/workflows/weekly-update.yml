@@ -1,4 +1,4 @@
-name: Weekly RTINGS Update
+name: Weekly TV Data Update
 
 on:
   schedule:

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Weekly RTINGS Data Update — Master Orchestrator
+Weekly TV Data Update — Master Orchestrator
 ================================================
 Runs all pipeline scripts in sequence, detects changes,
 maintains a TV registry and changelog, and sends notifications.
@@ -238,7 +238,7 @@ def notify(title, message):
 
 def main():
     print("=" * 70)
-    print("WEEKLY RTINGS DATA UPDATE")
+    print("WEEKLY TV DATA UPDATE")
     print(f"Date: {TODAY}  |  Environment: {'GitHub Actions' if IN_CI else 'Local'}")
     print("=" * 70)
 
@@ -269,7 +269,7 @@ def main():
         run_script("rtings_scraper.py", abort_on_fail=True)
     except Exception as e:
         errors.append(f"Scraper failed: {e}")
-        notify("RTINGS Update FAILED", f"Scraper error: {e}")
+        notify("TV Data Update FAILED", f"Scraper error: {e}")
         sys.exit(1)
 
     # --- Step 2: SPD Analysis ---
@@ -282,7 +282,7 @@ def main():
         run_script("build_schema.py", abort_on_fail=True)
     except Exception as e:
         errors.append(f"Schema build failed: {e}")
-        notify("RTINGS Update FAILED", f"Schema error: {e}")
+        notify("TV Data Update FAILED", f"Schema error: {e}")
         sys.exit(1)
 
     # --- Step 4: Pricing Pipeline ---
@@ -326,7 +326,7 @@ def main():
         summary_parts.append(f"{len(errors)} warnings")
 
     summary = ", ".join(summary_parts)
-    notify("RTINGS Dashboard Updated", summary)
+    notify("TV Dashboard Updated", summary)
 
     print(f"\n{'=' * 70}")
     print(f"UPDATE COMPLETE: {summary}")
