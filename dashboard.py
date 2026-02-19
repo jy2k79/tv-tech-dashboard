@@ -440,9 +440,7 @@ if page == "Overview":
             if wled_hero:
                 fig.add_hline(y=wled_hero, line_dash="dot",
                               line_color=TECH_COLORS.get("WLED", "#888"),
-                              opacity=0.4, annotation_text="WLED baseline",
-                              annotation_position="top left",
-                              annotation_font_color="rgba(255,255,255,0.5)")
+                              opacity=0.4)
             fig.update_layout(showlegend=False, height=370, **PL)
             st.plotly_chart(fig, use_container_width=True)
         else:
@@ -505,7 +503,7 @@ if page == "Overview":
                          color="color_architecture", color_discrete_map=TECH_COLORS,
                          category_orders={"color_architecture": TECH_ORDER},
                          labels={"price_best": "Price ($)", "color_architecture": "Technology"},
-                         points="all")
+                         hover_name="fullname", points="all")
             fig.update_layout(showlegend=False, height=350,
                               yaxis=dict(range=axis_range("price_best")), **PL)
             fig.update_traces(marker=dict(size=8))
@@ -1098,9 +1096,7 @@ elif page == "Price Analyzer":
                       textfont_size=14, textfont_weight=600, cliponaxis=False)
     if wled_val:
         fig.add_hline(y=wled_val, line_dash="dot", line_color=TECH_COLORS.get("WLED", "#888"),
-                      opacity=0.4, annotation_text="WLED baseline",
-                      annotation_position="top left",
-                      annotation_font_color="rgba(255,255,255,0.5)")
+                      opacity=0.4)
     fig.update_layout(showlegend=False, height=400, **PL)
     st.plotly_chart(fig, use_container_width=True)
 
