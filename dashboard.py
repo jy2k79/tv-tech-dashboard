@@ -421,6 +421,47 @@ if page == "Overview":
 
     st.divider()
 
+    # --- Hero charts: Pricing & Performance at a glance ---
+    hero1, hero2 = st.columns(2)
+    with hero1:
+        st.subheader("Technology Cost per m\u00b2")
+        if len(priced) > 0:
+            m2_hero = (priced.dropna(subset=["price_per_m2"])
+                       .groupby("color_architecture", observed=True)["price_per_m2"]
+                       .mean().reset_index())
+            m2_hero.columns = ["Technology", "Avg $/m\u00b2"]
+            wled_base = m2_hero.loc[m2_hero["Technology"] == "WLED", "Avg $/m\u00b2"]
+            wled_hero = float(wled_base.iloc[0]) if len(wled_base) > 0 else None
+            fig = px.bar(m2_hero, x="Technology", y="Avg $/m\u00b2", color="Technology",
+                         color_discrete_map=TECH_COLORS, text="Avg $/m\u00b2",
+                         category_orders={"Technology": TECH_ORDER})
+            fig.update_traces(texttemplate="$%{text:,.0f}", textposition="outside",
+                              textfont_size=13, textfont_weight=600, cliponaxis=False)
+            if wled_hero:
+                fig.add_hline(y=wled_hero, line_dash="dot",
+                              line_color=TECH_COLORS.get("WLED", "#888"),
+                              opacity=0.4, annotation_text="WLED baseline",
+                              annotation_position="top left",
+                              annotation_font_color="rgba(255,255,255,0.5)")
+            fig.update_layout(showlegend=False, height=370, **PL)
+            st.plotly_chart(fig, use_container_width=True)
+        else:
+            st.info("No priced TVs in current filter.")
+
+    with hero2:
+        st.subheader("Mixed Usage Score by Technology")
+        fig = px.box(fdf, x="color_architecture", y="mixed_usage",
+                     color="color_architecture", color_discrete_map=TECH_COLORS,
+                     category_orders={"color_architecture": TECH_ORDER},
+                     labels={"mixed_usage": "Mixed Usage Score", "color_architecture": ""},
+                     points="all")
+        fig.update_layout(showlegend=False, height=370,
+                          yaxis=dict(range=axis_range("mixed_usage")), **PL)
+        fig.update_traces(marker=dict(size=7))
+        st.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+
     col1, col2 = st.columns(2)
     with col1:
         st.subheader("Color Architecture Distribution")
