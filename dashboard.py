@@ -175,7 +175,7 @@ def load_data():
     for col in numeric_cols:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
-    tech_order = ["QD-OLED", "WOLED", "QD-LCD", "Pseudo QD", "KSF", "WLED"]
+    tech_order = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "WOLED", "QD-OLED"]
     df["color_architecture"] = pd.Categorical(
         df["color_architecture"], categories=tech_order, ordered=True
     )
