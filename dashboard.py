@@ -1095,7 +1095,7 @@ elif page == "Price Analyzer":
                          color="color_architecture", color_discrete_map=TECH_COLORS,
                          category_orders={"color_architecture": TECH_ORDER},
                          hover_name="fullname",
-                         hover_data=["brand", "price_source", "price_size"],
+                         hover_data=["brand", "channel", "price_size"],
                          labels={"price_best": "Price ($)", score_metric: score_label})
         fig.update_layout(height=550, legend_title_text="Technology",
                           xaxis=dict(range=axis_range("price_best")),
@@ -1145,10 +1145,15 @@ elif page == "Price Analyzer":
 
         if len(prices_df) > 0:
             st.subheader("Price by Screen Size")
-            sized = prices_df[prices_df["best_price"].notna() & prices_df["size_inches"].notna()]
+            sized = prices_df[prices_df["best_price"].notna() & prices_df["size_inches"].notna()].copy()
             if len(sized) > 0:
+                if "price_source" in sized.columns:
+                    sized["channel"] = sized["price_source"].replace({
+                        "amazon": "Amazon", "amazon_3p": "Amazon",
+                        "bestbuy": "Best Buy", "rtings": "RTINGS (affiliate)",
+                    })
                 fig = px.scatter(sized, x="size_inches", y="best_price",
-                                 color="price_source",
+                                 color="channel",
                                  hover_data=["amazon_asin", "bestbuy_sku"],
                                  labels={"size_inches": "Screen Size (inches)",
                                          "best_price": "Price ($)"})
@@ -1174,7 +1179,7 @@ elif page == "Price Analyzer":
 
         st.markdown(f"**Top 15 by {value_label} per $1,000**")
         deal_cols = ["fullname", "color_architecture", "price_best", "price_size",
-                     value_metric, "value_index", "price_source"]
+                     value_metric, "value_index", "channel"]
         display = priced[deal_cols].head(15).copy()
         display.columns = ["TV", "Technology", "Price", "Size", value_label,
                            f"{value_label}/k$", "Source"]
@@ -1438,7 +1443,7 @@ elif page == "Comparison Tool":
         ("Refresh Rate", "native_refresh_rate"),
         ("Price", "price_best"),
         ("Price Size", "price_size"),
-        ("Price Source", "price_source"),
+        ("Price Source", "channel"),
         ("$/m\u00b2", "price_per_m2"),
         ("Mixed Usage", "mixed_usage"),
         ("Home Theater", "home_theater"),
@@ -1601,7 +1606,7 @@ elif page == "TV Profiles":
         with price_cols[0]:
             st.metric("Best Price", f"${tv['price_best']:,.0f}")
         with price_cols[1]:
-            st.metric("Source", tv.get("price_source", "N/A"))
+            st.metric("Source", tv.get("channel", tv.get("price_source", "N/A")))
         with price_cols[2]:
             st.metric("Size", f"{int(tv['price_size'])}\"" if pd.notna(tv.get("price_size")) else "N/A")
         with price_cols[3]:
@@ -1614,8 +1619,14 @@ elif page == "TV Profiles":
             ].sort_values("size_inches")
             if len(tv_sizes) > 0:
                 st.markdown("**All Available Sizes**")
-                size_display = tv_sizes[["size_inches", "best_price", "price_source",
-                                          "amazon_price", "bestbuy_price", "rtings_price"]].copy()
+                tv_sizes_disp = tv_sizes.copy()
+                if "price_source" in tv_sizes_disp.columns:
+                    tv_sizes_disp["channel"] = tv_sizes_disp["price_source"].replace({
+                        "amazon": "Amazon", "amazon_3p": "Amazon",
+                        "bestbuy": "Best Buy", "rtings": "RTINGS (affiliate)",
+                    })
+                size_display = tv_sizes_disp[["size_inches", "best_price", "channel",
+                                               "amazon_price", "bestbuy_price", "rtings_price"]].copy()
                 size_display.columns = ["Size", "Best Price", "Source", "Amazon", "Best Buy", "RTINGS"]
                 size_display["Size"] = size_display["Size"].apply(
                     lambda x: f'{int(x)}"' if pd.notna(x) else "?")
