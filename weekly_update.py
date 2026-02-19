@@ -336,6 +336,7 @@ def main():
         return
 
     errors = []
+    changes = []
     n_new = 0
     n_removed = 0
     n_changes = 0
@@ -411,7 +412,7 @@ def main():
 
     # --- Step 8: Email report ---
     email_html = build_email_report(
-        summary, changes if 'changes' in dir() else [],
+        summary, changes,
         errors, old_count, new_count, n_priced)
     send_email(f"TV Dashboard Update — {TODAY}", email_html)
 

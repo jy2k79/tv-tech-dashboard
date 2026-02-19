@@ -7,3 +7,4 @@ python-dotenv
 openpyxl
 Pillow
 scipy
+matplotlib
