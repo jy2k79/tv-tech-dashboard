@@ -312,6 +312,72 @@ def compute_pricing_metrics(db, price_history):
     }
 
 
+def compute_temporal_metrics(db):
+    """Compare the two most recent model years. Returns dict with per-tech
+    score deltas and price deltas, or None if < 2 valid years."""
+    if "released_at" not in db.columns:
+        return None
+
+    db_t = db.copy()
+    db_t["model_year"] = db_t["released_at"].dt.year
+    year_counts = db_t["model_year"].dropna().value_counts()
+    valid_years = sorted([int(y) for y, n in year_counts.items() if n >= 5])
+    if len(valid_years) < 2:
+        return None
+
+    yr_prev, yr_curr = valid_years[-2], valid_years[-1]
+    changes = {}
+    for tech in TECH_ORDER:
+        prev = db_t[(db_t["color_architecture"] == tech)
+                     & (db_t["model_year"] == yr_prev)]
+        curr = db_t[(db_t["color_architecture"] == tech)
+                     & (db_t["model_year"] == yr_curr)]
+        if len(prev) < 2 or len(curr) < 2:
+            continue
+        entry = {
+            "n_prev": int(len(prev)),
+            "n_curr": int(len(curr)),
+        }
+        for col, label in [("mixed_usage", "score")]:
+            p = prev[col].dropna()
+            c = curr[col].dropna()
+            if len(p) > 0 and len(c) > 0:
+                entry[f"{label}_prev"] = round(float(p.mean()), 1)
+                entry[f"{label}_curr"] = round(float(c.mean()), 1)
+                entry[f"{label}_delta"] = round(float(c.mean() - p.mean()), 1)
+        p_m2 = prev["price_per_m2"].dropna()
+        c_m2 = curr["price_per_m2"].dropna()
+        if len(p_m2) > 0 and len(c_m2) > 0:
+            pm, cm = float(p_m2.mean()), float(c_m2.mean())
+            entry["price_m2_prev"] = round(pm, 0)
+            entry["price_m2_curr"] = round(cm, 0)
+            entry["price_m2_delta_pct"] = round((cm - pm) / pm * 100, 1) if pm > 0 else None
+        if entry:
+            changes[tech] = entry
+
+    if not changes:
+        return None
+
+    return {
+        "year_prev": yr_prev,
+        "year_curr": yr_curr,
+        "changes": changes,
+        "report_month": REPORT_MONTH,
+    }
+
+
+def _should_include_temporal(metrics):
+    """Return True if temporal section warrants inclusion in the report."""
+    if metrics is None:
+        return False
+    for tech, data in metrics["changes"].items():
+        if abs(data.get("score_delta", 0)) >= 0.3:
+            return True
+        if data.get("price_m2_delta_pct") is not None and abs(data["price_m2_delta_pct"]) >= 10:
+            return True
+    return False
+
+
 def prepare_section3_context(db):
     """Build context string for Claude API Section 3."""
     tech_counts = db["color_architecture"].value_counts().to_dict()
@@ -428,6 +494,24 @@ Since you cannot search the web, focus on synthesizing insights from our data co
     return call_claude(prompt)
 
 
+def generate_temporal_section(metrics, chart_names):
+    """Generate Section 4: Temporal Analysis narrative."""
+    prompt = f"""Write Section 4: "Year-over-Year Technology Trends" for the {REPORT_MONTH} report.
+
+DATA SUMMARY:
+{json.dumps(metrics, indent=2, default=str)}
+
+CHARTS INCLUDED IN THIS SECTION: {', '.join(chart_names)}
+
+Cover these topics:
+1. Which technologies improved most in mixed_usage score between {metrics['year_prev']} and {metrics['year_curr']} models
+2. Biggest pricing shifts ($/m² changes) — who's getting cheaper, who's maintaining premium
+3. Competitive positioning implications — is the gap between QD and non-QD narrowing or widening
+4. A forward-looking "so what" about technology trajectories"""
+
+    return call_claude(prompt)
+
+
 def generate_section_safe(section_num, generator_func, *args):
     """Wrapper that catches API errors and returns fallback text."""
     try:
@@ -539,6 +623,7 @@ def build_pdf(sections, cover_chart, stats, output_path):
         (74, 222, 128),   # Green for tech overview
         (255, 199, 0),    # Gold for pricing
         (144, 191, 255),  # Blue for macro
+        (255, 126, 67),   # Orange for temporal
     ]
 
     for i, (title, narrative, chart_paths) in enumerate(sections):
@@ -739,11 +824,14 @@ def main():
     tech_metrics["n_8k_excluded"] = n_8k
     pricing_metrics = compute_pricing_metrics(db, price_history)
     section3_context = prepare_section3_context(db)
+    temporal_metrics = compute_temporal_metrics(db)
+    include_temporal = _should_include_temporal(temporal_metrics)
 
     log(f"  New TVs: {len(tech_metrics['new_tvs'])}")
     log(f"  Removed TVs: {len(tech_metrics['removed_tvs'])}")
     log(f"  Priced: {pricing_metrics['n_priced']}")
     log(f"  Price data depth: {pricing_metrics['data_depth_weeks']} weeks")
+    log(f"  Temporal section: {'included' if include_temporal else 'skipped (thresholds not met)'}")
 
     # --- Step 3: Generate charts ---
     log("Generating charts...")
@@ -754,7 +842,7 @@ def main():
     from report_charts import (
         chart_tech_distribution, chart_score_distribution, chart_fwhm_by_tech,
         chart_new_model_scorecard, chart_price_by_tech, chart_price_trends,
-        chart_price_performance,
+        chart_price_performance, chart_temporal_scores, chart_temporal_pricing,
     )
 
     charts = {}
@@ -767,6 +855,11 @@ def main():
     charts["price_trend"] = chart_price_trends(
         price_history, chart_dir / "price_trend.png")
     charts["price_perf"] = chart_price_performance(db, chart_dir / "price_perf.png")
+    if include_temporal:
+        charts["temporal_scores"] = chart_temporal_scores(
+            db, chart_dir / "temporal_scores.png")
+        charts["temporal_pricing"] = chart_temporal_pricing(
+            db, chart_dir / "temporal_pricing.png")
 
     generated = {k: v for k, v in charts.items() if v is not None}
     skipped = {k for k, v in charts.items() if v is None}
@@ -782,6 +875,7 @@ def main():
         section1_text = "[Claude API key not configured. Section 1 narrative would appear here with analysis of display technology trends, new models, and performance metrics.]"
         section2_text = "[Claude API key not configured. Section 2 narrative would appear here with pricing intelligence, value analysis, and trend data.]"
         section3_text = "[Claude API key not configured. Section 3 narrative would appear here with industry context and macro analysis.]"
+        section4_text = "[Claude API key not configured. Section 4 narrative would appear here with year-over-year technology trends.]" if include_temporal else None
         errors.append("No ANTHROPIC_API_KEY -- used placeholder narratives")
     else:
         s1_charts = [k for k in ["scores", "fwhm", "new_models", "tech_dist"]
@@ -792,6 +886,13 @@ def main():
         section1_text = generate_section_safe(1, generate_section1, tech_metrics, s1_charts)
         section2_text = generate_section_safe(2, generate_section2, pricing_metrics, s2_charts)
         section3_text = generate_section_safe(3, generate_section3, section3_context)
+
+        section4_text = None
+        if include_temporal:
+            s4_charts = [k for k in ["temporal_scores", "temporal_pricing"]
+                         if k in generated]
+            section4_text = generate_section_safe(
+                4, generate_temporal_section, temporal_metrics, s4_charts)
 
     # --- Step 5: Assemble PDF ---
     log("Assembling PDF...")
@@ -805,6 +906,13 @@ def main():
           charts.get("price_perf")]),
         ("Macro & Industry Context", section3_text, []),
     ]
+    if include_temporal and section4_text:
+        sections.append((
+            "Year-over-Year Technology Trends", section4_text,
+            [charts.get("temporal_scores"), charts.get("temporal_pricing")],
+        ))
+
+    n_sections = len(sections)
 
     build_pdf(sections, charts.get("tech_dist"), {
         "total_tvs": tech_metrics["total_tvs"],
@@ -823,7 +931,7 @@ def main():
     # --- Summary ---
     print(f"\n{'=' * 70}")
     print(f"REPORT COMPLETE: {pdf_path}")
-    print(f"  Sections: 3  |  Charts: {len(generated)}  |  Pages: ~{4 + len(generated)}")
+    print(f"  Sections: {n_sections}  |  Charts: {len(generated)}  |  Pages: ~{4 + len(generated)}")
     if errors:
         print(f"\nWarnings:")
         for e in errors:

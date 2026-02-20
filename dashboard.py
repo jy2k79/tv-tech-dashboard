@@ -183,7 +183,7 @@ def load_data():
     df = pd.read_csv(DATA_DIR / "tv_database_with_prices.csv")
     for col in ["first_published_at", "last_updated_at", "released_at", "scraped_at"]:
         if col in df.columns:
-            df[col] = pd.to_datetime(df[col], errors="coerce")
+            df[col] = pd.to_datetime(df[col], utc=True, errors="coerce")
     numeric_cols = [
         "price_best", "price_per_m2", "price_per_mixed_use",
         "mixed_usage", "home_theater", "gaming", "sports", "bright_room",
@@ -238,6 +238,9 @@ _n_8k = 0
 if "resolution" in df.columns:
     _n_8k = (df["resolution"] == "8k").sum()
     df = df[df["resolution"] != "8k"].reset_index(drop=True)
+
+# Derive model year from release date
+df["model_year"] = df["released_at"].dt.year
 
 # ---------------------------------------------------------------------------
 # Nanosys brand color palette (colorblind-safe selections)
@@ -399,11 +402,18 @@ price_range = st.sidebar.slider(
 )
 include_unpriced = st.sidebar.checkbox("Include TVs without pricing", value=True)
 
+# --- Model Year ---
+available_years = sorted(df["model_year"].dropna().unique().astype(int).tolist())
+selected_years = st.sidebar.multiselect(
+    "Model Year", available_years, default=available_years
+)
+
 # --- Build filter mask ---
 mask = (
     df["color_architecture"].isin(selected_techs)
     & df["display_type"].isin(selected_display_types)
     & df["brand"].isin(selected_brands)
+    & (df["model_year"].isin(selected_years) | df["model_year"].isna())
 )
 if include_unpriced:
     mask = mask & (df["price_best"].isna() | df["price_best"].between(price_range[0], price_range[1]))
@@ -412,11 +422,23 @@ else:
 
 fdf = df[mask].copy()
 st.sidebar.markdown(f"**Showing {len(fdf)}/{len(df)} TVs**")
+
+# Temporal dataframe — all filters EXCEPT year, for year-over-year analysis
+temporal_mask = (
+    df["color_architecture"].isin(selected_techs)
+    & df["display_type"].isin(selected_display_types)
+    & df["brand"].isin(selected_brands)
+)
+if include_unpriced:
+    temporal_mask = temporal_mask & (df["price_best"].isna() | df["price_best"].between(price_range[0], price_range[1]))
+else:
+    temporal_mask = temporal_mask & df["price_best"].between(price_range[0], price_range[1])
+tdf = df[temporal_mask].copy()
 if _n_8k > 0:
     st.sidebar.caption(f"{_n_8k} 8K sets excluded from all metrics")
 
 # Support deep-linking via ?page=...
-ALL_PAGES = ["Overview", "Technology Explorer", "Price Analyzer", "Comparison Tool", "TV Profiles"]
+ALL_PAGES = ["Overview", "Technology Explorer", "Price Analyzer", "Temporal Analysis", "Comparison Tool", "TV Profiles"]
 qp_page = st.query_params.get("page", None)
 default_idx = ALL_PAGES.index(qp_page) if qp_page in ALL_PAGES else 0
 page = st.sidebar.radio("View", ALL_PAGES, index=default_idx)
@@ -1427,6 +1449,330 @@ elif page == "Price Analyzer":
                                          "count": "Price Points", "channel": "Channel"})
                     fig.update_layout(height=400, legend_title_text="Channel", **PL)
                     st.plotly_chart(fig, use_container_width=True)
+
+
+# ============================================================================
+# PAGE: Temporal Analysis
+# ============================================================================
+elif page == "Temporal Analysis":
+    st.title("Temporal Analysis")
+    st.caption(
+        "Year-over-year technology trends. This page ignores the sidebar "
+        "Model Year filter so all years are always visible for comparison."
+    )
+
+    MIN_SAMPLES = 2  # minimum TVs per (tech, year) group to show aggregated data
+
+    # Valid years present in the temporal dataframe
+    _year_counts = tdf["model_year"].dropna().value_counts().sort_index()
+    _valid_years = sorted(_year_counts[_year_counts >= 1].index.astype(int).tolist())
+    _n_valid_years = len(_valid_years)
+
+    if _n_valid_years == 0:
+        st.warning("No TVs with release date information available.")
+        st.stop()
+
+    # Build per-(tech, year) aggregation used across multiple charts
+    _ty = (
+        tdf.dropna(subset=["model_year"])
+        .groupby(["color_architecture", "model_year"])
+        .agg(
+            n=("fullname", "size"),
+            avg_mixed=("mixed_usage", "mean"),
+            avg_ht=("home_theater", "mean"),
+            avg_gaming=("gaming", "mean"),
+            avg_sports=("sports", "mean"),
+            avg_bright=("bright_room", "mean"),
+            avg_price_m2=("price_per_m2", "mean"),
+        )
+        .reset_index()
+    )
+    _ty["model_year"] = _ty["model_year"].astype(int)
+    # Filter to groups meeting minimum sample threshold
+    _ty = _ty[_ty["n"] >= MIN_SAMPLES].copy()
+
+    tab_perf, tab_price = st.tabs(["Performance Trends", "Pricing Trends"])
+
+    # ------------------------------------------------------------------
+    # Tab 1: Performance Trends
+    # ------------------------------------------------------------------
+    with tab_perf:
+        # Chart 1 — Avg Mixed Usage by Technology by Year (grouped bar)
+        st.subheader("Average Mixed Usage by Technology & Year")
+        _ch1 = _ty.dropna(subset=["avg_mixed"]).copy()
+        if len(_ch1) == 0:
+            st.info("Not enough scored TVs per technology/year (need n >= 2).")
+        else:
+            _ch1["year_str"] = _ch1["model_year"].astype(str)
+            _ch1["label"] = _ch1["avg_mixed"].apply(lambda v: f"{v:.1f}")
+            fig1 = px.bar(
+                _ch1,
+                x="year_str",
+                y="avg_mixed",
+                color="color_architecture",
+                barmode="group",
+                text="label",
+                hover_data={"n": True, "color_architecture": True, "year_str": False},
+                color_discrete_map=TECH_COLORS,
+                category_orders={
+                    "color_architecture": TECH_ORDER,
+                    "year_str": [str(y) for y in _valid_years],
+                },
+                labels={
+                    "year_str": "Model Year",
+                    "avg_mixed": "Avg Mixed Usage Score",
+                    "color_architecture": "Technology",
+                    "n": "Sample Size",
+                },
+            )
+            fig1.update_traces(textposition="outside")
+            fig1.update_layout(
+                yaxis=dict(range=[0, 10.5]),
+                height=480,
+                **PL,
+            )
+            st.plotly_chart(fig1, use_container_width=True)
+
+        st.divider()
+
+        # Chart 2 — Score Trajectory (line + strip, user-selectable metric)
+        st.subheader("Score Trajectory by Technology")
+        _metric_options = {
+            "Mixed Usage": "mixed_usage",
+            "Home Theater": "home_theater",
+            "Gaming": "gaming",
+            "Sports": "sports",
+            "Bright Room": "bright_room",
+        }
+        _selected_metric_label = st.selectbox(
+            "Metric", list(_metric_options.keys()), index=0
+        )
+        _selected_metric = _metric_options[_selected_metric_label]
+
+        _dots = tdf.dropna(subset=[_selected_metric, "model_year"]).copy()
+        _dots["model_year"] = _dots["model_year"].astype(int)
+
+        if len(_dots) == 0:
+            st.info(f"No data for {_selected_metric_label}.")
+        else:
+            # Per-tech mean line data
+            _agg_col = {
+                "mixed_usage": "avg_mixed",
+                "home_theater": "avg_ht",
+                "gaming": "avg_gaming",
+                "sports": "avg_sports",
+                "bright_room": "avg_bright",
+            }[_selected_metric]
+            _line = _ty.dropna(subset=[_agg_col]).copy()
+
+            fig2 = go.Figure()
+            for tech in TECH_ORDER:
+                color = TECH_COLORS.get(tech, "#888")
+                # Individual dots (semi-transparent)
+                td = _dots[_dots["color_architecture"] == tech]
+                if len(td) > 0:
+                    fig2.add_trace(go.Scatter(
+                        x=td["model_year"],
+                        y=td[_selected_metric],
+                        mode="markers",
+                        marker=dict(color=color, size=8, opacity=0.3),
+                        name=tech,
+                        legendgroup=tech,
+                        hovertext=td["fullname"],
+                        hoverinfo="text+y",
+                        showlegend=False,
+                    ))
+                # Mean line
+                tl = _line[_line["color_architecture"] == tech].sort_values("model_year")
+                if len(tl) > 0:
+                    fig2.add_trace(go.Scatter(
+                        x=tl["model_year"],
+                        y=tl[_agg_col],
+                        mode="lines+markers",
+                        marker=dict(color=color, size=10),
+                        line=dict(color=color, width=3),
+                        name=tech,
+                        legendgroup=tech,
+                    ))
+            fig2.update_layout(
+                xaxis=dict(
+                    title="Model Year",
+                    tickmode="array",
+                    tickvals=_valid_years,
+                    ticktext=[str(y) for y in _valid_years],
+                ),
+                yaxis=dict(title=_selected_metric_label, range=[0, 10.5]),
+                height=480,
+                **PL,
+            )
+            st.plotly_chart(fig2, use_container_width=True)
+
+    # ------------------------------------------------------------------
+    # Tab 2: Pricing Trends
+    # ------------------------------------------------------------------
+    with tab_price:
+        # Chart 3 — Avg $/m² by Technology by Year (grouped bar)
+        st.subheader("Average Price per m\u00b2 by Technology & Year")
+        _ch3 = _ty.dropna(subset=["avg_price_m2"]).copy()
+        if len(_ch3) == 0:
+            st.info("Not enough priced TVs per technology/year (need n >= 2).")
+        else:
+            _ch3["year_str"] = _ch3["model_year"].astype(str)
+            _ch3["label"] = _ch3["avg_price_m2"].apply(lambda v: f"${v:,.0f}")
+
+            # WLED baseline (overall average across all years)
+            _wled_all = tdf[tdf["color_architecture"] == "WLED"]["price_per_m2"].dropna()
+            _wled_baseline = float(_wled_all.mean()) if len(_wled_all) > 0 else None
+
+            fig3 = px.bar(
+                _ch3,
+                x="year_str",
+                y="avg_price_m2",
+                color="color_architecture",
+                barmode="group",
+                text="label",
+                hover_data={"n": True, "color_architecture": True, "year_str": False},
+                color_discrete_map=TECH_COLORS,
+                category_orders={
+                    "color_architecture": TECH_ORDER,
+                    "year_str": [str(y) for y in _valid_years],
+                },
+                labels={
+                    "year_str": "Model Year",
+                    "avg_price_m2": "Avg $/m\u00b2",
+                    "color_architecture": "Technology",
+                    "n": "Sample Size",
+                },
+            )
+            fig3.update_traces(textposition="outside")
+            if _wled_baseline:
+                fig3.add_hline(
+                    y=_wled_baseline,
+                    line_dash="dot",
+                    line_color=TECH_COLORS["WLED"],
+                    opacity=0.5,
+                    annotation_text=f"WLED avg ${_wled_baseline:,.0f}",
+                    annotation_position="top right",
+                    annotation_font_color=TECH_COLORS["WLED"],
+                )
+            fig3.update_layout(
+                yaxis=dict(title="Avg Price per m\u00b2"),
+                height=480,
+                **PL,
+            )
+            st.plotly_chart(fig3, use_container_width=True)
+
+        st.divider()
+
+        # Chart 4 — Year-over-Year Change Summary (dumbbell/arrow)
+        st.subheader("Year-over-Year Change Summary")
+        if _n_valid_years < 2:
+            st.info(
+                "Need at least two model years with sufficient data to show "
+                "year-over-year changes. Currently only "
+                f"{_n_valid_years} year(s) available."
+            )
+        else:
+            _latest_yr = _valid_years[-1]
+            _prev_yr = _valid_years[-2]
+            # Build per-tech comparison for the two most recent years
+            _prev = _ty[_ty["model_year"] == _prev_yr].set_index("color_architecture")
+            _curr = _ty[_ty["model_year"] == _latest_yr].set_index("color_architecture")
+            _common_techs = [t for t in TECH_ORDER if t in _prev.index and t in _curr.index]
+
+            if not _common_techs:
+                st.info(
+                    f"No technologies have enough data in both {_prev_yr} and "
+                    f"{_latest_yr} to compare (need n >= {MIN_SAMPLES} each year)."
+                )
+            else:
+                fig4 = go.Figure()
+                for i, tech in enumerate(_common_techs):
+                    color = TECH_COLORS.get(tech, "#888")
+                    p_score = _prev.loc[tech, "avg_mixed"]
+                    c_score = _curr.loc[tech, "avg_mixed"]
+                    improved = c_score >= p_score
+                    line_color = "#4ade80" if improved else "#f87171"
+
+                    # Connecting line
+                    fig4.add_trace(go.Scatter(
+                        x=[p_score, c_score],
+                        y=[tech, tech],
+                        mode="lines",
+                        line=dict(color=line_color, width=3),
+                        showlegend=False,
+                        hoverinfo="skip",
+                    ))
+                    # Previous year dot
+                    fig4.add_trace(go.Scatter(
+                        x=[p_score], y=[tech],
+                        mode="markers+text",
+                        marker=dict(color=color, size=14, symbol="circle",
+                                    line=dict(color="white", width=1)),
+                        text=[f"{p_score:.1f}"],
+                        textposition="middle left" if c_score >= p_score else "middle right",
+                        textfont=dict(size=11),
+                        name=str(_prev_yr) if i == 0 else None,
+                        legendgroup=str(_prev_yr),
+                        showlegend=(i == 0),
+                        hovertemplate=f"{tech} ({_prev_yr}): %{{x:.1f}}<extra></extra>",
+                    ))
+                    # Current year dot
+                    fig4.add_trace(go.Scatter(
+                        x=[c_score], y=[tech],
+                        mode="markers+text",
+                        marker=dict(color=color, size=14, symbol="diamond",
+                                    line=dict(color="white", width=1)),
+                        text=[f"{c_score:.1f}"],
+                        textposition="middle right" if c_score >= p_score else "middle left",
+                        textfont=dict(size=11),
+                        name=str(_latest_yr) if i == 0 else None,
+                        legendgroup=str(_latest_yr),
+                        showlegend=(i == 0),
+                        hovertemplate=f"{tech} ({_latest_yr}): %{{x:.1f}}<extra></extra>",
+                    ))
+
+                # Add $/m² change annotations on the right
+                _annotations = []
+                for tech in _common_techs:
+                    p_m2 = _prev.loc[tech, "avg_price_m2"]
+                    c_m2 = _curr.loc[tech, "avg_price_m2"]
+                    if pd.notna(p_m2) and pd.notna(c_m2) and p_m2 > 0:
+                        pct = (c_m2 - p_m2) / p_m2 * 100
+                        sign = "+" if pct >= 0 else ""
+                        _annotations.append(dict(
+                            x=1.02, y=tech,
+                            xref="paper", yref="y",
+                            text=f"$/m\u00b2: {sign}{pct:.0f}%",
+                            showarrow=False,
+                            font=dict(
+                                size=12,
+                                color="#4ade80" if pct <= 0 else "#f87171",
+                            ),
+                            xanchor="left",
+                        ))
+
+                fig4.update_layout(
+                    xaxis=dict(title="Avg Mixed Usage Score", range=[0, 10.5]),
+                    yaxis=dict(
+                        categoryorder="array",
+                        categoryarray=list(reversed(_common_techs)),
+                    ),
+                    annotations=_annotations,
+                    height=max(300, len(_common_techs) * 70 + 80),
+                    margin=dict(r=120),
+                    legend=dict(
+                        title=f"  \u25CF {_prev_yr}  \u25C6 {_latest_yr}",
+                    ),
+                    **PL,
+                )
+                st.plotly_chart(fig4, use_container_width=True)
+
+                st.caption(
+                    f"Comparing {_prev_yr} vs {_latest_yr} model years. "
+                    f"Green lines = score improvement, red = decline. "
+                    f"Right column shows $/m\u00b2 change (green = cheaper)."
+                )
 
 
 # ============================================================================

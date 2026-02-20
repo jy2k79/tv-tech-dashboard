@@ -425,6 +425,137 @@ def chart_price_performance(db, output_path):
 
 
 # ---------------------------------------------------------------------------
+# Chart 8: Temporal Scores (grouped bar — two most recent model years)
+# ---------------------------------------------------------------------------
+def chart_temporal_scores(db, output_path):
+    """Grouped bar of avg mixed_usage by tech for the two most recent model years.
+    Returns None if fewer than 2 years each have >= 5 TVs.
+    """
+    _setup_style()
+
+    if 'released_at' not in db.columns:
+        return None
+
+    db = db.copy()
+    db['model_year'] = pd.to_datetime(db['released_at'], errors='coerce').dt.year
+    year_counts = db['model_year'].dropna().value_counts()
+    valid_years = sorted([int(y) for y, n in year_counts.items() if n >= 5])
+    if len(valid_years) < 2:
+        return None
+
+    yr_prev, yr_curr = valid_years[-2], valid_years[-1]
+    subset = db[db['model_year'].isin([yr_prev, yr_curr])].dropna(
+        subset=['mixed_usage', 'color_architecture'])
+    if len(subset) < 5:
+        return None
+
+    techs_present = set(subset['color_architecture'].dropna())
+    ordered = _filter_tech_order(techs_present)
+    if not ordered:
+        return None
+
+    fig, ax = plt.subplots(figsize=FIG_SIZE, facecolor=DARK_BG)
+    x = np.arange(len(ordered))
+    width = 0.35
+
+    for i, year in enumerate([yr_prev, yr_curr]):
+        means = []
+        for t in ordered:
+            vals = subset[(subset['color_architecture'] == t)
+                          & (subset['model_year'] == year)]['mixed_usage']
+            means.append(float(vals.mean()) if len(vals) >= 2 else float('nan'))
+        offset = -width / 2 + i * width
+        alpha = 0.55 if i == 0 else 0.85
+        bars = ax.bar(x + offset, means, width, label=str(int(year)),
+                       color=[_tech_color(t) for t in ordered],
+                       alpha=alpha, edgecolor='none')
+        for bar, val in zip(bars, means):
+            if not np.isnan(val):
+                ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.15,
+                        f'{val:.1f}', ha='center', va='bottom',
+                        color=TEXT_COLOR, fontsize=9, fontweight='bold')
+
+    ax.set_xticks(x)
+    ax.set_xticklabels(ordered, rotation=15)
+    ax.set_ylabel('Avg Mixed Usage Score')
+    ax.set_ylim(0, 10.5)
+    ax.set_title(f'Score Comparison: {yr_prev} vs {yr_curr} Models',
+                 color=TEXT_COLOR, fontsize=13, fontweight='bold')
+    ax.legend(facecolor=CHART_BG, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR)
+
+    return _save(fig, output_path)
+
+
+# ---------------------------------------------------------------------------
+# Chart 9: Temporal Pricing (grouped bar — two most recent model years)
+# ---------------------------------------------------------------------------
+def chart_temporal_pricing(db, output_path):
+    """Grouped bar of avg $/m² by tech for the two most recent model years.
+    Returns None if insufficient priced data across 2+ years.
+    """
+    _setup_style()
+
+    if 'released_at' not in db.columns:
+        return None
+
+    db = db.copy()
+    db['model_year'] = pd.to_datetime(db['released_at'], errors='coerce').dt.year
+    priced = db.dropna(subset=['price_per_m2', 'color_architecture', 'model_year'])
+    year_counts = priced['model_year'].value_counts()
+    valid_years = sorted([int(y) for y, n in year_counts.items() if n >= 5])
+    if len(valid_years) < 2:
+        return None
+
+    yr_prev, yr_curr = valid_years[-2], valid_years[-1]
+    subset = priced[priced['model_year'].isin([yr_prev, yr_curr])]
+
+    techs_present = set(subset['color_architecture'].dropna())
+    ordered = _filter_tech_order(techs_present)
+    if not ordered:
+        return None
+
+    fig, ax = plt.subplots(figsize=FIG_SIZE, facecolor=DARK_BG)
+    x = np.arange(len(ordered))
+    width = 0.35
+
+    for i, year in enumerate([yr_prev, yr_curr]):
+        means = []
+        for t in ordered:
+            vals = subset[(subset['color_architecture'] == t)
+                          & (subset['model_year'] == year)]['price_per_m2']
+            means.append(float(vals.mean()) if len(vals) >= 2 else float('nan'))
+        offset = -width / 2 + i * width
+        alpha = 0.55 if i == 0 else 0.85
+        bars = ax.bar(x + offset, means, width, label=str(int(year)),
+                       color=[_tech_color(t) for t in ordered],
+                       alpha=alpha, edgecolor='none')
+        for bar, val in zip(bars, means):
+            if not np.isnan(val):
+                ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 20,
+                        f'${val:,.0f}', ha='center', va='bottom',
+                        color=TEXT_COLOR, fontsize=9, fontweight='bold')
+
+    # WLED baseline
+    wled_overall = db.dropna(subset=['price_per_m2'])
+    wled_vals = wled_overall[wled_overall['color_architecture'] == 'WLED']['price_per_m2']
+    if len(wled_vals) > 0:
+        baseline = float(wled_vals.mean())
+        ax.axhline(y=baseline, color=_tech_color('WLED'),
+                    linestyle=':', alpha=0.4, linewidth=1)
+
+    ax.set_xticks(x)
+    ax.set_xticklabels(ordered, rotation=15)
+    ax.set_ylabel('Avg Price per m\u00b2')
+    ax.set_title(f'Pricing Comparison: {yr_prev} vs {yr_curr} Models',
+                 color=TEXT_COLOR, fontsize=13, fontweight='bold')
+    ax.yaxis.set_major_formatter(mticker.FuncFormatter(
+        lambda x, p: f'${x:,.0f}'))
+    ax.legend(facecolor=CHART_BG, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR)
+
+    return _save(fig, output_path)
+
+
+# ---------------------------------------------------------------------------
 # Test harness
 # ---------------------------------------------------------------------------
 if __name__ == '__main__':
@@ -449,6 +580,10 @@ if __name__ == '__main__':
         hist['snapshot_date'] = pd.to_datetime(hist['snapshot_date'], errors='coerce')
         hist['best_price'] = pd.to_numeric(hist['best_price'], errors='coerce')
 
+    # Parse released_at for temporal charts
+    if 'released_at' in db.columns:
+        db['released_at'] = pd.to_datetime(db['released_at'], errors='coerce')
+
     charts = [
         ('tech_dist', chart_tech_distribution(db, OUT / 'tech_dist.png')),
         ('scores', chart_score_distribution(db, OUT / 'scores.png')),
@@ -456,6 +591,8 @@ if __name__ == '__main__':
         ('price_tech', chart_price_by_tech(db, OUT / 'price_tech.png')),
         ('price_trend', chart_price_trends(hist, OUT / 'price_trend.png')),
         ('price_perf', chart_price_performance(db, OUT / 'price_perf.png')),
+        ('temporal_scores', chart_temporal_scores(db, OUT / 'temporal_scores.png')),
+        ('temporal_pricing', chart_temporal_pricing(db, OUT / 'temporal_pricing.png')),
     ]
 
     for name, path in charts:
