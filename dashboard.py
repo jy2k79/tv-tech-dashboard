@@ -471,7 +471,7 @@ if page == "Overview":
         if len(priced) > 0:
             m2_hero = (priced.dropna(subset=["price_per_m2"])
                        .groupby("color_architecture", observed=True)["price_per_m2"]
-                       .mean().reset_index())
+                       .median().reset_index())
             m2_hero.columns = ["Technology", "Avg $/m\u00b2"]
             wled_base = m2_hero.loc[m2_hero["Technology"] == "WLED", "Avg $/m\u00b2"]
             wled_hero = float(wled_base.iloc[0]) if len(wled_base) > 0 else None
@@ -1127,7 +1127,7 @@ elif page == "Price Analyzer":
 
     m2_data = (priced.dropna(subset=["price_per_m2"])
                .groupby("color_architecture", observed=True)["price_per_m2"]
-               .mean().reset_index())
+               .median().reset_index())
     m2_data.columns = ["Technology", "Avg $/m\u00b2"]
     wled_baseline = m2_data.loc[m2_data["Technology"] == "WLED", "Avg $/m\u00b2"]
     wled_val = float(wled_baseline.iloc[0]) if len(wled_baseline) > 0 else None
@@ -1486,7 +1486,7 @@ elif page == "Temporal Analysis":
             avg_gaming=("gaming", "mean"),
             avg_sports=("sports", "mean"),
             avg_bright=("bright_room", "mean"),
-            avg_price_m2=("price_per_m2", "mean"),
+            avg_price_m2=("price_per_m2", "median"),
         )
         .reset_index()
     )
@@ -1623,9 +1623,9 @@ elif page == "Temporal Analysis":
             _ch3["year_str"] = _ch3["model_year"].astype(str)
             _ch3["label"] = _ch3["avg_price_m2"].apply(lambda v: f"${v:,.0f}")
 
-            # WLED baseline (overall average across all years)
+            # WLED baseline (overall median across all years)
             _wled_all = tdf[tdf["color_architecture"] == "WLED"]["price_per_m2"].dropna()
-            _wled_baseline = float(_wled_all.mean()) if len(_wled_all) > 0 else None
+            _wled_baseline = float(_wled_all.median()) if len(_wled_all) > 0 else None
 
             fig3 = px.bar(
                 _ch3,
