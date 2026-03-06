@@ -1494,7 +1494,7 @@ elif page == "Temporal Analysis":
     # Filter to groups meeting minimum sample threshold
     _ty = _ty[_ty["n"] >= MIN_SAMPLES].copy()
 
-    tab_perf, tab_price = st.tabs(["Performance Trends", "Pricing Trends"])
+    tab_perf, tab_price, tab_qd = st.tabs(["Performance Trends", "Pricing Trends", "QD Material Trends"])
 
     # ------------------------------------------------------------------
     # Tab 1: Performance Trends
@@ -1742,6 +1742,63 @@ elif page == "Temporal Analysis":
                                 delta=val_delta,
                                 delta_color="inverse",
                             )
+
+
+    # ------------------------------------------------------------------
+    # Tab 3: QD Material Trends
+    # ------------------------------------------------------------------
+    with tab_qd:
+        st.subheader("Quantum Dot Material by Model Year")
+        st.caption(
+            "CdSe vs InP (Cd-Free) classification based on red peak FWHM. "
+            "CdSe QDs have narrow red emission (<30nm), InP QDs are wider (>30nm)."
+        )
+        _qd_df = tdf.dropna(subset=["model_year"]).copy()
+        _qd_df = _qd_df[_qd_df["qd_material"].isin(["CdSe", "InP"])]
+        if len(_qd_df) == 0:
+            st.info("No QD-equipped TVs with model year data.")
+        else:
+            _qd_df["model_year"] = _qd_df["model_year"].astype(int)
+            _qd_counts = (
+                _qd_df.groupby(["model_year", "qd_material"])
+                .size()
+                .reset_index(name="Count")
+            )
+            _qd_counts["year_str"] = _qd_counts["model_year"].astype(str)
+            _qd_colors = {"CdSe": "#e74c3c", "InP": "#2ecc71"}
+            fig_qd = px.bar(
+                _qd_counts,
+                x="year_str",
+                y="Count",
+                color="qd_material",
+                barmode="stack",
+                text="Count",
+                color_discrete_map=_qd_colors,
+                category_orders={
+                    "qd_material": ["CdSe", "InP"],
+                    "year_str": [str(y) for y in sorted(_qd_counts["model_year"].unique())],
+                },
+                labels={
+                    "year_str": "Model Year",
+                    "qd_material": "QD Material",
+                },
+            )
+            fig_qd.update_traces(textposition="inside")
+            fig_qd.update_layout(height=420, **PL)
+            st.plotly_chart(fig_qd, use_container_width=True)
+
+        # Breakdown table
+        st.subheader("QD Material by Brand")
+        _qd_brand = tdf[tdf["qd_material"].isin(["CdSe", "InP"])]
+        if len(_qd_brand) > 0:
+            _qd_pivot = (
+                _qd_brand.groupby(["brand", "qd_material"])
+                .size()
+                .unstack(fill_value=0)
+            )
+            _qd_pivot["Total"] = _qd_pivot.sum(axis=1)
+            _qd_pivot = _qd_pivot.sort_values("Total", ascending=False)
+            st.dataframe(_qd_pivot, use_container_width=True)
 
 
 # ============================================================================
