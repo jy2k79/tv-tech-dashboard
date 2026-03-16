@@ -3,84 +3,20 @@ product_id,fullname,brand,url_part,panel_type,spd_classification,spd_confidence,
 117447,Hisense 100U8QG,Hisense,hisense-100u8qg,LCD,KSF,high,,,NO_GT,446.6,15.7,533.4,51.0,632.0,9.0,5,B:447nm/16nm; G:533nm/51nm; R:632nm/9nm,spd_images/hisense-100u8qg_spd.jpg
 61045,Hisense 75U8N,Hisense,hisense-75u8n,LCD,QD-LCD,high,,,NO_GT,447.8,16.1,536.4,25.4,625.9,21.6,3,B:448nm/16nm; G:536nm/25nm; R:626nm/22nm,spd_images/hisense-75u8n_spd.jpg
 102827,Hisense 98QD5QG,Hisense,hisense-98qd5qg,LCD,KSF,high,,,NO_GT,446.3,16.5,534.5,49.3,632.0,9.1,5,B:446nm/17nm; G:534nm/49nm; R:632nm/9nm,spd_images/hisense-98qd5qg_spd.jpg
-57713,Hisense A7N,Hisense,hisense-a7n,LCD,KSF,high,,,NO_GT,444.5,16.5,534.4,47.3,632.0,9.1,5,B:444nm/16nm; G:534nm/47nm; R:632nm/9nm,spd_images/hisense-a7n_spd.jpg
-63953,Hisense CanvasTV 2024,Hisense,hisense-canvastv-2024,LCD,KSF,high,,,NO_GT,444.3,16.5,536.3,48.7,632.0,9.1,5,B:444nm/17nm; G:536nm/49nm; R:632nm/9nm,spd_images/hisense-canvastv-2024_spd.jpg
-96128,Hisense QD6QF,Hisense,hisense-qd6qf,LCD,KSF,high,,,NO_GT,447.8,17.1,533.6,48.0,632.0,9.0,5,B:448nm/17nm; G:534nm/48nm; R:632nm/9nm,spd_images/hisense-qd6qf_spd.jpg
-63102,Hisense QD7N,Hisense,hisense-qd7n,LCD,KSF,high,,,NO_GT,447.7,18.0,533.8,47.5,632.0,9.1,5,B:448nm/18nm; G:534nm/47nm; R:632nm/9nm,spd_images/hisense-qd7n_spd.jpg
-96119,Hisense QD7QF,Hisense,hisense-qd7qf,LCD,KSF,high,,,NO_GT,447.7,17.3,535.7,48.5,632.0,9.0,5,B:448nm/17nm; G:536nm/49nm; R:632nm/9nm,spd_images/hisense-qd7qf_spd.jpg
-96118,Hisense U65QF,Hisense,hisense-u65qf,LCD,KSF,high,,,NO_GT,448.1,16.7,528.1,45.7,632.0,9.1,5,B:448nm/17nm; G:528nm/46nm; R:632nm/9nm,spd_images/hisense-u65qf_spd.jpg
-50404,Hisense U6N,Hisense,hisense-u6n,LCD,KSF,high,,,NO_GT,445.9,17.8,534.7,47.4,632.0,9.1,5,B:446nm/18nm; G:535nm/47nm; R:632nm/9nm,spd_images/hisense-u6n_spd.jpg
-96104,Hisense U75QG,Hisense,hisense-u75qg,LCD,KSF,high,,,NO_GT,451.8,17.0,534.3,48.6,632.0,9.0,5,B:452nm/17nm; G:534nm/49nm; R:632nm/9nm,spd_images/hisense-u75qg_spd.jpg
-50405,Hisense U7N,Hisense,hisense-u7n,LCD,KSF,high,,,NO_GT,446.3,17.1,530.2,45.6,631.9,9.0,5,B:446nm/17nm; G:530nm/46nm; R:632nm/9nm,spd_images/hisense-u7n_spd.jpg
-50406,Hisense U8N,Hisense,hisense-u8n,LCD,QD-LCD,high,,,NO_GT,448.0,16.4,542.2,25.4,630.5,18.8,3,B:448nm/16nm; G:542nm/25nm; R:631nm/19nm,spd_images/hisense-u8n_spd.jpg
-96125,Hisense U8QG,Hisense,hisense-u8qg,LCD,QD-LCD,high,,,NO_GT,445.9,16.0,540.3,26.0,629.7,18.8,3,B:446nm/16nm; G:540nm/26nm; R:630nm/19nm,spd_images/hisense-u8qg_spd.jpg
 59962,Hisense U9N,Hisense,hisense-u9n,LCD,QD-LCD,high,,,NO_GT,448.1,16.6,536.2,25.2,630.7,19.7,3,B:448nm/17nm; G:536nm/25nm; R:631nm/20nm,spd_images/hisense-u9n_spd.jpg
-49540,LG B4 OLED,LG,lg-b4-oled,OLED,WOLED,high,,,NO_GT,455.3,22.4,555.2,105.6,,,2,B:455nm/22nm; G:555nm/106nm; No red; panel_sub_type=WOLED,spd_images/lg-b4-oled_spd.jpg
-88603,LG B5 OLED,LG,lg-b5-oled,OLED,WOLED,high,,,NO_GT,455.3,22.5,549.4,109.9,,,2,B:455nm/23nm; G:549nm/110nm; No red; panel_sub_type=WOLED,spd_images/lg-b5-oled_spd.jpg
-49541,LG C4 OLED,LG,lg-c4-oled,OLED,WOLED,high,,,NO_GT,455.9,22.2,556.3,109.4,,,2,B:456nm/22nm; G:556nm/109nm; No red; panel_sub_type=WOLED,spd_images/lg-c4-oled_spd.jpg
-88602,LG C5 OLED,LG,lg-c5-oled,OLED,WOLED,high,,,NO_GT,455.4,22.6,550.8,71.3,,,2,B:455nm/23nm; G:551nm/71nm; No red; panel_sub_type=WOLED,spd_images/lg-c5-oled_spd.jpg
-49542,LG G4 OLED,LG,lg-g4-oled,OLED,WOLED,high,,,NO_GT,455.1,24.3,558.3,115.1,,,2,B:455nm/24nm; G:558nm/115nm; No red; panel_sub_type=WOLED,spd_images/lg-g4-oled_spd.jpg
-88601,LG G5 OLED,LG,lg-g5-oled,OLED,WOLED,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm; panel_sub_type=WOLED,spd_images/lg-g5-oled_spd.jpg
-92233,LG QNED85A,LG,lg-qned85a,LCD,KSF,high,,,NO_GT,448.8,16.8,537.8,49.9,632.0,9.3,5,B:449nm/17nm; G:538nm/50nm; R:632nm/9nm,spd_images/lg-qned85a_spd.jpg
 55174,LG QNED90T,LG,lg-qned90t,LCD,Pseudo QD,medium,,,NO_GT,446.1,17.1,536.6,36.6,626.8,44.8,3,B:446nm/17nm; G:537nm/37nm; R:627nm/45nm,spd_images/lg-qned90t_spd.jpg
-96489,LG QNED92A,LG,lg-qned92a,LCD,QD-LCD,high,,,NO_GT,449.1,17.8,539.1,37.8,630.7,36.2,3,B:449nm/18nm; G:539nm/38nm; R:631nm/36nm,spd_images/lg-qned92a_spd.jpg
-98323,LG UA77,LG,lg-ua77,LCD,WLED,high,,,NO_GT,444.3,17.3,526.8,69.8,604.4,78.1,3,B:444nm/17nm; G:527nm/70nm; R:604nm/78nm; R:fwhm_via_hwhm_right,spd_images/lg-ua77_spd.jpg
-57721,LG UT75,LG,lg-ut75,LCD,WLED,high,,,NO_GT,446.6,18.2,527.0,70.5,604.8,77.1,3,B:447nm/18nm; G:527nm/70nm; R:605nm/77nm; R:fwhm_via_hwhm_right,spd_images/lg-ut75_spd.jpg
-88503,Panasonic W70B,Panasonic,panasonic-w70b,LCD,WLED,high,,,NO_GT,447.8,16.3,526.3,67.2,604.1,76.6,3,B:448nm/16nm; G:526nm/67nm; R:604nm/77nm; R:fwhm_via_hwhm_right,spd_images/panasonic-w70b_spd.jpg
-74025,Panasonic W95A,Panasonic,panasonic-w95a,LCD,QD-LCD,high,,,NO_GT,448.1,15.5,538.4,23.9,629.8,17.7,3,B:448nm/16nm; G:538nm/24nm; R:630nm/18nm,spd_images/panasonic-w95a_spd.jpg
 74026,Panasonic Z85A OLED,Panasonic,panasonic-z85a-oled,OLED,WOLED,high,,,NO_GT,454.3,22.1,546.1,54.9,620.1,52.9,3,B:454nm/22nm; G:546nm/55nm; R:620nm/53nm; G:fwhm_via_hwhm_left; R:fwhm_via_hwhm_right; panel_sub_type=WOLED,spd_images/panasonic-z85a-oled_spd.jpg
 74024,Panasonic Z95A OLED,Panasonic,panasonic-z95a-oled,OLED,WOLED,high,,,NO_GT,454.3,24.6,561.2,107.4,,,2,B:454nm/25nm; G:561nm/107nm; No red; panel_sub_type=WOLED,spd_images/panasonic-z95a-oled_spd.jpg
-88502,Panasonic Z95B OLED,Panasonic,panasonic-z95b-oled,OLED,WOLED,high,,,NO_GT,452.0,21.6,534.1,53.6,625.8,40.4,3,B:452nm/22nm; G:534nm/54nm; R:626nm/40nm; panel_sub_type=WOLED,spd_images/panasonic-z95b-oled_spd.jpg
 92761,Philips 974 Series OLED,Philips,philips-974-series-oled,OLED,WOLED,high,,,NO_GT,454.2,22.5,556.2,74.4,,,2,B:454nm/22nm; G:556nm/74nm; No red; panel_sub_type=WOLED,spd_images/philips-974-series-oled_spd.jpg
-102906,Roku Pro Series 2025,Roku,roku-pro-series-2025,LCD,QD-LCD,high,,,NO_GT,449.4,15.9,538.2,28.8,626.3,25.3,3,B:449nm/16nm; G:538nm/29nm; R:626nm/25nm,spd_images/roku-pro-series-2025_spd.jpg
 37906,Roku Select Series 2023,Roku,roku-select-series-2023,LCD,WLED,high,,,NO_GT,448.0,17.7,530.4,70.0,606.2,75.7,3,B:448nm/18nm; G:530nm/70nm; R:606nm/76nm; R:fwhm_via_hwhm_right,spd_images/roku-select-series-2023_spd.jpg
 117448,Samsung 100QN80F,Samsung,samsung-100qn80f,LCD,QD-LCD,medium,,,NO_GT,450.9,16.6,540.3,35.1,629.8,40.4,3,B:451nm/17nm; G:540nm/35nm; R:630nm/40nm; asymmetric QD peaks,spd_images/samsung-100qn80f_spd.jpg
 57180,Samsung DU7200,Samsung,samsung-du7200,LCD,WLED,high,,,NO_GT,448.2,17.0,530.0,73.1,606.9,79.4,3,B:448nm/17nm; G:530nm/73nm; R:607nm/79nm; R:fwhm_via_hwhm_right,spd_images/samsung-du7200_spd.jpg
-55354,Samsung DU8000,Samsung,samsung-du8000,LCD,KSF,high,,,NO_GT,446.1,17.9,535.7,50.8,632.0,9.5,5,B:446nm/18nm; G:536nm/51nm; R:632nm/10nm,spd_images/samsung-du8000_spd.jpg
-56341,Samsung Q60D,Samsung,samsung-q60d,LCD,Pseudo QD,medium,,,NO_GT,448.5,16.4,540.1,42.6,630.1,53.4,3,B:449nm/16nm; G:540nm/43nm; R:630nm/53nm,spd_images/samsung-q60d_spd.jpg
 57710,Samsung Q70D,Samsung,samsung-q70d,LCD,Pseudo QD,medium,,,NO_GT,449.1,18.3,538.9,42.1,630.0,52.4,3,B:449nm/18nm; G:539nm/42nm; R:630nm/52nm,spd_images/samsung-q70d_spd.jpg
-94324,Samsung Q7F 2025,Samsung,samsung-q7f-2025,LCD,Pseudo QD,low,,,NO_GT,447.6,16.5,537.2,43.8,627.5,59.0,3,"B:448nm/16nm; G:537nm/44nm; R:627nm/59nm; moderate green, weak red",spd_images/samsung-q7f-2025_spd.jpg
-57179,Samsung Q80D,Samsung,samsung-q80d,LCD,Pseudo QD,low,,,NO_GT,451.7,15.9,537.8,44.6,630.0,60.7,3,"B:452nm/16nm; G:538nm/45nm; R:630nm/61nm; moderate green, weak red",spd_images/samsung-q80d_spd.jpg
-96964,Samsung Q8F 2025,Samsung,samsung-q8f-2025,LCD,Pseudo QD,medium,,,NO_GT,449.3,16.3,539.1,40.6,628.0,52.0,3,B:449nm/16nm; G:539nm/41nm; R:628nm/52nm,spd_images/samsung-q8f-2025_spd.jpg
-92239,Samsung QN70F,Samsung,samsung-qn70f,LCD,QD-LCD,high,,,NO_GT,446.6,19.5,540.3,35.2,630.2,39.4,3,B:447nm/19nm; G:540nm/35nm; R:630nm/39nm,spd_images/samsung-qn70f_spd.jpg
-92240,Samsung QN80F,Samsung,samsung-qn80f,LCD,QD-LCD,high,,,NO_GT,450.6,18.3,541.2,36.3,630.3,39.5,3,B:451nm/18nm; G:541nm/36nm; R:630nm/39nm,spd_images/samsung-qn80f_spd.jpg
-49719,Samsung QN85D,Samsung,samsung-qn85d,LCD,QD-LCD,high,,,NO_GT,447.8,15.4,538.2,36.3,628.6,37.3,3,B:448nm/15nm; G:538nm/36nm; R:629nm/37nm,spd_images/samsung-qn85d_spd.jpg
 49718,Samsung QN900D 8K,Samsung,samsung-qn900d-8k,LCD,QD-LCD,high,,,NO_GT,448.2,16.3,538.8,36.6,630.2,39.2,3,B:448nm/16nm; G:539nm/37nm; R:630nm/39nm,spd_images/samsung-qn900d-8k_spd.jpg
 92242,Samsung QN900F 8K,Samsung,samsung-qn900f-8k,LCD,QD-LCD,high,,,NO_GT,449.7,16.7,540.0,36.7,630.6,39.2,3,B:450nm/17nm; G:540nm/37nm; R:631nm/39nm,spd_images/samsung-qn900f-8k_spd.jpg
-49720,Samsung QN90D,Samsung,samsung-qn90d,LCD,QD-LCD,high,,,NO_GT,444.0,14.7,540.0,36.8,629.8,38.1,3,B:444nm/15nm; G:540nm/37nm; R:630nm/38nm,spd_images/samsung-qn90d_spd.jpg
-92241,Samsung QN90F,Samsung,samsung-qn90f,LCD,QD-LCD,high,,,NO_GT,444.2,14.1,539.0,35.7,630.1,38.7,3,B:444nm/14nm; G:539nm/36nm; R:630nm/39nm,spd_images/samsung-qn90f_spd.jpg
 57722,Samsung QN95D,Samsung,samsung-qn95d,LCD,QD-LCD,high,,,NO_GT,446.3,15.2,540.5,37.5,631.5,38.2,3,B:446nm/15nm; G:540nm/38nm; R:632nm/38nm,spd_images/samsung-qn95d_spd.jpg
-88591,Samsung QN990F 8K,Samsung,samsung-qn990f-8k,LCD,QD-LCD,high,,,NO_GT,449.8,16.7,540.1,36.0,629.2,38.6,3,B:450nm/17nm; G:540nm/36nm; R:629nm/39nm,spd_images/samsung-qn990f-8k_spd.jpg
 49704,Samsung S85D OLED,Samsung,samsung-s85d-oled,OLED,WOLED,high,,,NO_GT,454.1,27.1,558.6,94.0,618.3,123.1,3,B:454nm/27nm; G:559nm/94nm; R:618nm/123nm; G:fwhm_via_hwhm_left; R:fwhm_via_hwhm_right; panel_sub_type=WOLED,spd_images/samsung-s85d-oled_spd.jpg
-92236,Samsung S85F OLED,Samsung,samsung-s85f-oled,OLED,QD-OLED,high,,,NO_GT,452.2,21.3,532.1,28.0,637.8,37.4,3,B:452nm/21nm; G:532nm/28nm; R:638nm/37nm; panel_sub_type=QD-OLED,spd_images/samsung-s85f-oled_spd.jpg
-49703,Samsung S90D OLED,Samsung,samsung-s90d-oled,OLED,QD-OLED,high,,,NO_GT,452.3,21.3,532.0,28.1,638.1,37.3,3,B:452nm/21nm; G:532nm/28nm; R:638nm/37nm; panel_sub_type=QD-OLED,spd_images/samsung-s90d-oled_spd.jpg
-92237,Samsung S90F OLED,Samsung,samsung-s90f-oled,OLED,QD-OLED,high,,,NO_GT,452.2,21.3,532.1,28.2,637.8,36.9,3,B:452nm/21nm; G:532nm/28nm; R:638nm/37nm; panel_sub_type=QD-OLED,spd_images/samsung-s90f-oled_spd.jpg
-49702,Samsung S95D OLED,Samsung,samsung-s95d-oled,OLED,QD-OLED,high,,,NO_GT,452.2,21.3,532.1,28.1,638.2,36.9,3,B:452nm/21nm; G:532nm/28nm; R:638nm/37nm; panel_sub_type=QD-OLED,spd_images/samsung-s95d-oled_spd.jpg
-88596,Samsung S95F OLED,Samsung,samsung-s95f-oled,OLED,QD-OLED,high,,,NO_GT,456.1,20.9,532.6,27.3,638.3,37.4,3,B:456nm/21nm; G:533nm/27nm; R:638nm/37nm; panel_sub_type=QD-OLED,spd_images/samsung-s95f-oled_spd.jpg
-56163,Samsung The Frame 2024,Samsung,samsung-the-frame-2024,LCD,Pseudo QD,medium,,,NO_GT,449.5,17.3,538.3,42.2,630.6,52.7,3,B:450nm/17nm; G:538nm/42nm; R:631nm/53nm,spd_images/samsung-the-frame-2024_spd.jpg
-88497,Samsung The Frame Pro 2025,Samsung,samsung-the-frame-pro-2025,LCD,QD-LCD,high,,,NO_GT,448.0,16.7,540.3,34.9,630.0,38.4,3,B:448nm/17nm; G:540nm/35nm; R:630nm/38nm,spd_images/samsung-the-frame-pro-2025_spd.jpg
-102195,Samsung U7900F,Samsung,samsung-u7900f,LCD,WLED,high,,,NO_GT,449.9,16.9,526.3,70.8,604.9,80.1,3,B:450nm/17nm; G:526nm/71nm; R:605nm/80nm; R:fwhm_via_hwhm_right,spd_images/samsung-u7900f_spd.jpg
-94057,Samsung U8000F,Samsung,samsung-u8000f,LCD,WLED,high,,,NO_GT,446.1,15.8,529.7,70.2,604.1,77.4,3,B:446nm/16nm; G:530nm/70nm; R:604nm/77nm; R:fwhm_via_hwhm_right,spd_images/samsung-u8000f_spd.jpg
 41473,Sharp AQUOS XLED FV1 ,Sharp,sharp-aquos-xled-fv1,LCD,QD-LCD,high,,,NO_GT,448.2,14.8,533.5,25.7,638.6,23.8,3,B:448nm/15nm; G:533nm/26nm; R:639nm/24nm,spd_images/sharp-aquos-xled-fv1_spd.jpg
-39009,Sony A95L OLED,Sony,sony-a95l-oled,OLED,QD-OLED,high,,,NO_GT,452.2,21.5,532.3,28.1,639.5,37.2,3,B:452nm/21nm; G:532nm/28nm; R:639nm/37nm; panel_sub_type=QD-OLED,spd_images/sony-a95l-oled_spd.jpg
-92245,Sony BRAVIA 2 II,Sony,sony-bravia-2-ii,LCD,WLED,high,,,NO_GT,448.1,15.8,528.7,75.8,604.8,85.5,3,B:448nm/16nm; G:529nm/76nm; R:605nm/85nm; R:fwhm_via_hwhm_right,spd_images/sony-bravia-2-ii_spd.jpg
-53323,Sony BRAVIA 3,Sony,sony-bravia-3,LCD,KSF,high,,,NO_GT,449.2,17.5,536.1,50.0,634.9,9.2,5,B:449nm/18nm; G:536nm/50nm; R:635nm/9nm,spd_images/sony-bravia-3_spd.jpg
-96722,Sony BRAVIA 5,Sony,sony-bravia-5,LCD,KSF,medium,,,NO_GT,444.3,17.1,536.0,33.3,632.0,9.0,5,B:444nm/17nm; G:536nm/33nm; R:632nm/9nm; narrow red suggests KSF,spd_images/sony-bravia-5_spd.jpg
 117450,Sony BRAVIA 5 98,Sony,sony-bravia-5-98,LCD,KSF,medium,,,NO_GT,444.2,15.2,534.0,32.2,632.0,8.9,5,B:444nm/15nm; G:534nm/32nm; R:632nm/9nm; narrow red suggests KSF,spd_images/sony-bravia-5-98_spd.jpg
-53322,Sony BRAVIA 7,Sony,sony-bravia-7,LCD,QD-LCD,high,,,NO_GT,443.9,15.7,536.3,37.0,632.4,36.5,3,B:444nm/16nm; G:536nm/37nm; R:632nm/37nm,spd_images/sony-bravia-7_spd.jpg
-92248,Sony BRAVIA 8 II OLED,Sony,sony-bravia-8-ii-oled,OLED,QD-OLED,high,,,NO_GT,456.1,20.6,532.3,26.6,638.0,36.7,3,B:456nm/21nm; G:532nm/27nm; R:638nm/37nm; panel_sub_type=QD-OLED,spd_images/sony-bravia-8-ii-oled_spd.jpg
-58889,Sony BRAVIA 8 OLED,Sony,sony-bravia-8-oled,OLED,WOLED,high,,,NO_GT,455.9,22.3,554.3,103.3,,,2,B:456nm/22nm; G:554nm/103nm; No red; panel_sub_type=WOLED,spd_images/sony-bravia-8-oled_spd.jpg
-53321,Sony BRAVIA 9,Sony,sony-bravia-9,LCD,QD-LCD,high,,,NO_GT,446.1,15.7,537.8,37.5,633.1,35.7,3,B:446nm/16nm; G:538nm/37nm; R:633nm/36nm,spd_images/sony-bravia-9_spd.jpg
-39008,Sony X90L/X90CL,Sony,sony-x90l-x90cl,LCD,KSF,high,,,NO_GT,446.9,17.3,529.8,35.9,635.2,9.0,5,B:447nm/17nm; G:530nm/36nm; R:635nm/9nm,spd_images/sony-x90l-x90cl_spd.jpg
 117449,TCL 98QM8K,TCL,tcl-98qm8k,LCD,QD-LCD,high,,,NO_GT,447.7,15.3,536.0,22.4,626.3,27.2,3,B:448nm/15nm; G:536nm/22nm; R:626nm/27nm,spd_images/tcl-98qm8k_spd.jpg
 70375,TCL NXTVISION,TCL,tcl-nxtvision,LCD,KSF,high,,,NO_GT,448.1,16.3,532.4,47.5,632.0,9.1,5,B:448nm/16nm; G:532nm/47nm; R:632nm/9nm,spd_images/tcl-nxtvision_spd.jpg
-60903,TCL Q651G,TCL,tcl-q651g,LCD,KSF,high,,,NO_GT,448.3,16.0,532.6,47.7,632.0,9.0,5,B:448nm/16nm; G:533nm/48nm; R:632nm/9nm,spd_images/tcl-q651g_spd.jpg
-99831,TCL Q77K,TCL,tcl-q77k,LCD,KSF,high,,,NO_GT,446.4,17.0,534.5,46.8,632.0,9.1,5,B:446nm/17nm; G:534nm/47nm; R:632nm/9nm,spd_images/tcl-q77k_spd.jpg
-100489,TCL QM5K,TCL,tcl-qm5k,LCD,KSF,high,,,NO_GT,447.8,17.2,532.6,46.1,632.0,9.1,5,B:448nm/17nm; G:533nm/46nm; R:632nm/9nm,spd_images/tcl-qm5k_spd.jpg
-88607,TCL QM6K,TCL,tcl-qm6k,LCD,KSF,high,,,NO_GT,445.8,16.9,533.7,47.5,632.0,9.1,5,B:446nm/17nm; G:534nm/48nm; R:632nm/9nm,spd_images/tcl-qm6k_spd.jpg
-60899,TCL QM751G,TCL,tcl-qm751g,LCD,QD-LCD,high,,,NO_GT,445.8,15.8,533.1,22.3,624.3,27.1,3,B:446nm/16nm; G:533nm/22nm; R:624nm/27nm,spd_images/tcl-qm751g_spd.jpg
-88608,TCL QM7K,TCL,tcl-qm7k,LCD,QD-LCD,high,,,NO_GT,448.0,16.0,538.0,23.1,624.1,27.2,3,B:448nm/16nm; G:538nm/23nm; R:624nm/27nm,spd_images/tcl-qm7k_spd.jpg
-60898,TCL QM851G,TCL,tcl-qm851g,LCD,QD-LCD,high,,,NO_GT,446.1,15.5,537.5,25.2,624.4,22.9,3,B:446nm/16nm; G:538nm/25nm; R:624nm/23nm,spd_images/tcl-qm851g_spd.jpg
-101781,TCL QM8K,TCL,tcl-qm8k,LCD,QD-LCD,high,,,NO_GT,448.0,15.3,536.2,22.7,626.6,27.6,3,B:448nm/15nm; G:536nm/23nm; R:627nm/28nm,spd_images/tcl-qm8k_spd.jpg
-112536,TCL QM9K,TCL,tcl-qm9k,LCD,QD-LCD,high,,,NO_GT,446.3,14.9,536.0,22.8,626.0,27.8,3,B:446nm/15nm; G:536nm/23nm; R:626nm/28nm,spd_images/tcl-qm9k_spd.jpg
-60900,TCL S551G,TCL,tcl-s551g,LCD,KSF,high,,,NO_GT,448.1,15.6,532.1,47.5,632.0,9.0,5,B:448nm/16nm; G:532nm/47nm; R:632nm/9nm,spd_images/tcl-s551g_spd.jpg
