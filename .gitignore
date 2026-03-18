@@ -24,6 +24,10 @@ data/reports/.DS_Store
 data/launchd_*.log
 data/pricing_log.txt
 
+# Pipeline temp files
+data/.session_ok
+.venv/
+
 # Python
 __pycache__/
 *.pyc

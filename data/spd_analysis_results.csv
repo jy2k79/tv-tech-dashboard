@@ -29,7 +29,7 @@ product_id,fullname,brand,url_part,panel_type,spd_classification,spd_confidence,
 88503,Panasonic W70B,Panasonic,panasonic-w70b,LCD,WLED,high,,,NO_GT,447.8,16.3,526.3,67.2,604.1,76.6,3,B:448nm/16nm; G:526nm/67nm; R:604nm/77nm; R:fwhm_via_hwhm_right,spd_images/panasonic-w70b_spd.jpg
 74025,Panasonic W95A,Panasonic,panasonic-w95a,LCD,QD-LCD,high,QD-LCD,Cd-Free,MATCH,448.1,15.5,538.4,23.9,629.8,17.7,3,B:448nm/16nm; G:538nm/24nm; R:630nm/18nm,spd_images/panasonic-w95a_spd.jpg
 74026,Panasonic Z85A OLED,Panasonic,panasonic-z85a-oled,OLED,WOLED,high,WOLED,,MATCH,454.3,22.1,546.1,54.9,620.1,52.9,3,B:454nm/22nm; G:546nm/55nm; R:620nm/53nm; G:fwhm_via_hwhm_left; R:fwhm_via_hwhm_right; panel_sub_type=WOLED,spd_images/panasonic-z85a-oled_spd.jpg
-118244,Panasonic Z8BA OLED,Panasonic,panasonic-z8ba-oled,,ERROR: 'float' object has no attribute 'upper',,,,,,,,,,,0,ERROR: 'float' object has no attribute 'upper',
+118244,Panasonic Z8BA OLED,Panasonic,panasonic-z8ba-oled,OLED,WOLED,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm; panel_sub_type=WOLED,spd_images/panasonic-z8ba-oled_spd.jpg
 74024,Panasonic Z95A OLED,Panasonic,panasonic-z95a-oled,OLED,WOLED,high,WOLED,,MATCH,454.3,24.6,561.2,107.4,,,2,B:454nm/25nm; G:561nm/107nm; No red; panel_sub_type=WOLED,spd_images/panasonic-z95a-oled_spd.jpg
 88502,Panasonic Z95B OLED,Panasonic,panasonic-z95b-oled,OLED,WOLED,high,,,NO_GT,452.0,21.6,534.1,53.6,625.8,40.4,3,B:452nm/22nm; G:534nm/54nm; R:626nm/40nm; panel_sub_type=WOLED,spd_images/panasonic-z95b-oled_spd.jpg
 92761,Philips 974 Series OLED,Philips,philips-974-series-oled,OLED,WOLED,high,WOLED,,MATCH,454.2,22.5,556.2,74.4,,,2,B:454nm/22nm; G:556nm/74nm; No red; panel_sub_type=WOLED,spd_images/philips-974-series-oled_spd.jpg

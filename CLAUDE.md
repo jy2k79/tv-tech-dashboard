@@ -110,6 +110,7 @@ streamlit run dashboard.py
 | `GMAIL_APP_PASSWORD` | GitHub Secrets | Gmail SMTP auth |
 | `NOTIFY_EMAIL` | GitHub Secrets | Notification recipient |
 | `ANTHROPIC_API_KEY` | GitHub Secrets | Monthly report generation |
+| `RTINGS_SESSION` | GitHub Secrets + `.env` | RTINGS member cookie (`_rtings_session`), ~30 day expiry |
 | `app_password` | Streamlit Secrets | Dashboard login (`nanosys2026`) |
 
 ## Common Pitfalls

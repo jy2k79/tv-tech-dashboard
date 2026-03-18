@@ -13,7 +13,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 37906,Roku Select Series 2023,9660,,B0CLFSWK9V,,,out_of_stock,2
 37906,Roku Select Series 2023,9661,,,,,no_link,2
 37906,Roku Select Series 2023,9662,,,,,no_link,2
-37906,Roku Select Series 2023,9663,,,,,no_link,2
+37906,Roku Select Series 2023,9663,65.0,,6536726,279.99,location_dependent,2
 37906,Roku Select Series 2023,9664,,,,,no_link,2
 41473,Sharp AQUOS XLED FV1 ,10155,,,,,direct_link,2
 41473,Sharp AQUOS XLED FV1 ,10156,,,,,direct_link,2
@@ -50,15 +50,15 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 49542,LG G4 OLED,10492,55.0,B0D3WKV3X7,6578049,1899.99,location_dependent,2
 49542,LG G4 OLED,10493,,B0D3WY2FHF,,3399.99,in_stock,2
 49542,LG G4 OLED,10494,77.0,,6578047,2804.99,location_dependent,2
-49542,LG G4 OLED,10495,,B0D3W7ZJ75,,3999.99,in_stock,2
+49542,LG G4 OLED,10495,83.0,B0D3W7ZJ75,6578149,3249.99,location_dependent,2
 49542,LG G4 OLED,10496,,B0D3WSDWVJ,,19999.99,in_stock,2
 49541,LG C4 OLED,10499,,B0D3WVN6LH,,1499.99,in_stock,2
-49541,LG C4 OLED,10500,,B0CVRMHRSZ,,886.95,amazon,2
+49541,LG C4 OLED,10500,,B0CVRMHRSZ,,897.9,amazon,2
 49541,LG C4 OLED,10501,55.0,,11096117,1079.0,location_dependent,2
 49541,LG C4 OLED,10502,65.0,,6578042,1274.99,location_dependent,2
 49541,LG C4 OLED,10503,77.0,B0D3WWGP6T,6578044,1975.99,location_dependent,2
 49541,LG C4 OLED,10504,,,,5399.99,in_stock,2
-56163,Samsung The Frame 2024,10542,43.0,,,999.99,in_stock,2
+56163,Samsung The Frame 2024,10542,43.0,B0CV9HY4J9,,,third_party,2
 56163,Samsung The Frame 2024,10543,50.0,B0CVSHWGXX,,1299.99,in_stock,2
 56163,Samsung The Frame 2024,10544,55.0,B0CVSJ1ZBP,6576585,699.99,in_stock,2
 56163,Samsung The Frame 2024,10545,65.0,B0CVSJKFNK,6576593,899.99,location_dependent,2
@@ -77,18 +77,18 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 49720,Samsung QN90D,10615,98.0,,,12999.99,in_stock,2
 50406,Hisense U8N,10616,,B0CY4TQ91Q,,1156.94,third_party,2
 50406,Hisense U8N,10617,,B0CY4SM6P8,,,out_of_stock,2
-50406,Hisense U8N,10618,,B0CY4QVD4C,,,out_of_stock,2
+50406,Hisense U8N,10618,75.0,,6577004,1039.99,location_dependent,2
 50406,Hisense U8N,10619,,B0D3SX2PN4,,,out_of_stock,2
 50406,Hisense U8N,10620,,B0CZ6VX5J4,,,no_link,2
-53322,Sony BRAVIA 7,10654,65.0,,6578571,1599.99,location_dependent,2
-53322,Sony BRAVIA 7,10655,75.0,,6578572,1999.99,location_dependent,2
+53322,Sony BRAVIA 7,10654,65.0,,6578571,1599.99,in_stock,2
+53322,Sony BRAVIA 7,10655,75.0,,6578572,1999.99,in_stock,2
 53322,Sony BRAVIA 7,10656,85.0,,6578570,2499.99,in_stock,2
 53322,Sony BRAVIA 7,10657,55.0,,6578573,1399.99,in_stock,2
 57721,LG UT75,10699,,B0CVSK16G4,,318.97,third_party,2
 57721,LG UT75,10700,,B0D3WG1HCS,,349.95,in_stock,2
 57721,LG UT75,10701,,B0CVSJQRNZ,,422.69,third_party,2
 57721,LG UT75,10702,,,,529.99,in_stock,2
-57721,LG UT75,10703,,,,749.99,in_stock,2
+57721,LG UT75,10703,75.0,,6578189,349.99,location_dependent,2
 57721,LG UT75,10704,,B0D3WP2JLD,,749.99,in_stock,2
 57721,LG UT75,10870,,B0CVSJ3HS7,,,out_of_stock,2
 49704,Samsung S85D OLED,10756,55.0,,,1349.99,in_stock,2
@@ -99,7 +99,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 50405,Hisense U7N,10762,,B0CY4RD4KT,,,out_of_stock,2
 50405,Hisense U7N,10763,,B0D1FQCHD2,,,no_link,2
 50405,Hisense U7N,11082,85.0,,6579196,1039.99,location_dependent,2
-57713,Hisense A7N,10766,,B0CY56VHS4,,310.37,third_party,2
+57713,Hisense A7N,10766,,B0CY56VHS4,,310.37,out_of_stock,2
 57713,Hisense A7N,10767,,B0CY4QPSVS,,,out_of_stock,2
 57713,Hisense A7N,10768,,B0CY4LQ851,,,out_of_stock,2
 57713,Hisense A7N,10769,,B0CY4SW14M,,,out_of_stock,2
@@ -137,7 +137,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 57179,Samsung Q80D,10936,65.0,B0CXZZN3VY,,1299.99,in_stock,2
 57179,Samsung Q80D,10937,75.0,B0CXZPHB58,6576597,1139.99,location_dependent,2
 57179,Samsung Q80D,10938,85.0,B0CXZNY3ZH,,2299.99,in_stock,2
-61045,Hisense 75U8N,10953,,B0CY4QVD4C,,,out_of_stock,2
+61045,Hisense 75U8N,10953,75.0,B0D1DNDYPT,6577004,1039.99,location_dependent,2
 60899,TCL QM751G,11029,,B0D4Y381D7,,,no_link,2
 60899,TCL QM751G,11030,65.0,,6579453,639.99,location_dependent,2
 60899,TCL QM751G,11031,,B0CZML9HLD,,,no_api,2
@@ -146,7 +146,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 60903,TCL Q651G,11056,43.0,,6579458,219.99,location_dependent,2
 60903,TCL Q651G,11057,50.0,,6579462,269.99,location_dependent,2
 60903,TCL Q651G,11058,55.0,,6579457,299.99,in_stock,2
-60903,TCL Q651G,11059,65.0,,6579449,339.99,in_stock,2
+60903,TCL Q651G,11059,65.0,,6579449,399.99,in_stock,2
 60903,TCL Q651G,11060,75.0,,6579448,499.99,in_stock,2
 60903,TCL Q651G,11061,85.0,,6579443,799.99,in_stock,2
 60903,TCL Q651G,11062,98.0,,6579447,1299.99,in_stock,2
@@ -172,7 +172,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 63953,Hisense CanvasTV 2024,13291,,B0F363GQZF,,1297.99,amazon,2
 63953,Hisense CanvasTV 2024,13292,,B0F35W3T1C,,1896.99,amazon,2
 63102,Hisense QD7N,11526,,B0D5Y36ZKL,,673.99,out_of_stock,2
-63102,Hisense QD7N,11527,,B0D5Y5YCM1,,,out_of_stock,2
+63102,Hisense QD7N,11527,,B0D5Y5YCM1,,736.82,out_of_stock,2
 63102,Hisense QD7N,11528,85.0,B0D5Y5F1ZZ,6579195,798.99,location_dependent,2
 63102,Hisense QD7N,11529,,B0DD2185NL,,1699.99,out_of_stock,2
 74025,Panasonic W95A,11575,,B0D8SDKSWT,,,out_of_stock,2
@@ -201,7 +201,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 88607,TCL QM6K,12327,85.0,B0F2JLYVDD,6617500,999.99,in_stock,2
 88607,TCL QM6K,12328,98.0,,6617499,1799.99,in_stock,2
 94324,Samsung Q7F 2025,12377,43.0,B0DWHFN3WK,6619443,329.99,location_dependent,2
-94324,Samsung Q7F 2025,12378,50.0,B0DWHFN3WK,,449.99,in_stock,2
+94324,Samsung Q7F 2025,12378,,B0DXMXWHPX,,,third_party,2
 94324,Samsung Q7F 2025,12379,55.0,B0DWHYR9TH,6619375,379.99,in_stock,2
 94324,Samsung Q7F 2025,12380,65.0,B0DWHVTWBW,6619254,499.99,in_stock,2
 94324,Samsung Q7F 2025,12381,,B0DXMT5L8D,,697.99,amazon,2
@@ -229,7 +229,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 92241,Samsung QN90F,12553,65.0,B0DXMYSQJC,,,amazon,2
 92241,Samsung QN90F,12554,75.0,,6613455,1699.99,location_dependent,2
 92241,Samsung QN90F,12555,85.0,,,4499.99,in_stock,2
-92241,Samsung QN90F,12556,98.0,B0DXMY88NL,,8600.24,third_party,2
+92241,Samsung QN90F,12556,98.0,B0DXMY88NL,,8574.45,third_party,2
 92236,Samsung S85F OLED,12557,55.0,,6614344,899.99,in_stock,2
 92236,Samsung S85F OLED,12558,,B0DXMZRG1Q,,1197.99,amazon,2
 92236,Samsung S85F OLED,12559,77.0,,6613452,1499.99,in_stock,2
@@ -259,7 +259,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 96722,Sony BRAVIA 5,13424,75.0,,6625582,1499.99,in_stock,2
 96722,Sony BRAVIA 5,13425,,B0DYK871WY,,1798.0,amazon,2
 96722,Sony BRAVIA 5,13426,98.0,B0DYK7MWJ1,6625581,3999.99,in_stock,2
-92248,Sony BRAVIA 8 II OLED,13464,55.0,,6626033,2399.99,location_dependent,2
+92248,Sony BRAVIA 8 II OLED,13464,55.0,,6626033,2399.99,in_stock,2
 92248,Sony BRAVIA 8 II OLED,13465,65.0,,6626032,2699.99,in_stock,2
 88591,Samsung QN990F 8K,13475,65.0,,6613490,3999.99,in_stock,2
 88591,Samsung QN990F 8K,13476,75.0,,6613456,4999.99,location_dependent,2
@@ -307,12 +307,12 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 94057,Samsung U8000F,14321,,B0DXMWL3RW,,397.99,amazon,2
 94057,Samsung U8000F,14322,70.0,B0DX44XK9H,6619253,529.99,location_dependent,2
 94057,Samsung U8000F,14323,75.0,B0DX4717LG,6619143,549.99,location_dependent,2
-94057,Samsung U8000F,14324,85.0,,6619130,799.99,in_stock,2
+94057,Samsung U8000F,14324,85.0,,6619130,798.99,in_stock,2
 88503,Panasonic W70B,14350,,B0DW378JR5,,247.99,third_party,2
 88503,Panasonic W70B,14351,,B0DW3XW927,,297.99,amazon,2
 88503,Panasonic W70B,14352,,B0DW3YPBL1,,287.99,out_of_stock,2
 88503,Panasonic W70B,14353,,B0DW4232K1,,427.99,third_party,2
-88503,Panasonic W70B,14354,,B0DW3RQY9Z,,487.99,third_party,2
+88503,Panasonic W70B,14354,,B0DW3RQY9Z,,487.99,out_of_stock,2
 88503,Panasonic W70B,14355,,B0DW3V53B7,,547.99,third_party,2
 88503,Panasonic W70B,14356,,B0DW3XDNR9,,767.99,out_of_stock,2
 101781,TCL QM8K,14359,65.0,B0F2JLZPL3,6625842,999.99,location_dependent,2
@@ -324,10 +324,10 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 92245,Sony BRAVIA 2 II,14438,55.0,,6623762,569.99,in_stock,2
 92245,Sony BRAVIA 2 II,14439,65.0,,6623764,669.99,in_stock,2
 92245,Sony BRAVIA 2 II,14440,75.0,,6623765,869.99,in_stock,2
-88502,Panasonic Z95B OLED,14866,,B0F8M9QPJP,,2195.21,amazon,2
-88502,Panasonic Z95B OLED,14867,,B0F8MW11YS,,2569.7,out_of_stock,2
+88502,Panasonic Z95B OLED,14866,,B0F8M9QPJP,,2194.96,amazon,2
+88502,Panasonic Z95B OLED,14867,,B0F8MW11YS,,2569.6,out_of_stock,2
 88502,Panasonic Z95B OLED,14868,,B0F8N24XYR,,,out_of_stock,2
-96489,LG QNED92A,14901,,B0DYQRNPJ8,,,third_party,2
+96489,LG QNED92A,14901,,,,999.99,in_stock,2
 96489,LG QNED92A,14902,,,,1399.99,in_stock,2
 96489,LG QNED92A,14903,85.0,B0F8DNL96X,6621815,1799.99,in_stock,2
 100489,TCL QM5K,15235,50.0,,6625833,329.99,location_dependent,2
@@ -368,9 +368,9 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 117449,TCL 98QM8K,15679,98.0,B0F2JKVCWF,6625840,2999.99,in_stock,2
 102827,Hisense 98QD5QG,15703,98.0,,6635801,1299.99,in_stock,2
 117448,Samsung 100QN80F,15756,100.0,,,5999.99,in_stock,2
-102906,Roku Pro Series 2025,15835,55.0,,6625616,899.99,location_dependent,2
+102906,Roku Pro Series 2025,15835,55.0,,6625616,799.99,location_dependent,2
 102906,Roku Pro Series 2025,15836,,B0DWH3R4MG,,1198.0,out_of_stock,2
-102906,Roku Pro Series 2025,15837,,B0DWHGPJFG,,1698.0,amazon,2
+102906,Roku Pro Series 2025,15837,,B0DWHGPJFG,,1699.99,amazon,2
 102195,Samsung U7900F,15980,43.0,,6639217,199.99,location_dependent,2
 102195,Samsung U7900F,15981,50.0,,6632320,249.99,location_dependent,2
 102195,Samsung U7900F,15982,55.0,,6632331,279.99,in_stock,2
@@ -380,7 +380,7 @@ product_id,fullname,sku_id,size_inches,amazon_asin,bestbuy_sku,rtings_price,avai
 102195,Samsung U7900F,16128,70.0,,6639212,399.99,in_stock,2
 102195,Samsung U7900F,16129,85.0,,6639193,699.99,location_dependent,2
 92239,Samsung QN70F,16026,55.0,,6614341,649.99,in_stock,2
-92239,Samsung QN70F,16027,65.0,,6614343,799.99,in_stock,2
-92239,Samsung QN70F,16028,75.0,,6614338,999.99,in_stock,2
-92239,Samsung QN70F,16029,85.0,,6614340,1699.99,in_stock,2
+92239,Samsung QN70F,16027,65.0,B0DXN42NXS,,,amazon,2
+92239,Samsung QN70F,16028,75.0,,,1599.99,in_stock,2
+92239,Samsung QN70F,16029,85.0,,6614340,1599.99,in_stock,2
 118244,Panasonic Z8BA OLED,16349,,,11143967,1499.99,location_dependent,2

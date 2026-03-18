@@ -27,6 +27,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).parent / ".env")
 
 # =============================================================================
 # CONFIGURATION
@@ -36,6 +39,13 @@ HEADERS = {
     "Content-Type": "application/json",
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
 }
+
+# RTINGS member session cookie — unblurs measurements and scores
+# Set via RTINGS_SESSION env var or .env file. ~30 day expiry, refresh by
+# logging into rtings.com and copying _rtings_session cookie value.
+RTINGS_SESSION = os.getenv("RTINGS_SESSION", "")
+if RTINGS_SESSION:
+    HEADERS["Cookie"] = f"_rtings_session={RTINGS_SESSION}"
 
 # Fallback bench IDs if dynamic discovery fails
 # 210 = v2.1, 197 = v2.0.1, 227 = v2.2
@@ -486,6 +496,7 @@ def main():
     print("=" * 70)
     print("RTINGS TV Data Scraper")
     print(f"Timestamp: {datetime.now(timezone.utc).isoformat()}")
+    print(f"Session cookie: {'configured' if RTINGS_SESSION else 'NOT SET — data will be blurred'}")
     print("=" * 70)
 
     # Load old data to detect bench changes (for SPD cache invalidation)
@@ -515,6 +526,17 @@ def main():
 
         # Step 3: Fetch ratings
         ratings = fetch_ratings(client, bench_ids)
+
+    # Check if data came back unblurred (session cookie working)
+    n_unblurred_ratings = sum(1 for r in ratings if r.get("unblurred"))
+    n_blurred_ratings = sum(1 for r in ratings if not r.get("unblurred"))
+    session_ok = n_unblurred_ratings > 0
+    if session_ok:
+        print(f"\nSession OK: {n_unblurred_ratings}/{len(ratings)} ratings unblurred")
+    else:
+        print(f"\nWARNING: All {n_blurred_ratings} ratings are blurred — session cookie expired or missing")
+    # Write flag for weekly_update.py to read
+    (OUTPUT_DIR / ".session_ok").write_text("1" if session_ok else "0")
 
     # Step 4: Assemble records
     print("\nAssembling product records...")

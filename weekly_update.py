@@ -430,6 +430,30 @@ def main():
         )
         sys.exit(1)
 
+    # --- Step 1c: Check session cookie status ---
+    session_flag = DATA / ".session_ok"
+    if session_flag.exists() and session_flag.read_text().strip() == "0":
+        log("RTINGS session cookie expired — scores will be blurred", "WARN")
+        errors.append("RTINGS session cookie expired — scores/measurements are blurred")
+        send_email(
+            f"ACTION REQUIRED: RTINGS Session Expired — {TODAY}",
+            '<div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#e0e0e0;background:#1a1a2e;padding:24px;border-radius:8px">'
+            '<h2 style="color:#fbbf24;margin-top:0">RTINGS Session Cookie Expired</h2>'
+            '<p>The weekly pipeline ran but all scores and measurements are <b>blurred</b> '
+            'because the RTINGS session cookie has expired.</p>'
+            '<h3 style="color:#fff">To fix:</h3>'
+            '<ol style="line-height:1.8">'
+            '<li>Log into <a href="https://www.rtings.com/login" style="color:#60a5fa">rtings.com</a> in Chrome</li>'
+            '<li>Open DevTools: <code style="background:#333;padding:2px 6px;border-radius:3px">Cmd+Option+I</code></li>'
+            '<li>Go to <b>Application</b> → <b>Cookies</b> → <code>https://www.rtings.com</code></li>'
+            '<li>Copy the value of <code style="background:#333;padding:2px 6px;border-radius:3px">_rtings_session</code></li>'
+            '<li>Update the GitHub secret: <a href="https://github.com/jy2k79/tv-tech-dashboard/settings/secrets/actions" style="color:#60a5fa">Settings → Secrets → RTINGS_SESSION</a></li>'
+            '</ol>'
+            '<p style="color:#999;font-size:13px">The cookie expires ~30 days after login. '
+            'Pipeline will use stale scores until refreshed.</p>'
+            '</div>'
+        )
+
     # --- Step 2: SPD Analysis ---
     spd_ok = run_script("spd_analyzer.py", abort_on_fail=False)
     if not spd_ok:
