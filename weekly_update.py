@@ -15,6 +15,7 @@ Usage:
 
 import os
 import sys
+import shutil
 import subprocess
 import platform
 import smtplib
@@ -106,6 +107,66 @@ def check_drop_guard(old_count: int, new_csv_path: Path):
             )
 
     log(f"Drop guard passed: {old_count} → {new_count} TVs")
+
+
+# ---------------------------------------------------------------------------
+# Stale score fallback — recover data when session cookie expires
+# ---------------------------------------------------------------------------
+
+def recover_blurred_scores(old_priced_path: Path, new_priced_path: Path):
+    """Merge scores/measurements from the previous good CSV when the current
+    run produced blurred (all-null) columns due to expired session cookie.
+
+    Returns (n_columns_recovered, n_values_recovered) or (0, 0) if no recovery needed.
+    """
+    if not old_priced_path.exists() or not new_priced_path.exists():
+        return 0, 0
+
+    old_df = pd.read_csv(old_priced_path)
+    new_df = pd.read_csv(new_priced_path)
+
+    # Find columns that are all-null in new but had data in old
+    # Skip identity/metadata columns and columns that are legitimately nullable
+    skip = {"backlight_type_v2", "backlight_type_rtings", "dimming_zone_count",
+            "price_per_mixed_use"}
+    recover_cols = []
+    for col in new_df.columns:
+        if col in skip:
+            continue
+        if new_df[col].notna().sum() == 0 and col in old_df.columns and old_df[col].notna().sum() > 0:
+            recover_cols.append(col)
+
+    if not recover_cols:
+        return 0, 0
+
+    log(f"Recovering {len(recover_cols)} blurred columns from previous data")
+
+    # Drop empty columns from new, merge from old
+    new_df.drop(columns=recover_cols, inplace=True)
+    old_subset = old_df[["product_id"] + recover_cols].copy()
+    old_subset["product_id"] = old_subset["product_id"].astype(int)
+    new_df["product_id"] = new_df["product_id"].astype(int)
+
+    merged = new_df.merge(old_subset, on="product_id", how="left")
+
+    # Recompute price_per_mixed_use if we recovered mixed_usage
+    if "mixed_usage" in recover_cols and "price_best" in merged.columns:
+        merged["price_per_mixed_use"] = merged.apply(
+            lambda r: r["price_best"] / r["mixed_usage"]
+            if pd.notna(r.get("price_best")) and pd.notna(r.get("mixed_usage")) and r["mixed_usage"] > 0
+            else None,
+            axis=1,
+        )
+
+    n_values = sum(merged[col].notna().sum() for col in recover_cols)
+    merged.to_csv(new_priced_path, index=False)
+
+    for col in recover_cols[:10]:
+        log(f"  Recovered {col}: {merged[col].notna().sum()}/{len(merged)} values")
+    if len(recover_cols) > 10:
+        log(f"  ...and {len(recover_cols) - 10} more columns")
+
+    return len(recover_cols), n_values
 
 
 # ---------------------------------------------------------------------------
@@ -402,8 +463,14 @@ def main():
 
     # --- Snapshot "before" state ---
     db_path = DATA / "tv_database.csv"
+    priced_path = DATA / "tv_database_with_prices.csv"
     old_db = pd.read_csv(db_path) if db_path.exists() else pd.DataFrame()
     old_count = len(old_db)
+
+    # Save a copy of the priced CSV for stale score fallback
+    old_priced_bak = DATA / ".tv_database_with_prices_backup.csv"
+    if priced_path.exists():
+        shutil.copy2(priced_path, old_priced_bak)
 
     # --- Step 1: Scrape RTINGS data ---
     try:
@@ -471,6 +538,19 @@ def main():
     pricing_ok = run_script("pricing_pipeline.py", abort_on_fail=False)
     if not pricing_ok:
         errors.append("Pricing pipeline failed — using stale prices")
+
+    # --- Step 4b: Stale score fallback ---
+    session_flag = DATA / ".session_ok"
+    session_expired = session_flag.exists() and session_flag.read_text().strip() == "0"
+    if session_expired and old_priced_bak.exists():
+        n_cols, n_vals = recover_blurred_scores(old_priced_bak, priced_path)
+        if n_cols > 0:
+            log(f"Recovered {n_cols} blurred columns ({n_vals} values) from previous data")
+            errors.append(f"Session expired — recovered {n_cols} columns from previous data")
+
+    # Clean up backup
+    if old_priced_bak.exists():
+        old_priced_bak.unlink()
 
     # --- Step 5: Change detection ---
     new_db = pd.read_csv(db_path) if db_path.exists() else pd.DataFrame()

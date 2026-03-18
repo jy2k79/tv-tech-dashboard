@@ -26,6 +26,7 @@ data/pricing_log.txt
 
 # Pipeline temp files
 data/.session_ok
+data/.tv_database_with_prices_backup.csv
 .venv/
 
 # Python
