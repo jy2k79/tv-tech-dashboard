@@ -45,15 +45,21 @@ Orchestrated by `weekly_update.py`, triggered by `.github/workflows/weekly-updat
 - Labels: `bug`, `enhancement`, `pipeline`, `dashboard`, `spd-analysis`, `pricing`, `data-quality`, `infra`
 
 ### Working on Issues — Kanban Workflow
-When starting work on an issue, **always update the GitHub project board**:
+**Always update the GitHub project board** at each stage:
 
-1. **Start:** Move the issue to "In Progress" on the board (`gh project item-edit`)
+1. **Start:** Move the issue to "In Progress" on the board
 2. **Branch:** Create a branch for non-trivial changes: `fix/issue-N-description` or `feat/issue-N-description`
 3. **Reference:** Include the issue number in commits (`Fixes #N` or `Relates to #N`)
 4. **Test:** Test pipeline changes locally before pushing: `python weekly_update.py`
 5. **Regenerate:** After schema/FWHM changes, always regenerate `tv_database_with_prices.csv`
 6. **Verify:** Verify dashboard loads correctly: `streamlit run dashboard.py`
-7. **Complete:** Move the issue to "Done" on the board after merge/push, and close it
+7. **Push + Close:** After push, move the issue to "Done" and close it with a comment referencing the commit
+8. **Recommend next:** After completing work, review the board and ROADMAP.md to suggest the highest-priority next task
+
+### After Every Push
+After each push to main, always:
+1. Update the kanban board (move completed items to Done, close issues)
+2. Review the board and recommend what to work on next, prioritized by: P0 > P1 > P2 > P3, then by effort (quick wins first within same priority)
 
 **Board commands reference:**
 ```bash
