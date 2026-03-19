@@ -743,6 +743,19 @@ def append_price_history(prices_df, tv_db):
             subset=['snapshot_date', 'product_id', 'size_inches'],
             keep='last', inplace=True,
         )
+
+        # Keep only the latest snapshot per ISO week to prevent
+        # mid-week reruns from creating duplicate data points
+        combined['snapshot_date'] = pd.to_datetime(combined['snapshot_date'])
+        combined['_iso_year'] = combined['snapshot_date'].dt.isocalendar().year.astype(int)
+        combined['_iso_week'] = combined['snapshot_date'].dt.isocalendar().week.astype(int)
+        latest_per_week = (combined.groupby(['_iso_year', '_iso_week'])['snapshot_date']
+                          .max().reset_index(name='_latest'))
+        combined = combined.merge(latest_per_week, on=['_iso_year', '_iso_week'])
+        combined = combined[combined['snapshot_date'] == combined['_latest']]
+        combined = combined.drop(columns=['_iso_year', '_iso_week', '_latest'])
+        combined['snapshot_date'] = combined['snapshot_date'].dt.strftime('%Y-%m-%d')
+
         combined.to_csv(history_path, index=False)
     else:
         snapshot.to_csv(history_path, index=False)
