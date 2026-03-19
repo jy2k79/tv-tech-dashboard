@@ -263,13 +263,9 @@ def _is_samsung_woled_row(row, name_map: dict, tech_map: dict) -> bool:
     return False
 
 
-def enrich_history(hist: pd.DataFrame, main_df: pd.DataFrame | None = None) -> pd.DataFrame:
-    """Add $/m² and time columns to price_history data. Call once at load time.
-
-    Excludes Samsung WOLED-panel SKUs from QD-OLED products if main_df is provided.
-    """
-    if len(hist) == 0:
-        return hist
+@st.cache_data
+def _enrich_history_core(hist: pd.DataFrame) -> pd.DataFrame:
+    """Cached: compute $/m² and time columns on price_history."""
     h = hist.copy()
     h["screen_area_m2"] = h["size_inches"].map(_SCREEN_AREA_M2_GLOBAL)
     h["price_per_m2"] = h["best_price"] / h["screen_area_m2"]
@@ -278,6 +274,17 @@ def enrich_history(hist: pd.DataFrame, main_df: pd.DataFrame | None = None) -> p
     h["quarter"] = h["snapshot_date"].dt.to_period("Q").astype(str)
     h["iso_year"] = h["snapshot_date"].dt.isocalendar().year.astype(int)
     h["iso_week"] = h["snapshot_date"].dt.isocalendar().week.astype(int)
+    return h
+
+
+def enrich_history(hist: pd.DataFrame, main_df: pd.DataFrame | None = None) -> pd.DataFrame:
+    """Add $/m² and time columns to price_history data. Call once at load time.
+
+    Excludes Samsung WOLED-panel SKUs from QD-OLED products if main_df is provided.
+    """
+    if len(hist) == 0:
+        return hist
+    h = _enrich_history_core(hist)
 
     # Exclude Samsung WOLED-panel sizes from QD-OLED pricing
     if main_df is not None and len(main_df) > 0:
