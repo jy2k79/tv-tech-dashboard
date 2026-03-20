@@ -79,6 +79,57 @@ SAMSUNG_WOLED_SIZES = {
 }
 
 
+def build_size_dedup_map(tv_db: pd.DataFrame, prices_df: pd.DataFrame) -> dict:
+    """Detect products that share overlapping SKU sizes with a parent family.
+
+    RTINGS sometimes reviews XXL sizes (98", 100") as separate products
+    (e.g. "Samsung 100QN80F" vs "Samsung QN80F"). When both have the same
+    size in their pricing, we get double-counting.
+
+    Returns dict of (product_id_str, size_int) → True for SKUs to exclude.
+    Excludes the overlapping size from the XXL standalone product (the parent
+    family keeps it since it has more sizes for context).
+    """
+    import re
+
+    name_map = dict(zip(tv_db["product_id"].astype(str), tv_db["fullname"]))
+
+    # Group products by brand + base model (strip leading size prefix)
+    # e.g. "Samsung 100QN80F" → base "Samsung QN80F", "TCL 98QM8K" → "TCL QM8K"
+    families = {}  # base_name → [(pid_str, fullname, set_of_sizes)]
+    for pid_str, fullname in name_map.items():
+        prod_prices = prices_df[prices_df["product_id"].astype(str) == pid_str]
+        sizes = set(prod_prices["size_inches"].dropna().astype(int))
+        if not sizes:
+            continue
+
+        # Strip leading size prefix: "Samsung 100QN80F" → "Samsung QN80F"
+        base = re.sub(r'^(\S+)\s+\d{2,3}(\S+)', r'\1 \2', fullname)
+        if base not in families:
+            families[base] = []
+        families[base].append((pid_str, fullname, sizes))
+
+    # Find overlapping sizes within families
+    exclude = {}
+    for base, members in families.items():
+        if len(members) < 2:
+            continue
+
+        # Sort by number of sizes — the one with fewer sizes is the XXL standalone
+        members.sort(key=lambda x: len(x[2]), reverse=True)
+        parent_pid, parent_name, parent_sizes = members[0]
+
+        for xxl_pid, xxl_name, xxl_sizes in members[1:]:
+            overlap = parent_sizes & xxl_sizes
+            if overlap:
+                for size in overlap:
+                    exclude[(xxl_pid, size)] = True
+                print(f"  Dedup: {xxl_name} size(s) {sorted(overlap)} overlap with "
+                      f"{parent_name} — excluded from XXL product")
+
+    return exclude
+
+
 def is_samsung_woled_sku(fullname: str, color_arch: str, size: int | None) -> bool:
     """Return True if this SKU is a Samsung OLED size that uses a WOLED panel
     despite the product being classified as QD-OLED."""
@@ -548,10 +599,14 @@ def merge_pricing(retailer_df, keepa_df, bestbuy_df):
                     break
 
     # Build per-size pricing table
-    # Lookup maps for WOLED exclusion
+    # Lookup maps for WOLED exclusion and size dedup
     name_map = dict(zip(tv_db['product_id'].astype(str), tv_db['fullname']))
     tech_map = dict(zip(tv_db['product_id'].astype(str), tv_db['color_architecture']))
     n_woled_excluded = 0
+
+    # Detect overlapping sizes between XXL standalone products and parent families
+    size_dedup = build_size_dedup_map(tv_db, retailer_df)
+    n_dedup_excluded = 0
 
     price_rows = []
     for _, row in retailer_df.iterrows():
@@ -564,6 +619,11 @@ def merge_pricing(retailer_df, keepa_df, bestbuy_df):
         size_int = int(size) if pd.notna(size) else None
         if is_samsung_woled_sku(fullname, color_arch, size_int):
             n_woled_excluded += 1
+            continue
+
+        # Exclude overlapping sizes from XXL standalone products
+        if size_int and (pid, size_int) in size_dedup:
+            n_dedup_excluded += 1
             continue
 
         # Skip out-of-stock items
@@ -623,6 +683,8 @@ def merge_pricing(retailer_df, keepa_df, bestbuy_df):
     prices_df = pd.DataFrame(price_rows)
     if n_woled_excluded > 0:
         print(f"  Excluded {n_woled_excluded} Samsung WOLED-panel SKUs from QD-OLED pricing")
+    if n_dedup_excluded > 0:
+        print(f"  Excluded {n_dedup_excluded} overlapping SKUs from XXL standalone products")
 
     # Save detailed price table
     prices_out = DATA_DIR / "tv_prices.csv"
