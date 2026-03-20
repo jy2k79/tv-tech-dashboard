@@ -45,6 +45,16 @@ IN_CI = bool(os.environ.get("GITHUB_ACTIONS"))
 
 TECH_ORDER = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "WOLED", "QD-OLED"]
 
+# Samsung OLED sizes that use WOLED panels (same as pricing_pipeline.py)
+_SAMSUNG_WOLED_SIZES = {"S90": {42, 48, 83}, "S95": {83}, "S85": {77, 83}}
+
+SCREEN_AREA_M2 = {
+    32: 0.22, 40: 0.34, 42: 0.38, 43: 0.40, 48: 0.50,
+    50: 0.54, 55: 0.65, 58: 0.72, 60: 0.77, 65: 0.91,
+    70: 1.06, 75: 1.21, 77: 1.28, 80: 1.38, 83: 1.49,
+    85: 1.56, 86: 1.59, 98: 2.07, 100: 2.15,
+}
+
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -226,21 +236,68 @@ def compute_tech_metrics(db, changelog, registry, spd):
     }
 
 
+def _filter_woled_from_history(hist, db):
+    """Remove Samsung WOLED-panel sizes from QD-OLED entries in price history."""
+    name_map = dict(zip(db["product_id"].astype(str), db["fullname"]))
+    tech_map = dict(zip(db["product_id"].astype(str), db["color_architecture"]))
+
+    def is_woled(row):
+        pid = str(row["product_id"])
+        if tech_map.get(pid) != "QD-OLED":
+            return False
+        name = name_map.get(pid, "")
+        if "Samsung" not in name:
+            return False
+        size = int(row["size_inches"]) if pd.notna(row.get("size_inches")) else 0
+        for model, sizes in _SAMSUNG_WOLED_SIZES.items():
+            if model in name and size in sizes:
+                return True
+        return False
+
+    return hist[~hist.apply(is_woled, axis=1)]
+
+
+def _per_product_median_m2(hist, db):
+    """Compute per-product median $/m² from latest price_history snapshot.
+
+    Uses the same methodology as the dashboard: per-product median across
+    all available sizes, then per-technology median.
+    Returns dict of tech → median $/m².
+    """
+    if len(hist) == 0:
+        return {}
+
+    h = _filter_woled_from_history(hist, db)
+    h = h.copy()
+    h["screen_area_m2"] = h["size_inches"].map(SCREEN_AREA_M2)
+    h["price_per_m2"] = h["best_price"] / h["screen_area_m2"]
+    h = h.dropna(subset=["price_per_m2"])
+
+    latest = h["snapshot_date"].max()
+    snap = h[h["snapshot_date"] == latest]
+
+    # Per-product median, then per-tech median
+    prod_med = snap.groupby(["product_id", "color_architecture"])["price_per_m2"].median().reset_index()
+    return dict(prod_med.groupby("color_architecture")["price_per_m2"].median())
+
+
 def compute_pricing_metrics(db, price_history):
     """Compute Section 2 metrics."""
     priced = db.dropna(subset=["price_best"])
     n_priced = len(priced)
 
-    # Average $/m² by tech (size-normalized, most meaningful for QD suppliers)
+    # Per-product median $/m² by tech (matches dashboard methodology)
     price_per_m2 = {}
-    avg_price = {}
+    if len(price_history) > 0:
+        raw_m2 = _per_product_median_m2(price_history, db)
+        price_per_m2 = {k: round(float(v), 0) for k, v in raw_m2.items()}
+
+    # Median absolute price by tech (representative size, for reference)
+    median_price = {}
     for tech in TECH_ORDER:
         subset = priced[priced["color_architecture"] == tech]
         if len(subset) > 0:
-            avg_price[tech] = round(float(subset["price_best"].mean()), 0)
-            m2_vals = subset["price_per_m2"].dropna()
-            if len(m2_vals) > 0:
-                price_per_m2[tech] = round(float(m2_vals.mean()), 0)
+            median_price[tech] = round(float(subset["price_best"].median()), 0)
 
     # QD premium over WLED baseline
     wled_m2 = price_per_m2.get("WLED")
@@ -265,30 +322,31 @@ def compute_pricing_metrics(db, price_history):
             "dollar_per_point": round(float(row["price_per_mixed_use"]), 0),
         })
 
-    # Price history depth
+    # Price trends: per-product median $/m² at latest vs previous snapshot
     n_snapshots = 0
     price_trends = None
     if len(price_history) > 0:
         n_snapshots = price_history["snapshot_date"].nunique()
         if n_snapshots >= 2:
-            dates = sorted(price_history["snapshot_date"].dropna().unique())
-            latest = dates[-1]
-            previous = dates[-2]
+            h = _filter_woled_from_history(price_history, db)
+            h = h.copy()
+            h["screen_area_m2"] = h["size_inches"].map(SCREEN_AREA_M2)
+            h["price_per_m2"] = h["best_price"] / h["screen_area_m2"]
+            h = h.dropna(subset=["price_per_m2"])
+
+            dates = sorted(h["snapshot_date"].dropna().unique())
+            latest, previous = dates[-1], dates[-2]
             trends = {}
             for tech in TECH_ORDER:
-                curr = price_history[
-                    (price_history["snapshot_date"] == latest) &
-                    (price_history["color_architecture"] == tech)
-                ]["best_price"].mean()
-                prev = price_history[
-                    (price_history["snapshot_date"] == previous) &
-                    (price_history["color_architecture"] == tech)
-                ]["best_price"].mean()
-                if pd.notna(curr) and pd.notna(prev) and prev > 0:
+                curr_snap = h[(h["snapshot_date"] == latest) & (h["color_architecture"] == tech)]
+                prev_snap = h[(h["snapshot_date"] == previous) & (h["color_architecture"] == tech)]
+                curr_med = curr_snap.groupby("product_id")["price_per_m2"].median().median()
+                prev_med = prev_snap.groupby("product_id")["price_per_m2"].median().median()
+                if pd.notna(curr_med) and pd.notna(prev_med) and prev_med > 0:
                     trends[tech] = {
-                        "current": round(float(curr), 0),
-                        "previous": round(float(prev), 0),
-                        "pct_change": round(float((curr - prev) / prev * 100), 1),
+                        "current_m2": round(float(curr_med), 0),
+                        "previous_m2": round(float(prev_med), 0),
+                        "pct_change": round(float((curr_med - prev_med) / prev_med * 100), 1),
                     }
             if trends:
                 price_trends = trends
@@ -301,7 +359,7 @@ def compute_pricing_metrics(db, price_history):
 
     return {
         "n_priced": n_priced,
-        "avg_price_by_tech": avg_price,
+        "median_price_by_tech": median_price,
         "price_per_m2_by_tech": price_per_m2,
         "tech_premium_vs_wled": tech_premium,
         "top_value_tvs": top_value,
@@ -348,7 +406,7 @@ def compute_temporal_metrics(db):
         p_m2 = prev["price_per_m2"].dropna()
         c_m2 = curr["price_per_m2"].dropna()
         if len(p_m2) > 0 and len(c_m2) > 0:
-            pm, cm = float(p_m2.mean()), float(c_m2.mean())
+            pm, cm = float(p_m2.median()), float(c_m2.median())
             entry["price_m2_prev"] = round(pm, 0)
             entry["price_m2_curr"] = round(cm, 0)
             entry["price_m2_delta_pct"] = round((cm - pm) / pm * 100, 1) if pm > 0 else None
@@ -399,7 +457,7 @@ def prepare_section3_context(db):
 # Claude API Integration
 # ---------------------------------------------------------------------------
 
-CLAUDE_MODEL = "claude-sonnet-4-20250514"
+CLAUDE_MODEL = "claude-sonnet-4-6"
 MAX_SECTION_TOKENS = 1500
 
 SYSTEM_PROMPT = """You are a display technology analyst writing a monthly intelligence report for a TV industry team. Your voice is factual but compelling -- think Wired magazine meets an equity research note. You cite specific numbers from the data provided. You avoid hedging language like "it's worth noting" or "interestingly." Instead, make direct, confident observations. Write in present tense when describing current state, past tense for changes.
