@@ -243,8 +243,15 @@ _SCREEN_AREA_M2_GLOBAL = {
 
 
 # Samsung OLED sizes that use WOLED panels despite QD-OLED classification.
-# Excluded from QD-OLED pricing (Samsung doesn't make QD-OLED at 42/48/83").
-_SAMSUNG_WOLED_SIZES = {"S90": {42, 48, 83}, "S95": {83}, "S85": {77, 83}}
+# Samsung Display only makes QD-OLED at 55", 65", 77". All other sizes are WOLED.
+# Covers 2024-2026 lineup. Must match pricing_pipeline.py SAMSUNG_WOLED_SIZES.
+_ALL_WOLED = {42, 48, 55, 65, 77, 83, 85, 98, 100}
+_SAMSUNG_WOLED_SIZES = {
+    "S90": {42, 48, 83}, "S95": {48, 83}, "S99": {83},
+    "S85H": _ALL_WOLED, "S85D": _ALL_WOLED,
+    "S82": _ALL_WOLED, "S83": _ALL_WOLED,
+    "S85F": {77, 83},
+}
 
 
 def _is_samsung_woled_row(row, name_map: dict, tech_map: dict) -> bool:

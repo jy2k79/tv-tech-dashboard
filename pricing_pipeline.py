@@ -68,14 +68,24 @@ SCREEN_AREA_M2 = {
 }
 
 # Samsung OLED sizes that use LG WOLED panels instead of QD-OLED.
-# These should be excluded from QD-OLED pricing to avoid contamination.
-# Samsung doesn't make QD-OLED panels in 42", 48", or 83".
-# S85F 77" is also WOLED (confirmed via EXZA model suffix).
+# Samsung Display only makes QD-OLED at 55", 65", 77". All other sizes are WOLED.
+# Updated for 2024-2026 lineup (S90D/F/H, S95D/F/H, S85D/F/H, S99H, S82H, S83H).
+#
+# Format: model_substring → set of sizes that are WOLED.
+# If a model is all-WOLED, use ALL_WOLED sentinel.
+_ALL_WOLED = {42, 48, 55, 65, 77, 83, 85, 98, 100}  # every plausible TV size
 SAMSUNG_WOLED_SIZES = {
-    # (name_substring, size) → True means this size is WOLED
-    "S90": {42, 48, 83},
-    "S95": {83},
-    "S85": {77, 83},
+    # 2024-2025 models
+    "S90": {42, 48, 83},          # S90D/F/H: 42/48/83 WOLED, 55/65/77 QD-OLED
+    "S95": {48, 83},              # S95F: 83 WOLED. S95H: 48+83 WOLED. 55/65/77 QD-OLED.
+    "S99": {83},                  # S99H: 83 WOLED (no 83" QD-OLED panel exists). 55/65/77 QD-OLED.
+    # All-WOLED models (no QD-OLED at any size)
+    "S85H": _ALL_WOLED,           # S85H: all WOLED (regression from S85F)
+    "S85D": _ALL_WOLED,           # S85D: all WOLED
+    "S82": _ALL_WOLED,            # S82H: budget OLED, all WOLED
+    "S83": _ALL_WOLED,            # S83H: budget OLED, all WOLED
+    # S85F is special: 55/65 are QD-OLED, 77/83 are WOLED
+    "S85F": {77, 83},
 }
 
 
