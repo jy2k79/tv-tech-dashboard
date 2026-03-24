@@ -569,7 +569,12 @@ if not _is_blended:
     elif len(history_df) > 0:
         history_df = _enrich_history_core(history_df)
 
-    if len(history_df) > 0:
+    # Overwrite price_per_m2 from history for TVs only.
+    # TV pipeline benefits from history-derived median across all sizes.
+    # Monitor pipeline already computes correct per-product $/m² with
+    # per-product aspect ratios — overwriting would use the generic
+    # _SCREEN_AREA_M2_GLOBAL lookup which doesn't account for ultrawides.
+    if len(history_df) > 0 and product_type == "TVs":
         _m2_map = compute_m2_from_history(history_df)
         df["price_per_m2"] = df["product_id"].map(
             lambda pid: _m2_map.get(pid) or _m2_map.get(str(pid))
