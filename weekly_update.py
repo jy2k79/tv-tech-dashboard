@@ -719,6 +719,8 @@ def main():
                 log(f"  3. build_{silo_name}_schema.py (not yet implemented)")
                 log(f"  4. {silo_name}_pricing_pipeline.py (not yet implemented)")
             log("  7. Notification")
+        log("\n--- Post-pipeline ---")
+        log("  8. qd_export.py — QD SKU Tracker CSV + email (continue on fail)")
         return
 
     # Determine which silos to run
@@ -771,6 +773,11 @@ def main():
             combined_summary, tv_changes,
             all_errors, old_count, new_count, n_priced)
         send_email(f"Dashboard Update — {TODAY}", email_html)
+
+    # --- QD SKU Tracker export (runs after all silos complete) ---
+    qd_ok = run_script("qd_export.py", abort_on_fail=False)
+    if not qd_ok:
+        all_errors.append("QD SKU Tracker export failed")
 
     print(f"\n{'=' * 70}")
     print(f"UPDATE COMPLETE: {combined_summary}")
