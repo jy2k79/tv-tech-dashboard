@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-RTINGS TV Data Scraper
-======================
-Scrapes TV review data from RTINGS.com's internal API endpoints.
-Only ingests TVs reviewed with Test Bench v2.0 or higher.
+RTINGS Data Scraper
+===================
+Scrapes product review data from RTINGS.com's internal API endpoints.
+Supports multiple product silos (TV, Monitor) via silo_config.py.
 
 Endpoints used (all POST, JSON body, no auth required):
-  - table_tool__products_list  — TV identity, brand, slugs, SKUs, bench version
+  - table_tool__products_list  — Product identity, brand, slugs, SKUs, bench version
   - table_tool__test_results   — Measured values and scores per test
   - table_tool__ratings        — Usage/performance aggregate scores
   - table_tool__prices         — Retail pricing per SKU
@@ -15,9 +15,12 @@ Requirements:
     pip install httpx pandas openpyxl
 
 Usage:
-    python rtings_scraper.py
+    python rtings_scraper.py              # Default: scrape TVs
+    python rtings_scraper.py --silo tv    # Explicit: scrape TVs
+    python rtings_scraper.py --silo monitor  # Scrape monitors
 """
 
+import argparse
 import re
 import httpx
 import json
@@ -30,6 +33,8 @@ import pandas as pd
 from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).parent / ".env")
+
+from silo_config import get_silo, TV
 
 # =============================================================================
 # CONFIGURATION
@@ -47,88 +52,16 @@ RTINGS_SESSION = os.getenv("RTINGS_SESSION", "")
 if RTINGS_SESSION:
     HEADERS["Cookie"] = f"_rtings_session={RTINGS_SESSION}"
 
-# Fallback bench IDs if dynamic discovery fails
-# 210 = v2.1, 197 = v2.0.1, 227 = v2.2
-FALLBACK_BENCH_IDS = ["227", "210", "197"]
-
 # Delay between API requests (seconds) — be polite to RTINGS
 REQUEST_DELAY = 2.0
 
-# Output paths
-OUTPUT_DIR = Path("data")
-SPD_DIR = Path("spd_images")
-
-# =============================================================================
-# TEST IDS — key measurements to pull from test_results endpoint
-# =============================================================================
-# These are the original_id values from RTINGS' test schema.
-# Discovered via the table_tool__column_options endpoint.
-
-TEST_IDS = {
-    # Identity / panel info
-    "217": "panel_type",            # LCD, OLED, etc.
-    "216": "panel_sub_type",        # QD-OLED, WOLED, IPS, VA, etc.
-    "215": "backlight_type",        # Full-Array, Edge-Lit, etc.
-    "208": "resolution",            # 4k, 8k
-    "219": "native_refresh_rate",   # 60Hz, 120Hz, 144Hz
-
-    # Brightness
-    "141": "hdr_peak_2pct_nits",        # Peak 2% Window (HDR)
-    "461": "hdr_peak_10pct_nits",       # Peak 10% Window (HDR)
-    "462": "hdr_peak_25pct_nits",       # Peak 25% Window (HDR)
-    "96":  "hdr_peak_50pct_nits",       # Peak 50% Window (HDR)
-    "463": "hdr_peak_100pct_nits",      # Peak 100% Window (HDR)
-    "609": "sdr_peak_2pct_nits",        # Peak 2% Window (SDR)
-    "610": "sdr_peak_10pct_nits",       # Peak 10% Window (SDR)
-    "619": "sdr_real_scene_peak_nits",  # Real Scene Peak (SDR)
-
-    # Contrast / black level
-    "11":  "native_contrast",
-    "647": "contrast_ratio",
-
-    # Dimming
-    "16981": "dimming_zone_count",
-
-    # Color
-    "28334": "sdr_dci_p3_coverage_pct",    # CIELAB DCI-P3 Coverage
-    "28336": "sdr_bt2020_coverage_pct",    # CIELAB BT.2020 Coverage
-    "927":   "hdr_bt2020_coverage_itp_pct", # 10,000 cd/m² BT.2020 Coverage ITP
-
-    # Response time
-    "30862": "first_response_time_ms",
-    "30860": "total_response_time_ms",
-
-    # Input lag
-    "12237": "input_lag_1080p_ms",  # 1080p @ Max Refresh Rate
-    "12239": "input_lag_4k_ms",     # 4k @ Max Refresh Rate
-
-    # Connectivity
-    "487":  "hdmi_ports",
-    "2684": "hdmi_21_speed",
-
-    # VRR
-    "2190": "vrr_support",
-    "5039": "hdmi_forum_vrr",
-
-    # SPD image (picture type — returns asset_url)
-    "26239": "spd_image",
-
-    # Backlight chart image
-    "133": "backlight_chart",
-}
-
-# Usage/performance score IDs
-USAGE_IDS = {
-    "1":     "mixed_usage",
-    "12":    "home_theater",
-    "32477": "bright_room",
-    "9":     "sports",
-    "10":    "gaming",
-    "32475": "brightness_score",
-    "32565": "black_level_score",
-    "32566": "color_score",
-    "32496": "game_mode_responsiveness",
-}
+# Legacy module-level constants — kept for backwards compatibility with
+# any code that imports them directly. Pipeline code should use silo_config.
+TEST_IDS = TV["test_ids"]
+USAGE_IDS = TV["usage_ids"]
+FALLBACK_BENCH_IDS = TV["fallback_bench_ids"]
+OUTPUT_DIR = TV["paths"]["scraped_csv"].parent
+SPD_DIR = TV["paths"]["spd_images"]
 
 
 # =============================================================================
@@ -146,49 +79,50 @@ def api_post(endpoint: str, variables: dict, client: httpx.Client) -> dict:
 # =============================================================================
 # DYNAMIC BENCH DISCOVERY
 # =============================================================================
-def discover_v2_bench_ids(client: httpx.Client) -> list[str]:
-    """Discover all v2.0+ test bench IDs from the RTINGS API.
+def discover_bench_ids(client: httpx.Client, silo_cfg: dict) -> list[str]:
+    """Discover test bench IDs at or above the silo's minimum version.
 
-    Calls the column_options endpoint (already implemented at fetch_column_options)
-    to read the list of test benches, then filters to v2.0+.
-    Falls back to FALLBACK_BENCH_IDS on error.
+    Calls the column_options endpoint to read the list of test benches,
+    then filters to those at or above silo_cfg["min_bench_version"].
+    Falls back to silo_cfg["fallback_bench_ids"] on error.
     """
     VERSION_PATTERN = re.compile(r'^v(\d+)\.(\d+)(?:\.(\d+))?$')
-    MIN_VERSION = (2, 0, 0)
+    min_version = tuple(silo_cfg["min_bench_version"])
+    fallback = list(silo_cfg["fallback_bench_ids"])
 
     try:
-        print("Discovering test bench IDs from RTINGS API...")
-        silo = fetch_column_options(client)
+        print(f"Discovering test bench IDs for {silo_cfg['display_name']}...")
+        silo = fetch_column_options(client, silo_cfg)
         benches = silo.get("test_benches", [])
 
-        v2_ids = []
+        matched_ids = []
         for bench in benches:
             display_name = bench.get("display_name", "")
             match = VERSION_PATTERN.match(display_name)
             if not match:
                 continue
             version = (int(match.group(1)), int(match.group(2)), int(match.group(3) or 0))
-            if version >= MIN_VERSION:
-                v2_ids.append(str(bench["id"]))
+            if version >= min_version:
+                matched_ids.append(str(bench["id"]))
                 print(f"  Found bench: {display_name} (ID {bench['id']})")
 
-        if not v2_ids:
-            print("  WARNING: No v2.0+ benches found — falling back to FALLBACK_BENCH_IDS")
-            return list(FALLBACK_BENCH_IDS)
+        if not matched_ids:
+            print(f"  WARNING: No v{'.'.join(str(v) for v in min_version)}+ benches found — using fallback")
+            return fallback
 
-        print(f"  Discovered {len(v2_ids)} v2.0+ bench IDs: {v2_ids}")
-        return v2_ids
+        print(f"  Discovered {len(matched_ids)} bench IDs: {matched_ids}")
+        return matched_ids
 
     except Exception as e:
-        print(f"  WARNING: Bench discovery failed ({e}) — falling back to FALLBACK_BENCH_IDS")
-        return list(FALLBACK_BENCH_IDS)
+        print(f"  WARNING: Bench discovery failed ({e}) — using fallback")
+        return fallback
 
 
 # =============================================================================
 # DATA FETCHING
 # =============================================================================
 def fetch_products(client: httpx.Client, bench_ids: list[str]) -> list[dict]:
-    """Fetch all TV products for the given test bench IDs."""
+    """Fetch all products for the given test bench IDs."""
     print(f"Fetching product list for bench IDs: {bench_ids}...")
     data = api_post("table_tool__products_list", {
         "test_bench_ids": bench_ids,
@@ -200,9 +134,10 @@ def fetch_products(client: httpx.Client, bench_ids: list[str]) -> list[dict]:
     return products
 
 
-def fetch_test_results(client: httpx.Client, bench_ids: list[str]) -> list[dict]:
+def fetch_test_results(client: httpx.Client, bench_ids: list[str],
+                       silo_cfg: dict) -> list[dict]:
     """Fetch test results for all key measurements."""
-    test_ids = list(TEST_IDS.keys())
+    test_ids = list(silo_cfg["test_ids"].keys())
     print(f"Fetching test results for {len(test_ids)} tests...")
     time.sleep(REQUEST_DELAY)
     data = api_post("table_tool__test_results", {
@@ -216,9 +151,10 @@ def fetch_test_results(client: httpx.Client, bench_ids: list[str]) -> list[dict]
     return results
 
 
-def fetch_ratings(client: httpx.Client, bench_ids: list[str]) -> list[dict]:
+def fetch_ratings(client: httpx.Client, bench_ids: list[str],
+                  silo_cfg: dict) -> list[dict]:
     """Fetch usage/performance ratings."""
-    usage_ids = list(USAGE_IDS.keys())
+    usage_ids = list(silo_cfg["usage_ids"].keys())
     print(f"Fetching ratings for {len(usage_ids)} usage/performance scores...")
     time.sleep(REQUEST_DELAY)
     data = api_post("table_tool__ratings", {
@@ -231,12 +167,12 @@ def fetch_ratings(client: httpx.Client, bench_ids: list[str]) -> list[dict]:
     return ratings
 
 
-def fetch_column_options(client: httpx.Client) -> dict:
-    """Fetch the full column/test schema for reference."""
-    print("Fetching column options schema...")
+def fetch_column_options(client: httpx.Client, silo_cfg: dict) -> dict:
+    """Fetch the full column/test schema for a silo."""
+    print(f"Fetching column options for {silo_cfg['silo_url_part']}...")
     time.sleep(REQUEST_DELAY)
     data = api_post("table_tool__column_options", {
-        "silo_url_part": "tv",
+        "silo_url_part": silo_cfg["silo_url_part"],
         "named_version": "public",
     }, client)
     return data["data"]["silo"]
@@ -272,14 +208,16 @@ def build_product_records(products: list[dict]) -> dict[str, dict]:
     return records
 
 
-def merge_test_results(records: dict[str, dict], test_results: list[dict]):
+def merge_test_results(records: dict[str, dict], test_results: list[dict],
+                       silo_cfg: dict):
     """Merge test results into product records."""
+    test_id_map = silo_cfg["test_ids"]
     for tr in test_results:
         pid = tr["product_id"]
         if pid not in records:
             continue
         oid = tr["original_id"]
-        col_name = TEST_IDS.get(oid, f"test_{oid}")
+        col_name = test_id_map.get(oid, f"test_{oid}")
 
         if tr["kind"] == "picture":
             # For picture-type tests, store the asset URL
@@ -296,14 +234,16 @@ def merge_test_results(records: dict[str, dict], test_results: list[dict]):
             records[pid][col_name] = tr.get("rendered_value") or tr.get("value", "")
 
 
-def merge_ratings(records: dict[str, dict], ratings: list[dict]):
+def merge_ratings(records: dict[str, dict], ratings: list[dict],
+                  silo_cfg: dict):
     """Merge usage/performance ratings into product records."""
+    usage_id_map = silo_cfg["usage_ids"]
     for r in ratings:
         pid = r["product_id"]
         if pid not in records:
             continue
         oid = r["original_id"]
-        col_name = USAGE_IDS.get(oid, f"usage_{oid}")
+        col_name = usage_id_map.get(oid, f"usage_{oid}")
         records[pid][col_name] = r.get("score")
 
 
@@ -397,8 +337,11 @@ def download_spd_images(records: dict[str, dict], output_dir: Path,
 # =============================================================================
 # OUTPUT
 # =============================================================================
-def save_outputs(records: dict[str, dict], output_dir: Path, bench_ids: list[str] | None = None):
+def save_outputs(records: dict[str, dict], silo_cfg: dict,
+                 bench_ids: list[str] | None = None):
     """Save scraped data to CSV, JSON, and Excel."""
+    paths = silo_cfg["paths"]
+    output_dir = paths["scraped_csv"].parent
     output_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
 
@@ -421,7 +364,8 @@ def save_outputs(records: dict[str, dict], output_dir: Path, bench_ids: list[str
         "panel_type", "backlight_type", "resolution", "native_refresh_rate",
         "dimming_zone_count",
     ]
-    usage_cols = sorted([c for c in df.columns if c in USAGE_IDS.values()])
+    usage_vals = set(silo_cfg["usage_ids"].values())
+    usage_cols = sorted([c for c in df.columns if c in usage_vals])
     # Everything else
     known = set(identity_cols + panel_cols + usage_cols + ["scraped_at", "image_url", "reviewed_sku_id"])
     other_cols = sorted([c for c in df.columns if c not in known])
@@ -435,31 +379,32 @@ def save_outputs(records: dict[str, dict], output_dir: Path, bench_ids: list[str
     df = df[ordered_cols]
 
     # Save CSV
-    csv_path = output_dir / "rtings_tv_data.csv"
+    csv_path = paths["scraped_csv"]
     df.to_csv(csv_path, index=False)
     print(f"  CSV:   {csv_path} ({len(df)} rows)")
 
     # Save timestamped snapshot
-    snapshot_path = output_dir / f"rtings_tv_data_{timestamp}.csv"
+    snapshot_path = csv_path.with_name(f"{csv_path.stem}_{timestamp}.csv")
     df.to_csv(snapshot_path, index=False)
     print(f"  Snapshot: {snapshot_path}")
 
     # Save JSON (for programmatic access)
-    json_path = output_dir / "rtings_tv_data.json"
-    # Convert to serializable format
+    json_path = paths["scraped_json"]
     json_records = json.loads(df.to_json(orient="records", date_format="iso"))
     with open(json_path, "w") as f:
         json.dump({
             "scraped_at": datetime.now(timezone.utc).isoformat(),
-            "test_bench_ids": bench_ids or FALLBACK_BENCH_IDS,
+            "silo": silo_cfg["name"],
+            "test_bench_ids": bench_ids or silo_cfg["fallback_bench_ids"],
             "total_products": len(json_records),
             "products": json_records,
         }, f, indent=2)
     print(f"  JSON:  {json_path}")
 
     # Save Excel
-    xlsx_path = output_dir / "rtings_tv_data.xlsx"
-    df.to_excel(xlsx_path, index=False, sheet_name="RTINGS TV Data")
+    xlsx_path = paths["scraped_xlsx"]
+    sheet_name = f"RTINGS {silo_cfg['display_name']} Data"
+    df.to_excel(xlsx_path, index=False, sheet_name=sheet_name[:31])
     print(f"  Excel: {xlsx_path}")
 
     return df
@@ -468,13 +413,16 @@ def save_outputs(records: dict[str, dict], output_dir: Path, bench_ids: list[str
 # =============================================================================
 # SUMMARY
 # =============================================================================
-def print_summary(df: pd.DataFrame):
+def print_summary(df: pd.DataFrame, silo_cfg: dict):
     """Print a summary of the scraped data."""
+    label = silo_cfg["display_name"]
+    min_ver = ".".join(str(v) for v in silo_cfg["min_bench_version"])
+
     print("\n" + "=" * 70)
-    print("SCRAPE SUMMARY")
+    print(f"SCRAPE SUMMARY — {label}")
     print("=" * 70)
 
-    print(f"\nTotal TVs (v2.0+ only): {len(df)}")
+    print(f"\nTotal {label} (v{min_ver}+ only): {len(df)}")
     print(f"\nBy test bench version:")
     for ver, count in df["test_bench_version"].value_counts().items():
         print(f"  {ver}: {count}")
@@ -497,9 +445,13 @@ def print_summary(df: pd.DataFrame):
         has_spd = df["spd_image"].notna() & (df["spd_image"] != "")
         print(f"\nSPD images available: {has_spd.sum()} / {len(df)}")
 
-    if "mixed_usage" in df.columns:
-        print(f"\nMixed Usage score range: {df['mixed_usage'].min():.1f} - {df['mixed_usage'].max():.1f}")
-        print(f"Mixed Usage mean: {df['mixed_usage'].mean():.1f}")
+    # Print the first usage score column as a sanity check
+    first_usage = next(iter(silo_cfg["usage_ids"].values()), None)
+    if first_usage and first_usage in df.columns:
+        col = df[first_usage].dropna()
+        if len(col) > 0:
+            print(f"\n{first_usage} score range: {col.min():.1f} - {col.max():.1f}")
+            print(f"{first_usage} mean: {col.mean():.1f}")
 
     if "dimming_zone_count" in df.columns:
         zones = pd.to_numeric(df["dimming_zone_count"], errors="coerce").dropna()
@@ -510,15 +462,24 @@ def print_summary(df: pd.DataFrame):
 # =============================================================================
 # MAIN
 # =============================================================================
-def main():
+def main(silo_cfg: dict | None = None):
+    """Run the scraper for a given silo (defaults to TV)."""
+    if silo_cfg is None:
+        silo_cfg = TV
+
+    paths = silo_cfg["paths"]
+    label = silo_cfg["display_name"]
+    min_ver = ".".join(str(v) for v in silo_cfg["min_bench_version"])
+    spd_dir = paths["spd_images"]
+
     print("=" * 70)
-    print("RTINGS TV Data Scraper")
+    print(f"RTINGS {label} Data Scraper")
     print(f"Timestamp: {datetime.now(timezone.utc).isoformat()}")
     print(f"Session cookie: {'configured' if RTINGS_SESSION else 'NOT SET — data will be blurred'}")
     print("=" * 70)
 
     # Load old data to detect bench changes (for SPD cache invalidation)
-    old_csv = OUTPUT_DIR / "rtings_tv_data.csv"
+    old_csv = paths["scraped_csv"]
     old_bench_map = {}
     if old_csv.exists():
         try:
@@ -532,18 +493,18 @@ def main():
             print(f"WARNING: Could not load old bench map: {e}")
 
     with httpx.Client(headers=HEADERS) as client:
-        # Step 0: Discover v2.0+ bench IDs dynamically
-        bench_ids = discover_v2_bench_ids(client)
-        print(f"\nTarget: Test Bench v2.0+ (IDs: {bench_ids})")
+        # Step 0: Discover bench IDs dynamically
+        bench_ids = discover_bench_ids(client, silo_cfg)
+        print(f"\nTarget: {label} Test Bench v{min_ver}+ (IDs: {bench_ids})")
 
         # Step 1: Fetch products
         products = fetch_products(client, bench_ids)
 
         # Step 2: Fetch test results
-        test_results = fetch_test_results(client, bench_ids)
+        test_results = fetch_test_results(client, bench_ids, silo_cfg)
 
         # Step 3: Fetch ratings
-        ratings = fetch_ratings(client, bench_ids)
+        ratings = fetch_ratings(client, bench_ids, silo_cfg)
 
     # Check if data came back unblurred (session cookie working)
     n_unblurred_ratings = sum(1 for r in ratings if r.get("unblurred"))
@@ -554,27 +515,28 @@ def main():
     else:
         print(f"\nWARNING: All {n_blurred_ratings} ratings are blurred — session cookie expired or missing")
     # Write flag for weekly_update.py to read
-    (OUTPUT_DIR / ".session_ok").write_text("1" if session_ok else "0")
+    paths["session_flag"].parent.mkdir(parents=True, exist_ok=True)
+    paths["session_flag"].write_text("1" if session_ok else "0")
 
     # Step 4: Assemble records
     print("\nAssembling product records...")
     records = build_product_records(products)
-    merge_test_results(records, test_results)
-    merge_ratings(records, ratings)
+    merge_test_results(records, test_results, silo_cfg)
+    merge_ratings(records, ratings, silo_cfg)
     print(f"  -> {len(records)} complete product records")
 
     # Step 5: Download SPD images (invalidate cache for bench-changed products)
-    download_spd_images(records, SPD_DIR, old_bench_map=old_bench_map)
+    download_spd_images(records, spd_dir, old_bench_map=old_bench_map)
 
     # Step 6: Save outputs
     print("\nSaving output files...")
-    df = save_outputs(records, OUTPUT_DIR, bench_ids=bench_ids)
+    df = save_outputs(records, silo_cfg, bench_ids=bench_ids)
 
     # Step 7: Summary
-    print_summary(df)
+    print_summary(df, silo_cfg)
 
     # Step 8: Save raw API responses for debugging/reference
-    raw_dir = OUTPUT_DIR / "raw"
+    raw_dir = paths["raw_api"]
     raw_dir.mkdir(parents=True, exist_ok=True)
     with open(raw_dir / "products.json", "w") as f:
         json.dump(products, f, indent=2)
@@ -588,4 +550,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    from silo_config import SILOS
+
+    parser = argparse.ArgumentParser(description="RTINGS Data Scraper")
+    parser.add_argument(
+        "--silo", default="tv", choices=list(SILOS.keys()),
+        help="Product silo to scrape (default: tv)",
+    )
+    args = parser.parse_args()
+    main(silo_cfg=get_silo(args.silo))

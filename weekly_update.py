@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
 """
-Weekly TV Data Update — Master Orchestrator
+Weekly Data Update — Master Orchestrator
 ================================================
 Runs all pipeline scripts in sequence, detects changes,
-maintains a TV registry and changelog, and sends notifications.
+maintains a product registry and changelog, and sends notifications.
+
+Supports multiple product silos (TV, Monitor) via silo_config.py.
 
 Works both locally (macOS notification) and in GitHub Actions
 (writes to $GITHUB_STEP_SUMMARY).
 
 Usage:
-    python weekly_update.py          # Full update
-    python weekly_update.py --dry    # Show what would run, don't execute
+    python weekly_update.py                 # TV only (default)
+    python weekly_update.py --silo tv       # TV only (explicit)
+    python weekly_update.py --silo monitor  # Monitor only
+    python weekly_update.py --silo all      # All silos sequentially
+    python weekly_update.py --dry           # Show what would run, don't execute
 """
 
+import argparse
 import os
 import sys
 import shutil
@@ -25,6 +31,8 @@ from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
+
+from silo_config import get_silo, SILOS, TV
 
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
@@ -42,13 +50,16 @@ def log(msg, level="INFO"):
     print(f"[{ts}] {level}: {msg}", flush=True)
 
 
-def run_script(name, abort_on_fail=True):
+def run_script(name, abort_on_fail=True, extra_args=None):
     """Run a Python script in the project root. Returns True on success."""
     path = ROOT / name
-    log(f"Running {name}...")
+    cmd = [sys.executable, str(path)]
+    if extra_args:
+        cmd.extend(extra_args)
+    log(f"Running {' '.join(cmd[1:])}...")
     try:
         result = subprocess.run(
-            [sys.executable, str(path)],
+            cmd,
             cwd=str(ROOT),
             capture_output=False,
             timeout=1200,  # 20 minute timeout per script
@@ -489,29 +500,13 @@ def notify(title, message):
 # Main orchestrator
 # ---------------------------------------------------------------------------
 
-def main():
-    print("=" * 70)
-    print("WEEKLY TV DATA UPDATE")
-    print(f"Date: {TODAY}  |  Environment: {'GitHub Actions' if IN_CI else 'Local'}")
-    print("=" * 70)
+def run_tv_pipeline():
+    """Run the full TV pipeline — scrape, analyze, build, price, detect changes.
 
-    dry_run = "--dry" in sys.argv
-    if dry_run:
-        log("DRY RUN — showing execution plan only")
-        log("  1. rtings_scraper.py (abort on fail)")
-        log("  2. spd_analyzer.py (continue on fail)")
-        log("  3. build_schema.py (abort on fail)")
-        log("  4. pricing_pipeline.py (continue on fail)")
-        log("  5. Change detection + changelog")
-        log("  6. Registry update")
-        log("  7. Notification")
-        return
-
+    Returns (summary_str, changes_list, errors_list) for reporting.
+    """
     errors = []
     changes = []
-    n_new = 0
-    n_removed = 0
-    n_changes = 0
 
     # --- Snapshot "before" state ---
     db_path = DATA / "tv_database.csv"
@@ -526,11 +521,12 @@ def main():
 
     # --- Step 1: Scrape RTINGS data ---
     try:
-        run_script("rtings_scraper.py", abort_on_fail=True)
+        run_script("rtings_scraper.py", abort_on_fail=True,
+                    extra_args=["--silo", "tv"])
     except Exception as e:
         errors.append(f"Scraper failed: {e}")
         notify("TV Data Update FAILED", f"Scraper error: {e}")
-        sys.exit(1)
+        return None, [], errors
 
     # --- Step 1b: Drop guard — abort if scraper output looks wrong ---
     scraper_csv = DATA / "rtings_tv_data.csv"
@@ -547,7 +543,7 @@ def main():
             f'<p style="color:#999">Previous count: {old_count}</p>'
             f'</div>'
         )
-        sys.exit(1)
+        return None, [], [str(e)]
 
     # --- Step 1c: Check session cookie status ---
     session_flag = DATA / ".session_ok"
@@ -584,7 +580,7 @@ def main():
     except Exception as e:
         errors.append(f"Schema build failed: {e}")
         notify("TV Data Update FAILED", f"Schema error: {e}")
-        sys.exit(1)
+        return None, [], errors
 
     # --- Step 4: Pricing Pipeline ---
     pricing_ok = run_script("pricing_pipeline.py", abort_on_fail=False)
@@ -608,6 +604,9 @@ def main():
     new_db = pd.read_csv(db_path) if db_path.exists() else pd.DataFrame()
     new_count = len(new_db)
 
+    n_new = 0
+    n_removed = 0
+    n_changes = 0
     if len(old_db) > 0 and len(new_db) > 0:
         changes = detect_changes(old_db, new_db)
         append_changelog(changes)
@@ -621,11 +620,10 @@ def main():
     if len(new_db) > 0:
         update_registry(new_db)
 
-    # --- Step 7: Summary & notification ---
-    priced_db = DATA / "tv_database_with_prices.csv"
+    # --- Build summary ---
     n_priced = 0
-    if priced_db.exists():
-        pdb = pd.read_csv(priced_db)
+    if priced_path.exists():
+        pdb = pd.read_csv(priced_path)
         n_priced = pdb["price_best"].notna().sum()
 
     summary_parts = [f"{new_count} TVs"]
@@ -639,25 +637,146 @@ def main():
     if errors:
         summary_parts.append(f"{len(errors)} warnings")
 
-    summary = ", ".join(summary_parts)
-    notify("TV Dashboard Updated", summary)
+    return ", ".join(summary_parts), changes, errors
 
-    # --- Step 8: Email report ---
-    email_html = build_email_report(
-        summary, changes,
-        errors, old_count, new_count, n_priced)
-    send_email(f"TV Dashboard Update — {TODAY}", email_html)
+
+def run_monitor_pipeline():
+    """Run the monitor pipeline — scrape + SPD analysis.
+
+    Schema builder and pricing pipeline for monitors are not yet implemented
+    (Phase 2). This runs the available stages and reports status.
+
+    Returns (summary_str, changes_list, errors_list) for reporting.
+    """
+    errors = []
+    silo_cfg = get_silo("monitor")
+    paths = silo_cfg["paths"]
+
+    # --- Step 1: Scrape RTINGS monitor data ---
+    try:
+        run_script("rtings_scraper.py", abort_on_fail=True,
+                    extra_args=["--silo", "monitor"])
+    except Exception as e:
+        errors.append(f"Monitor scraper failed: {e}")
+        return None, [], errors
+
+    # --- Step 2: SPD Analysis ---
+    # TODO(Phase 2b): Run SPD analyzer on monitor data
+    # spd_analyzer.py needs to be parameterized for monitor input/output paths
+    log("Monitor SPD analysis — not yet implemented (Phase 2b)", "WARN")
+
+    # --- Steps 3-4: Schema + Pricing ---
+    # TODO(Phase 2c/2d): build_monitor_schema.py, monitor_pricing_pipeline.py
+    log("Monitor schema/pricing — not yet implemented (Phase 2c/2d)", "WARN")
+
+    # Count products scraped
+    scraped_csv = paths["scraped_csv"]
+    n_products = 0
+    if scraped_csv.exists():
+        n_products = len(pd.read_csv(scraped_csv))
+
+    summary = f"{n_products} monitors scraped (pipeline incomplete — Phase 2 pending)"
+    return summary, [], errors
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Weekly Data Update Orchestrator")
+    parser.add_argument(
+        "--silo", default="tv", choices=list(SILOS.keys()) + ["all"],
+        help="Which product silo to update (default: tv)",
+    )
+    parser.add_argument(
+        "--dry", action="store_true",
+        help="Show execution plan without running",
+    )
+    args = parser.parse_args()
+
+    print("=" * 70)
+    print(f"WEEKLY DATA UPDATE — {args.silo.upper()}")
+    print(f"Date: {TODAY}  |  Environment: {'GitHub Actions' if IN_CI else 'Local'}")
+    print("=" * 70)
+
+    if args.dry:
+        log("DRY RUN — showing execution plan only")
+        silos_to_run = list(SILOS.keys()) if args.silo == "all" else [args.silo]
+        for silo_name in silos_to_run:
+            log(f"\n--- {silo_name.upper()} pipeline ---")
+            log(f"  1. rtings_scraper.py --silo {silo_name} (abort on fail)")
+            log(f"  2. spd_analyzer.py (continue on fail)")
+            if silo_name == "tv":
+                log("  3. build_schema.py (abort on fail)")
+                log("  4. pricing_pipeline.py (continue on fail)")
+                log("  5. Change detection + changelog")
+                log("  6. Registry update")
+            else:
+                log(f"  3. build_{silo_name}_schema.py (not yet implemented)")
+                log(f"  4. {silo_name}_pricing_pipeline.py (not yet implemented)")
+            log("  7. Notification")
+        return
+
+    # Determine which silos to run
+    silos_to_run = list(SILOS.keys()) if args.silo == "all" else [args.silo]
+    all_summaries = []
+    all_changes = []
+    all_errors = []
+    any_critical_failure = False
+
+    for silo_name in silos_to_run:
+        print(f"\n{'=' * 70}")
+        print(f"  {silo_name.upper()} PIPELINE")
+        print(f"{'=' * 70}")
+
+        if silo_name == "tv":
+            summary, changes, errors = run_tv_pipeline()
+        elif silo_name == "monitor":
+            summary, changes, errors = run_monitor_pipeline()
+        else:
+            log(f"Unknown silo '{silo_name}' — skipping", "ERROR")
+            continue
+
+        if summary is None:
+            # Critical failure in this silo
+            any_critical_failure = True
+            all_errors.extend(errors)
+            all_summaries.append(f"{silo_name}: FAILED")
+        else:
+            all_summaries.append(f"{silo_name}: {summary}")
+            all_changes.extend(changes)
+            all_errors.extend(errors)
+
+    # --- Notification ---
+    combined_summary = " | ".join(all_summaries)
+    notify("Dashboard Updated", combined_summary)
+
+    # --- Email report (TV-only for now, monitor reporting in Phase 4) ---
+    if "tv" in silos_to_run:
+        # Find the TV summary/changes/errors from the run
+        tv_changes = [c for c in all_changes]  # Currently all changes are from TV
+        priced_path = DATA / "tv_database_with_prices.csv"
+        db_path = DATA / "tv_database.csv"
+        new_count = len(pd.read_csv(db_path)) if db_path.exists() else 0
+        old_count = new_count  # approximation — actual old_count tracked inside run_tv_pipeline
+        n_priced = 0
+        if priced_path.exists():
+            n_priced = pd.read_csv(priced_path)["price_best"].notna().sum()
+
+        email_html = build_email_report(
+            combined_summary, tv_changes,
+            all_errors, old_count, new_count, n_priced)
+        send_email(f"Dashboard Update — {TODAY}", email_html)
 
     print(f"\n{'=' * 70}")
-    print(f"UPDATE COMPLETE: {summary}")
-    if errors:
+    print(f"UPDATE COMPLETE: {combined_summary}")
+    if all_errors:
         print(f"\nWarnings:")
-        for e in errors:
+        for e in all_errors:
             print(f"  - {e}")
     print("=" * 70)
 
-    # Exit 0 even with warnings — only critical failures (scraper/schema)
-    # cause early exit(1) above. Warnings shouldn't block the data commit.
+    # Exit 1 only if a critical silo (TV) failed when running alone
+    # When running --silo all, monitor failure shouldn't block TV
+    if any_critical_failure and args.silo != "all":
+        sys.exit(1)
     sys.exit(0)
 
 
