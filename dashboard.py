@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-TV Display Technology Dashboard
+Display Technology Dashboard
 =======================================
-Interactive Streamlit dashboard for exploring TV display technologies,
-pricing, and performance metrics.
+Interactive Streamlit dashboard for exploring TV and Monitor display
+technologies, pricing, and performance metrics.
 
 Branding: Nanosys (Inter font, brand color palette)
 
@@ -23,7 +23,7 @@ from pathlib import Path
 # Page config
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="TV Display Technology Dashboard",
+    page_title="Display Technology Dashboard",
     page_icon="📺",
     layout="wide",
     initial_sidebar_state="auto",
@@ -177,25 +177,72 @@ DATA_DIR = Path(__file__).parent / "data"
 # Canonical technology ordering (left-to-right: low → high QD content)
 TECH_ORDER = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "WOLED", "QD-OLED"]
 
+# ---------------------------------------------------------------------------
+# Product type configuration
+# ---------------------------------------------------------------------------
+PRODUCT_CONFIGS = {
+    "TVs": {
+        "data_file": "tv_database_with_prices.csv",
+        "prices_file": "tv_prices.csv",
+        "history_file": "price_history.csv",
+        "item_label": "TVs",
+        "item_singular": "TV",
+        "score_cols": ["mixed_usage", "home_theater", "gaming", "sports", "bright_room"],
+        "primary_score": "mixed_usage",
+        "has_model_year": True,
+        "has_8k_exclusion": True,
+        "has_samsung_woled": True,
+        "has_price_per_score": True,
+        "price_per_score_col": "price_per_mixed_use",
+        "price_per_score_label": "$ per Mixed Usage Point",
+        "input_lag_col": "input_lag_4k_ms",
+        "input_lag_label": "4K Input Lag (ms)",
+        "profile_page": "TV Profiles",
+        "extra_score_cols": ["brightness_score", "contrast_ratio_score", "color_score",
+                             "black_level_score", "native_contrast_score"],
+    },
+    "Monitors": {
+        "data_file": "monitor_database_with_prices.csv",
+        "prices_file": "monitor_prices.csv",
+        "history_file": "monitor_price_history.csv",
+        "item_label": "Monitors",
+        "item_singular": "Monitor",
+        "score_cols": ["pc_gaming", "console_gaming", "office", "editing"],
+        "primary_score": "pc_gaming",
+        "has_model_year": True,
+        "has_8k_exclusion": False,
+        "has_samsung_woled": False,
+        "has_price_per_score": False,
+        "price_per_score_col": None,
+        "price_per_score_label": None,
+        "input_lag_col": "input_lag_native_ms",
+        "input_lag_label": "Native Input Lag (ms)",
+        "profile_page": "Monitor Profiles",
+        "extra_score_cols": ["brightness_score", "color_accuracy"],
+    },
+}
+
 
 @st.cache_data
-def load_data():
-    df = pd.read_csv(DATA_DIR / "tv_database_with_prices.csv")
+def load_data(product_type="TVs"):
+    cfg = PRODUCT_CONFIGS[product_type]
+    df = pd.read_csv(DATA_DIR / cfg["data_file"])
     for col in ["first_published_at", "last_updated_at", "released_at", "scraped_at"]:
         if col in df.columns:
             df[col] = pd.to_datetime(df[col], utc=True, errors="coerce")
     numeric_cols = [
-        "price_best", "price_per_m2", "price_per_mixed_use",
-        "mixed_usage", "home_theater", "gaming", "sports", "bright_room",
-        "brightness_score", "contrast_ratio_score", "color_score",
-        "black_level_score", "native_contrast_score",
+        "price_best", "price_per_m2",
         "hdr_peak_10pct_nits", "hdr_peak_2pct_nits",
         "sdr_real_scene_peak_nits", "native_contrast",
         "dimming_zone_count", "price_size",
         "green_fwhm_nm", "red_fwhm_nm", "blue_fwhm_nm",
         "hdr_bt2020_coverage_itp_pct", "sdr_dci_p3_coverage_pct",
-        "input_lag_4k_ms", "first_response_time_ms", "total_response_time_ms",
-    ]
+        "first_response_time_ms", "total_response_time_ms",
+    ] + cfg["score_cols"] + cfg["extra_score_cols"]
+    if cfg["price_per_score_col"]:
+        numeric_cols.append(cfg["price_per_score_col"])
+    if cfg["input_lag_col"]:
+        numeric_cols.append(cfg["input_lag_col"])
     for col in numeric_cols:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
@@ -206,8 +253,9 @@ def load_data():
 
 
 @st.cache_data
-def load_size_prices():
-    path = DATA_DIR / "tv_prices.csv"
+def load_size_prices(product_type="TVs"):
+    cfg = PRODUCT_CONFIGS[product_type]
+    path = DATA_DIR / cfg["prices_file"]
     if path.exists():
         df = pd.read_csv(path)
         for col in ["best_price", "amazon_price", "bestbuy_price", "rtings_price",
@@ -219,19 +267,15 @@ def load_size_prices():
 
 
 @st.cache_data
-def load_price_history():
-    path = DATA_DIR / "price_history.csv"
+def load_price_history(product_type="TVs"):
+    cfg = PRODUCT_CONFIGS[product_type]
+    path = DATA_DIR / cfg["history_file"]
     if path.exists():
         hist = pd.read_csv(path)
         hist["snapshot_date"] = pd.to_datetime(hist["snapshot_date"], errors="coerce")
         hist["best_price"] = pd.to_numeric(hist["best_price"], errors="coerce")
         return hist
     return pd.DataFrame()
-
-
-df = load_data()
-prices_df = load_size_prices()
-history_df = load_price_history()
 
 # Screen area lookup for $/m² calculations (shared with pricing_pipeline.py)
 _SCREEN_AREA_M2_GLOBAL = {
@@ -350,27 +394,7 @@ def compute_m2_from_history(hist: pd.DataFrame, product_ids: set | None = None,
     return h.groupby("product_id")["price_per_m2"].mean().to_dict()
 
 
-# Enrich history with $/m² and time columns (once at load time)
-# Pass df so Samsung WOLED-panel sizes are excluded from QD-OLED pricing
-history_df = enrich_history(history_df, main_df=df)
-
-# Overwrite price_per_m2 on the main dataframe with values derived from
-# price_history.csv so that bar charts, metrics, and trend lines all use
-# the exact same data source and methodology.
-if len(history_df) > 0:
-    _m2_map = compute_m2_from_history(history_df)
-    df["price_per_m2"] = df["product_id"].map(
-        lambda pid: _m2_map.get(pid) or _m2_map.get(str(pid))
-    )
-
-# Exclude 8K TVs globally — tiny market segment that skews scores and pricing
-_n_8k = 0
-if "resolution" in df.columns:
-    _n_8k = (df["resolution"] == "8k").sum()
-    df = df[df["resolution"] != "8k"].reset_index(drop=True)
-
-# Derive model year from release date
-df["model_year"] = df["released_at"].dt.year
+# Post-processing happens after product type selection (below sidebar)
 
 # ---------------------------------------------------------------------------
 # Nanosys brand color palette (colorblind-safe selections)
@@ -398,11 +422,13 @@ LABEL_MAP = {
     "hdr_bt2020_coverage_itp_pct": "HDR BT.2020 Coverage (%)",
     "sdr_dci_p3_coverage_pct": "SDR DCI-P3 Coverage (%)",
     "input_lag_4k_ms": "4K Input Lag (ms)",
+    "input_lag_native_ms": "Native Input Lag (ms)",
     "total_response_time_ms": "Total Response Time (ms)",
     "first_response_time_ms": "First Response Time (ms)",
     "contrast_ratio_score": "Contrast Ratio Score",
     "black_level_score": "Black Level Score",
     "color_score": "Color Score",
+    "color_accuracy": "Color Accuracy",
     "brightness_score": "Brightness Score",
     "native_contrast_score": "Native Contrast Score",
     "mixed_usage": "Mixed Usage",
@@ -410,6 +436,10 @@ LABEL_MAP = {
     "gaming": "Gaming",
     "sports": "Sports",
     "bright_room": "Bright Room",
+    "pc_gaming": "PC Gaming",
+    "console_gaming": "Console Gaming",
+    "office": "Office",
+    "editing": "Editing",
     "price_best": "Price ($)",
     "price_per_m2": "Price per m\u00b2",
     "price_per_mixed_use": "$ per Mixed Usage Point",
@@ -436,6 +466,7 @@ def axis_range(col, data_df=None):
         "mixed_usage", "home_theater", "gaming", "sports", "bright_room",
         "brightness_score", "contrast_ratio_score", "color_score",
         "black_level_score", "native_contrast_score",
+        "pc_gaming", "console_gaming", "office", "editing", "color_accuracy",
     }
     if col in score_cols:
         return [0, 10.5]
@@ -467,6 +498,39 @@ if _logo_path.exists():
     st.sidebar.markdown("<p style='text-align:center;color:#999;font-size:0.85em;margin-top:-8px'>Display Technology Intelligence</p>",
                         unsafe_allow_html=True)
     st.sidebar.divider()
+
+# --- Product type selector ---
+_product_types = list(PRODUCT_CONFIGS.keys())
+product_type = st.sidebar.radio("Product Type", _product_types, index=0,
+                                 key="product_type", horizontal=True)
+PCFG = PRODUCT_CONFIGS[product_type]
+st.sidebar.divider()
+
+# Load data for selected product type
+df = load_data(product_type)
+prices_df = load_size_prices(product_type)
+history_df = load_price_history(product_type)
+
+# Post-processing: enrich history, exclude 8K, derive model_year
+_n_woled_excluded = 0
+if PCFG["has_samsung_woled"]:
+    history_df = enrich_history(history_df, main_df=df)
+elif len(history_df) > 0:
+    history_df = _enrich_history_core(history_df)
+
+if len(history_df) > 0:
+    _m2_map = compute_m2_from_history(history_df)
+    df["price_per_m2"] = df["product_id"].map(
+        lambda pid: _m2_map.get(pid) or _m2_map.get(str(pid))
+    )
+
+_n_8k = 0
+if PCFG["has_8k_exclusion"] and "resolution" in df.columns:
+    _n_8k = (df["resolution"] == "8k").sum()
+    df = df[df["resolution"] != "8k"].reset_index(drop=True)
+
+if PCFG["has_model_year"] and "released_at" in df.columns:
+    df["model_year"] = df["released_at"].dt.year
 
 # --- Monthly report download ---
 _reports_dir = Path(__file__).parent / "data" / "reports"
@@ -530,31 +594,34 @@ price_range = st.sidebar.slider(
     "Price Range ($)", min_value=0, max_value=int(price_max) + 500,
     value=(0, int(price_max) + 500), step=50,
 )
-include_unpriced = st.sidebar.checkbox("Include TVs without pricing", value=True)
+include_unpriced = st.sidebar.checkbox(f"Include {PCFG['item_label']} without pricing", value=True)
 
-# --- Model Year checkboxes ---
-available_years = sorted(df["model_year"].dropna().unique().astype(int).tolist(), reverse=True)
-st.sidebar.markdown("**Model Year**")
-year_all = st.sidebar.checkbox("All years", value=True, key="year_all")
+# --- Model Year checkboxes (if available) ---
 selected_years = []
-for yr in available_years:
-    if st.sidebar.checkbox(str(yr), value=year_all, key=f"year_{yr}"):
-        selected_years.append(yr)
+if PCFG["has_model_year"] and "model_year" in df.columns:
+    available_years = sorted(df["model_year"].dropna().unique().astype(int).tolist(), reverse=True)
+    if available_years:
+        st.sidebar.markdown("**Model Year**")
+        year_all = st.sidebar.checkbox("All years", value=True, key="year_all")
+        for yr in available_years:
+            if st.sidebar.checkbox(str(yr), value=year_all, key=f"year_{yr}"):
+                selected_years.append(yr)
 
 # --- Build filter mask ---
 mask = (
     df["color_architecture"].isin(selected_techs)
     & df["display_type"].isin(selected_display_types)
     & df["brand"].isin(selected_brands)
-    & (df["model_year"].isin(selected_years) | df["model_year"].isna())
 )
+if selected_years and "model_year" in df.columns:
+    mask = mask & (df["model_year"].isin(selected_years) | df["model_year"].isna())
 if include_unpriced:
     mask = mask & (df["price_best"].isna() | df["price_best"].between(price_range[0], price_range[1]))
 else:
     mask = mask & df["price_best"].between(price_range[0], price_range[1])
 
 fdf = df[mask].copy()
-st.sidebar.markdown(f"**Showing {len(fdf)}/{len(df)} TVs**")
+st.sidebar.markdown(f"**Showing {len(fdf)}/{len(df)} {PCFG['item_label']}**")
 
 # Temporal dataframe — all filters EXCEPT year, for year-over-year analysis
 temporal_mask = (
@@ -567,14 +634,16 @@ if include_unpriced:
 else:
     temporal_mask = temporal_mask & df["price_best"].between(price_range[0], price_range[1])
 tdf = df[temporal_mask].copy()
+caveats = []
 if _n_8k > 0:
-    caveats = [f"{_n_8k} 8K sets excluded from all metrics"]
-    if _n_woled_excluded > 0:
-        caveats.append(f"{_n_woled_excluded} Samsung WOLED-panel SKUs excluded from QD-OLED pricing")
+    caveats.append(f"{_n_8k} 8K sets excluded from all metrics")
+if _n_woled_excluded > 0:
+    caveats.append(f"{_n_woled_excluded} Samsung WOLED-panel SKUs excluded from QD-OLED pricing")
+if caveats:
     st.sidebar.caption(" · ".join(caveats))
 
 # Support deep-linking via ?page=...
-ALL_PAGES = ["Overview", "Technology Explorer", "Price Analyzer", "Temporal Analysis", "Comparison Tool", "TV Profiles"]
+ALL_PAGES = ["Overview", "Technology Explorer", "Price Analyzer", "Temporal Analysis", "Comparison Tool", PCFG["profile_page"]]
 qp_page = st.query_params.get("page", None)
 default_idx = ALL_PAGES.index(qp_page) if qp_page in ALL_PAGES else 0
 page = st.sidebar.radio("View", ALL_PAGES, index=default_idx)
@@ -584,13 +653,14 @@ page = st.sidebar.radio("View", ALL_PAGES, index=default_idx)
 # PAGE: Overview
 # ============================================================================
 if page == "Overview":
-    st.title("TV Display Technology Dashboard")
-    st.caption(f"Database: {len(df)} TVs — test bench v2.0+ · "
-               "Data covers RTINGS-reviewed models only, not the full TV market")
+    st.title(f"{PCFG['item_singular']} Display Technology Dashboard")
+    _bench_label = "v2.0+" if product_type == "TVs" else "v2.1.2+"
+    st.caption(f"Database: {len(df)} {PCFG['item_label']} — test bench {_bench_label} · "
+               f"Data covers RTINGS-reviewed models only, not the full {PCFG['item_singular'].lower()} market")
 
     priced = fdf[fdf["price_best"].notna()]
     c1, c2, c3, c4, c5 = st.columns(5)
-    c1.metric("TVs", len(fdf))
+    c1.metric(PCFG["item_label"], len(fdf))
     c2.metric("With Pricing", len(priced))
     c3.metric("Brands", fdf["brand"].nunique())
     c4.metric("Avg Price", f"${priced['price_best'].mean():,.0f}" if len(priced) else "N/A")
@@ -621,19 +691,22 @@ if page == "Overview":
             fig.update_layout(showlegend=False, height=370, **PL)
             st.plotly_chart(fig, use_container_width=True)
         else:
-            st.info("No priced TVs in current filter.")
+            st.info(f"No priced {PCFG['item_label'].lower()} in current filter.")
 
     with hero2:
-        st.subheader("Mixed Usage Score by Technology")
-        fig = px.box(fdf, x="color_architecture", y="mixed_usage",
-                     color="color_architecture", color_discrete_map=TECH_COLORS,
-                     category_orders={"color_architecture": TECH_ORDER},
-                     labels={"mixed_usage": "Mixed Usage Score", "color_architecture": ""},
-                     points="all")
-        fig.update_layout(showlegend=False, height=370,
-                          yaxis=dict(range=axis_range("mixed_usage")), **PL)
-        fig.update_traces(marker=dict(size=7))
-        st.plotly_chart(fig, use_container_width=True)
+        _primary = PCFG["primary_score"]
+        _primary_label = friendly(_primary)
+        st.subheader(f"{_primary_label} Score by Technology")
+        if _primary in fdf.columns:
+            fig = px.box(fdf, x="color_architecture", y=_primary,
+                         color="color_architecture", color_discrete_map=TECH_COLORS,
+                         category_orders={"color_architecture": TECH_ORDER},
+                         labels={_primary: f"{_primary_label} Score", "color_architecture": ""},
+                         points="all")
+            fig.update_layout(showlegend=False, height=370,
+                              yaxis=dict(range=axis_range(_primary)), **PL)
+            fig.update_traces(marker=dict(size=7))
+            st.plotly_chart(fig, use_container_width=True)
 
     st.divider()
 
@@ -689,7 +762,7 @@ if page == "Overview":
             st.info("No priced TVs in current filter.")
 
     st.subheader("Usage Score Overview")
-    score_cols = ["mixed_usage", "home_theater", "gaming", "sports", "bright_room"]
+    score_cols = [c for c in PCFG["score_cols"] if c in fdf.columns]
     score_data = fdf[["fullname", "color_architecture"] + score_cols].melt(
         id_vars=["fullname", "color_architecture"], value_vars=score_cols,
         var_name="Usage", value_name="Score"
@@ -844,9 +917,7 @@ elif page == "Technology Explorer":
         st.plotly_chart(fig, use_container_width=True)
 
         st.markdown("**Average Scores by Technology**")
-        score_cols = ["mixed_usage", "home_theater", "gaming", "sports", "bright_room",
-                      "brightness_score", "contrast_ratio_score", "color_score",
-                      "black_level_score", "native_contrast_score"]
+        score_cols = PCFG["score_cols"] + PCFG["extra_score_cols"]
         available_scores = [c for c in score_cols if c in fdf.columns]
         avg_scores = fdf.groupby("color_architecture")[available_scores].mean()
         avg_scores.columns = [friendly(c) for c in avg_scores.columns]
@@ -1002,7 +1073,7 @@ elif page == "Technology Explorer":
         headline_metrics = [
             ("hdr_peak_10pct_nits", "HDR Peak Brightness"),
             ("hdr_bt2020_coverage_itp_pct", "HDR Color Gamut"),
-            ("mixed_usage", "Mixed Usage Score"),
+            (PCFG["primary_score"], friendly(PCFG["primary_score"]) + " Score"),
             ("brightness_score", "Brightness Score"),
         ]
         hcols = st.columns(len(headline_metrics))
@@ -1017,10 +1088,12 @@ elif page == "Technology Explorer":
                     delta=f"+{pct:.0f}% vs non-QD",
                 )
 
-    # --- Tab 5: Mixed Usage Drivers ---
+    # --- Tab 5: Score Drivers ---
     with tab5:
-        st.subheader("What Drives Mixed Usage Scores?")
-        st.caption("Correlation analysis: which metrics predict overall TV performance")
+        _ps = PCFG["primary_score"]
+        _ps_label = friendly(_ps)
+        st.subheader(f"What Drives {_ps_label} Scores?")
+        st.caption(f"Correlation analysis: which metrics predict overall {PCFG['item_singular'].lower()} performance")
 
         corr_metrics = {
             "contrast_ratio_score": "Contrast Ratio Score",
@@ -1038,10 +1111,10 @@ elif page == "Technology Explorer":
         }
         corr_data = []
         for col, label in corr_metrics.items():
-            if col in fdf.columns:
-                valid = fdf[["mixed_usage", col]].dropna()
+            if col in fdf.columns and _ps in fdf.columns:
+                valid = fdf[[_ps, col]].dropna()
                 if len(valid) > 5:
-                    r = valid["mixed_usage"].corr(valid[col])
+                    r = valid[_ps].corr(valid[col])
                     corr_data.append({"Metric": label, "col": col, "Correlation": r})
 
         corr_df = pd.DataFrame(corr_data).sort_values("Correlation")
@@ -1056,7 +1129,7 @@ elif page == "Technology Explorer":
         fig.add_vline(x=0, line_color="white", line_width=1)
         fig.update_layout(
             height=450, showlegend=False,
-            xaxis=dict(range=[-1, 1], title="Pearson Correlation with Mixed Usage"),
+            xaxis=dict(range=[-1, 1], title=f"Pearson Correlation with {_ps_label}"),
             yaxis_title="",
             margin=dict(l=0, r=60, t=10, b=0),
             **PL,
@@ -1068,55 +1141,37 @@ elif page == "Technology Explorer":
         st.divider()
         scol1, scol2 = st.columns(2)
 
-        with scol1:
-            st.markdown("**Contrast Ratio Score vs Mixed Usage** (r = 0.94)")
-            valid = fdf[["contrast_ratio_score", "mixed_usage", "color_architecture", "fullname"]].dropna()
-            fig = px.scatter(valid, x="contrast_ratio_score", y="mixed_usage",
-                             color="color_architecture", color_discrete_map=TECH_COLORS,
-                             category_orders={"color_architecture": TECH_ORDER},
-                             hover_name="fullname",
-                             labels={"contrast_ratio_score": "Contrast Ratio Score",
-                                     "mixed_usage": "Mixed Usage"})
-            x_arr = valid["contrast_ratio_score"].values
-            y_arr = valid["mixed_usage"].values
-            m, b = np.polyfit(x_arr, y_arr, 1)
-            x_line = np.linspace(x_arr.min(), x_arr.max(), 50)
-            r2 = np.corrcoef(x_arr, y_arr)[0, 1] ** 2
-            fig.add_trace(go.Scatter(
-                x=x_line, y=m * x_line + b, mode="lines",
-                name=f"r\u00b2 = {r2:.2f}",
-                line=dict(color="rgba(255,255,255,0.5)", dash="dash", width=2),
-            ))
-            fig.update_layout(height=420, showlegend=True, legend_title_text="",
-                              xaxis=dict(range=axis_range("contrast_ratio_score")),
-                              yaxis=dict(range=axis_range("mixed_usage")), **PL)
-            fig.update_traces(marker=MARKER, selector=dict(mode="markers"))
-            st.plotly_chart(fig, use_container_width=True)
-
-        with scol2:
-            st.markdown("**Response Time vs Mixed Usage** (r = -0.72)")
-            valid = fdf[["total_response_time_ms", "mixed_usage", "color_architecture", "fullname"]].dropna()
-            fig = px.scatter(valid, x="total_response_time_ms", y="mixed_usage",
-                             color="color_architecture", color_discrete_map=TECH_COLORS,
-                             category_orders={"color_architecture": TECH_ORDER},
-                             hover_name="fullname",
-                             labels={"total_response_time_ms": "Response Time (ms)",
-                                     "mixed_usage": "Mixed Usage"})
-            x_arr = valid["total_response_time_ms"].values
-            y_arr = valid["mixed_usage"].values
-            m, b = np.polyfit(x_arr, y_arr, 1)
-            x_line = np.linspace(x_arr.min(), x_arr.max(), 50)
-            r2 = np.corrcoef(x_arr, y_arr)[0, 1] ** 2
-            fig.add_trace(go.Scatter(
-                x=x_line, y=m * x_line + b, mode="lines",
-                name=f"r\u00b2 = {r2:.2f}",
-                line=dict(color="rgba(255,255,255,0.5)", dash="dash", width=2),
-            ))
-            fig.update_layout(height=420, showlegend=True, legend_title_text="",
-                              xaxis=dict(range=axis_range("total_response_time_ms")),
-                              yaxis=dict(range=axis_range("mixed_usage")), **PL)
-            fig.update_traces(marker=MARKER, selector=dict(mode="markers"))
-            st.plotly_chart(fig, use_container_width=True)
+        # Scatter plots — only show if both columns exist
+        _driver_x_cols = ["contrast_ratio_score", "total_response_time_ms"]
+        _avail_drivers = [c for c in _driver_x_cols if c in fdf.columns and _ps in fdf.columns]
+        if _avail_drivers:
+            _dcols = st.columns(len(_avail_drivers))
+            for _di, _dx in enumerate(_avail_drivers):
+                with _dcols[_di]:
+                    valid = fdf[[_dx, _ps, "color_architecture", "fullname"]].dropna()
+                    if len(valid) > 3:
+                        r = valid[_dx].corr(valid[_ps])
+                        st.markdown(f"**{friendly(_dx)} vs {_ps_label}** (r = {r:.2f})")
+                        fig = px.scatter(valid, x=_dx, y=_ps,
+                                         color="color_architecture", color_discrete_map=TECH_COLORS,
+                                         category_orders={"color_architecture": TECH_ORDER},
+                                         hover_name="fullname",
+                                         labels={_dx: friendly(_dx), _ps: _ps_label})
+                        x_arr = valid[_dx].values
+                        y_arr = valid[_ps].values
+                        m, b = np.polyfit(x_arr, y_arr, 1)
+                        x_line = np.linspace(x_arr.min(), x_arr.max(), 50)
+                        r2 = np.corrcoef(x_arr, y_arr)[0, 1] ** 2
+                        fig.add_trace(go.Scatter(
+                            x=x_line, y=m * x_line + b, mode="lines",
+                            name=f"r\u00b2 = {r2:.2f}",
+                            line=dict(color="rgba(255,255,255,0.5)", dash="dash", width=2),
+                        ))
+                        fig.update_layout(height=420, showlegend=True, legend_title_text="",
+                                          xaxis=dict(range=axis_range(_dx)),
+                                          yaxis=dict(range=axis_range(_ps)), **PL)
+                        fig.update_traces(marker=MARKER, selector=dict(mode="markers"))
+                        st.plotly_chart(fig, use_container_width=True)
 
         st.divider()
         st.markdown("**Technology Positioning Map**")
@@ -1171,18 +1226,23 @@ elif page == "Technology Explorer":
             st.plotly_chart(fig, use_container_width=True)
 
             st.divider()
+            _ps = PCFG["primary_score"]
+            _ps_label = friendly(_ps)
             st.markdown("**Value Frontier: Price vs Performance**")
-            st.caption("The dashed line traces the \"efficient frontier\" — TVs that offer "
-                       "the highest Mixed Usage score for their price. Any TV on or near "
-                       "the line is the best performance you can buy at that budget. "
-                       "TVs far below the line are overpriced for what they deliver.")
-            fig = px.scatter(val_priced, x="price_best", y="mixed_usage",
+            st.caption(f"The dashed line traces the \"efficient frontier\" — {PCFG['item_label'].lower()} that offer "
+                       f"the highest {_ps_label} score for their price. Any {PCFG['item_singular'].lower()} on or near "
+                       f"the line is the best performance you can buy at that budget. "
+                       f"{PCFG['item_label']} far below the line are overpriced for what they deliver.")
+            _hover = ["price_size", "brand"]
+            if PCFG["price_per_score_col"] and PCFG["price_per_score_col"] in val_priced.columns:
+                _hover.insert(0, PCFG["price_per_score_col"])
+            fig = px.scatter(val_priced, x="price_best", y=_ps,
                              color="color_architecture", color_discrete_map=TECH_COLORS,
                              category_orders={"color_architecture": TECH_ORDER},
                              hover_name="fullname",
-                             hover_data=["price_per_mixed_use", "price_size", "brand"],
-                             labels={"price_best": "Price ($)", "mixed_usage": "Mixed Usage Score"})
-            sorted_v = val_priced.sort_values("mixed_usage", ascending=False)
+                             hover_data=_hover,
+                             labels={"price_best": "Price ($)", _ps: f"{_ps_label} Score"})
+            sorted_v = val_priced.sort_values(_ps, ascending=False)
             frontier = []
             min_price = float("inf")
             for _, row in sorted_v.iterrows():
@@ -1192,30 +1252,41 @@ elif page == "Technology Explorer":
             if frontier:
                 ffront = pd.DataFrame(frontier).sort_values("price_best")
                 fig.add_trace(go.Scatter(
-                    x=ffront["price_best"], y=ffront["mixed_usage"],
+                    x=ffront["price_best"], y=ffront[_ps],
                     mode="lines+markers", name="Value Frontier",
                     line=dict(color="rgba(255,255,255,0.4)", dash="dash", width=2),
                     marker=dict(size=7, color="rgba(255,255,255,0.6)"),
                 ))
             fig.update_layout(height=520, legend_title_text="Technology",
                               xaxis=dict(range=axis_range("price_best")),
-                              yaxis=dict(range=axis_range("mixed_usage")), **PL)
+                              yaxis=dict(range=axis_range(_ps)), **PL)
             fig.update_traces(marker=MARKER, selector=dict(mode="markers"))
             st.plotly_chart(fig, use_container_width=True)
 
             st.divider()
-            st.markdown("**Top 20 Best Value TVs** (lowest $/mixed usage point)")
-            top_val = val_priced.sort_values("price_per_mixed_use").head(20)
-            val_table = top_val[[
-                "fullname", "color_architecture", "price_best", "mixed_usage",
-                "price_per_mixed_use", "hdr_peak_10pct_nits",
-                "hdr_bt2020_coverage_itp_pct", "price_size",
-            ]].copy()
-            val_table.columns = ["TV", "Technology", "Price", "Mixed Usage",
-                                 "$/Point", "HDR Brightness", "BT.2020 %", "Size"]
+            if PCFG["has_price_per_score"] and PCFG["price_per_score_col"] in val_priced.columns:
+                _pps = PCFG["price_per_score_col"]
+                st.markdown(f"**Top 20 Best Value {PCFG['item_label']}** (lowest {PCFG['price_per_score_label']})")
+                top_val = val_priced.sort_values(_pps).head(20)
+            else:
+                st.markdown(f"**Top 20 Best Value {PCFG['item_label']}** (lowest price)")
+                top_val = val_priced.sort_values("price_best").head(20)
+                _pps = None
+            _val_cols = ["fullname", "color_architecture", "price_best", _ps]
+            _val_headers = [PCFG["item_singular"], "Technology", "Price", _ps_label]
+            if _pps and _pps in top_val.columns:
+                _val_cols.append(_pps)
+                _val_headers.append("$/Point")
+            for _vc in ["hdr_peak_10pct_nits", "hdr_bt2020_coverage_itp_pct", "price_size"]:
+                if _vc in top_val.columns:
+                    _val_cols.append(_vc)
+                    _val_headers.append(friendly(_vc).split("(")[0].strip())
+            val_table = top_val[[c for c in _val_cols if c in top_val.columns]].copy()
+            val_table.columns = _val_headers[:len(val_table.columns)]
             val_table["Price"] = val_table["Price"].apply(lambda x: f"${x:,.0f}")
-            val_table["$/Point"] = val_table["$/Point"].apply(lambda x: f"${x:,.0f}")
-            val_table["Mixed Usage"] = val_table["Mixed Usage"].apply(lambda x: f"{x:.1f}")
+            if "$/Point" in val_table.columns:
+                val_table["$/Point"] = val_table["$/Point"].apply(lambda x: f"${x:,.0f}")
+            val_table[_ps_label] = val_table[_ps_label].apply(lambda x: f"{x:.1f}")
             val_table["HDR Brightness"] = val_table["HDR Brightness"].apply(
                 lambda x: f"{x:,.0f}" if pd.notna(x) else "\u2014")
             val_table["BT.2020 %"] = val_table["BT.2020 %"].apply(
@@ -1297,7 +1368,7 @@ elif page == "Price Analyzer":
     with tab1:
         score_metric = st.selectbox(
             "Score metric",
-            ["mixed_usage", "home_theater", "gaming", "sports", "bright_room"],
+            [c for c in PCFG["score_cols"] if c in fdf.columns],
             format_func=friendly,
             key="value_score",
         )
@@ -1427,10 +1498,10 @@ elif page == "Price Analyzer":
                 st.plotly_chart(fig, use_container_width=True)
 
     with tab3:
-        st.subheader("Best Value TVs")
+        st.subheader(f"Best Value {PCFG['item_label']}")
         value_metric = st.selectbox(
             "Optimize for",
-            ["mixed_usage", "home_theater", "gaming", "sports", "bright_room"],
+            [c for c in PCFG["score_cols"] if c in fdf.columns],
             format_func=friendly,
             key="deal_metric",
         )
@@ -2054,13 +2125,15 @@ elif page == "Comparison Tool":
                 st.metric("Price", f"${row['price_best']:,.0f}")
             else:
                 st.metric("Price", "N/A")
-            st.metric("Mixed Usage", f"{row['mixed_usage']:.1f}")
+            _ps = PCFG["primary_score"]
+            if _ps in row and pd.notna(row.get(_ps)):
+                st.metric(friendly(_ps), f"{row[_ps]:.1f}")
 
     st.divider()
 
     st.subheader("Usage Score Comparison")
-    categories = ["Mixed Usage", "Home Theater", "Gaming", "Sports", "Bright Room"]
-    score_keys = ["mixed_usage", "home_theater", "gaming", "sports", "bright_room"]
+    score_keys = [c for c in PCFG["score_cols"] if c in comp.columns]
+    categories = [friendly(c) for c in score_keys]
 
     fig = go.Figure()
     for _, row in comp.iterrows():
@@ -2097,22 +2170,15 @@ elif page == "Comparison Tool":
         ("Price Size", "price_size"),
         ("Price Source", "channel"),
         ("$/m\u00b2", "price_per_m2"),
-        ("Mixed Usage", "mixed_usage"),
-        ("Home Theater", "home_theater"),
-        ("Gaming", "gaming"),
-        ("Sports", "sports"),
-        ("Bright Room", "bright_room"),
+    ] + [(friendly(c), c) for c in PCFG["score_cols"]] + [
         ("Native Contrast", "native_contrast"),
         ("HDR Peak (10%)", "hdr_peak_10pct_nits"),
         ("HDR Peak (2%)", "hdr_peak_2pct_nits"),
         ("SDR Peak", "sdr_real_scene_peak_nits"),
         ("BT.2020 Coverage", "hdr_bt2020_coverage_itp_pct"),
         ("DCI-P3 Coverage", "sdr_dci_p3_coverage_pct"),
-        ("4K Input Lag", "input_lag_4k_ms"),
+        (friendly(PCFG["input_lag_col"]), PCFG["input_lag_col"]),
         ("Response Time", "total_response_time_ms"),
-        ("HDMI 2.1", "hdmi_21_speed"),
-        ("HDMI Ports", "hdmi_ports"),
-        ("VRR", "vrr_support"),
     ]
 
     table_data = {"Spec": [r[0] for r in detail_rows]}
@@ -2140,7 +2206,7 @@ elif page == "Comparison Tool":
 # ============================================================================
 # PAGE: TV Profiles
 # ============================================================================
-elif page == "TV Profiles":
+elif page == PCFG["profile_page"]:
     st.title("TV Profile")
 
     selected_tv = st.selectbox("Select a TV", sorted(fdf["fullname"].tolist()))
@@ -2182,13 +2248,7 @@ elif page == "TV Profiles":
 
     with col2:
         st.subheader("Usage Scores")
-        scores = {
-            "Mixed Usage": tv.get("mixed_usage"),
-            "Home Theater": tv.get("home_theater"),
-            "Gaming": tv.get("gaming"),
-            "Sports": tv.get("sports"),
-            "Bright Room": tv.get("bright_room"),
-        }
+        scores = {friendly(c): tv.get(c) for c in PCFG["score_cols"]}
         score_df = pd.DataFrame([{"Usage": k, "Score": v} for k, v in scores.items() if pd.notna(v)])
         if len(score_df) > 0:
             fig = px.bar(score_df, x="Score", y="Usage", orientation="h",
