@@ -224,9 +224,13 @@ PRODUCT_CONFIGS = {
 
 
 @st.cache_data
-def load_data(product_type="TVs"):
-    cfg = PRODUCT_CONFIGS[product_type]
-    df = pd.read_csv(DATA_DIR / cfg["data_file"])
+def _load_single(data_file, score_cols, extra_score_cols,
+                 price_per_score_col, input_lag_col):
+    """Load and prepare a single product-type CSV."""
+    path = DATA_DIR / data_file
+    if not path.exists():
+        return pd.DataFrame()
+    df = pd.read_csv(path)
     for col in ["first_published_at", "last_updated_at", "released_at", "scraped_at"]:
         if col in df.columns:
             df[col] = pd.to_datetime(df[col], utc=True, errors="coerce")
@@ -238,11 +242,11 @@ def load_data(product_type="TVs"):
         "green_fwhm_nm", "red_fwhm_nm", "blue_fwhm_nm",
         "hdr_bt2020_coverage_itp_pct", "sdr_dci_p3_coverage_pct",
         "first_response_time_ms", "total_response_time_ms",
-    ] + cfg["score_cols"] + cfg["extra_score_cols"]
-    if cfg["price_per_score_col"]:
-        numeric_cols.append(cfg["price_per_score_col"])
-    if cfg["input_lag_col"]:
-        numeric_cols.append(cfg["input_lag_col"])
+    ] + list(score_cols) + list(extra_score_cols)
+    if price_per_score_col:
+        numeric_cols.append(price_per_score_col)
+    if input_lag_col:
+        numeric_cols.append(input_lag_col)
     for col in numeric_cols:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
@@ -250,6 +254,27 @@ def load_data(product_type="TVs"):
         df["color_architecture"], categories=TECH_ORDER, ordered=True
     )
     return df
+
+
+def load_data(product_type="TVs"):
+    if product_type == "All Products":
+        # Load both and concatenate
+        frames = []
+        for pt, cfg in PRODUCT_CONFIGS.items():
+            sub = _load_single(cfg["data_file"], cfg["score_cols"],
+                               cfg["extra_score_cols"], cfg["price_per_score_col"],
+                               cfg["input_lag_col"])
+            if len(sub) > 0:
+                if "product_type" not in sub.columns:
+                    sub["product_type"] = cfg["name"] if "name" in cfg else pt.lower().rstrip("s")
+                frames.append(sub)
+        if frames:
+            return pd.concat(frames, ignore_index=True)
+        return pd.DataFrame()
+    cfg = PRODUCT_CONFIGS[product_type]
+    return _load_single(cfg["data_file"], cfg["score_cols"],
+                        cfg["extra_score_cols"], cfg["price_per_score_col"],
+                        cfg["input_lag_col"])
 
 
 @st.cache_data
@@ -517,36 +542,45 @@ if _logo_path.exists():
     st.sidebar.divider()
 
 # --- Product type selector ---
-_product_types = list(PRODUCT_CONFIGS.keys())
+_product_types = list(PRODUCT_CONFIGS.keys()) + ["All Products"]
 product_type = st.sidebar.radio("Product Type", _product_types, index=0,
                                  key="product_type", horizontal=True)
-PCFG = PRODUCT_CONFIGS[product_type]
+_is_blended = product_type == "All Products"
+PCFG = PRODUCT_CONFIGS.get(product_type, PRODUCT_CONFIGS["TVs"])
 st.sidebar.divider()
 
 # Load data for selected product type
 df = load_data(product_type)
-prices_df = load_size_prices(product_type)
-history_df = load_price_history(product_type)
+if _is_blended:
+    # Ensure product_type column exists
+    if "product_type" not in df.columns:
+        df["product_type"] = "tv"  # fallback
+    prices_df = pd.DataFrame()
+    history_df = pd.DataFrame()
+else:
+    prices_df = load_size_prices(product_type)
+    history_df = load_price_history(product_type)
 
 # Post-processing: enrich history, exclude 8K, derive model_year
 _n_woled_excluded = 0
-if PCFG["has_samsung_woled"]:
-    history_df = enrich_history(history_df, main_df=df)
-elif len(history_df) > 0:
-    history_df = _enrich_history_core(history_df)
+if not _is_blended:
+    if PCFG["has_samsung_woled"]:
+        history_df = enrich_history(history_df, main_df=df)
+    elif len(history_df) > 0:
+        history_df = _enrich_history_core(history_df)
 
-if len(history_df) > 0:
-    _m2_map = compute_m2_from_history(history_df)
-    df["price_per_m2"] = df["product_id"].map(
-        lambda pid: _m2_map.get(pid) or _m2_map.get(str(pid))
-    )
+    if len(history_df) > 0:
+        _m2_map = compute_m2_from_history(history_df)
+        df["price_per_m2"] = df["product_id"].map(
+            lambda pid: _m2_map.get(pid) or _m2_map.get(str(pid))
+        )
 
 _n_8k = 0
-if PCFG["has_8k_exclusion"] and "resolution" in df.columns:
+if not _is_blended and PCFG["has_8k_exclusion"] and "resolution" in df.columns:
     _n_8k = (df["resolution"] == "8k").sum()
     df = df[df["resolution"] != "8k"].reset_index(drop=True)
 
-if PCFG["has_model_year"] and "released_at" in df.columns:
+if "released_at" in df.columns:
     df["model_year"] = df["released_at"].dt.year
 
 # --- Monthly report download ---
@@ -611,7 +645,8 @@ price_range = st.sidebar.slider(
     "Price Range ($)", min_value=0, max_value=int(price_max) + 500,
     value=(0, int(price_max) + 500), step=50,
 )
-include_unpriced = st.sidebar.checkbox(f"Include {PCFG['item_label']} without pricing", value=True)
+_unpriced_label = "products" if _is_blended else PCFG["item_label"].lower()
+include_unpriced = st.sidebar.checkbox(f"Include {_unpriced_label} without pricing", value=True)
 
 # --- Model Year checkboxes (if available) ---
 selected_years = []
@@ -638,7 +673,8 @@ else:
     mask = mask & df["price_best"].between(price_range[0], price_range[1])
 
 fdf = df[mask].copy()
-st.sidebar.markdown(f"**Showing {len(fdf)}/{len(df)} {PCFG['item_label']}**")
+_filter_label = "Products" if _is_blended else PCFG["item_label"]
+st.sidebar.markdown(f"**Showing {len(fdf)}/{len(df)} {_filter_label}**")
 
 # Temporal dataframe — all filters EXCEPT year, for year-over-year analysis
 temporal_mask = (
@@ -660,10 +696,14 @@ if caveats:
     st.sidebar.caption(" · ".join(caveats))
 
 # Support deep-linking via ?page=...
-ALL_PAGES = ["Overview", "Technology Explorer", "Price Analyzer", "Temporal Analysis", "Comparison Tool", PCFG["profile_page"]]
-qp_page = st.query_params.get("page", None)
-default_idx = ALL_PAGES.index(qp_page) if qp_page in ALL_PAGES else 0
-page = st.sidebar.radio("View", ALL_PAGES, index=default_idx)
+if _is_blended:
+    ALL_PAGES = ["Cross-Product Analysis"]
+    page = "Cross-Product Analysis"
+else:
+    ALL_PAGES = ["Overview", "Technology Explorer", "Price Analyzer", "Temporal Analysis", "Comparison Tool", PCFG["profile_page"]]
+    qp_page = st.query_params.get("page", None)
+    default_idx = ALL_PAGES.index(qp_page) if qp_page in ALL_PAGES else 0
+    page = st.sidebar.radio("View", ALL_PAGES, index=default_idx)
 
 
 # ============================================================================
@@ -2366,3 +2406,211 @@ elif page == PCFG["profile_page"]:
 
     if pd.notna(tv.get("review_url")):
         st.markdown(f"[View full review]({tv['review_url']})")
+
+
+# ============================================================================
+# PAGE: Cross-Product Analysis (All Products blended view)
+# ============================================================================
+elif page == "Cross-Product Analysis":
+    st.title("Cross-Product Display Technology Analysis")
+    st.caption(f"Combined view: {len(df)} products ({df['product_type'].value_counts().to_dict()}) · "
+               "RTINGS-reviewed TVs and Monitors")
+
+    PRODUCT_TYPE_COLORS = {"tv": "#FFC700", "monitor": "#4B40EB"}
+    PRODUCT_TYPE_LABELS = {"tv": "TVs", "monitor": "Monitors"}
+    df["Product Type"] = df["product_type"].map(PRODUCT_TYPE_LABELS)
+
+    # --- Headline metrics ---
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Total Products", len(df))
+    _n_qd = df["qd_present"].eq("Yes").sum()
+    c2.metric("QD Products", _n_qd)
+    c3.metric("QD Adoption", f"{_n_qd / len(df) * 100:.0f}%")
+    _priced = df[df["price_per_m2"].notna()]
+    c4.metric("With Pricing", len(_priced))
+
+    st.divider()
+
+    # --- Section 1: QD Adoption ---
+    st.subheader("Quantum Dot Adoption")
+    qd1, qd2, qd3 = st.columns(3)
+
+    with qd1:
+        st.markdown("**Overall QD Adoption**")
+        _qd_counts = df["qd_present"].value_counts()
+        _qd_pie = pd.DataFrame({
+            "QD Status": ["QD (QD-LCD + QD-OLED)", "Non-QD"],
+            "Count": [_qd_counts.get("Yes", 0), _qd_counts.get("No", 0)],
+        })
+        fig = px.pie(_qd_pie, names="QD Status", values="Count",
+                     color="QD Status",
+                     color_discrete_map={
+                         "QD (QD-LCD + QD-OLED)": "#FF009F",
+                         "Non-QD": "#A8BDD0",
+                     },
+                     hole=0.4)
+        fig.update_traces(textinfo="percent+value", textfont_size=14, textfont_weight=600)
+        fig.update_layout(height=350, showlegend=True, legend_title_text="",
+                          margin=dict(l=0, r=0, t=10, b=0), **PL)
+        st.plotly_chart(fig, use_container_width=True)
+
+    with qd2:
+        st.markdown("**QD Adoption by Product Type**")
+        _qd_by_type = (df.groupby(["Product Type", "qd_present"], observed=True)
+                        .size().reset_index(name="Count"))
+        fig = px.bar(_qd_by_type, x="Product Type", y="Count", color="qd_present",
+                     color_discrete_map={"Yes": "#FF009F", "No": "#A8BDD0"},
+                     barmode="stack", text="Count",
+                     labels={"qd_present": "QD Present"})
+        fig.update_traces(textposition="inside", textfont_size=13, textfont_weight=600)
+        fig.update_layout(height=350, legend_title_text="QD Present",
+                          margin=dict(l=0, r=0, t=10, b=0), **PL)
+        st.plotly_chart(fig, use_container_width=True)
+
+    with qd3:
+        st.markdown("**QD Adoption by Brand**")
+        _qd_brands = (df[df["qd_present"] == "Yes"]
+                       .groupby("brand").size().reset_index(name="QD Products")
+                       .sort_values("QD Products", ascending=True))
+        _total_brands = df.groupby("brand").size().reset_index(name="Total")
+        _qd_brands = _qd_brands.merge(_total_brands, on="brand")
+        _qd_brands["QD %"] = (_qd_brands["QD Products"] / _qd_brands["Total"] * 100).round(0)
+        fig = px.bar(_qd_brands, y="brand", x="QD Products", orientation="h",
+                     text=_qd_brands.apply(lambda r: f"{int(r['QD Products'])}/{int(r['Total'])} ({int(r['QD %'])}%)", axis=1),
+                     color_discrete_sequence=["#FF009F"])
+        fig.update_traces(textposition="outside", textfont_size=12, textfont_weight=600,
+                          cliponaxis=False)
+        fig.update_layout(height=350, showlegend=False, yaxis_title="",
+                          margin=dict(l=0, r=80, t=10, b=0), **PL)
+        st.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+
+    # --- Section 2: Technology Distribution Comparison ---
+    st.subheader("Technology Distribution: TVs vs Monitors")
+    td1, td2 = st.columns(2)
+
+    with td1:
+        st.markdown("**Technology Mix by Product Type**")
+        _tech_by_type = (df.groupby(["Product Type", "color_architecture"], observed=False)
+                         .size().reset_index(name="Count"))
+        # Compute percentages within each product type
+        _type_totals = _tech_by_type.groupby("Product Type")["Count"].transform("sum")
+        _tech_by_type["Pct"] = (_tech_by_type["Count"] / _type_totals * 100).round(1)
+        fig = px.bar(_tech_by_type, x="Product Type", y="Pct", color="color_architecture",
+                     color_discrete_map=TECH_COLORS,
+                     category_orders={"color_architecture": TECH_ORDER},
+                     barmode="stack", text="Pct",
+                     labels={"Pct": "% of Products", "color_architecture": "Technology"})
+        fig.update_traces(texttemplate="%{text:.0f}%", textposition="inside",
+                          textfont_size=12, textfont_weight=600)
+        fig.update_layout(height=420, legend_title_text="Technology",
+                          yaxis=dict(range=[0, 105], title="% of Products"), **PL)
+        st.plotly_chart(fig, use_container_width=True)
+
+    with td2:
+        st.markdown("**Product Count by Technology**")
+        _tech_counts = (df.groupby(["color_architecture", "Product Type"], observed=False)
+                        .size().reset_index(name="Count"))
+        fig = px.bar(_tech_counts, x="color_architecture", y="Count", color="Product Type",
+                     color_discrete_map={"TVs": "#FFC700", "Monitors": "#4B40EB"},
+                     barmode="group", text="Count",
+                     category_orders={"color_architecture": TECH_ORDER},
+                     labels={"color_architecture": "Technology"})
+        fig.update_traces(textposition="outside", textfont_size=12, textfont_weight=600,
+                          cliponaxis=False)
+        fig.update_layout(height=420, legend_title_text="",
+                          yaxis_title="Products", **PL)
+        st.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+
+    # --- Section 3: $/m² Across Form Factors ---
+    st.subheader("Price per m\u00b2: TVs vs Monitors")
+
+    pm1, pm2 = st.columns(2)
+
+    with pm1:
+        st.markdown("**Avg $/m\u00b2 by Technology & Product Type**")
+        _m2_by = (_priced.groupby(["color_architecture", "Product Type"], observed=False)["price_per_m2"]
+                  .mean().reset_index())
+        _m2_by.columns = ["Technology", "Product Type", "Avg $/m\u00b2"]
+        _m2_by = _m2_by.dropna(subset=["Avg $/m\u00b2"])
+        if len(_m2_by) > 0:
+            fig = px.bar(_m2_by, x="Technology", y="Avg $/m\u00b2", color="Product Type",
+                         color_discrete_map={"TVs": "#FFC700", "Monitors": "#4B40EB"},
+                         barmode="group", text="Avg $/m\u00b2",
+                         category_orders={"Technology": TECH_ORDER})
+            fig.update_traces(texttemplate="$%{text:,.0f}", textposition="outside",
+                              textfont_size=11, textfont_weight=600, cliponaxis=False)
+            fig.update_layout(height=420, legend_title_text="", yaxis_title="Avg $/m\u00b2", **PL)
+            st.plotly_chart(fig, use_container_width=True)
+
+    with pm2:
+        st.markdown("**All Products: Price vs $/m\u00b2**")
+        _scatter = _priced.dropna(subset=["price_best", "price_per_m2"]).copy()
+        if len(_scatter) > 0:
+            fig = px.scatter(_scatter, x="price_best", y="price_per_m2",
+                             color="color_architecture", color_discrete_map=TECH_COLORS,
+                             symbol="Product Type",
+                             symbol_map={"TVs": "circle", "Monitors": "diamond"},
+                             category_orders={"color_architecture": TECH_ORDER},
+                             hover_name="fullname",
+                             hover_data=["brand", "Product Type"],
+                             labels={"price_best": "Price ($)", "price_per_m2": "$/m\u00b2"})
+            fig.update_layout(height=420, legend_title_text="",
+                              xaxis=dict(range=[0, _scatter["price_best"].max() * 1.1]),
+                              yaxis=dict(range=[0, _scatter["price_per_m2"].max() * 1.1]),
+                              **PL)
+            fig.update_traces(marker=dict(size=10))
+            st.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+
+    # --- Section 4: Brand Strategy ---
+    st.subheader("Brand Technology Strategy")
+    st.caption("Which brands use which technologies across TVs and Monitors")
+
+    _brand_tech = (df.groupby(["brand", "color_architecture", "Product Type"], observed=True)
+                   .size().reset_index(name="Count"))
+    _brand_pivot = _brand_tech.pivot_table(index="brand", columns=["color_architecture", "Product Type"],
+                                            values="Count", fill_value=0, observed=True)
+    # Flatten column names
+    _brand_pivot.columns = [f"{tech}\n({pt})" for tech, pt in _brand_pivot.columns]
+    # Only show brands with > 1 product
+    _brand_pivot = _brand_pivot[_brand_pivot.sum(axis=1) > 1]
+    _brand_pivot = _brand_pivot.loc[:, (_brand_pivot > 0).any()]
+
+    if len(_brand_pivot) > 0:
+        fig = px.imshow(_brand_pivot, text_auto=True, color_continuous_scale="Viridis",
+                        aspect="auto")
+        fig.update_layout(height=max(350, len(_brand_pivot) * 30 + 100),
+                          xaxis_title="", yaxis_title="",
+                          coloraxis_showscale=False, **PL)
+        st.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+
+    # --- Section 5: FWHM Cross-Product ---
+    st.subheader("SPD Fingerprints Across Form Factors")
+    st.caption("Same panel technology should produce similar FWHM signatures regardless of product type")
+
+    _fwhm = df.dropna(subset=["green_fwhm_nm", "red_fwhm_nm"]).copy()
+    if len(_fwhm) > 0:
+        fig = px.scatter(_fwhm, x="green_fwhm_nm", y="red_fwhm_nm",
+                         color="color_architecture", color_discrete_map=TECH_COLORS,
+                         symbol="Product Type",
+                         symbol_map={"TVs": "circle", "Monitors": "diamond"},
+                         category_orders={"color_architecture": TECH_ORDER},
+                         hover_name="fullname",
+                         labels={"green_fwhm_nm": "Green FWHM (nm)",
+                                 "red_fwhm_nm": "Red FWHM (nm)"})
+        fig.update_layout(height=500, legend_title_text="",
+                          xaxis=dict(range=[0, max(150, _fwhm["green_fwhm_nm"].max() * 1.1)]),
+                          yaxis=dict(range=[0, max(60, _fwhm["red_fwhm_nm"].max() * 1.1)]),
+                          **PL)
+        fig.update_traces(marker=dict(size=10))
+        st.plotly_chart(fig, use_container_width=True)
+
+        st.caption("Circles = TVs, Diamonds = Monitors. Clusters confirm the same underlying "
+                   "panel technology is used across form factors.")
