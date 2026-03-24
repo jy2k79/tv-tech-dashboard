@@ -123,6 +123,15 @@ def calibrate_chart(img_array):
         scale_x = w / REF_WIDTH
         grid_x = np.array([int(x * scale_x) for x in REF_VGRID_X])
 
+    # Validate gridline spacing — should be roughly uniform.
+    # If std/mean > 0.15, the detection likely grabbed wrong peaks; fall back.
+    if len(grid_x) == 9:
+        diffs = np.diff(grid_x)
+        spacing_cv = np.std(diffs) / np.mean(diffs) if np.mean(diffs) > 0 else 1.0
+        if spacing_cv > 0.15:
+            scale_x = w / REF_WIDTH
+            grid_x = np.array([int(x * scale_x) for x in REF_VGRID_X])
+
     # Linear mapping: wavelength -> pixel
     # grid_x positions correspond to 350, 400, 450, ..., 750
     wl_arr = np.array(REF_VGRID_WL[:len(grid_x)])
