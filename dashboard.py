@@ -343,6 +343,18 @@ if caveats:
     st.sidebar.caption(" \u00b7 ".join(caveats))
 
 # Support deep-linking via ?page=...
+# Icons aligned with SKU Tracker where pages overlap (Overview, Pricing, Temporal)
+_PAGE_ICONS = {
+    "Overview": "\U0001f4ca",            # bar chart (matches SKU Tracker Home)
+    "Technology Explorer": "\U0001f52c",  # microscope
+    "Price Analyzer": "\U0001f4b0",       # money bag (matches SKU Tracker Pricing)
+    "Temporal Analysis": "\U0001f4c5",    # calendar (matches SKU Tracker Seasonality)
+    "Comparison Tool": "\u2696\ufe0f",    # balance scale
+    "TV Profiles": "\U0001f4fa",          # television
+    "Monitor Profiles": "\U0001f5a5\ufe0f",  # desktop computer
+    "Cross-Product Analysis": "\U0001f4c8",  # chart increasing
+}
+
 if _is_blended:
     ALL_PAGES = ["Cross-Product Analysis"]
     page = "Cross-Product Analysis"
@@ -350,11 +362,17 @@ else:
     ALL_PAGES = ["Overview", "Technology Explorer", "Price Analyzer", "Temporal Analysis", "Comparison Tool", PCFG["profile_page"]]
     qp_page = st.query_params.get("page", None)
     default_idx = ALL_PAGES.index(qp_page) if qp_page in ALL_PAGES else 0
-    page = st.sidebar.radio("View", ALL_PAGES, index=default_idx)
+    page = st.sidebar.radio(
+        "View", ALL_PAGES, index=default_idx,
+        format_func=lambda p: f"{_PAGE_ICONS.get(p, '')}  {p}",
+    )
 
 # --- Version info (bottom of sidebar) ---
-_VERSION = "2.1.3"
+_VERSION = "2.1.4"
 _CHANGELOG_TEXT = """\
+**v2.1.4** \u2014 2026-03-25
+- Page navigation icons aligned with SKU Tracker (Overview, Pricing, Temporal, etc.)
+
 **v2.1.3** \u2014 2026-03-25
 - Fix garbled expander icons: CSS font override was too broad ([class*="st-"] \u2192 [class*="css"]), overriding Material Symbols icon font
 
