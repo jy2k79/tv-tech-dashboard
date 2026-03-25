@@ -70,7 +70,7 @@ if not check_password():
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-html, body, [class*="st-"] {
+html, body, [class*="css"] {
     font-family: 'Inter', sans-serif;
 }
 h1 { font-weight: 800 !important; font-size: 2.2rem !important; }
@@ -353,10 +353,10 @@ else:
     page = st.sidebar.radio("View", ALL_PAGES, index=default_idx)
 
 # --- Version info (bottom of sidebar) ---
-_VERSION = "2.1.2"
+_VERSION = "2.1.3"
 _CHANGELOG_TEXT = """\
-**v2.1.2** \u2014 2026-03-25
-- Fix garbled "What\u2019s new?" expander: scope ligature fix to sidebar toggle only
+**v2.1.3** \u2014 2026-03-25
+- Fix garbled expander icons: CSS font override was too broad ([class*="st-"] \u2192 [class*="css"]), overriding Material Symbols icon font
 
 **v2.1.1** \u2014 2026-03-25
 - Default to TVs view (shows all 6 page tabs) instead of All Products
