@@ -108,28 +108,22 @@ components.html("""
 (function() {
     var doc = window.parent.document;
 
-    var ligatures = {
-        'keyboard_double_arrow_right': '\u25B6',
-        'keyboard_double_arrow_left': '\u25C0',
-        'arrow_right': '\u25B8',
-        'arrow_drop_down': '\u25BE',
-        'arrow_forward_ios': '\u25B8',
-        'expand_more': '\u25BE',
-        'expand_less': '\u25B4',
-        'chevron_right': '\u25B8'
-    };
-
+    // Only fix the sidebar collapse/expand toggle button, not expanders
+    // or other Streamlit components that use Material Symbols correctly.
     function fix() {
-        var walker = doc.createTreeWalker(
-            doc.body, NodeFilter.SHOW_TEXT, null, false
-        );
-        var node;
-        while (node = walker.nextNode()) {
-            var t = node.textContent.trim();
-            if (ligatures[t] && !node.parentElement.getAttribute('data-fixed')) {
-                node.parentElement.setAttribute('data-fixed', '1');
-                // Replace only this text node, not the parent's full content
-                node.nodeValue = ligatures[t];
+        var btn = doc.querySelector('[data-testid="collapsedControl"]');
+        if (!btn || btn.getAttribute('data-fixed')) return;
+        var span = btn.querySelector('span');
+        if (span) {
+            var t = span.textContent.trim();
+            if (t === 'keyboard_double_arrow_right' || t === 'keyboard_double_arrow_left') {
+                btn.setAttribute('data-fixed', '1');
+                span.style.fontSize = '0';
+                var arrow = doc.createElement('span');
+                arrow.textContent = t.indexOf('right') >= 0 ? '\u25B6' : '\u25C0';
+                arrow.style.fontSize = '12px';
+                arrow.style.color = '#999';
+                span.parentElement.appendChild(arrow);
             }
         }
     }
@@ -359,10 +353,12 @@ else:
     page = st.sidebar.radio("View", ALL_PAGES, index=default_idx)
 
 # --- Version info (bottom of sidebar) ---
-_VERSION = "2.1.1"
+_VERSION = "2.1.2"
 _CHANGELOG_TEXT = """\
+**v2.1.2** \u2014 2026-03-25
+- Fix garbled "What\u2019s new?" expander: scope ligature fix to sidebar toggle only
+
 **v2.1.1** \u2014 2026-03-25
-- Fix garbled "What\u2019s new?" expander (ligature JS was clobbering sibling text)
 - Default to TVs view (shows all 6 page tabs) instead of All Products
 - Fix version text invisible on dark theme (color #555 \u2192 #999)
 
