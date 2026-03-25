@@ -31,6 +31,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from dotenv import load_dotenv
+from silo_config import is_samsung_woled_sku
 
 ROOT = Path(__file__).parent
 load_dotenv(ROOT / ".env")
@@ -44,9 +45,6 @@ REPORT_TAG = TODAY.strftime("%Y_%m")
 IN_CI = bool(os.environ.get("GITHUB_ACTIONS"))
 
 TECH_ORDER = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "WOLED", "QD-OLED"]
-
-# Samsung OLED sizes that use WOLED panels (same as pricing_pipeline.py)
-_SAMSUNG_WOLED_SIZES = {"S90": {42, 48, 83}, "S95": {83}, "S85": {77, 83}}
 
 SCREEN_AREA_M2 = {
     32: 0.22, 40: 0.34, 42: 0.38, 43: 0.40, 48: 0.50,
@@ -243,16 +241,10 @@ def _filter_woled_from_history(hist, db):
 
     def is_woled(row):
         pid = str(row["product_id"])
-        if tech_map.get(pid) != "QD-OLED":
-            return False
         name = name_map.get(pid, "")
-        if "Samsung" not in name:
-            return False
+        tech = tech_map.get(pid, "")
         size = int(row["size_inches"]) if pd.notna(row.get("size_inches")) else 0
-        for model, sizes in _SAMSUNG_WOLED_SIZES.items():
-            if model in name and size in sizes:
-                return True
-        return False
+        return is_samsung_woled_sku(name, tech, size)
 
     return hist[~hist.apply(is_woled, axis=1)]
 

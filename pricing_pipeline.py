@@ -28,6 +28,7 @@ from pathlib import Path
 from datetime import datetime, timedelta
 from urllib.parse import urlparse, parse_qs, unquote
 from dotenv import load_dotenv
+from silo_config import SAMSUNG_WOLED_SIZES, is_samsung_woled_sku
 
 load_dotenv(Path(__file__).parent / ".env")
 
@@ -66,28 +67,6 @@ SCREEN_AREA_M2 = {
     70: 1.06, 75: 1.21, 77: 1.28, 80: 1.38, 83: 1.49,
     85: 1.56, 86: 1.59, 98: 2.07, 100: 2.15,
 }
-
-# Samsung OLED sizes that use LG WOLED panels instead of QD-OLED.
-# Samsung Display only makes QD-OLED at 55", 65", 77". All other sizes are WOLED.
-# Updated for 2024-2026 lineup (S90D/F/H, S95D/F/H, S85D/F/H, S99H, S82H, S83H).
-#
-# Format: model_substring → set of sizes that are WOLED.
-# If a model is all-WOLED, use ALL_WOLED sentinel.
-_ALL_WOLED = {42, 48, 55, 65, 77, 83, 85, 98, 100}  # every plausible TV size
-SAMSUNG_WOLED_SIZES = {
-    # 2024-2025 models
-    "S90": {42, 48, 83},          # S90D/F/H: 42/48/83 WOLED, 55/65/77 QD-OLED
-    "S95": {48, 83},              # S95F: 83 WOLED. S95H: 48+83 WOLED. 55/65/77 QD-OLED.
-    "S99": {83},                  # S99H: 83 WOLED (no 83" QD-OLED panel exists). 55/65/77 QD-OLED.
-    # All-WOLED models (no QD-OLED at any size)
-    "S85H": _ALL_WOLED,           # S85H: all WOLED (regression from S85F)
-    "S85D": _ALL_WOLED,           # S85D: all WOLED
-    "S82": _ALL_WOLED,            # S82H: budget OLED, all WOLED
-    "S83": _ALL_WOLED,            # S83H: budget OLED, all WOLED
-    # S85F is special: 55/65 are QD-OLED, 77/83 are WOLED
-    "S85F": {77, 83},
-}
-
 
 def build_size_dedup_map(tv_db: pd.DataFrame, prices_df: pd.DataFrame) -> dict:
     """Detect products that share overlapping SKU sizes with a parent family.
@@ -139,16 +118,6 @@ def build_size_dedup_map(tv_db: pd.DataFrame, prices_df: pd.DataFrame) -> dict:
 
     return exclude
 
-
-def is_samsung_woled_sku(fullname: str, color_arch: str, size: int | None) -> bool:
-    """Return True if this SKU is a Samsung OLED size that uses a WOLED panel
-    despite the product being classified as QD-OLED."""
-    if color_arch != "QD-OLED" or not size or "Samsung" not in fullname:
-        return False
-    for model_substr, woled_sizes in SAMSUNG_WOLED_SIZES.items():
-        if model_substr in fullname and size in woled_sizes:
-            return True
-    return False
 
 
 # ============================================================================

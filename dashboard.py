@@ -18,6 +18,7 @@ import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
 from pathlib import Path
+from silo_config import is_samsung_woled_sku
 
 # ---------------------------------------------------------------------------
 # Page config
@@ -339,32 +340,13 @@ _MONITOR_SCREEN_AREA[57] = _area(57, 32, 9)
 _SCREEN_AREA_M2_GLOBAL = _TV_SCREEN_AREA  # default, updated below
 
 
-# Samsung OLED sizes that use WOLED panels despite QD-OLED classification.
-# Samsung Display only makes QD-OLED at 55", 65", 77". All other sizes are WOLED.
-# Covers 2024-2026 lineup. Must match pricing_pipeline.py SAMSUNG_WOLED_SIZES.
-_ALL_WOLED = {42, 48, 55, 65, 77, 83, 85, 98, 100}
-_SAMSUNG_WOLED_SIZES = {
-    "S90": {42, 48, 83}, "S95": {48, 83}, "S99": {83},
-    "S85H": _ALL_WOLED, "S85D": _ALL_WOLED,
-    "S82": _ALL_WOLED, "S83": _ALL_WOLED,
-    "S85F": {77, 83},
-}
-
-
 def _is_samsung_woled_row(row, name_map: dict, tech_map: dict) -> bool:
     """Check if a price_history row is a Samsung WOLED-panel SKU."""
     pid = str(row.get("product_id", ""))
     tech = tech_map.get(pid, "")
-    if tech != "QD-OLED":
-        return False
     name = name_map.get(pid, "")
-    if "Samsung" not in name:
-        return False
     size = int(row["size_inches"]) if pd.notna(row.get("size_inches")) else 0
-    for model, sizes in _SAMSUNG_WOLED_SIZES.items():
-        if model in name and size in sizes:
-            return True
-    return False
+    return is_samsung_woled_sku(name, tech, size)
 
 
 @st.cache_data
@@ -2153,7 +2135,7 @@ elif page == "Temporal Analysis":
         st.subheader("Quantum Dot Material by Model Year")
         st.caption(
             "CdSe vs InP (Cd-Free) classification based on red peak FWHM. "
-            "CdSe QDs have narrow red emission (<30nm), InP QDs are wider (>30nm)."
+            "CdSe QDs have narrow red emission (<28nm), InP QDs are wider (>34nm)."
         )
         _qd_df = tdf.dropna(subset=["model_year"]).copy()
         _qd_df = _qd_df[_qd_df["qd_material"].isin(["CdSe", "InP"])]
