@@ -298,6 +298,20 @@ def detect_changes(old_db, new_db):
                 "new_value": str(new_tech),
             })
 
+        # QD material reclassification (CdSe ↔ InP ↔ Unknown)
+        old_mat = old_row.get("qd_material", "")
+        new_mat = new_row.get("qd_material", "")
+        if old_mat != new_mat and old_mat and new_mat:
+            changes.append({
+                "date": TODAY,
+                "product_id": pid,
+                "fullname": new_row.get("fullname", ""),
+                "change_type": "material_change",
+                "field": "qd_material",
+                "old_value": str(old_mat),
+                "new_value": str(new_mat),
+            })
+
         # Bench version change
         old_bench = str(old_row.get("test_bench_version", ""))
         new_bench = str(new_row.get("test_bench_version", ""))
