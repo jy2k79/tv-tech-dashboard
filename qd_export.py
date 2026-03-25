@@ -35,6 +35,20 @@ OUTPUT_PATH = DATA_DIR / "rtings_qd_verified.csv"
 QD_RECIPIENT = "qdskutracker@gmail.com"
 EMAIL_SUBJECT = "RTINGS SPD Verified QD Displays"
 
+# Export schema version — bump when columns change.
+# SKU Tracker's process_rtings.py validates against this.
+SCHEMA_VERSION = "1.0"
+
+# Required columns in the export CSV (contract with QD SKU Tracker)
+EXPORT_COLUMNS = [
+    "brand", "model", "product_category", "sizes_available",
+    "panel_type", "panel_sub_type", "backlight_type", "resolution",
+    "native_refresh_rate", "dimming_zone_count",
+    "hdr_peak_10pct_nits", "sdr_dci_p3_coverage_pct",
+    "released_at", "review_url", "spd_image",
+    "qd_confirmed", "qd_material", "is_pseudo_qd", "spd_classification",
+]
+
 # QD color architectures to include
 QD_ARCHITECTURES = {"QD-LCD", "QD-OLED", "Pseudo QD"}
 
@@ -167,6 +181,14 @@ def build_qd_export() -> pd.DataFrame:
     # Sort by product category then brand then model
     export = export.sort_values(
         ["product_category", "brand", "model"]).reset_index(drop=True)
+
+    # Validate export matches schema contract
+    missing = set(EXPORT_COLUMNS) - set(export.columns)
+    if missing:
+        print(f"WARNING: Export missing contract columns: {missing}")
+    extra = set(export.columns) - set(EXPORT_COLUMNS)
+    if extra:
+        print(f"  Note: Extra columns in export (OK): {extra}")
 
     return export
 

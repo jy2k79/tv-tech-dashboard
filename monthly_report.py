@@ -592,7 +592,7 @@ def build_pdf(sections, cover_chart, stats, output_path):
     TEXT_DIM = (150, 150, 170)
     ACCENT_BLUE = (144, 191, 255)
 
-    logo_white = ROOT / "logos" / "Nanosys Logo White Text 4X.png"
+    logo_white = ROOT / "assets" / "logo_white.png"
 
     class ReportPDF(FPDF):
         _in_cover = False

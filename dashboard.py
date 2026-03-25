@@ -42,7 +42,7 @@ def check_password():
     """Return True if the user has entered the correct password."""
     if "authenticated" in st.session_state and st.session_state.authenticated:
         return True
-    _login_logo = Path(__file__).parent / "logos" / "Nanosys Logo White Text 4X.png"
+    _login_logo = Path(__file__).parent / "assets" / "logo_white.png"
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         if _login_logo.exists():
@@ -182,7 +182,7 @@ components.html("""
 # ---------------------------------------------------------------------------
 # Sidebar — Branding & Global Filters
 # ---------------------------------------------------------------------------
-_logo_path = Path(__file__).parent / "logos" / "Nanosys Logo White Text 4X.png"
+_logo_path = Path(__file__).parent / "assets" / "logo_white.png"
 if _logo_path.exists():
     st.sidebar.image(str(_logo_path), use_container_width=True)
     st.sidebar.markdown("<p style='text-align:center;color:#999;font-size:0.85em;margin-top:-8px'>Display Technology Intelligence</p>",
@@ -367,9 +367,9 @@ else:
     page = st.sidebar.radio("View", ALL_PAGES, index=default_idx)
 
 # --- Version info (bottom of sidebar) ---
-_VERSION = "2.0"
+_VERSION = "2.0.0"
 _CHANGELOG_TEXT = """\
-**2.0 \u2014 2026-03-24**
+**v2.0.0 \u2014 2026-03-24**
 - Monitor support (70 monitors, v2.1.2+)
 - "All Products" cross-product analysis view
 - Master RTINGS Score by technology
@@ -379,7 +379,7 @@ _CHANGELOG_TEXT = """\
 - QD SKU Tracker weekly email export
 - SPD calibration hardening
 
-**1.0 \u2014 2026-02-15**
+**v1.0.0 \u2014 2026-02-15**
 - Initial TV dashboard with 85+ TVs
 - SPD-based technology classification
 - Keepa + Best Buy pricing pipeline
@@ -390,8 +390,8 @@ st.sidebar.markdown(
     f"<p style='text-align:center;color:#555;font-size:0.8em;margin-bottom:2px'>Version {_VERSION}</p>",
     unsafe_allow_html=True,
 )
-if st.sidebar.button("What's new?", use_container_width=True):
-    st.sidebar.markdown(_CHANGELOG_TEXT)
+with st.sidebar.expander("What's new?"):
+    st.markdown(_CHANGELOG_TEXT)
 
 
 # ============================================================================
