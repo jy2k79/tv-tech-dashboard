@@ -62,10 +62,10 @@ PRODUCT_CONFIGS = {
         "advantage_metrics": [
             ("hdr_peak_10pct_nits", "HDR Peak Brightness\n(10%, nits)"),
             ("hdr_bt2020_coverage_itp_pct", "HDR BT.2020 Coverage\n(ITP %)"),
-            ("sdr_dci_p3_coverage_pct", "SDR DCI-P3 Coverage\n(%)"),
             ("total_response_time_ms", "Total Response Time\n(ms)"),
-            ("color_accuracy", "Color Accuracy"),
             ("brightness_score", "Brightness Score"),
+            ("input_lag_native_ms", "Native Input Lag\n(ms)"),
+            ("console_gaming", "Console Gaming Score"),
         ],
     },
 }

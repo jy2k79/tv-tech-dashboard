@@ -370,7 +370,7 @@ else:
 _VERSION = "2.3.0"
 _CHANGELOG_TEXT = """\
 **v2.3.0** \u2014 2026-03-25
-- Monitor-specific QD Advantage metrics: HDR Peak (10%), BT.2020, DCI-P3, Response Time, Color Accuracy, Brightness
+- Monitor-specific QD Advantage metrics: HDR Peak (10%), BT.2020, Response Time, Brightness, Input Lag, Console Gaming
 - Per-product-type advantage_metrics config in PRODUCT_CONFIGS
 
 **v2.2.1** \u2014 2026-03-25
