@@ -367,8 +367,11 @@ else:
     )
 
 # --- Version info (bottom of sidebar) ---
-_VERSION = "2.2.0"
+_VERSION = "2.2.1"
 _CHANGELOG_TEXT = """\
+**v2.2.1** \u2014 2026-03-25
+- Fix Tech Explorer crash on Monitors: skip metrics missing from monitor data (contrast_ratio_score, color_score, black_level_score)
+
 **v2.2.0** \u2014 2026-03-25
 - Page navigation icons via :material/ syntax in sidebar radio
 

@@ -164,15 +164,17 @@ def render(fdf, pcfg):
         st.caption("How QD technologies compare on key picture quality metrics")
 
         advantage_metrics = [
-            ("hdr_peak_10pct_nits", "HDR Peak Brightness\n(10%, nits)"),
-            ("hdr_bt2020_coverage_itp_pct", "HDR BT.2020 Coverage\n(ITP %)"),
-            ("sdr_dci_p3_coverage_pct", "SDR DCI-P3 Coverage\n(%)"),
-            ("contrast_ratio_score", "Contrast Ratio Score"),
-            ("color_score", "Color Score"),
-            ("brightness_score", "Brightness Score"),
+            (col, label) for col, label in [
+                ("hdr_peak_10pct_nits", "HDR Peak Brightness\n(10%, nits)"),
+                ("hdr_bt2020_coverage_itp_pct", "HDR BT.2020 Coverage\n(ITP %)"),
+                ("sdr_dci_p3_coverage_pct", "SDR DCI-P3 Coverage\n(%)"),
+                ("contrast_ratio_score", "Contrast Ratio Score"),
+                ("color_score", "Color Score"),
+                ("brightness_score", "Brightness Score"),
+            ] if col in fdf.columns
         ]
 
-        for row_start in range(0, 6, 3):
+        for row_start in range(0, len(advantage_metrics), 3):
             cols = st.columns(3)
             for j, (metric_col, metric_label) in enumerate(advantage_metrics[row_start:row_start + 3]):
                 with cols[j]:
@@ -212,10 +214,14 @@ def render(fdf, pcfg):
         lcd_data = fdf[fdf["color_architecture"].isin(lcd_techs)].copy()
 
         resp_metrics = [
-            ("total_response_time_ms", "Total Response Time (ms)"),
-            ("first_response_time_ms", "First Response Time (ms)"),
+            (col, label) for col, label in [
+                ("total_response_time_ms", "Total Response Time (ms)"),
+                ("first_response_time_ms", "First Response Time (ms)"),
+            ] if col in fdf.columns
         ]
-        rcols = st.columns(2)
+        if not resp_metrics:
+            st.info("Response time data not available for this product type.")
+        rcols = st.columns(max(len(resp_metrics), 1))
         for k, (resp_col, resp_label) in enumerate(resp_metrics):
             with rcols[k]:
                 valid_r = lcd_data[lcd_data[resp_col].notna()]
@@ -247,22 +253,27 @@ def render(fdf, pcfg):
         st.markdown("**Technology Profile Radar**")
         st.caption("Metrics normalized 0\u20131 across technologies (higher = better on all axes)")
         radar_metrics = [
-            ("brightness_score", "Brightness"),
-            ("contrast_ratio_score", "Contrast"),
-            ("color_score", "Color"),
-            ("black_level_score", "Black Level"),
-            ("hdr_bt2020_coverage_itp_pct", "HDR Gamut"),
+            (col, label) for col, label in [
+                ("brightness_score", "Brightness"),
+                ("contrast_ratio_score", "Contrast"),
+                ("color_score", "Color"),
+                ("color_accuracy", "Color Accuracy"),
+                ("black_level_score", "Black Level"),
+                ("hdr_bt2020_coverage_itp_pct", "HDR Gamut"),
+            ] if col in fdf.columns
         ]
         tech_means = fdf.groupby("color_architecture").agg(
             {m[0]: "mean" for m in radar_metrics}
         )
         # Response speed: invert so higher = faster (better)
-        resp_mean = fdf.groupby("color_architecture")["total_response_time_ms"].mean()
-        max_resp = resp_mean.max()
-        tech_means["response_speed"] = max_resp - resp_mean  # linear inversion (higher = faster)
+        _resp_col = "total_response_time_ms" if "total_response_time_ms" in fdf.columns else None
+        if _resp_col:
+            resp_mean = fdf.groupby("color_architecture")[_resp_col].mean()
+            max_resp = resp_mean.max()
+            tech_means["response_speed"] = max_resp - resp_mean
 
-        radar_labels = [m[1] for m in radar_metrics] + ["Response Speed"]
-        radar_cols = [m[0] for m in radar_metrics] + ["response_speed"]
+        radar_labels = [m[1] for m in radar_metrics] + (["Response Speed"] if _resp_col else [])
+        radar_cols = [m[0] for m in radar_metrics] + (["response_speed"] if _resp_col else [])
 
         # Min-max normalize
         for col in radar_cols:
