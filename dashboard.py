@@ -367,8 +367,12 @@ else:
     )
 
 # --- Version info (bottom of sidebar) ---
-_VERSION = "2.2.1"
+_VERSION = "2.3.0"
 _CHANGELOG_TEXT = """\
+**v2.3.0** \u2014 2026-03-25
+- Monitor-specific QD Advantage metrics: HDR Peak (2%), BT.2020, DCI-P3, Response Time, Color Accuracy, Brightness
+- Per-product-type advantage_metrics config in PRODUCT_CONFIGS
+
 **v2.2.1** \u2014 2026-03-25
 - Fix Tech Explorer crash on Monitors: skip metrics missing from monitor data (contrast_ratio_score, color_score, black_level_score)
 

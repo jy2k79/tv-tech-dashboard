@@ -164,14 +164,8 @@ def render(fdf, pcfg):
         st.caption("How QD technologies compare on key picture quality metrics")
 
         advantage_metrics = [
-            (col, label) for col, label in [
-                ("hdr_peak_10pct_nits", "HDR Peak Brightness\n(10%, nits)"),
-                ("hdr_bt2020_coverage_itp_pct", "HDR BT.2020 Coverage\n(ITP %)"),
-                ("sdr_dci_p3_coverage_pct", "SDR DCI-P3 Coverage\n(%)"),
-                ("contrast_ratio_score", "Contrast Ratio Score"),
-                ("color_score", "Color Score"),
-                ("brightness_score", "Brightness Score"),
-            ] if col in fdf.columns
+            (col, label) for col, label in pcfg.get("advantage_metrics", [])
+            if col in fdf.columns
         ]
 
         for row_start in range(0, len(advantage_metrics), 3):
