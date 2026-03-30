@@ -65,14 +65,14 @@ product_id,fullname,brand,url_part,panel_type,spd_classification,spd_confidence,
 41473,Sharp AQUOS XLED FV1 ,Sharp,sharp-aquos-xled-fv1,LCD,QD-LCD,high,,,NO_GT,448.2,14.8,533.5,25.7,638.6,23.8,3,B:448nm/15nm; G:533nm/26nm; R:639nm/24nm,spd_images/sharp-aquos-xled-fv1_spd.jpg
 39009,Sony A95L OLED,Sony,sony-a95l-oled,OLED,QD-OLED,high,,,NO_GT,452.2,21.5,532.3,28.1,639.5,37.2,3,B:452nm/21nm; G:532nm/28nm; R:639nm/37nm; panel_sub_type=QD-OLED,spd_images/sony-a95l-oled_spd.jpg
 92245,Sony BRAVIA 2 II,Sony,sony-bravia-2-ii,LCD,WLED,high,,,NO_GT,448.1,15.8,528.7,75.8,604.8,85.5,3,B:448nm/16nm; G:529nm/76nm; R:605nm/85nm; R:fwhm_via_hwhm_right,spd_images/sony-bravia-2-ii_spd.jpg
-53323,Sony BRAVIA 3,Sony,sony-bravia-3,LCD,KSF,high,,,NO_GT,449.2,17.5,536.1,50.0,634.9,9.2,5,B:449nm/18nm; G:536nm/50nm; R:635nm/9nm,spd_images/sony-bravia-3_spd.jpg
+53323,Sony BRAVIA 3,Sony,sony-bravia-3,LCD,KSF,high,,,NO_GT,448.4,17.3,534.3,49.4,632.0,9.0,5,B:448nm/17nm; G:534nm/49nm; R:632nm/9nm,spd_images/sony-bravia-3_spd.jpg
 96722,Sony BRAVIA 5,Sony,sony-bravia-5,LCD,KSF,medium,,,NO_GT,444.3,17.1,536.0,33.3,632.0,9.0,5,B:444nm/17nm; G:536nm/33nm; R:632nm/9nm; narrow red suggests KSF,spd_images/sony-bravia-5_spd.jpg
 117450,Sony BRAVIA 5 98,Sony,sony-bravia-5-98,LCD,KSF,medium,,,NO_GT,444.2,15.2,534.0,32.2,632.0,8.9,5,B:444nm/15nm; G:534nm/32nm; R:632nm/9nm; narrow red suggests KSF,spd_images/sony-bravia-5-98_spd.jpg
 53322,Sony BRAVIA 7,Sony,sony-bravia-7,LCD,QD-LCD,high,,,NO_GT,443.9,15.7,536.3,37.0,632.4,36.5,3,B:444nm/16nm; G:536nm/37nm; R:632nm/37nm,spd_images/sony-bravia-7_spd.jpg
 92248,Sony BRAVIA 8 II OLED,Sony,sony-bravia-8-ii-oled,OLED,QD-OLED,high,,,NO_GT,456.1,20.6,532.3,26.6,638.0,36.7,3,B:456nm/21nm; G:532nm/27nm; R:638nm/37nm; panel_sub_type=QD-OLED,spd_images/sony-bravia-8-ii-oled_spd.jpg
 58889,Sony BRAVIA 8 OLED,Sony,sony-bravia-8-oled,OLED,WOLED,high,,,NO_GT,455.9,22.3,554.3,103.3,,,2,B:456nm/22nm; G:554nm/103nm; No red; panel_sub_type=WOLED,spd_images/sony-bravia-8-oled_spd.jpg
 53321,Sony BRAVIA 9,Sony,sony-bravia-9,LCD,QD-LCD,high,,,NO_GT,446.1,15.7,537.8,37.5,633.1,35.7,3,B:446nm/16nm; G:538nm/37nm; R:633nm/36nm,spd_images/sony-bravia-9_spd.jpg
-39008,Sony X90L/X90CL,Sony,sony-x90l-x90cl,LCD,KSF,high,,,NO_GT,446.9,17.3,529.8,35.9,635.2,9.0,5,B:447nm/17nm; G:530nm/36nm; R:635nm/9nm,spd_images/sony-x90l-x90cl_spd.jpg
+39008,Sony X90L/X90CL,Sony,sony-x90l-x90cl,LCD,KSF,high,,,NO_GT,446.1,17.1,527.9,35.4,632.0,8.9,5,B:446nm/17nm; G:528nm/35nm; R:632nm/9nm,spd_images/sony-x90l-x90cl_spd.jpg
 117449,TCL 98QM8K,TCL,tcl-98qm8k,LCD,QD-LCD,high,,,NO_GT,447.7,15.3,536.0,22.4,626.3,27.2,3,B:448nm/15nm; G:536nm/22nm; R:626nm/27nm,spd_images/tcl-98qm8k_spd.jpg
 70375,TCL NXTVISION,TCL,tcl-nxtvision,LCD,KSF,high,,,NO_GT,448.1,16.3,532.4,47.5,632.0,9.1,5,B:448nm/16nm; G:532nm/47nm; R:632nm/9nm,spd_images/tcl-nxtvision_spd.jpg
 60903,TCL Q651G,TCL,tcl-q651g,LCD,KSF,high,,,NO_GT,448.3,16.0,532.6,47.7,632.0,9.0,5,B:448nm/16nm; G:533nm/48nm; R:632nm/9nm,spd_images/tcl-q651g_spd.jpg
@@ -85,3 +85,4 @@ product_id,fullname,brand,url_part,panel_type,spd_classification,spd_confidence,
 101781,TCL QM8K,TCL,tcl-qm8k,LCD,QD-LCD,high,,,NO_GT,448.0,15.3,536.2,22.7,626.6,27.6,3,B:448nm/15nm; G:536nm/23nm; R:627nm/28nm,spd_images/tcl-qm8k_spd.jpg
 112536,TCL QM9K,TCL,tcl-qm9k,LCD,QD-LCD,high,,,NO_GT,446.3,14.9,536.0,22.8,626.0,27.8,3,B:446nm/15nm; G:536nm/23nm; R:626nm/28nm,spd_images/tcl-qm9k_spd.jpg
 60900,TCL S551G,TCL,tcl-s551g,LCD,KSF,high,,,NO_GT,448.1,15.6,532.1,47.5,632.0,9.0,5,B:448nm/16nm; G:532nm/47nm; R:632nm/9nm,spd_images/tcl-s551g_spd.jpg
+127258,TCL X11L,TCL,tcl-x11l,LCD,QD-LCD,high,,,NO_GT,448.2,16.5,527.1,21.9,647.4,21.3,3,B:448nm/17nm; G:527nm/22nm; R:647nm/21nm,spd_images/tcl-x11l_spd.jpg
