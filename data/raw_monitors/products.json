@@ -241,7 +241,7 @@
     "published_product_recommendation_count": 2,
     "status_discussion": {
       "url": "/discussions/FXLqgJh5LKKq9XOq/review-updates-asus-rog-strix-oled-xg32ucwmg",
-      "user_comments_count": 98
+      "user_comments_count": 100
     }
   },
   {
@@ -308,10 +308,10 @@
       "early_access": false,
       "first_published_at": "2024-03-13 13:33:51 -0400"
     },
-    "published_product_recommendation_count": 6,
+    "published_product_recommendation_count": 7,
     "status_discussion": {
       "url": "/discussions/bqeQZD4NykzU8tJe/review-updates-dell-alienware-aw2725df",
-      "user_comments_count": 232
+      "user_comments_count": 234
     }
   },
   {
@@ -633,7 +633,7 @@
       "early_access": false,
       "first_published_at": "2025-11-19 15:07:09 -0500"
     },
-    "published_product_recommendation_count": 5,
+    "published_product_recommendation_count": 4,
     "status_discussion": {
       "url": "/discussions/8bScPx3HoM4WAcRH/review-updates-lg-27gx700a-b",
       "user_comments_count": 68
@@ -738,7 +738,7 @@
       "early_access": false,
       "first_published_at": "2026-02-18 09:16:13 -0500"
     },
-    "published_product_recommendation_count": 7,
+    "published_product_recommendation_count": 9,
     "status_discussion": {
       "url": "/discussions/AgXDDoATOaeXwNfi/review-updates-dell-alienware-aw2725dm",
       "user_comments_count": 24
@@ -1058,7 +1058,7 @@
       "early_access": false,
       "first_published_at": "2026-02-02 14:59:50 -0500"
     },
-    "published_product_recommendation_count": 9,
+    "published_product_recommendation_count": 10,
     "status_discussion": {
       "url": "/discussions/ugfp4XpY-zachJCb/review-updates-dell-s2725dc",
       "user_comments_count": 7
@@ -1307,46 +1307,6 @@
     "status_discussion": {
       "url": "/discussions/aMs0z1spvWojSY0x/review-updates-asus-rog-swift-pg32ucdm",
       "user_comments_count": 213
-    }
-  },
-  {
-    "id": "61784",
-    "fullname": "ASUS ROG Strix OLED XG27AQDMG",
-    "full_url_part": "asus-rog-strix-oled-xg27aqdmg",
-    "url_part": "rog-strix-oled-xg27aqdmg",
-    "brand_name": "ASUS",
-    "published": true,
-    "reviewed_sku_id": "11038",
-    "approximate_released_at": "2024-05-30 00:00:00 -0400",
-    "last_updated_at": "2026-03-17 13:18:49 -0400",
-    "review": {
-      "test_bench": {
-        "id": "238",
-        "display_name": "v2.1.2"
-      }
-    },
-    "image": "https://i.rtings.com/assets/products/8DGgxKIu/asus-rog-strix-oled-xg27aqdmg/design-small.jpg?format=auto",
-    "variant_skus": [
-      {
-        "id": "11038",
-        "name": "ROG Strix OLED XG27AQDMG",
-        "variation": "27\""
-      },
-      {
-        "id": "11707",
-        "name": "ROG Strix OLED XG27AQDMGZ",
-        "variation": "27\""
-      }
-    ],
-    "page": {
-      "url": "/monitor/reviews/asus/rog-strix-oled-xg27aqdmg",
-      "early_access": false,
-      "first_published_at": "2024-08-02 09:57:49 -0400"
-    },
-    "published_product_recommendation_count": 3,
-    "status_discussion": {
-      "url": "/discussions/g9euO8hTT4tet7lB/review-updates-asus-rog-strix-oled-xg27aqdmg",
-      "user_comments_count": 365
     }
   },
   {
@@ -1630,41 +1590,6 @@
     }
   },
   {
-    "id": "88589",
-    "fullname": "Dell U2725QE",
-    "full_url_part": "dell-u2725qe",
-    "url_part": "u2725qe",
-    "brand_name": "Dell",
-    "published": true,
-    "reviewed_sku_id": "12349",
-    "approximate_released_at": "2025-02-25 00:00:00 -0500",
-    "last_updated_at": "2026-03-17 13:18:49 -0400",
-    "review": {
-      "test_bench": {
-        "id": "238",
-        "display_name": "v2.1.2"
-      }
-    },
-    "image": "https://i.rtings.com/assets/products/EJnSIT8d/dell-u2725qe/design-small.jpg?format=auto",
-    "variant_skus": [
-      {
-        "id": "12349",
-        "name": "U2725QE",
-        "variation": "27\""
-      }
-    ],
-    "page": {
-      "url": "/monitor/reviews/dell/u2725qe",
-      "early_access": false,
-      "first_published_at": "2025-04-24 13:54:24 -0400"
-    },
-    "published_product_recommendation_count": 10,
-    "status_discussion": {
-      "url": "/discussions/Sq098WqW4ByFJ62y/review-updates-dell-u2725qe",
-      "user_comments_count": 58
-    }
-  },
-  {
     "id": "37853",
     "fullname": "Samsung Odyssey OLED G9/G95SC S49CG95",
     "full_url_part": "samsung-odyssey-oled-g9-g95sc-s49cg95",
@@ -1696,7 +1621,7 @@
     "published_product_recommendation_count": 3,
     "status_discussion": {
       "url": "/discussions/uKs97OdnOa7D7dS4/review-updates-samsung-odyssey-oled-g9-g95sc",
-      "user_comments_count": 112
+      "user_comments_count": 116
     }
   },
   {
@@ -1875,41 +1800,6 @@
     }
   },
   {
-    "id": "81301",
-    "fullname": "ASUS ProArt Display PA27JCV",
-    "full_url_part": "asus-proart-display-pa27jcv",
-    "url_part": "proart-display-pa27jcv",
-    "brand_name": "ASUS",
-    "published": true,
-    "reviewed_sku_id": "12383",
-    "approximate_released_at": "2024-10-28 00:00:00 -0400",
-    "last_updated_at": "2026-03-17 13:18:49 -0400",
-    "review": {
-      "test_bench": {
-        "id": "238",
-        "display_name": "v2.1.2"
-      }
-    },
-    "image": "https://i.rtings.com/assets/products/I1thrune/asus-proart-display-pa27jcv/design-small.jpg?format=auto",
-    "variant_skus": [
-      {
-        "id": "12383",
-        "name": "ProArt Display PA27JCV",
-        "variation": "27\""
-      }
-    ],
-    "page": {
-      "url": "/monitor/reviews/asus/proart-display-pa27jcv",
-      "early_access": false,
-      "first_published_at": "2025-05-29 08:51:46 -0400"
-    },
-    "published_product_recommendation_count": 1,
-    "status_discussion": {
-      "url": "/discussions/69qUi5ch2lMFkkmK/review-updates-asus-proart-display-pa27jcv",
-      "user_comments_count": 32
-    }
-  },
-  {
     "id": "88590",
     "fullname": "Dell U3225QE",
     "full_url_part": "dell-u3225qe",
@@ -2011,7 +1901,7 @@
     "published_product_recommendation_count": 20,
     "status_discussion": {
       "url": "/discussions/2VEyKXo7u-enKgQw/review-updates-aoc-q27g3xmn-27-gaming-monitor-qhd-2k-2560x1440",
-      "user_comments_count": 412
+      "user_comments_count": 417
     }
   },
   {
@@ -2221,7 +2111,7 @@
     "published_product_recommendation_count": 2,
     "status_discussion": {
       "url": "/discussions/Vm0pJfZ-b5BOl1Wc/review-updates-asus-rog-swift-oled-pg27aqwp-w",
-      "user_comments_count": 91
+      "user_comments_count": 96
     }
   },
   {
@@ -2288,70 +2178,10 @@
       "early_access": false,
       "first_published_at": "2026-02-25 08:37:40 -0500"
     },
-    "published_product_recommendation_count": 2,
+    "published_product_recommendation_count": 3,
     "status_discussion": {
       "url": "/discussions/uijaQzzNFjY1kq_m/review-updates-lg-27gx790b-b",
       "user_comments_count": 30
-    }
-  },
-  {
-    "id": "133967",
-    "fullname": "Apple Studio Display 2026",
-    "full_url_part": "apple-studio-display-2026",
-    "url_part": "studio-display-2026",
-    "brand_name": "Apple",
-    "published": false,
-    "reviewed_sku_id": "16470",
-    "approximate_released_at": "2026-03-11 00:00:00 -0400",
-    "last_updated_at": "2026-03-27 11:37:13 -0400",
-    "review": {
-      "test_bench": {
-        "id": "238",
-        "display_name": "v2.1.2"
-      }
-    },
-    "image": "https://i.rtings.com/assets/products/Thoc4zxZ/apple-studio-display-2026/in-test-small.jpg?format=auto",
-    "variant_skus": [
-      {
-        "id": "16472",
-        "name": "Studio Display 2026",
-        "variation": "27\" - Nano-texture glass/Tilt- and height-adjustable stand"
-      },
-      {
-        "id": "16473",
-        "name": "Studio Display 2026",
-        "variation": "27\" - Nano-texture glass/Tilt-adjustable stand"
-      },
-      {
-        "id": "16474",
-        "name": "Studio Display 2026",
-        "variation": "27\" - Nano-texture glass/VESA mount adapter"
-      },
-      {
-        "id": "16469",
-        "name": "Studio Display 2026",
-        "variation": "27\" - Standard glass/Tilt- and height-adjustable stand"
-      },
-      {
-        "id": "16470",
-        "name": "Studio Display 2026",
-        "variation": "27\" - Standard glass/Tilt-adjustable stand"
-      },
-      {
-        "id": "16471",
-        "name": "Studio Display 2026",
-        "variation": "27\" - Standard glass/VESA mount adapter"
-      }
-    ],
-    "page": {
-      "url": "/early-access/monitor/reviews/apple/studio-display-2026",
-      "early_access": true,
-      "first_published_at": null
-    },
-    "published_product_recommendation_count": null,
-    "status_discussion": {
-      "url": "/discussions/1zkIhrNsClb7DvwA/review-updates-apple-studio-display-2026",
-      "user_comments_count": 2
     }
   },
   {
@@ -2383,7 +2213,7 @@
       "early_access": false,
       "first_published_at": "2025-09-30 12:33:14 -0400"
     },
-    "published_product_recommendation_count": 8,
+    "published_product_recommendation_count": 7,
     "status_discussion": {
       "url": "/discussions/85hzo4bx-Wq9TTsc/review-updates-dell-s2725qs",
       "user_comments_count": 15
@@ -2421,42 +2251,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/cGsEvXGVWESRH7_R/review-updates-asus-rog-strix-oled-xg27aqwmg",
-      "user_comments_count": 50
-    }
-  },
-  {
-    "id": "127444",
-    "fullname": "ASUS ROG Strix Pulsar XG27AQNGV",
-    "full_url_part": "asus-rog-strix-pulsar-xg27aqngv",
-    "url_part": "rog-strix-pulsar-xg27aqngv",
-    "brand_name": "ASUS",
-    "published": true,
-    "reviewed_sku_id": "16421",
-    "approximate_released_at": "2026-01-07 00:00:00 -0500",
-    "last_updated_at": "2026-03-26 14:45:01 -0400",
-    "review": {
-      "test_bench": {
-        "id": "238",
-        "display_name": "v2.1.2"
-      }
-    },
-    "image": "https://i.rtings.com/assets/products/SCdQ4q6D/asus-rog-strix-pulsar-xg27aqngv/design-small.jpg?format=auto",
-    "variant_skus": [
-      {
-        "id": "16421",
-        "name": "ROG Strix Pulsar XG27AQNGV",
-        "variation": "27\""
-      }
-    ],
-    "page": {
-      "url": "/monitor/reviews/asus/rog-strix-pulsar-xg27aqngv",
-      "early_access": false,
-      "first_published_at": "2026-03-26 14:45:01 -0400"
-    },
-    "published_product_recommendation_count": 0,
-    "status_discussion": {
-      "url": "/discussions/idxExYyOchnI5lKT/review-updates-asus-rog-strix-pulsar-xg27aqngv",
-      "user_comments_count": 28
+      "user_comments_count": 51
     }
   },
   {
@@ -2528,10 +2323,885 @@
       "early_access": false,
       "first_published_at": "2025-01-27 09:48:51 -0500"
     },
-    "published_product_recommendation_count": 10,
+    "published_product_recommendation_count": 9,
     "status_discussion": {
       "url": "/discussions/GT_wMhf0-BXko4p4/review-updates-asus-rog-strix-oled-xg27acdng",
       "user_comments_count": 68
+    }
+  },
+  {
+    "id": "24247",
+    "fullname": "Dell S3422DWG",
+    "full_url_part": "dell-s3422dwg",
+    "url_part": "s3422dwg",
+    "brand_name": "Dell",
+    "published": true,
+    "reviewed_sku_id": "5272",
+    "approximate_released_at": "2021-06-01 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:48 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/6RDCghNf/dell-s3422dwg/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "5272",
+        "name": "S3422DWG",
+        "variation": "34\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/dell/s3422dwg",
+      "early_access": false,
+      "first_published_at": "2021-08-27 10:23:52 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/EVzs8tXnw2kVxZfQ/review-updates-dell-s3422dwg",
+      "user_comments_count": 20
+    }
+  },
+  {
+    "id": "71604",
+    "fullname": "Xiaomi G Pro 27i",
+    "full_url_part": "xiaomi-g-pro-27i",
+    "url_part": "g-pro-27i",
+    "brand_name": "Xiaomi",
+    "published": true,
+    "reviewed_sku_id": "12187",
+    "approximate_released_at": "2024-09-10 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:53 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/VOdOiTKb/xiaomi-g-pro-27i/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "12187",
+        "name": "G Pro 27i",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/xiaomi/g-pro-27i",
+      "early_access": false,
+      "first_published_at": "2025-02-25 10:06:00 -0500"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/gRqV_zb-W0AJF1j4/review-updates-xiaomi-g-pro-27i",
+      "user_comments_count": 171
+    }
+  },
+  {
+    "id": "38126",
+    "fullname": "ASUS ROG Swift Pro PG248QP",
+    "full_url_part": "asus-rog-swift-pro-pg248qp",
+    "url_part": "rog-swift-pro-pg248qp",
+    "brand_name": "ASUS",
+    "published": true,
+    "reviewed_sku_id": "9949",
+    "approximate_released_at": "2023-11-17 00:00:00 -0500",
+    "last_updated_at": "2026-03-30 15:04:45 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/BibvEJq9/asus-rog-swift-pro-pg248qp/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "9949",
+        "name": "ROG Swift Pro PG248QP",
+        "variation": "24\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/asus/rog-swift-pro-pg248qp",
+      "early_access": false,
+      "first_published_at": "2024-02-02 10:50:57 -0500"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/67f1pTjO_v5rXJ9U/review-updates-asus-rog-swift-pro-pg248qp",
+      "user_comments_count": 59
+    }
+  },
+  {
+    "id": "60431",
+    "fullname": "Acer Nitro XZ322QU V3bmiiphx",
+    "full_url_part": "acer-nitro-xz322qu-v3bmiiphx",
+    "url_part": "nitro-xz322qu-v3bmiiphx",
+    "brand_name": "Acer",
+    "published": true,
+    "reviewed_sku_id": "12205",
+    "approximate_released_at": "2024-03-29 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:44 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/TfFk9M1P/acer-nitro-xz322qu-v3bmiiphx/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "12205",
+        "name": "Nitro XZ322QU V3bmiiphx",
+        "variation": "32\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/acer/nitro-xz322qu-v3bmiiphx",
+      "early_access": false,
+      "first_published_at": "2025-03-12 13:27:53 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/j65IBrSICmQ3d0eT/review-updates-acer-xz322qu-v3bmiiphx",
+      "user_comments_count": 18
+    }
+  },
+  {
+    "id": "88035",
+    "fullname": "Samsung Odyssey 3D G90XF S27FG900X",
+    "full_url_part": "samsung-odyssey-3d-g90xf-s27fg900x",
+    "url_part": "odyssey-3d-g90xf-s27fg900x",
+    "brand_name": "Samsung",
+    "published": true,
+    "reviewed_sku_id": "12578",
+    "approximate_released_at": "2025-04-14 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:41 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/jk0cwtFB/samsung-odyssey-3d-g90xf-s27fg900x/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "12578",
+        "name": "S27FG900X",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/samsung/odyssey-3d-g90xf-s27fg900x",
+      "early_access": false,
+      "first_published_at": "2025-06-20 10:20:15 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/Fyu0_kLmtX415OnI/review-updates-samsung-odyssey-3d-g90xf-s27fg900x",
+      "user_comments_count": 7
+    }
+  },
+  {
+    "id": "912",
+    "fullname": "LG 27GL850-B/27GL83A-B",
+    "full_url_part": "lg-27gl850-b-27gl83a-b",
+    "url_part": "27gl850-b-27gl83a-b",
+    "brand_name": "LG",
+    "published": true,
+    "reviewed_sku_id": "2223",
+    "approximate_released_at": "2019-08-05 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:50 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/bTTntxbz/lg-27gl850-b-27gl83a-b/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "2223",
+        "name": "27GL850-B",
+        "variation": "27\""
+      },
+      {
+        "id": "8028",
+        "name": "27GL83A-B",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/lg/27gl850-b-27gl83a-b",
+      "early_access": false,
+      "first_published_at": "2019-08-15 08:03:15 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/kKlR9om4dQ9jemdN/review-updates-lg-27gl850-b-27gl83a-b",
+      "user_comments_count": 15
+    }
+  },
+  {
+    "id": "63122",
+    "fullname": "Samsung Smart Monitor M80D S32DM80",
+    "full_url_part": "samsung-smart-monitor-m80d-s32dm80",
+    "url_part": "smart-monitor-m80d-s32dm80",
+    "brand_name": "Samsung",
+    "published": true,
+    "reviewed_sku_id": "11836",
+    "approximate_released_at": "2024-04-02 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:42 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/zfTcNNjI/samsung-smart-monitor-m8-m80d-s32dm80/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "11836",
+        "name": "LS32DM801UNXZA",
+        "variation": "32\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/samsung/smart-monitor-m8-m80d-s32dm80",
+      "early_access": false,
+      "first_published_at": "2025-01-15 09:17:44 -0500"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/uNTw_nB1ZwPKC5fl/review-updates-samsung-smart-monitor-m80d-s32dm80",
+      "user_comments_count": 5
+    }
+  },
+  {
+    "id": "62843",
+    "fullname": "Acer Nitro XV275U P3biipx",
+    "full_url_part": "acer-nitro-xv275u-p3biipx",
+    "url_part": "nitro-xv275u-p3biipx",
+    "brand_name": "Acer",
+    "published": true,
+    "reviewed_sku_id": "10849",
+    "approximate_released_at": "2023-09-04 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:49 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/yFBnOTFC/acer-nitro-xv275u-p3biipx/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "10849",
+        "name": "Nitro XV275U P3biipx",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/acer/nitro-xv275u-p3biipx",
+      "early_access": false,
+      "first_published_at": "2024-06-26 10:00:03 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/dMcYMwOn6FUeTDKU/review-updates-acer-d",
+      "user_comments_count": 14
+    }
+  },
+  {
+    "id": "44761",
+    "fullname": "LG 27GR75Q-B",
+    "full_url_part": "lg-27gr75q-b",
+    "url_part": "27gr75q-b",
+    "brand_name": "LG",
+    "published": true,
+    "reviewed_sku_id": "10433",
+    "approximate_released_at": "2023-09-01 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:50 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/JztY13a9/lg-27gr75q-b/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "10433",
+        "name": "27GR75Q-B",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/lg/27gr75q-b",
+      "early_access": false,
+      "first_published_at": "2024-04-10 11:18:36 -0400"
+    },
+    "published_product_recommendation_count": 1,
+    "status_discussion": {
+      "url": "/discussions/PbOYqDTRKKIhem9i/review-updates-lg-27gr75q-b-aeu",
+      "user_comments_count": 97
+    }
+  },
+  {
+    "id": "39538",
+    "fullname": "Samsung Odyssey G51C S27CG51",
+    "full_url_part": "samsung-odyssey-g51c-s27cg51",
+    "url_part": "odyssey-g51c-s27cg51",
+    "brand_name": "Samsung",
+    "published": true,
+    "reviewed_sku_id": "8687",
+    "approximate_released_at": "2023-03-26 20:00:01 -0400",
+    "last_updated_at": "2026-03-30 15:04:46 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/YvuB2EBq/samsung-odyssey-g5-g51c-s27cg51/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "8687",
+        "name": "LS27CG512ENXZA",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/samsung/odyssey-g5-g51c-s27cg51",
+      "early_access": false,
+      "first_published_at": "2023-08-10 09:09:16 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/o2CdIu6iv-ifHQRT/review-updates-samsung-odyssey-g51c-s27cg51",
+      "user_comments_count": 41
+    }
+  },
+  {
+    "id": "37125",
+    "fullname": "Corsair XENEON FLEX 45WQHD240",
+    "full_url_part": "corsair-xeneon-flex-45wqhd240",
+    "url_part": "xeneon-flex-45wqhd240",
+    "brand_name": "Corsair",
+    "published": true,
+    "reviewed_sku_id": "8574",
+    "approximate_released_at": "2022-12-15 00:00:00 -0500",
+    "last_updated_at": "2026-03-30 15:04:40 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/dWD9Pg4Q/corsair-xeneon-flex-45wqhd240/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "8574",
+        "name": "XENEON FLEX 45WQHD240",
+        "variation": "45\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/corsair/xeneon-flex-45wqhd240",
+      "early_access": false,
+      "first_published_at": "2023-07-28 10:17:03 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/iFDIE26_4oSUkjzi/review-updates-corsair-xeneon-flex-45wqhd240",
+      "user_comments_count": 9
+    }
+  },
+  {
+    "id": "58174",
+    "fullname": "LG C4 42 OLED",
+    "full_url_part": "lg-c4-42-oled",
+    "url_part": "c4-42-oled",
+    "brand_name": "LG",
+    "published": true,
+    "reviewed_sku_id": "11055",
+    "approximate_released_at": "2024-03-11 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:47 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/BVs0Q1Zk/lg-42-c4-oled/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "11055",
+        "name": "OLED42C4PUA",
+        "variation": "42\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/lg/42-c4-oled",
+      "early_access": false,
+      "first_published_at": "2024-08-26 07:52:43 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/Vu1sEZi9kX2s261U/review-updates-lg-c4-42-oled",
+      "user_comments_count": 159
+    }
+  },
+  {
+    "id": "32378",
+    "fullname": "Dell G3223Q",
+    "full_url_part": "dell-g3223q",
+    "url_part": "g3223q",
+    "brand_name": "Dell",
+    "published": true,
+    "reviewed_sku_id": "6458",
+    "approximate_released_at": "2022-03-30 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:48 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/fiDAO4y5/dell-g3223q/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "6458",
+        "name": "G3223Q",
+        "variation": "32\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/dell/g3223q",
+      "early_access": false,
+      "first_published_at": "2022-05-12 11:15:43 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/NbEyiR7cEuZcyd4t/review-updates-dell-g3223q",
+      "user_comments_count": 73
+    }
+  },
+  {
+    "id": "52472",
+    "fullname": "BenQ PD3225U",
+    "full_url_part": "benq-pd3225u",
+    "url_part": "pd3225u",
+    "brand_name": "BenQ",
+    "published": true,
+    "reviewed_sku_id": "12371",
+    "approximate_released_at": "2024-03-06 00:00:00 -0500",
+    "last_updated_at": "2026-03-30 15:04:45 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/kmJpwPtc/benq-pd3225u/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "12371",
+        "name": "PD3225U",
+        "variation": "32\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/benq/pd3225u",
+      "early_access": false,
+      "first_published_at": "2025-05-16 13:01:48 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/9ngqVMvrv8vqPrQG/review-updates-benq-pd3225u-mac-ready-32-4k-uhd-99-rec-709",
+      "user_comments_count": 6
+    }
+  },
+  {
+    "id": "24452",
+    "fullname": "LG 27GP850-B/27GP83B-B",
+    "full_url_part": "lg-27gp850-b-27gp83b-b",
+    "url_part": "27gp850-b-27gp83b-b",
+    "brand_name": "LG",
+    "published": true,
+    "reviewed_sku_id": "5087",
+    "approximate_released_at": "2021-05-01 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:51 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/2Pi8NDec/lg-27gp850-b-27gp83b-b/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "5087",
+        "name": "27GP850-B",
+        "variation": "27\""
+      },
+      {
+        "id": "8030",
+        "name": "27GP83B-B",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/lg/27gp850-b-27gp83b-b",
+      "early_access": false,
+      "first_published_at": "2021-07-14 10:29:20 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/EAlYp6SAI6Ez65oC/review-updates-lg-27gp850-b-27gp83b-b",
+      "user_comments_count": 66
+    }
+  },
+  {
+    "id": "48867",
+    "fullname": "LG 27GR95UM-B",
+    "full_url_part": "lg-27gr95um-b",
+    "url_part": "27gr95um-b",
+    "brand_name": "LG",
+    "published": true,
+    "reviewed_sku_id": "11971",
+    "approximate_released_at": "2024-01-11 00:00:00 -0500",
+    "last_updated_at": "2026-03-30 15:04:44 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/8mwV0Whg/lg-27gr95um-b/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "11971",
+        "name": "27GR95UM-B",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/lg/27gr95um-b",
+      "early_access": false,
+      "first_published_at": "2024-12-18 10:52:12 -0500"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/OsGUukO_1xifdYPU/review-updates-lg-ultragear-27gr95um",
+      "user_comments_count": 125
+    }
+  },
+  {
+    "id": "76425",
+    "fullname": "Sony INZONE M9 II",
+    "full_url_part": "sony-inzone-m9-ii",
+    "url_part": "inzone-m9-ii",
+    "brand_name": "Sony",
+    "published": true,
+    "reviewed_sku_id": "11849",
+    "approximate_released_at": "2024-09-24 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:43 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/pOTsvYdI/sony-inzone-m9-ii/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "11849",
+        "name": "INZONE M9 II",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/sony/inzone-m9-ii",
+      "early_access": false,
+      "first_published_at": "2025-01-24 12:09:17 -0500"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/UAJLTyPFGbfsUhzW/review-updates-sony-inzone-m9-ii",
+      "user_comments_count": 29
+    }
+  },
+  {
+    "id": "28689",
+    "fullname": "Dell S2722QC",
+    "full_url_part": "dell-s2722qc",
+    "url_part": "s2722qc",
+    "brand_name": "Dell",
+    "published": true,
+    "reviewed_sku_id": "5903",
+    "approximate_released_at": "2021-08-17 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:43 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/O1cPkxSN/dell-s2722qc/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "5903",
+        "name": "S2722QC",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/dell/s2722qc",
+      "early_access": false,
+      "first_published_at": "2022-01-13 11:02:47 -0500"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/IqzyDLv7oRNFCYe5/review-updates-dell-s2722qc",
+      "user_comments_count": 19
+    }
+  },
+  {
+    "id": "77107",
+    "fullname": "Dell G2725D",
+    "full_url_part": "dell-g2725d",
+    "url_part": "g2725d",
+    "brand_name": "Dell",
+    "published": true,
+    "reviewed_sku_id": "12087",
+    "approximate_released_at": "2024-10-14 20:00:01 -0400",
+    "last_updated_at": "2026-03-30 15:04:41 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/Jo0FpYAI/dell-g2725d/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "12087",
+        "name": "G2725D",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/dell/g2725d",
+      "early_access": false,
+      "first_published_at": "2025-02-10 09:32:40 -0500"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/Yf3xGmBoevbXbZih/review-updates-dell-g2725d",
+      "user_comments_count": 47
+    }
+  },
+  {
+    "id": "18229",
+    "fullname": "LG 34GP83A-B",
+    "full_url_part": "lg-34gp83a-b",
+    "url_part": "34gp83a-b",
+    "brand_name": "LG",
+    "published": true,
+    "reviewed_sku_id": "4143",
+    "approximate_released_at": "2020-10-01 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:47 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/sT2TNf6M/lg-34gp83a-b/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "4143",
+        "name": "34GP83A-B",
+        "variation": "34\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/lg/34gp83a-b",
+      "early_access": false,
+      "first_published_at": "2021-02-12 09:20:16 -0500"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/CAAAQMx-F6z5cPz-/review-updates-lg-34gp83a-b",
+      "user_comments_count": 0
+    }
+  },
+  {
+    "id": "41303",
+    "fullname": "Dell G2524H",
+    "full_url_part": "dell-g2524h",
+    "url_part": "g2524h",
+    "brand_name": "Dell",
+    "published": true,
+    "reviewed_sku_id": "12278",
+    "approximate_released_at": "2023-06-27 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:40 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/VOccLWnx/dell-g2524h/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "12278",
+        "name": "G2524H",
+        "variation": "24.5\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/dell/g2524h",
+      "early_access": false,
+      "first_published_at": "2025-03-10 10:31:44 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/mWSRtnTIiCtfdC1g/review-updates-dell-g2524h",
+      "user_comments_count": 12
+    }
+  },
+  {
+    "id": "15402",
+    "fullname": "ASUS TUF Gaming VG27AQL1A",
+    "full_url_part": "asus-tuf-gaming-vg27aql1a",
+    "url_part": "tuf-gaming-vg27aql1a",
+    "brand_name": "ASUS",
+    "published": true,
+    "reviewed_sku_id": "3523",
+    "approximate_released_at": "2020-07-29 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:51 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/uoc0nVDE/asus-tuf-gaming-vg27aql1a/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "3523",
+        "name": "TUF Gaming VG27AQL1A",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/asus/tuf-gaming-vg27aql1a",
+      "early_access": false,
+      "first_published_at": "2020-10-13 10:49:26 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/Xf9YfpQS95hT38CY/review-updates-asus-tuf-gaming-vg27aql1a",
+      "user_comments_count": 13
+    }
+  },
+  {
+    "id": "1640",
+    "fullname": "ASUS TUF VG27AQ",
+    "full_url_part": "asus-tuf-vg27aq",
+    "url_part": "tuf-vg27aq",
+    "brand_name": "ASUS",
+    "published": true,
+    "reviewed_sku_id": "2370",
+    "approximate_released_at": "2019-08-14 00:00:00 -0400",
+    "last_updated_at": "2026-03-30 15:04:52 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/9BKzvwWk/asus-tuf-vg27aq/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "2370",
+        "name": "TUF VG27AQ",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/asus/tuf-vg27aq",
+      "early_access": false,
+      "first_published_at": "2019-11-26 07:18:15 -0500"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/Wur5Oy00OjYLoQM_/review-updates-asus-tuf-vg27aq",
+      "user_comments_count": 13
+    }
+  },
+  {
+    "id": "133967",
+    "fullname": "Apple Studio Display 2026",
+    "full_url_part": "apple-studio-display-2026",
+    "url_part": "studio-display-2026",
+    "brand_name": "Apple",
+    "published": true,
+    "reviewed_sku_id": "16470",
+    "approximate_released_at": "2026-03-11 00:00:00 -0400",
+    "last_updated_at": "2026-04-01 08:58:47 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/cVhuAK9Z/apple-studio-display-2026/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "16472",
+        "name": "Studio Display 2026",
+        "variation": "27\" - Nano-texture glass/Tilt- and height-adjustable stand"
+      },
+      {
+        "id": "16473",
+        "name": "Studio Display 2026",
+        "variation": "27\" - Nano-texture glass/Tilt-adjustable stand"
+      },
+      {
+        "id": "16474",
+        "name": "Studio Display 2026",
+        "variation": "27\" - Nano-texture glass/VESA mount adapter"
+      },
+      {
+        "id": "16469",
+        "name": "Studio Display 2026",
+        "variation": "27\" - Standard glass/Tilt- and height-adjustable stand"
+      },
+      {
+        "id": "16470",
+        "name": "Studio Display 2026",
+        "variation": "27\" - Standard glass/Tilt-adjustable stand"
+      },
+      {
+        "id": "16471",
+        "name": "Studio Display 2026",
+        "variation": "27\" - Standard glass/VESA mount adapter"
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/apple/studio-display-2026",
+      "early_access": false,
+      "first_published_at": "2026-04-01 08:58:48 -0400"
+    },
+    "published_product_recommendation_count": null,
+    "status_discussion": {
+      "url": "/discussions/1zkIhrNsClb7DvwA/review-updates-apple-studio-display-2026",
+      "user_comments_count": 5
     }
   },
   {
@@ -2543,7 +3213,7 @@
     "published": true,
     "reviewed_sku_id": "6372",
     "approximate_released_at": "2022-03-18 00:00:00 -0400",
-    "last_updated_at": "2026-03-27 11:38:38 -0400",
+    "last_updated_at": "2026-04-01 09:02:41 -0400",
     "review": {
       "test_bench": {
         "id": "238",
@@ -2592,6 +3262,151 @@
     "status_discussion": {
       "url": "/discussions/G3bL06xFrHhobGxH/review-updates-apple-studio-display-2022",
       "user_comments_count": 12
+    }
+  },
+  {
+    "id": "81301",
+    "fullname": "ASUS ProArt Display PA27JCV",
+    "full_url_part": "asus-proart-display-pa27jcv",
+    "url_part": "proart-display-pa27jcv",
+    "brand_name": "ASUS",
+    "published": true,
+    "reviewed_sku_id": "12383",
+    "approximate_released_at": "2024-10-28 00:00:00 -0400",
+    "last_updated_at": "2026-04-01 09:02:46 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/I1thrune/asus-proart-display-pa27jcv/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "12383",
+        "name": "ProArt Display PA27JCV",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/asus/proart-display-pa27jcv",
+      "early_access": false,
+      "first_published_at": "2025-05-29 08:51:46 -0400"
+    },
+    "published_product_recommendation_count": 1,
+    "status_discussion": {
+      "url": "/discussions/69qUi5ch2lMFkkmK/review-updates-asus-proart-display-pa27jcv",
+      "user_comments_count": 32
+    }
+  },
+  {
+    "id": "88589",
+    "fullname": "Dell U2725QE",
+    "full_url_part": "dell-u2725qe",
+    "url_part": "u2725qe",
+    "brand_name": "Dell",
+    "published": true,
+    "reviewed_sku_id": "12349",
+    "approximate_released_at": "2025-02-25 00:00:00 -0500",
+    "last_updated_at": "2026-04-01 09:02:50 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/EJnSIT8d/dell-u2725qe/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "12349",
+        "name": "U2725QE",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/dell/u2725qe",
+      "early_access": false,
+      "first_published_at": "2025-04-24 13:54:24 -0400"
+    },
+    "published_product_recommendation_count": 10,
+    "status_discussion": {
+      "url": "/discussions/Sq098WqW4ByFJ62y/review-updates-dell-u2725qe",
+      "user_comments_count": 58
+    }
+  },
+  {
+    "id": "127444",
+    "fullname": "ASUS ROG Strix Pulsar XG27AQNGV",
+    "full_url_part": "asus-rog-strix-pulsar-xg27aqngv",
+    "url_part": "rog-strix-pulsar-xg27aqngv",
+    "brand_name": "ASUS",
+    "published": true,
+    "reviewed_sku_id": "16421",
+    "approximate_released_at": "2026-01-07 00:00:00 -0500",
+    "last_updated_at": "2026-03-26 14:45:01 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/SCdQ4q6D/asus-rog-strix-pulsar-xg27aqngv/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "16421",
+        "name": "ROG Strix Pulsar XG27AQNGV",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/asus/rog-strix-pulsar-xg27aqngv",
+      "early_access": false,
+      "first_published_at": "2026-03-26 14:45:01 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/idxExYyOchnI5lKT/review-updates-asus-rog-strix-pulsar-xg27aqngv",
+      "user_comments_count": 30
+    }
+  },
+  {
+    "id": "61784",
+    "fullname": "ASUS ROG Strix OLED XG27AQDMG",
+    "full_url_part": "asus-rog-strix-oled-xg27aqdmg",
+    "url_part": "rog-strix-oled-xg27aqdmg",
+    "brand_name": "ASUS",
+    "published": true,
+    "reviewed_sku_id": "11038",
+    "approximate_released_at": "2024-05-30 00:00:00 -0400",
+    "last_updated_at": "2026-04-02 08:47:13 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/8DGgxKIu/asus-rog-strix-oled-xg27aqdmg/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "11038",
+        "name": "ROG Strix OLED XG27AQDMG",
+        "variation": "27\""
+      },
+      {
+        "id": "11707",
+        "name": "ROG Strix OLED XG27AQDMGZ",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/asus/rog-strix-oled-xg27aqdmg",
+      "early_access": false,
+      "first_published_at": "2024-08-02 09:57:49 -0400"
+    },
+    "published_product_recommendation_count": 3,
+    "status_discussion": {
+      "url": "/discussions/g9euO8hTT4tet7lB/review-updates-asus-rog-strix-oled-xg27aqdmg",
+      "user_comments_count": 371
     }
   }
 ]
