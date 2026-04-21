@@ -16,8 +16,11 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.4.1"
+VERSION = "2.4.2"
 CHANGELOG = """\
+**v2.4.2** \u2014 2026-04-21
+- Monitor data refresh with restored session: 97 monitors, pc_gaming/console_gaming/office/editing scores unblurred (were all NULL), 79 priced
+
 **v2.4.1** \u2014 2026-04-21
 - Data refresh with restored RTINGS session: 90 TVs, 1 new, 110 score/classification changes unblurred, 78 priced
 - Safari-specific cookie refresh playbook in CLAUDE.md + expiry notification email (HttpOnly caveat documented)
