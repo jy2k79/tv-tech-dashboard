@@ -16,8 +16,11 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.4.3"
+VERSION = "2.4.4"
 CHANGELOG = """\
+**v2.4.4** \u2014 2026-04-22
+- Guard Tech Explorer correlation chart against empty data (crashed with KeyError when scores were all-null, e.g. during cookie expiry)
+
 **v2.4.3** \u2014 2026-04-21
 - Fix SPD analyzer timeout on monitor silo (#48): skip matplotlib plot_verification in pipeline runs via SKIP_SPD_PLOTS env var; raise script timeout 20\u201440 min
 - Monitor SPD reclassification after fresh analysis: 40 KSF (new), 20 QD-OLED, 18 WOLED, 14 QD-LCD, 3 Pseudo QD, 2 WLED (previously stuck on stale labels with 0 KSF / 0 WLED)

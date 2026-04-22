@@ -354,26 +354,33 @@ def render(fdf, pcfg):
                     r = valid[_ps].corr(valid[col])
                     corr_data.append({"Metric": label, "col": col, "Correlation": r})
 
-        corr_df = pd.DataFrame(corr_data).sort_values("Correlation")
-        corr_df["Direction"] = corr_df["Correlation"].apply(
-            lambda x: "Positive" if x >= 0 else "Negative"
-        )
+        if not corr_data:
+            st.info(
+                f"Not enough data to compute correlations with {_ps_label}. "
+                f"This usually means {pcfg['item_label'].lower()} scores are missing — "
+                "check that the RTINGS session cookie is fresh and the pipeline has run."
+            )
+        else:
+            corr_df = pd.DataFrame(corr_data).sort_values("Correlation")
+            corr_df["Direction"] = corr_df["Correlation"].apply(
+                lambda x: "Positive" if x >= 0 else "Negative"
+            )
 
-        fig = px.bar(corr_df, y="Metric", x="Correlation", orientation="h",
-                     color="Direction",
-                     color_discrete_map={"Positive": "#4B40EB", "Negative": "#FF009F"},
-                     text=corr_df["Correlation"].apply(lambda x: f"{x:.2f}"))
-        fig.add_vline(x=0, line_color="white", line_width=1)
-        fig.update_layout(
-            height=450, showlegend=False,
-            xaxis=dict(range=[-1, 1], title=f"Pearson Correlation with {_ps_label}"),
-            yaxis_title="",
-            margin=dict(l=0, r=60, t=10, b=0),
-            **PL,
-        )
-        fig.update_traces(textposition="outside", textfont_size=13, textfont_weight=600,
-                          cliponaxis=False)
-        st.plotly_chart(fig, use_container_width=True)
+            fig = px.bar(corr_df, y="Metric", x="Correlation", orientation="h",
+                         color="Direction",
+                         color_discrete_map={"Positive": "#4B40EB", "Negative": "#FF009F"},
+                         text=corr_df["Correlation"].apply(lambda x: f"{x:.2f}"))
+            fig.add_vline(x=0, line_color="white", line_width=1)
+            fig.update_layout(
+                height=450, showlegend=False,
+                xaxis=dict(range=[-1, 1], title=f"Pearson Correlation with {_ps_label}"),
+                yaxis_title="",
+                margin=dict(l=0, r=60, t=10, b=0),
+                **PL,
+            )
+            fig.update_traces(textposition="outside", textfont_size=13, textfont_weight=600,
+                              cliponaxis=False)
+            st.plotly_chart(fig, use_container_width=True)
 
         st.divider()
         scol1, scol2 = st.columns(2)
