@@ -16,8 +16,11 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.5.2"
+VERSION = "2.5.3"
 CHANGELOG = """\
+**v2.5.3** \u2014 2026-04-23
+- Add breathing room between QD ZONE box and the floating label above it (was touching).
+
 **v2.5.2** \u2014 2026-04-23
 - Move "QD ZONE" label above the top edge of the scatter plot so it no longer crowds the data points in the upper-left corner.
 

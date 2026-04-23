@@ -56,10 +56,10 @@ def render(fdf, pcfg):
         fig.add_shape(type="rect", x0=20, x1=30, y0=40, y1=75,
                       line=dict(color="rgba(255,0,159,0.5)", dash="dash"),
                       fillcolor="rgba(255,0,159,0.06)")
-        fig.add_annotation(x=25, y=1.09, xref="x", yref="paper",
+        fig.add_annotation(x=25, y=1.18, xref="x", yref="paper",
                            text="<b>QD ZONE</b>", showarrow=False,
                            font=dict(color="rgba(255,0,159,0.9)", size=14))
-        fig.add_annotation(x=25, y=1.03, xref="x", yref="paper",
+        fig.add_annotation(x=25, y=1.10, xref="x", yref="paper",
                            text="narrow emission \u00b7 wide gamut",
                            showarrow=False,
                            font=dict(color="rgba(255,0,159,0.7)", size=11))
@@ -67,7 +67,7 @@ def render(fdf, pcfg):
         fig.update_layout(height=500, legend_title_text="Technology",
                           xaxis=dict(range=[20, 80]),
                           yaxis=dict(range=[15, 75]),
-                          margin=dict(t=80),
+                          margin=dict(t=110),
                           **PL)
         st.plotly_chart(fig, use_container_width=True)
         if _n_wide:
