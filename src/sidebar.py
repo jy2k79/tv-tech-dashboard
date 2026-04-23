@@ -16,8 +16,12 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.4.6"
+VERSION = "2.4.7"
 CHANGELOG = """\
+**v2.4.7** \u2014 2026-04-23
+- Fix price-history SKU aggregation: snapshots now take the cheapest SKU per (date, product, size), matching how the current-price bar chart works. Previously `keep='last'` picked arbitrarily, making the line chart overstate prices for multi-SKU products like Apple Studio Display XDR (4 SKUs at 27", $2,849\u2013$3,600).
+- Backfilled 7 historical monitor snapshots where today's data shows the dedup bug picked a non-min SKU with <30% price spread (stable price pattern). Skipped 5 candidates with >30% spread (indistinguishable from real sales).
+
 **v2.4.6** \u2014 2026-04-22
 - SPD analyzer: pick the integrated-area-dominant peak per band (intensity \u00d7 FWHM) instead of max-intensity. Fixes KSF monitors whose "green" was picked as a 547nm JPEG gridline artifact (10nm FWHM, intensity 0.73) beating the real \u03b2-SiAlON phosphor (45nm FWHM, intensity 0.55). Physically correct metric; red stays intensity-based so narrow KSF Mn\u2074\u207a lines win.
 - Monitor KSF green FWHM now 24\u201364nm (was 3\u201364nm with bimodal artifact cluster at 3\u201312nm). Dashboard "Green Peak FWHM by Technology" shows correct distribution.

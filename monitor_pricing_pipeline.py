@@ -356,9 +356,16 @@ def append_monitor_price_history(prices_df, monitor_db):
         existing['product_id'] = existing['product_id'].astype(str)
         existing['color_architecture'] = existing['product_id'].map(tech_map)
         combined = pd.concat([existing, snapshot], ignore_index=True)
-        combined.drop_duplicates(
-            subset=['snapshot_date', 'product_id', 'size_inches'],
-            keep='last', inplace=True,
+        # Collapse multi-SKU rows to the cheapest price per (date, product, size)
+        # so the history matches how monitor_database_with_prices.csv picks
+        # `price_best` (min across SKUs). Before this fix, `keep='last'` picked
+        # whichever SKU happened to be last in the file, overstating prices
+        # when multiple SKUs existed (e.g., Apple Studio XDR 4 SKUs at 27").
+        combined = (
+            combined.sort_values('best_price')
+                    .drop_duplicates(
+                        subset=['snapshot_date', 'product_id', 'size_inches'],
+                        keep='first')
         )
         combined['snapshot_date'] = pd.to_datetime(combined['snapshot_date'])
         combined['_iso_year'] = combined['snapshot_date'].dt.isocalendar().year.astype(int)

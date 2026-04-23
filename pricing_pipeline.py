@@ -783,9 +783,15 @@ def append_price_history(prices_df, tv_db):
         existing['product_id'] = existing['product_id'].astype(str)
         existing['color_architecture'] = existing['product_id'].map(tech_map)
         combined = pd.concat([existing, snapshot], ignore_index=True)
-        combined.drop_duplicates(
-            subset=['snapshot_date', 'product_id', 'size_inches'],
-            keep='last', inplace=True,
+        # Collapse multi-SKU rows to the cheapest price per (date, product, size)
+        # so the history matches how tv_database_with_prices.csv picks
+        # `price_best` (min across SKUs). Before this fix, `keep='last'` picked
+        # whichever SKU happened to be last in the file.
+        combined = (
+            combined.sort_values('best_price')
+                    .drop_duplicates(
+                        subset=['snapshot_date', 'product_id', 'size_inches'],
+                        keep='first')
         )
 
         # Keep only the latest snapshot per ISO week to prevent
