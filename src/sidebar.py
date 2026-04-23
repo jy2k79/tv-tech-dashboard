@@ -16,8 +16,11 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.4.7"
+VERSION = "2.5.0"
 CHANGELOG = """\
+**v2.5.0** \u2014 2026-04-23
+- New lead chart on Technology Explorer \u2192 SPD Analysis tab: Green FWHM vs Rec.2020 Coverage scatter. Closes the loop between spectral purity and the consumer-visible outcome (color gamut). QD techs cluster in a magenta "QD ZONE" (narrow emission, wide gamut). Closes #49.
+
 **v2.4.7** \u2014 2026-04-23
 - Fix price-history SKU aggregation: snapshots now take the cheapest SKU per (date, product, size), matching how the current-price bar chart works. Previously `keep='last'` picked arbitrarily, making the line chart overstate prices for multi-SKU products like Apple Studio Display XDR (4 SKUs at 27", $2,849\u2013$3,600).
 - Backfilled 7 historical monitor snapshots where today's data shows the dedup bug picked a non-min SKU with <30% price spread (stable price pattern). Skipped 5 candidates with >30% spread (indistinguishable from real sales).

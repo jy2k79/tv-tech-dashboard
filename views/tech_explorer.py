@@ -35,6 +35,46 @@ def render(fdf, pcfg):
     with tab2:
         st.subheader("SPD Peak Analysis")
 
+        st.markdown("**Narrow Green, Wider Color \u2014 Green FWHM vs Rec.2020 Coverage**")
+        st.caption(
+            f"Every {pcfg['item_singular'].lower()} in the dataset. Narrower green emission "
+            "(X, left side) maps to wider color gamut coverage (Y, top). Quantum-dot techs "
+            "cluster in their own corner."
+        )
+        _gamut = fdf[fdf["green_fwhm_nm"].notna()
+                     & fdf["hdr_bt2020_coverage_itp_pct"].notna()]
+        _n_wide = int((_gamut["green_fwhm_nm"] > 80).sum())
+        _gamut_plot = _gamut[_gamut["green_fwhm_nm"] <= 80]
+        fig = px.scatter(
+            _gamut_plot, x="green_fwhm_nm", y="hdr_bt2020_coverage_itp_pct",
+            color="color_architecture", color_discrete_map=TECH_COLORS,
+            category_orders={"color_architecture": TECH_ORDER},
+            hover_name="fullname", hover_data=["brand", "marketing_label"],
+            labels={"green_fwhm_nm": "Green FWHM (nm)",
+                    "hdr_bt2020_coverage_itp_pct": "Rec.2020 Coverage (%)"},
+        )
+        fig.add_shape(type="rect", x0=19, x1=41, y0=42, y1=74,
+                      line=dict(color="rgba(255,0,159,0.5)", dash="dash"),
+                      fillcolor="rgba(255,0,159,0.06)")
+        fig.add_annotation(x=30, y=71, text="<b>QD ZONE</b>", showarrow=False,
+                           font=dict(color="rgba(255,0,159,0.9)", size=14))
+        fig.add_annotation(x=30, y=67, text="narrow emission \u00b7 wide gamut",
+                           showarrow=False,
+                           font=dict(color="rgba(255,0,159,0.7)", size=11))
+        fig.update_traces(marker=MARKER)
+        fig.update_layout(height=500, legend_title_text="Technology",
+                          xaxis=dict(range=[20, 80]),
+                          yaxis=dict(range=[15, 75]),
+                          **PL)
+        st.plotly_chart(fig, use_container_width=True)
+        if _n_wide:
+            _label = pcfg["item_label"].lower()
+            st.caption(
+                f"{_n_wide} WOLED {_label.rstrip('s')}(s) with green FWHM > 80 nm not shown."
+            )
+
+        st.divider()
+
         col1, col2 = st.columns(2)
         with col1:
             st.markdown("**Green Peak FWHM by Technology**")
