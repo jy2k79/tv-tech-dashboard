@@ -1,10 +1,61 @@
 """Overview page — high-level KPIs, technology distribution, and pricing."""
 
+from pathlib import Path
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 
 from src.charts import TECH_ORDER, TECH_COLORS, DISPLAY_TYPE_COLORS, friendly, axis_range, PL
+
+_BEST_OF_CSV = Path(__file__).parent.parent / "data" / "rtings_best_of_tvs.csv"
+
+
+def _load_best_of(df_full: pd.DataFrame) -> pd.DataFrame | None:
+    """Load the latest RTINGS Best-Of TV snapshot and join in our
+    classifications. Tries product_id first (stable), falls back to
+    url_part and then normalized fullname so notable mentions (which
+    don't carry product_id in the source page) still resolve."""
+    if not _BEST_OF_CSV.exists():
+        return None
+    best = pd.read_csv(_BEST_OF_CSV)
+    if best.empty:
+        return None
+
+    db = df_full[["product_id", "url_part", "fullname",
+                  "color_architecture", "panel_type"]].copy()
+    db["product_id"] = pd.to_numeric(db["product_id"], errors="coerce")
+    best["product_id"] = pd.to_numeric(best["product_id"], errors="coerce")
+
+    # Stage 1: join by product_id where available
+    by_pid = best.merge(db, on="product_id", how="left",
+                        suffixes=("", "_db"))
+
+    # Stage 2: for rows still unresolved, fall back to url_part
+    unresolved = by_pid["color_architecture"].isna()
+    if unresolved.any():
+        fallback = best[unresolved][["url_part"]].merge(
+            db.dropna(subset=["url_part"])[["url_part",
+                                            "color_architecture",
+                                            "panel_type"]],
+            on="url_part", how="left",
+        )
+        by_pid.loc[unresolved, "color_architecture"] = fallback["color_architecture"].values
+        by_pid.loc[unresolved, "panel_type"] = fallback["panel_type"].values
+
+    # Stage 3: last-resort fullname match (strip case/spacing)
+    unresolved = by_pid["color_architecture"].isna()
+    if unresolved.any():
+        norm = lambda s: str(s).lower().strip().replace("  ", " ")
+        db_norm = db.dropna(subset=["fullname"]).copy()
+        db_norm["fn_key"] = db_norm["fullname"].map(norm)
+        best_norm_keys = by_pid.loc[unresolved, "fullname"].map(norm)
+        lookup = dict(zip(db_norm["fn_key"], db_norm["color_architecture"]))
+        plookup = dict(zip(db_norm["fn_key"], db_norm["panel_type"]))
+        by_pid.loc[unresolved, "color_architecture"] = best_norm_keys.map(lookup)
+        by_pid.loc[unresolved, "panel_type"] = best_norm_keys.map(plookup)
+
+    return by_pid
 
 
 def render(fdf, pcfg, *, product_type=None, df=None):
@@ -34,6 +85,9 @@ def render(fdf, pcfg, *, product_type=None, df=None):
     c3.metric("Brands", fdf["brand"].nunique())
     c4.metric("Avg Price", f"${priced['price_best'].mean():,.0f}" if len(priced) else "N/A")
     c5.metric("Avg $/m\u00b2", f"${priced['price_per_m2'].mean():,.0f}" if len(priced) else "N/A")
+
+    if product_type == "TVs":
+        _render_best_of_section(df if df is not None else fdf)
 
     st.divider()
 
@@ -145,3 +199,77 @@ def render(fdf, pcfg, *, product_type=None, df=None):
                       yaxis=dict(range=axis_range("mixed_usage", fdf)), **PL)
     fig.update_traces(marker=dict(size=7))
     st.plotly_chart(fig, use_container_width=True)
+
+
+def _render_best_of_section(df_full: pd.DataFrame) -> None:
+    """RTINGS Best-Of TVs picks + tech-share visualization.
+
+    TV-only. Reads the latest snapshot scraped from
+    rtings.com/tv/reviews/best/tvs-on-the-market.
+    """
+    best = _load_best_of(df_full)
+    if best is None or best.empty:
+        return
+
+    st.divider()
+    st.subheader("RTINGS Best-Of TVs")
+    snapshot_date = best["snapshot_date"].iloc[0]
+    main_count = int((~best["is_mention"]).sum())
+    st.caption(
+        f"As of {snapshot_date} \u00b7 "
+        f"[rtings.com/tv/reviews/best/tvs-on-the-market](https://www.rtings.com/tv/reviews/best/tvs-on-the-market) "
+        f"\u00b7 {main_count} category picks plus {int(best['is_mention'].sum())} notable mentions"
+    )
+
+    list_col, chart_col = st.columns([3, 2])
+
+    with list_col:
+        # Format display table: pretty category labels for mentions,
+        # show classification + brand
+        display = best.copy()
+        display["Category"] = display.apply(
+            lambda r: r["category"] if not r["is_mention"]
+            else f"Notable Mention #{int(r['rank'])}",
+            axis=1,
+        )
+        display["Tech"] = display["color_architecture"].fillna("\u2014")
+        display = display.rename(columns={"fullname": "TV"})
+        display = display[["Category", "TV", "Tech"]]
+        st.dataframe(display, use_container_width=True, hide_index=True,
+                     height=470)
+
+    with chart_col:
+        st.markdown("**Tech share across the list**")
+        # Count classifications across all picks (mains + mentions)
+        tech_counts = (best["color_architecture"]
+                       .fillna("Unknown")
+                       .value_counts()
+                       .reindex(TECH_ORDER + ["Unknown"])
+                       .dropna()
+                       .reset_index())
+        tech_counts.columns = ["Technology", "Count"]
+        # Drop zero rows
+        tech_counts = tech_counts[tech_counts["Count"] > 0]
+        colors = {**TECH_COLORS, "Unknown": "#555555"}
+        fig = px.bar(tech_counts, x="Count", y="Technology",
+                     orientation="h", color="Technology",
+                     color_discrete_map=colors,
+                     category_orders={"Technology": TECH_ORDER + ["Unknown"]},
+                     text="Count")
+        fig.update_traces(textposition="outside", textfont_size=14,
+                          textfont_weight=600, cliponaxis=False)
+        fig.update_layout(height=420, showlegend=False,
+                          xaxis_title="", yaxis_title="",
+                          margin=dict(l=0, r=30, t=10, b=0),
+                          **PL)
+        st.plotly_chart(fig, use_container_width=True)
+
+        n_qd = int(best["color_architecture"].isin(
+            ["QD-OLED", "QD-LCD", "Pseudo QD"]).sum())
+        n_total = int(best["color_architecture"].notna().sum())
+        if n_total:
+            pct = round(100 * n_qd / n_total)
+            st.caption(
+                f"**{n_qd} of {n_total}** classified picks ({pct}%) use a "
+                "quantum-dot or pseudo-QD enhancement layer."
+            )

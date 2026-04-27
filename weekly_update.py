@@ -620,6 +620,10 @@ def run_tv_pipeline():
     if not pricing_ok:
         errors.append("Pricing pipeline failed — using stale prices")
 
+    # --- Step 4a: RTINGS Best-Of TV list (non-fatal) ---
+    if not run_script("rtings_best_of_scraper.py", abort_on_fail=False):
+        errors.append("Best-Of TV list scrape failed — dashboard section may be stale")
+
     # --- Step 4b: Stale score fallback ---
     session_flag = DATA / ".session_ok"
     session_expired = session_flag.exists() and session_flag.read_text().strip() == "0"

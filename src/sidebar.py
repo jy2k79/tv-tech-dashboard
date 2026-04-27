@@ -16,8 +16,11 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.5.3"
+VERSION = "2.6.0"
 CHANGELOG = """\
+**v2.6.0** \u2014 2026-04-27
+- New section on TV Overview: **RTINGS Best-Of TVs** \u2014 current 6 category picks (Best, Upper/Mid/Lower Mid-Range, Budget, Cheap) plus 6 Notable Mentions, joined to our SPD classifications. Bar chart shows tech share across the list (currently 100% QD/Pseudo QD among classified picks). Scraped weekly from rtings.com/tv/reviews/best/tvs-on-the-market. Closes #50.
+
 **v2.5.3** \u2014 2026-04-23
 - Add breathing room between QD ZONE box and the floating label above it (was touching).
 

@@ -1,0 +1,13 @@
+snapshot_date,rank,category,subtitle,product_id,fullname,url_part,review_url,is_mention
+2026-04-27,1,Best TV,"Amazing image quality, performance, and versatility. ",88596,Samsung S95F OLED,samsung-s95f-oled,/tv/reviews/samsung/s95f-oled,False
+2026-04-27,2,Best Upper Mid-Range TV,Similar image quality and features. Worse for bright rooms. ,92237,Samsung S90F OLED,samsung-s90f-oled,/tv/reviews/samsung/s90f-oled,False
+2026-04-27,3,Best Mid-Range TV,"Worse black levels than OLEDs, but bright and versatile.",101781,TCL QM8K,tcl-qm8k,/tv/reviews/tcl/qm8k,False
+2026-04-27,4,Best Lower Mid-Range TV,"A step-down in image quality, but has the same features.",88608,TCL QM7K,tcl-qm7k,/tv/reviews/tcl/qm7k,False
+2026-04-27,5,Best Budget TV,"Same features, but dimmer with worse blacks and colors. ",88607,TCL QM6K,tcl-qm6k,/tv/reviews/tcl/qm6k,False
+2026-04-27,6,Best Cheap TV,Weak bright room performance and mediocre image quality.,96128,Hisense QD6QF,hisense-qd6qf,/tv/reviews/hisense/qd6qf,False
+2026-04-27,1,Notable Mention,,,LG G5 OLED,lg-g5-oled,/tv/reviews/lg/g5-oled,True
+2026-04-27,2,Notable Mention,,,LG C5 OLED,lg-c5-oled,/tv/reviews/lg/c5-oled,True
+2026-04-27,3,Notable Mention,,,LG B5 OLED,lg-b5-oled,/tv/reviews/lg/b5-oled,True
+2026-04-27,4,Notable Mention,,,Hisense U75QG,hisense-u75qg,/tv/reviews/hisense/u75qg,True
+2026-04-27,5,Notable Mention,,,Hisense U65QF,hisense-u65qf,/tv/reviews/hisense/u65qf,True
+2026-04-27,6,Notable Mention,,,TCL S551G,tcl-s5-s551g,/tv/reviews/tcl/s5-s551g,True
