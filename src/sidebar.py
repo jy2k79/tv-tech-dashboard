@@ -16,8 +16,11 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.6.3"
+VERSION = "2.6.4"
 CHANGELOG = """\
+**v2.6.4** \u2014 2026-04-27
+- Best-Of pie chart: move labels inside slices (was clipping outside the chart area). Label + percent shown horizontally on each wedge in dark text against the brand colors.
+
 **v2.6.3** \u2014 2026-04-27
 - Collapse Notable Mentions table into a closed-by-default expander, matching the Composition over time pattern. The mentions toggle still works independently for the pie chart scope.
 

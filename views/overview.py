@@ -220,8 +220,9 @@ def _tech_share_pie(subset: pd.DataFrame, height: int = 360) -> None:
                  color="Technology", color_discrete_map=colors,
                  category_orders={"Technology": TECH_ORDER + ["Unknown"]},
                  hole=0.45)
-    fig.update_traces(textposition="outside", textinfo="label+percent",
-                      textfont_size=13)
+    fig.update_traces(textposition="inside", textinfo="label+percent",
+                      insidetextorientation="horizontal",
+                      textfont=dict(size=13, color="#0E1117", weight=600))
     fig.update_layout(height=height,
                       legend_title_text="Technology",
                       margin=dict(l=10, r=10, t=10, b=10),
