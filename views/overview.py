@@ -243,8 +243,11 @@ def _qd_share_caption(subset: pd.DataFrame) -> None:
 
 
 def _render_history_chart(df_full: pd.DataFrame) -> None:
-    """Stacked bar showing tech composition of the main 6 picks across
-    historical snapshots, drawn from rtings_best_of_history.csv."""
+    """Stacked step-area showing tech composition of the main 6 picks over
+    time. Each snapshot defines the picks until the next snapshot, so we
+    use `line_shape='hv'` (horizontal-then-vertical step) — the value
+    held by a snapshot persists across the gap until RTINGS publishes
+    the next one."""
     if not _BEST_OF_HISTORY_CSV.exists():
         return
     hist = pd.read_csv(_BEST_OF_HISTORY_CSV)
@@ -257,19 +260,32 @@ def _render_history_chart(df_full: pd.DataFrame) -> None:
     main = main.merge(db, on="url_part", how="left")
     main["color_architecture"] = main["color_architecture"].fillna("Unknown")
 
-    # Counts per (snapshot_date, color_architecture)
-    grouped = (main.groupby(["snapshot_date", "color_architecture"]).size()
-               .reset_index(name="Count"))
-    colors = {**TECH_COLORS, "Unknown": "#555555"}
     cat_order = TECH_ORDER + ["Unknown"]
-    fig = px.bar(grouped, x="snapshot_date", y="Count",
-                 color="color_architecture",
-                 color_discrete_map=colors,
-                 category_orders={"color_architecture": cat_order},
-                 labels={"snapshot_date": "", "Count": "Picks"})
-    fig.update_layout(height=320, barmode="stack",
+    # Counts per (snapshot_date, color_architecture). Reindex to ensure
+    # every (date, tech) pair is present (zeros where absent) so the
+    # stacked area stays numerically stable across snapshots.
+    snapshot_dates = sorted(main["snapshot_date"].unique())
+    grouped = (main.groupby(["snapshot_date", "color_architecture"]).size()
+               .unstack(fill_value=0)
+               .reindex(columns=cat_order, fill_value=0)
+               .reindex(index=snapshot_dates, fill_value=0)
+               .reset_index()
+               .melt(id_vars="snapshot_date",
+                     var_name="color_architecture",
+                     value_name="Count"))
+    grouped["snapshot_date"] = pd.to_datetime(grouped["snapshot_date"])
+
+    colors = {**TECH_COLORS, "Unknown": "#555555"}
+    fig = px.area(grouped, x="snapshot_date", y="Count",
+                  color="color_architecture",
+                  color_discrete_map=colors,
+                  category_orders={"color_architecture": cat_order},
+                  line_shape="hv",
+                  labels={"snapshot_date": "", "Count": "Picks"})
+    fig.update_layout(height=320,
                       legend_title_text="Technology",
                       margin=dict(l=0, r=0, t=10, b=0),
+                      yaxis=dict(range=[0, 6.2]),
                       **PL)
     st.plotly_chart(fig, use_container_width=True)
 
