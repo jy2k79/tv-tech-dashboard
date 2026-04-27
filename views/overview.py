@@ -9,6 +9,7 @@ import plotly.express as px
 from src.charts import TECH_ORDER, TECH_COLORS, DISPLAY_TYPE_COLORS, friendly, axis_range, PL
 
 _BEST_OF_CSV = Path(__file__).parent.parent / "data" / "rtings_best_of_tvs.csv"
+_BEST_OF_HISTORY_CSV = Path(__file__).parent.parent / "data" / "rtings_best_of_history.csv"
 
 
 def _load_best_of(df_full: pd.DataFrame) -> pd.DataFrame | None:
@@ -201,6 +202,78 @@ def render(fdf, pcfg, *, product_type=None, df=None):
     st.plotly_chart(fig, use_container_width=True)
 
 
+def _tech_share_chart(subset: pd.DataFrame, height: int = 320) -> None:
+    """Horizontal bar chart of color_architecture counts in `subset`."""
+    counts = (subset["color_architecture"]
+              .fillna("Unknown")
+              .value_counts()
+              .reindex(TECH_ORDER + ["Unknown"])
+              .dropna()
+              .reset_index())
+    counts.columns = ["Technology", "Count"]
+    counts = counts[counts["Count"] > 0]
+    if counts.empty:
+        st.info("No classified picks in this group.")
+        return
+    colors = {**TECH_COLORS, "Unknown": "#555555"}
+    fig = px.bar(counts, x="Count", y="Technology",
+                 orientation="h", color="Technology",
+                 color_discrete_map=colors,
+                 category_orders={"Technology": TECH_ORDER + ["Unknown"]},
+                 text="Count")
+    fig.update_traces(textposition="outside", textfont_size=14,
+                      textfont_weight=600, cliponaxis=False)
+    fig.update_layout(height=height, showlegend=False,
+                      xaxis_title="", yaxis_title="",
+                      margin=dict(l=0, r=30, t=10, b=0),
+                      **PL)
+    st.plotly_chart(fig, use_container_width=True)
+
+
+def _qd_share_caption(subset: pd.DataFrame) -> None:
+    n_qd = int(subset["color_architecture"]
+               .isin(["QD-OLED", "QD-LCD", "Pseudo QD"]).sum())
+    n_total = int(subset["color_architecture"].notna().sum())
+    if n_total:
+        pct = round(100 * n_qd / n_total)
+        st.caption(
+            f"**{n_qd} of {n_total}** classified picks ({pct}%) use a "
+            "quantum-dot or pseudo-QD enhancement layer."
+        )
+
+
+def _render_history_chart(df_full: pd.DataFrame) -> None:
+    """Stacked bar showing tech composition of the main 6 picks across
+    historical snapshots, drawn from rtings_best_of_history.csv."""
+    if not _BEST_OF_HISTORY_CSV.exists():
+        return
+    hist = pd.read_csv(_BEST_OF_HISTORY_CSV)
+    main = hist[~hist["is_mention"]].copy()
+    if main.empty:
+        return
+
+    # Join classifications by url_part (works for backfilled rows too)
+    db = df_full[["url_part", "color_architecture"]].dropna(subset=["url_part"])
+    main = main.merge(db, on="url_part", how="left")
+    main["color_architecture"] = main["color_architecture"].fillna("Unknown")
+
+    # Counts per (snapshot_date, color_architecture)
+    grouped = (main.groupby(["snapshot_date", "color_architecture"]).size()
+               .reset_index(name="Count"))
+    colors = {**TECH_COLORS, "Unknown": "#555555"}
+    cat_order = TECH_ORDER + ["Unknown"]
+    fig = px.bar(grouped, x="snapshot_date", y="Count",
+                 color="color_architecture",
+                 color_discrete_map=colors,
+                 category_orders={"color_architecture": cat_order},
+                 labels={"snapshot_date": "", "Count": "Picks"})
+    fig.update_layout(height=320, barmode="stack",
+                      legend_title_text="Technology",
+                      margin=dict(l=0, r=0, t=10, b=0),
+                      **PL)
+    st.plotly_chart(fig, use_container_width=True)
+
+
 def _render_best_of_section(df_full: pd.DataFrame) -> None:
     """RTINGS Best-Of TVs picks + tech-share visualization.
 
@@ -215,61 +288,49 @@ def _render_best_of_section(df_full: pd.DataFrame) -> None:
     st.subheader("RTINGS Best-Of TVs")
     snapshot_date = best["snapshot_date"].iloc[0]
     main_count = int((~best["is_mention"]).sum())
+    mention_count = int(best["is_mention"].sum())
     st.caption(
         f"As of {snapshot_date} \u00b7 "
         f"[rtings.com/tv/reviews/best/tvs-on-the-market](https://www.rtings.com/tv/reviews/best/tvs-on-the-market) "
-        f"\u00b7 {main_count} category picks plus {int(best['is_mention'].sum())} notable mentions"
+        f"\u00b7 {main_count} category picks + {mention_count} notable mentions"
     )
 
+    main_picks = best[~best["is_mention"]].copy()
+    mentions = best[best["is_mention"]].copy()
+
+    # --- Main picks: list + tech share ---
+    st.markdown("**Category picks**")
     list_col, chart_col = st.columns([3, 2])
-
     with list_col:
-        # Format display table: pretty category labels for mentions,
-        # show classification + brand
-        display = best.copy()
-        display["Category"] = display.apply(
-            lambda r: r["category"] if not r["is_mention"]
-            else f"Notable Mention #{int(r['rank'])}",
-            axis=1,
-        )
+        display = main_picks.rename(columns={"fullname": "TV",
+                                             "category": "Category"})
         display["Tech"] = display["color_architecture"].fillna("\u2014")
-        display = display.rename(columns={"fullname": "TV"})
-        display = display[["Category", "TV", "Tech"]]
-        st.dataframe(display, use_container_width=True, hide_index=True,
-                     height=470)
-
+        st.dataframe(display[["Category", "TV", "Tech"]],
+                     use_container_width=True, hide_index=True, height=240)
     with chart_col:
-        st.markdown("**Tech share across the list**")
-        # Count classifications across all picks (mains + mentions)
-        tech_counts = (best["color_architecture"]
-                       .fillna("Unknown")
-                       .value_counts()
-                       .reindex(TECH_ORDER + ["Unknown"])
-                       .dropna()
-                       .reset_index())
-        tech_counts.columns = ["Technology", "Count"]
-        # Drop zero rows
-        tech_counts = tech_counts[tech_counts["Count"] > 0]
-        colors = {**TECH_COLORS, "Unknown": "#555555"}
-        fig = px.bar(tech_counts, x="Count", y="Technology",
-                     orientation="h", color="Technology",
-                     color_discrete_map=colors,
-                     category_orders={"Technology": TECH_ORDER + ["Unknown"]},
-                     text="Count")
-        fig.update_traces(textposition="outside", textfont_size=14,
-                          textfont_weight=600, cliponaxis=False)
-        fig.update_layout(height=420, showlegend=False,
-                          xaxis_title="", yaxis_title="",
-                          margin=dict(l=0, r=30, t=10, b=0),
-                          **PL)
-        st.plotly_chart(fig, use_container_width=True)
+        _tech_share_chart(main_picks, height=240)
+    _qd_share_caption(main_picks)
 
-        n_qd = int(best["color_architecture"].isin(
-            ["QD-OLED", "QD-LCD", "Pseudo QD"]).sum())
-        n_total = int(best["color_architecture"].notna().sum())
-        if n_total:
-            pct = round(100 * n_qd / n_total)
+    # --- Notable mentions: list + tech share ---
+    if not mentions.empty:
+        st.markdown("**Notable mentions**")
+        m_list, m_chart = st.columns([3, 2])
+        with m_list:
+            mdisplay = mentions.rename(columns={"fullname": "TV"})
+            mdisplay["Tech"] = mdisplay["color_architecture"].fillna("\u2014")
+            mdisplay["#"] = mdisplay["rank"].astype(int)
+            st.dataframe(mdisplay[["#", "TV", "Tech"]],
+                         use_container_width=True, hide_index=True, height=240)
+        with m_chart:
+            _tech_share_chart(mentions, height=240)
+
+    # --- Composition over time (uses backfilled history) ---
+    if _BEST_OF_HISTORY_CSV.exists():
+        with st.expander("Composition over time", expanded=False):
             st.caption(
-                f"**{n_qd} of {n_total}** classified picks ({pct}%) use a "
-                "quantum-dot or pseudo-QD enhancement layer."
+                "Tech composition of the main 6 category picks across "
+                "RTINGS' confirmation dates. The Mid-Range slot flipped "
+                "from WOLED (LG B4) to QD-LCD (TCL QM8K) on 2025-10-27, "
+                "after which all 6 picks have been QD-family."
             )
+            _render_history_chart(df_full)

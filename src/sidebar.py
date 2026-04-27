@@ -16,8 +16,11 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.6.0"
+VERSION = "2.6.1"
 CHANGELOG = """\
+**v2.6.1** \u2014 2026-04-27
+- Best-Of TV section: split Notable Mentions into its own sub-section with separate table + tech-share chart. Backfilled 5 historical snapshots (2025-07-17, 2025-10-27, 2025-12-12, 2026-02-04, 2026-03-27) from RTINGS' on-page changelog. New "Composition over time" expander shows the QD-share trajectory \u2014 the list went 100% QD-family on 2025-10-27 when LG B4 was replaced by TCL QM8K. Closes #51.
+
 **v2.6.0** \u2014 2026-04-27
 - New section on TV Overview: **RTINGS Best-Of TVs** \u2014 current 6 category picks (Best, Upper/Mid/Lower Mid-Range, Budget, Cheap) plus 6 Notable Mentions, joined to our SPD classifications. Bar chart shows tech share across the list (currently 100% QD/Pseudo QD among classified picks). Scraped weekly from rtings.com/tv/reviews/best/tvs-on-the-market. Closes #50.
 
