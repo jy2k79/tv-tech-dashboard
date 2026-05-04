@@ -441,58 +441,115 @@ date,product_id,fullname,change_type,field,old_value,new_value
 2026-04-21,56341,Samsung Q60D,material_change,qd_material,InP,
 2026-04-21,96964,Samsung Q8F 2025,tech_change,color_architecture,QD-LCD,Pseudo QD
 2026-04-21,96964,Samsung Q8F 2025,material_change,qd_material,InP,
-2026-04-27,98323,LG UA77,material_change,qd_material,nan,nan
-2026-04-27,102195,Samsung U7900F,material_change,qd_material,nan,nan
-2026-04-27,96104,Hisense U75QG,material_change,qd_material,nan,nan
-2026-04-27,49540,LG B4 OLED,material_change,qd_material,nan,nan
-2026-04-27,96118,Hisense U65QF,material_change,qd_material,nan,nan
-2026-04-27,60900,TCL S551G,material_change,qd_material,nan,nan
-2026-04-27,56341,Samsung Q60D,material_change,qd_material,nan,nan
-2026-04-27,53323,Sony BRAVIA 3,material_change,qd_material,nan,nan
-2026-04-27,117447,Hisense 100U8QG,material_change,qd_material,nan,nan
-2026-04-27,70375,TCL NXTVISION,material_change,qd_material,nan,nan
-2026-04-27,82692,Amazon Fire TV Omni Mini-LED Series,material_change,qd_material,nan,nan
-2026-04-27,55174,LG QNED90T,material_change,qd_material,nan,nan
-2026-04-27,50404,Hisense U6N,material_change,qd_material,nan,nan
-2026-04-27,37906,Roku Select Series 2023,material_change,qd_material,nan,nan
-2026-04-27,92245,Sony BRAVIA 2 II,material_change,qd_material,nan,nan
-2026-04-27,96964,Samsung Q8F 2025,material_change,qd_material,nan,nan
-2026-04-27,57713,Hisense A7N,material_change,qd_material,nan,nan
-2026-04-27,94057,Samsung U8000F,material_change,qd_material,nan,nan
-2026-04-27,57179,Samsung Q80D,material_change,qd_material,nan,nan
-2026-04-27,55354,Samsung DU8000,material_change,qd_material,nan,nan
-2026-04-27,60903,TCL Q651G,material_change,qd_material,nan,nan
-2026-04-27,63102,Hisense QD7N,material_change,qd_material,nan,nan
-2026-04-27,94324,Samsung Q7F 2025,material_change,qd_material,nan,nan
-2026-04-27,56163,Samsung The Frame 2024,material_change,qd_material,nan,nan
-2026-04-27,74024,Panasonic Z95A OLED,material_change,qd_material,nan,nan
-2026-04-27,49541,LG C4 OLED,material_change,qd_material,nan,nan
-2026-04-27,50405,Hisense U7N,material_change,qd_material,nan,nan
-2026-04-27,74026,Panasonic Z85A OLED,material_change,qd_material,nan,nan
-2026-04-27,88601,LG G5 OLED,material_change,qd_material,nan,nan
-2026-04-27,127431,LG C6H OLED,material_change,qd_material,nan,nan
-2026-04-27,88502,Panasonic Z95B OLED,material_change,qd_material,nan,nan
-2026-04-27,58889,Sony BRAVIA 8 OLED,material_change,qd_material,nan,nan
-2026-04-27,92233,LG QNED85A,material_change,qd_material,nan,nan
-2026-04-27,63953,Hisense CanvasTV 2024,material_change,qd_material,nan,nan
-2026-04-27,132977,LG C6 OLED 2026,material_change,qd_material,nan,nan
-2026-04-27,117450,Sony BRAVIA 5 98,material_change,qd_material,nan,nan
-2026-04-27,100489,TCL QM5K,material_change,qd_material,nan,nan
-2026-04-27,88603,LG B5 OLED,material_change,qd_material,nan,nan
-2026-04-27,88607,TCL QM6K,material_change,qd_material,nan,nan
-2026-04-27,131546,LG G6 OLED,material_change,qd_material,nan,nan
-2026-04-27,92761,Philips 974 Series OLED,material_change,qd_material,nan,nan
-2026-04-27,96722,Sony BRAVIA 5,material_change,qd_material,nan,nan
-2026-04-27,102827,Hisense 98QD5QG,material_change,qd_material,nan,nan
-2026-04-27,49542,LG G4 OLED,material_change,qd_material,nan,nan
-2026-04-27,57180,Samsung DU7200,material_change,qd_material,nan,nan
-2026-04-27,96119,Hisense QD7QF,material_change,qd_material,nan,nan
-2026-04-27,96128,Hisense QD6QF,material_change,qd_material,nan,nan
-2026-04-27,99831,TCL Q77K,material_change,qd_material,nan,nan
-2026-04-27,39008,Sony X90L/X90CL,material_change,qd_material,nan,nan
-2026-04-27,88602,LG C5 OLED,material_change,qd_material,nan,nan
-2026-04-27,57710,Samsung Q70D,material_change,qd_material,nan,nan
-2026-04-27,49704,Samsung S85D OLED,material_change,qd_material,nan,nan
-2026-04-27,118244,Panasonic Z8BA OLED,material_change,qd_material,nan,nan
-2026-04-27,88503,Panasonic W70B,material_change,qd_material,nan,nan
-2026-04-27,57721,LG UT75,material_change,qd_material,nan,nan
+2026-04-27,98323,LG UA77,material_change,qd_material,,
+2026-04-27,102195,Samsung U7900F,material_change,qd_material,,
+2026-04-27,96104,Hisense U75QG,material_change,qd_material,,
+2026-04-27,49540,LG B4 OLED,material_change,qd_material,,
+2026-04-27,96118,Hisense U65QF,material_change,qd_material,,
+2026-04-27,60900,TCL S551G,material_change,qd_material,,
+2026-04-27,56341,Samsung Q60D,material_change,qd_material,,
+2026-04-27,53323,Sony BRAVIA 3,material_change,qd_material,,
+2026-04-27,117447,Hisense 100U8QG,material_change,qd_material,,
+2026-04-27,70375,TCL NXTVISION,material_change,qd_material,,
+2026-04-27,82692,Amazon Fire TV Omni Mini-LED Series,material_change,qd_material,,
+2026-04-27,55174,LG QNED90T,material_change,qd_material,,
+2026-04-27,50404,Hisense U6N,material_change,qd_material,,
+2026-04-27,37906,Roku Select Series 2023,material_change,qd_material,,
+2026-04-27,92245,Sony BRAVIA 2 II,material_change,qd_material,,
+2026-04-27,96964,Samsung Q8F 2025,material_change,qd_material,,
+2026-04-27,57713,Hisense A7N,material_change,qd_material,,
+2026-04-27,94057,Samsung U8000F,material_change,qd_material,,
+2026-04-27,57179,Samsung Q80D,material_change,qd_material,,
+2026-04-27,55354,Samsung DU8000,material_change,qd_material,,
+2026-04-27,60903,TCL Q651G,material_change,qd_material,,
+2026-04-27,63102,Hisense QD7N,material_change,qd_material,,
+2026-04-27,94324,Samsung Q7F 2025,material_change,qd_material,,
+2026-04-27,56163,Samsung The Frame 2024,material_change,qd_material,,
+2026-04-27,74024,Panasonic Z95A OLED,material_change,qd_material,,
+2026-04-27,49541,LG C4 OLED,material_change,qd_material,,
+2026-04-27,50405,Hisense U7N,material_change,qd_material,,
+2026-04-27,74026,Panasonic Z85A OLED,material_change,qd_material,,
+2026-04-27,88601,LG G5 OLED,material_change,qd_material,,
+2026-04-27,127431,LG C6H OLED,material_change,qd_material,,
+2026-04-27,88502,Panasonic Z95B OLED,material_change,qd_material,,
+2026-04-27,58889,Sony BRAVIA 8 OLED,material_change,qd_material,,
+2026-04-27,92233,LG QNED85A,material_change,qd_material,,
+2026-04-27,63953,Hisense CanvasTV 2024,material_change,qd_material,,
+2026-04-27,132977,LG C6 OLED 2026,material_change,qd_material,,
+2026-04-27,117450,Sony BRAVIA 5 98,material_change,qd_material,,
+2026-04-27,100489,TCL QM5K,material_change,qd_material,,
+2026-04-27,88603,LG B5 OLED,material_change,qd_material,,
+2026-04-27,88607,TCL QM6K,material_change,qd_material,,
+2026-04-27,131546,LG G6 OLED,material_change,qd_material,,
+2026-04-27,92761,Philips 974 Series OLED,material_change,qd_material,,
+2026-04-27,96722,Sony BRAVIA 5,material_change,qd_material,,
+2026-04-27,102827,Hisense 98QD5QG,material_change,qd_material,,
+2026-04-27,49542,LG G4 OLED,material_change,qd_material,,
+2026-04-27,57180,Samsung DU7200,material_change,qd_material,,
+2026-04-27,96119,Hisense QD7QF,material_change,qd_material,,
+2026-04-27,96128,Hisense QD6QF,material_change,qd_material,,
+2026-04-27,99831,TCL Q77K,material_change,qd_material,,
+2026-04-27,39008,Sony X90L/X90CL,material_change,qd_material,,
+2026-04-27,88602,LG C5 OLED,material_change,qd_material,,
+2026-04-27,57710,Samsung Q70D,material_change,qd_material,,
+2026-04-27,49704,Samsung S85D OLED,material_change,qd_material,,
+2026-04-27,118244,Panasonic Z8BA OLED,material_change,qd_material,,
+2026-04-27,88503,Panasonic W70B,material_change,qd_material,,
+2026-04-27,57721,LG UT75,material_change,qd_material,,
+2026-05-04,134076,Hisense U7SG,new_tv,,,QD-LCD
+2026-05-04,135751,Samsung S90H OLED,new_tv,,,WOLED
+2026-05-04,94057,Samsung U8000F,material_change,qd_material,nan,nan
+2026-05-04,98323,LG UA77,material_change,qd_material,nan,nan
+2026-05-04,57710,Samsung Q70D,material_change,qd_material,nan,nan
+2026-05-04,57713,Hisense A7N,material_change,qd_material,nan,nan
+2026-05-04,50405,Hisense U7N,material_change,qd_material,nan,nan
+2026-05-04,55354,Samsung DU8000,material_change,qd_material,nan,nan
+2026-05-04,96118,Hisense U65QF,material_change,qd_material,nan,nan
+2026-05-04,88603,LG B5 OLED,material_change,qd_material,nan,nan
+2026-05-04,70375,TCL NXTVISION,material_change,qd_material,nan,nan
+2026-05-04,49541,LG C4 OLED,material_change,qd_material,nan,nan
+2026-05-04,117450,Sony BRAVIA 5 98,material_change,qd_material,nan,nan
+2026-05-04,82692,Amazon Fire TV Omni Mini-LED Series,material_change,qd_material,nan,nan
+2026-05-04,57179,Samsung Q80D,material_change,qd_material,nan,nan
+2026-05-04,49542,LG G4 OLED,material_change,qd_material,nan,nan
+2026-05-04,57180,Samsung DU7200,material_change,qd_material,nan,nan
+2026-05-04,58889,Sony BRAVIA 8 OLED,material_change,qd_material,nan,nan
+2026-05-04,131546,LG G6 OLED,material_change,qd_material,nan,nan
+2026-05-04,60903,TCL Q651G,material_change,qd_material,nan,nan
+2026-05-04,96722,Sony BRAVIA 5,material_change,qd_material,nan,nan
+2026-05-04,92233,LG QNED85A,material_change,qd_material,nan,nan
+2026-05-04,96128,Hisense QD6QF,material_change,qd_material,nan,nan
+2026-05-04,74026,Panasonic Z85A OLED,material_change,qd_material,nan,nan
+2026-05-04,96119,Hisense QD7QF,material_change,qd_material,nan,nan
+2026-05-04,88503,Panasonic W70B,material_change,qd_material,nan,nan
+2026-05-04,92761,Philips 974 Series OLED,material_change,qd_material,nan,nan
+2026-05-04,88502,Panasonic Z95B OLED,material_change,qd_material,nan,nan
+2026-05-04,39008,Sony X90L/X90CL,material_change,qd_material,nan,nan
+2026-05-04,117447,Hisense 100U8QG,material_change,qd_material,nan,nan
+2026-05-04,88602,LG C5 OLED,material_change,qd_material,nan,nan
+2026-05-04,118244,Panasonic Z8BA OLED,material_change,qd_material,nan,nan
+2026-05-04,99831,TCL Q77K,material_change,qd_material,nan,nan
+2026-05-04,50404,Hisense U6N,material_change,qd_material,nan,nan
+2026-05-04,132977,LG C6 OLED 2026,material_change,qd_material,nan,nan
+2026-05-04,88601,LG G5 OLED,material_change,qd_material,nan,nan
+2026-05-04,56341,Samsung Q60D,material_change,qd_material,nan,nan
+2026-05-04,100489,TCL QM5K,material_change,qd_material,nan,nan
+2026-05-04,94324,Samsung Q7F 2025,material_change,qd_material,nan,nan
+2026-05-04,74024,Panasonic Z95A OLED,material_change,qd_material,nan,nan
+2026-05-04,37906,Roku Select Series 2023,material_change,qd_material,nan,nan
+2026-05-04,57721,LG UT75,material_change,qd_material,nan,nan
+2026-05-04,49540,LG B4 OLED,material_change,qd_material,nan,nan
+2026-05-04,102827,Hisense 98QD5QG,material_change,qd_material,nan,nan
+2026-05-04,49704,Samsung S85D OLED,material_change,qd_material,nan,nan
+2026-05-04,55174,LG QNED90T,material_change,qd_material,nan,nan
+2026-05-04,102195,Samsung U7900F,material_change,qd_material,nan,nan
+2026-05-04,96964,Samsung Q8F 2025,material_change,qd_material,nan,nan
+2026-05-04,96104,Hisense U75QG,material_change,qd_material,nan,nan
+2026-05-04,92245,Sony BRAVIA 2 II,material_change,qd_material,nan,nan
+2026-05-04,88607,TCL QM6K,material_change,qd_material,nan,nan
+2026-05-04,63953,Hisense CanvasTV 2024,material_change,qd_material,nan,nan
+2026-05-04,63102,Hisense QD7N,material_change,qd_material,nan,nan
+2026-05-04,56163,Samsung The Frame 2024,material_change,qd_material,nan,nan
+2026-05-04,53323,Sony BRAVIA 3,material_change,qd_material,nan,nan
+2026-05-04,127431,LG C6H OLED,material_change,qd_material,nan,nan
+2026-05-04,60900,TCL S551G,material_change,qd_material,nan,nan
