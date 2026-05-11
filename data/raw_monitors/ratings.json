@@ -528,72 +528,6 @@
     }
   },
   {
-    "original_id": "4112",
-    "product_id": "97892",
-    "score": 7.0,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "17021",
-    "product_id": "97892",
-    "score": 5.1,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
-    }
-  },
-  {
-    "original_id": "4113",
-    "product_id": "97892",
-    "score": 7.0,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "4114",
-    "product_id": "97892",
-    "score": 6.6,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "28295",
-    "product_id": "97892",
-    "score": 7.0,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "28299",
-    "product_id": "97892",
-    "score": 7.6,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
     "original_id": "4113",
     "product_id": "37157",
     "score": 7.3,
@@ -1114,72 +1048,6 @@
     "original_id": "28299",
     "product_id": "40717",
     "score": 8.9,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "4112",
-    "product_id": "96305",
-    "score": 7.3,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "17021",
-    "product_id": "96305",
-    "score": 7.1,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
-    }
-  },
-  {
-    "original_id": "4113",
-    "product_id": "96305",
-    "score": 7.8,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "4114",
-    "product_id": "96305",
-    "score": 7.4,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "28295",
-    "product_id": "96305",
-    "score": 7.3,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "28299",
-    "product_id": "96305",
-    "score": 8.4,
     "suitable": true,
     "unblurred": true,
     "usage": {
@@ -2698,72 +2566,6 @@
     "original_id": "28299",
     "product_id": "84697",
     "score": 9.1,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "4112",
-    "product_id": "88588",
-    "score": 8.8,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "17021",
-    "product_id": "88588",
-    "score": 9.0,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
-    }
-  },
-  {
-    "original_id": "4113",
-    "product_id": "88588",
-    "score": 7.6,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "4114",
-    "product_id": "88588",
-    "score": 9.0,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "28295",
-    "product_id": "88588",
-    "score": 6.7,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "28299",
-    "product_id": "88588",
-    "score": 8.4,
     "suitable": true,
     "unblurred": true,
     "usage": {
@@ -4488,72 +4290,6 @@
     }
   },
   {
-    "original_id": "4112",
-    "product_id": "52472",
-    "score": 6.0,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "17021",
-    "product_id": "52472",
-    "score": 4.6,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
-    }
-  },
-  {
-    "original_id": "4113",
-    "product_id": "52472",
-    "score": 8.1,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "4114",
-    "product_id": "52472",
-    "score": 7.8,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "28295",
-    "product_id": "52472",
-    "score": 7.3,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "28299",
-    "product_id": "52472",
-    "score": 8.4,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
     "original_id": "4113",
     "product_id": "24452",
     "score": 7.5,
@@ -4950,72 +4686,6 @@
     }
   },
   {
-    "original_id": "4112",
-    "product_id": "41303",
-    "score": 6.5,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "17021",
-    "product_id": "41303",
-    "score": 4.1,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
-    }
-  },
-  {
-    "original_id": "4113",
-    "product_id": "41303",
-    "score": 7.1,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "4114",
-    "product_id": "41303",
-    "score": 6.2,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "28295",
-    "product_id": "41303",
-    "score": 3.1,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "28299",
-    "product_id": "41303",
-    "score": 7.8,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
     "original_id": "4113",
     "product_id": "15402",
     "score": 7.5,
@@ -5404,138 +5074,6 @@
     "original_id": "28299",
     "product_id": "133968",
     "score": 9.1,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "4112",
-    "product_id": "133967",
-    "score": 5.2,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "17021",
-    "product_id": "133967",
-    "score": 2.4,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
-    }
-  },
-  {
-    "original_id": "4113",
-    "product_id": "133967",
-    "score": 8.2,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "4114",
-    "product_id": "133967",
-    "score": 7.6,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "28295",
-    "product_id": "133967",
-    "score": 3.4,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "28299",
-    "product_id": "133967",
-    "score": 9.4,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "4112",
-    "product_id": "81301",
-    "score": 6.1,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "17021",
-    "product_id": "81301",
-    "score": 5.4,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
-    }
-  },
-  {
-    "original_id": "4113",
-    "product_id": "81301",
-    "score": 9.0,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "4114",
-    "product_id": "81301",
-    "score": 7.8,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "usage",
-      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
-    }
-  },
-  {
-    "original_id": "28295",
-    "product_id": "81301",
-    "score": 8.0,
-    "suitable": true,
-    "unblurred": true,
-    "usage": {
-      "kind": "performance",
-      "performance_tooltip_text": ""
-    }
-  },
-  {
-    "original_id": "28299",
-    "product_id": "81301",
-    "score": 8.6,
     "suitable": true,
     "unblurred": true,
     "usage": {
@@ -6337,6 +5875,72 @@
   },
   {
     "original_id": "4112",
+    "product_id": "137915",
+    "score": 8.9,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "17021",
+    "product_id": "137915",
+    "score": 8.1,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
+    }
+  },
+  {
+    "original_id": "4113",
+    "product_id": "137915",
+    "score": 6.9,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4114",
+    "product_id": "137915",
+    "score": 8.1,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "28295",
+    "product_id": "137915",
+    "score": 6.1,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "28299",
+    "product_id": "137915",
+    "score": 6.9,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4112",
     "product_id": "127369",
     "score": 9.0,
     "suitable": true,
@@ -6526,6 +6130,600 @@
     "original_id": "28299",
     "product_id": "70557",
     "score": 8.8,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4112",
+    "product_id": "88588",
+    "score": 8.8,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "17021",
+    "product_id": "88588",
+    "score": 9.0,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
+    }
+  },
+  {
+    "original_id": "4113",
+    "product_id": "88588",
+    "score": 7.6,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4114",
+    "product_id": "88588",
+    "score": 9.0,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "28295",
+    "product_id": "88588",
+    "score": 6.7,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "28299",
+    "product_id": "88588",
+    "score": 8.4,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4112",
+    "product_id": "133969",
+    "score": 6.2,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "17021",
+    "product_id": "133969",
+    "score": 5.3,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
+    }
+  },
+  {
+    "original_id": "4113",
+    "product_id": "133969",
+    "score": 8.6,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4114",
+    "product_id": "133969",
+    "score": 7.9,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "28295",
+    "product_id": "133969",
+    "score": 7.6,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "28299",
+    "product_id": "133969",
+    "score": 8.6,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4112",
+    "product_id": "133967",
+    "score": 5.2,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "17021",
+    "product_id": "133967",
+    "score": 2.4,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
+    }
+  },
+  {
+    "original_id": "4113",
+    "product_id": "133967",
+    "score": 8.2,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4114",
+    "product_id": "133967",
+    "score": 7.6,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "28295",
+    "product_id": "133967",
+    "score": 3.4,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "28299",
+    "product_id": "133967",
+    "score": 9.4,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4112",
+    "product_id": "81301",
+    "score": 6.1,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "17021",
+    "product_id": "81301",
+    "score": 5.4,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
+    }
+  },
+  {
+    "original_id": "4113",
+    "product_id": "81301",
+    "score": 9.0,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4114",
+    "product_id": "81301",
+    "score": 7.8,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "28295",
+    "product_id": "81301",
+    "score": 8.0,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "28299",
+    "product_id": "81301",
+    "score": 8.6,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4112",
+    "product_id": "52472",
+    "score": 6.0,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "17021",
+    "product_id": "52472",
+    "score": 4.6,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
+    }
+  },
+  {
+    "original_id": "4113",
+    "product_id": "52472",
+    "score": 8.1,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4114",
+    "product_id": "52472",
+    "score": 7.8,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "28295",
+    "product_id": "52472",
+    "score": 7.3,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "28299",
+    "product_id": "52472",
+    "score": 8.4,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4112",
+    "product_id": "137590",
+    "score": 7.3,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "17021",
+    "product_id": "137590",
+    "score": 5.2,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
+    }
+  },
+  {
+    "original_id": "4113",
+    "product_id": "137590",
+    "score": 6.9,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4114",
+    "product_id": "137590",
+    "score": 7.3,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "28295",
+    "product_id": "137590",
+    "score": 6.6,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "28299",
+    "product_id": "137590",
+    "score": 9.3,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4112",
+    "product_id": "96305",
+    "score": 7.3,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "17021",
+    "product_id": "96305",
+    "score": 7.1,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
+    }
+  },
+  {
+    "original_id": "4113",
+    "product_id": "96305",
+    "score": 7.8,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4114",
+    "product_id": "96305",
+    "score": 7.4,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "28295",
+    "product_id": "96305",
+    "score": 7.3,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "28299",
+    "product_id": "96305",
+    "score": 8.4,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4112",
+    "product_id": "41303",
+    "score": 6.5,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "17021",
+    "product_id": "41303",
+    "score": 4.1,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
+    }
+  },
+  {
+    "original_id": "4113",
+    "product_id": "41303",
+    "score": 7.1,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4114",
+    "product_id": "41303",
+    "score": 6.2,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "28295",
+    "product_id": "41303",
+    "score": 3.1,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "28299",
+    "product_id": "41303",
+    "score": 7.8,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4112",
+    "product_id": "97892",
+    "score": 7.0,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Response Time, HDR Picture, SDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "17021",
+    "product_id": "97892",
+    "score": 5.1,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "HDR Picture, Brightness, and SDR Picture"
+    }
+  },
+  {
+    "original_id": "4113",
+    "product_id": "97892",
+    "score": 7.0,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "4114",
+    "product_id": "97892",
+    "score": 6.6,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "usage",
+      "performance_tooltip_text": "Color Accuracy, SDR Picture, HDR Picture, and Brightness"
+    }
+  },
+  {
+    "original_id": "28295",
+    "product_id": "97892",
+    "score": 7.0,
+    "suitable": true,
+    "unblurred": true,
+    "usage": {
+      "kind": "performance",
+      "performance_tooltip_text": ""
+    }
+  },
+  {
+    "original_id": "28299",
+    "product_id": "97892",
+    "score": 7.6,
     "suitable": true,
     "unblurred": true,
     "usage": {
