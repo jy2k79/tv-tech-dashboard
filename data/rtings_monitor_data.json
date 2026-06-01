@@ -1,10 +1,10 @@
 {
-  "scraped_at": "2026-05-25T15:52:07.867657+00:00",
+  "scraped_at": "2026-06-01T18:34:52.590439+00:00",
   "silo": "monitor",
   "test_bench_ids": [
     "238"
   ],
-  "total_products": 103,
+  "total_products": 104,
   "products": [
     {
       "product_id": "70557",
@@ -70,7 +70,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/seyvrTEq/aoc-agon-pro-ag276qzd2/design-small.jpg?format=auto",
       "reviewed_sku_id": "12322"
     },
@@ -138,7 +138,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/u0t7sCPJ/aoc-q27g3xmn/design-small.jpg?format=auto",
       "reviewed_sku_id": "9793"
     },
@@ -206,7 +206,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/IEZOnemh/aoc-q27g40xmn/design-small.jpg?format=auto",
       "reviewed_sku_id": "13639"
     },
@@ -274,7 +274,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/ZFFrFStU/asus-proart-display-6k-pa32qcv/design-small.jpg?format=auto",
       "reviewed_sku_id": "15839"
     },
@@ -342,7 +342,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/GxUyxMSa/asus-proart-display-pa279crv/design-small.jpg?format=auto",
       "reviewed_sku_id": "9552"
     },
@@ -410,7 +410,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/I1thrune/asus-proart-display-pa27jcv/design-small.jpg?format=auto",
       "reviewed_sku_id": "12383"
     },
@@ -478,7 +478,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/JZMvjZBJ/asus-rog-strix-oled-xg27acdng/design-small.jpg?format=auto",
       "reviewed_sku_id": "12115"
     },
@@ -546,7 +546,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/8DGgxKIu/asus-rog-strix-oled-xg27aqdmg/design-small.jpg?format=auto",
       "reviewed_sku_id": "11038"
     },
@@ -614,7 +614,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/mKZzUOwe/asus-rog-strix-oled-xg27aqwmg/design-small.jpg?format=auto",
       "reviewed_sku_id": "16291"
     },
@@ -682,7 +682,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/BIvg3SqC/asus-rog-strix-oled-xg32ucwmg/design-small.jpg?format=auto",
       "reviewed_sku_id": "15530"
     },
@@ -750,7 +750,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/SCdQ4q6D/asus-rog-strix-pulsar-xg27aqngv/design-small.jpg?format=auto",
       "reviewed_sku_id": "16421"
     },
@@ -818,7 +818,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/b6MKEtMQ/asus-rog-strix-xg27acs/design-small.jpg?format=auto",
       "reviewed_sku_id": "11550"
     },
@@ -886,7 +886,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/1kK1PmWU/asus-rog-swift-oled-pg27aqdm/design-small.jpg?format=auto",
       "reviewed_sku_id": "8367"
     },
@@ -954,7 +954,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/mQvBvCOz/asus-rog-swift-oled-pg27aqdp/design-small.jpg?format=auto",
       "reviewed_sku_id": "11791"
     },
@@ -1022,7 +1022,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/ijzLBiGL/asus-rog-swift-oled-pg27aqwp-w/design-small.jpg?format=auto",
       "reviewed_sku_id": "16342"
     },
@@ -1090,7 +1090,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/OJanXy77/asus-rog-swift-oled-pg27ucdm/design-small.jpg?format=auto",
       "reviewed_sku_id": "12333"
     },
@@ -1158,7 +1158,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/g33RcXth/asus-rog-swift-oled-pg32ucdm/design-small.jpg?format=auto",
       "reviewed_sku_id": "10747"
     },
@@ -1226,7 +1226,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/uzV7ZnUi/asus-rog-swift-oled-pg32ucdp/design-small.jpg?format=auto",
       "reviewed_sku_id": "11438"
     },
@@ -1239,7 +1239,7 @@
       "test_bench_id": "238",
       "test_bench_version": "v2.1.2",
       "released_at": "2026-04-15 00:00:00 -0400",
-      "last_updated_at": "2026-05-22 07:48:23 -0400",
+      "last_updated_at": "2026-06-01 11:13:49 -0400",
       "first_published_at": "2026-05-22 07:48:50 -0400",
       "sizes_available": "34\" (ROG Swift OLED PG34WCDN)",
       "sku_count": 1,
@@ -1294,7 +1294,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/6uV3PzCU/asus-rog-swift-oled-pg34wcdn/design-small.jpg?format=auto",
       "reviewed_sku_id": "16871"
     },
@@ -1362,7 +1362,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/BibvEJq9/asus-rog-swift-pro-pg248qp/design-small.jpg?format=auto",
       "reviewed_sku_id": "9949"
     },
@@ -1430,7 +1430,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/uoc0nVDE/asus-tuf-gaming-vg27aql1a/design-small.jpg?format=auto",
       "reviewed_sku_id": "3523"
     },
@@ -1498,7 +1498,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/9BKzvwWk/asus-tuf-vg27aq/design-small.jpg?format=auto",
       "reviewed_sku_id": "2370"
     },
@@ -1566,7 +1566,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/mta2grJK/acer-nitro-xv275k-p3biipruzx/design-small.jpg?format=auto",
       "reviewed_sku_id": "9342"
     },
@@ -1634,7 +1634,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/cbFyy7oT/acer-nitro-xv275k-p5biipruzx/design-small.jpg?format=auto",
       "reviewed_sku_id": "15684"
     },
@@ -1702,7 +1702,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/yFBnOTFC/acer-nitro-xv275u-p3biipx/design-small.jpg?format=auto",
       "reviewed_sku_id": "10849"
     },
@@ -1770,7 +1770,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/TfFk9M1P/acer-nitro-xz322qu-v3bmiiphx/design-small.jpg?format=auto",
       "reviewed_sku_id": "12205"
     },
@@ -1838,7 +1838,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/Cqhc5EEq/apple-studio-display/design-small.jpg?format=auto",
       "reviewed_sku_id": "6372"
     },
@@ -1906,7 +1906,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/cVhuAK9Z/apple-studio-display-2026/design-small.jpg?format=auto",
       "reviewed_sku_id": "16470"
     },
@@ -1974,7 +1974,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/UnSNynjx/apple-studio-display-xdr/design-small.jpg?format=auto",
       "reviewed_sku_id": "16485"
     },
@@ -2042,7 +2042,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/7zkRuiia/benq-ma270s/design-small.jpg?format=auto",
       "reviewed_sku_id": "16751"
     },
@@ -2110,7 +2110,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/j5k8uyRl/benq-mobiuz-ex321ux/design-small.jpg?format=auto",
       "reviewed_sku_id": "13720"
     },
@@ -2178,7 +2178,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/kmJpwPtc/benq-pd3225u/design-small.jpg?format=auto",
       "reviewed_sku_id": "12371"
     },
@@ -2246,7 +2246,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/dWD9Pg4Q/corsair-xeneon-flex-45wqhd240/design-small.jpg?format=auto",
       "reviewed_sku_id": "8574"
     },
@@ -2314,7 +2314,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/3ERJ1NPk/dell-alienware-aw2724dm/design-small.jpg?format=auto",
       "reviewed_sku_id": "8762"
     },
@@ -2382,7 +2382,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/2vl7SnXp/dell-alienware-aw2725df/design-small.jpg?format=auto",
       "reviewed_sku_id": "10003"
     },
@@ -2450,7 +2450,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/MnD64Txh/dell-alienware-aw2725dm/design-small.jpg?format=auto",
       "reviewed_sku_id": "16076"
     },
@@ -2518,7 +2518,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/6QJi4FnI/dell-alienware-aw2725q/design-small.jpg?format=auto",
       "reviewed_sku_id": "12372"
     },
@@ -2586,7 +2586,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/FeGMVEAe/dell-alienware-aw2725qf/design-small.jpg?format=auto",
       "reviewed_sku_id": "14602"
     },
@@ -2654,7 +2654,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/gDux9sHw/dell-alienware-aw2726dm/design-small.jpg?format=auto",
       "reviewed_sku_id": "16796"
     },
@@ -2722,7 +2722,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/CA6dYKwp/dell-alienware-aw3225dm/design-small.jpg?format=auto",
       "reviewed_sku_id": "14136"
     },
@@ -2790,7 +2790,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/wXTgx30J/dell-alienware-aw3225qf/design-small.jpg?format=auto",
       "reviewed_sku_id": "9966"
     },
@@ -2858,7 +2858,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/ThIgNA4u/dell-alienware-aw3425dw/design-small.jpg?format=auto",
       "reviewed_sku_id": "14435"
     },
@@ -2926,7 +2926,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/kTy4pu4T/dell-alienware-aw3425dwm/design-small.jpg?format=auto",
       "reviewed_sku_id": "13718"
     },
@@ -2994,7 +2994,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/VOccLWnx/dell-g2524h/design-small.jpg?format=auto",
       "reviewed_sku_id": "12278"
     },
@@ -3062,7 +3062,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/Jo0FpYAI/dell-g2725d/design-small.jpg?format=auto",
       "reviewed_sku_id": "12087"
     },
@@ -3130,7 +3130,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/fiDAO4y5/dell-g3223q/design-small.jpg?format=auto",
       "reviewed_sku_id": "6458"
     },
@@ -3198,7 +3198,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/O1cPkxSN/dell-s2722qc/design-small.jpg?format=auto",
       "reviewed_sku_id": "5903"
     },
@@ -3266,7 +3266,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/DHPiMDKG/dell-s2725dc/design-small.jpg?format=auto",
       "reviewed_sku_id": "16064"
     },
@@ -3334,7 +3334,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/XJou44if/dell-s2725qc/design-small.jpg?format=auto",
       "reviewed_sku_id": "14954"
     },
@@ -3402,7 +3402,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/hc7TelR3/dell-s2725qs/design-small.jpg?format=auto",
       "reviewed_sku_id": "15240"
     },
@@ -3470,7 +3470,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/Dg7sGEDq/dell-s3225qc/design-small.jpg?format=auto",
       "reviewed_sku_id": "15639"
     },
@@ -3538,7 +3538,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/emV7Vqkm/dell-s3225qs/design-small.jpg?format=auto",
       "reviewed_sku_id": "14367"
     },
@@ -3606,7 +3606,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/6RDCghNf/dell-s3422dwg/design-small.jpg?format=auto",
       "reviewed_sku_id": "5272"
     },
@@ -3674,7 +3674,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/mTOSpJUo/dell-se2426hgs/design-small.jpg?format=auto",
       "reviewed_sku_id": "16752"
     },
@@ -3742,7 +3742,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/EJnSIT8d/dell-u2725qe/design-small.jpg?format=auto",
       "reviewed_sku_id": "12349"
     },
@@ -3810,7 +3810,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/L59W3KZp/dell-u3225qe/design-small.jpg?format=auto",
       "reviewed_sku_id": "12350"
     },
@@ -3878,7 +3878,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/NV0UEOvn/dell-u4025qw/design-small.jpg?format=auto",
       "reviewed_sku_id": "10548"
     },
@@ -3946,7 +3946,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/SBnh4Zjp/dell-u5226kw/design-small.jpg?format=auto",
       "reviewed_sku_id": "16077"
     },
@@ -4014,7 +4014,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/z98nikFO/gigabyte-aorus-fo27q3/design-small.jpg?format=auto",
       "reviewed_sku_id": "10801"
     },
@@ -4082,7 +4082,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/H2SFbEsd/gigabyte-aorus-fo32u2p/design-small.jpg?format=auto",
       "reviewed_sku_id": "10746"
     },
@@ -4150,7 +4150,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/F2GjnbK4/gigabyte-mo27q28g/design-small.jpg?format=auto",
       "reviewed_sku_id": "15987"
     },
@@ -4218,7 +4218,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/oTfUopTg/hyperx-omen-oled-27q/design-small.jpg?format=auto",
       "reviewed_sku_id": "16723"
     },
@@ -4286,7 +4286,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/FkaDEfmn/koorui-s2741lm/design-small.jpg?format=auto",
       "reviewed_sku_id": "16592"
     },
@@ -4354,7 +4354,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/XKi5Obob/lg-24gs65f-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "15381"
     },
@@ -4422,7 +4422,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/jMN4PeQv/lg-27g610a-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "16111"
     },
@@ -4490,7 +4490,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/Uw4KtFAj/lg-27g850a-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "14289"
     },
@@ -4558,7 +4558,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/bTTntxbz/lg-27gl850-b-27gl83a-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "2223"
     },
@@ -4626,7 +4626,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/2Pi8NDec/lg-27gp850-b-27gp83b-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "5087"
     },
@@ -4694,7 +4694,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/JztY13a9/lg-27gr75q-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "10433"
     },
@@ -4762,7 +4762,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/bijil2Z0/lg-27gr83q-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "9423"
     },
@@ -4830,7 +4830,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/1TZEeivq/lg-27gr93u-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "9172"
     },
@@ -4898,7 +4898,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/8mwV0Whg/lg-27gr95um-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "11971"
     },
@@ -4966,7 +4966,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/cBQmoTWl/lg-27gs95qe-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "10182"
     },
@@ -5034,7 +5034,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/vZTVDcx1/lg-27gx700a-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "15807"
     },
@@ -5102,7 +5102,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/m88oXwv8/lg-27gx704a-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "16637"
     },
@@ -5170,7 +5170,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/woVShorI/lg-27gx790a-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "12207"
     },
@@ -5183,7 +5183,7 @@
       "test_bench_id": "238",
       "test_bench_version": "v2.1.2",
       "released_at": "2026-02-03 00:00:00 -0500",
-      "last_updated_at": "2026-04-21 12:45:09 -0400",
+      "last_updated_at": "2026-06-01 11:13:55 -0400",
       "first_published_at": "2026-02-25 08:37:40 -0500",
       "sizes_available": "27\" (27GX790B-B)",
       "sku_count": 1,
@@ -5238,7 +5238,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/r7se67Wa/lg-27gx790b-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "16203"
     },
@@ -5306,7 +5306,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/yX59BGoQ/lg-32gr93u-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "8974"
     },
@@ -5374,7 +5374,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/ZEJJcoVy/lg-32gs95ue-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "10904"
     },
@@ -5442,7 +5442,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/sT2TNf6M/lg-34gp83a-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "4143"
     },
@@ -5510,9 +5510,77 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/l1gRLpBX/lg-34gs95qe-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "10552"
+    },
+    {
+      "product_id": "127455",
+      "fullname": "LG 39GX950B-B",
+      "brand": "LG",
+      "url_part": "lg-39gx950b-b",
+      "review_url": "https://www.rtings.com/monitor/reviews/lg/39gx950b-b",
+      "test_bench_id": "238",
+      "test_bench_version": "v2.1.2",
+      "released_at": "2026-05-07 00:00:00 -0400",
+      "last_updated_at": "2026-06-01 11:09:31 -0400",
+      "first_published_at": "2026-06-01 11:09:32 -0400",
+      "sizes_available": "39\" (39GX950B-B)",
+      "sku_count": 1,
+      "panel_type": "OLED",
+      "backlight_type": null,
+      "resolution": "5120 x 2160",
+      "native_refresh_rate": null,
+      "brightness_score": null,
+      "color_accuracy": null,
+      "console_gaming": null,
+      "editing": null,
+      "office": null,
+      "pc_gaming": null,
+      "aspect_ratio": null,
+      "display_size": "38.86",
+      "display_size_display": "39\"",
+      "display_size_score": 10.0,
+      "first_response_time_ms": null,
+      "first_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
+      "first_response_time_ms_score": null,
+      "hdr_bt2020_coverage_itp_pct": null,
+      "hdr_bt2020_coverage_itp_pct_display": "<span class=\"e-blurred\">Lock</span>%",
+      "hdr_bt2020_coverage_itp_pct_score": null,
+      "hdr_peak_10pct_nits": null,
+      "hdr_peak_10pct_nits_display": "<span class=\"e-blurred\">Lock</span> cd/m\u00b2",
+      "hdr_peak_10pct_nits_score": null,
+      "hdr_peak_2pct_nits": null,
+      "hdr_peak_2pct_nits_display": "<span class=\"e-blurred\">Lock</span> cd/m\u00b2",
+      "hdr_peak_2pct_nits_score": null,
+      "input_lag_native_ms": null,
+      "input_lag_native_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
+      "input_lag_native_ms_score": null,
+      "local_dimming": null,
+      "native_contrast": null,
+      "native_contrast_display": "<span class=\"e-blurred\">Lock</span> : 1",
+      "native_contrast_score": null,
+      "native_refresh_rate_display": "<span class=\"e-blurred\">Lock</span> Hz",
+      "native_refresh_rate_score": null,
+      "panel_sub_type": "WOLED",
+      "pixel_density": null,
+      "pixel_density_display": "<span class=\"e-blurred\">Lock</span> PPI",
+      "pixel_density_score": null,
+      "sdr_bt2020_coverage_pct": null,
+      "sdr_bt2020_coverage_pct_display": "<span class=\"e-blurred\">Lock</span>%",
+      "sdr_bt2020_coverage_pct_score": null,
+      "sdr_dci_p3_coverage_pct": null,
+      "sdr_dci_p3_coverage_pct_display": "<span class=\"e-blurred\">Lock</span>%",
+      "sdr_dci_p3_coverage_pct_score": null,
+      "spd_image": "https://i.rtings.com/assets/sample-images/monitor/spd-large.jpg?format=auto",
+      "spd_image_local": "spd_images/monitors/lg-39gx950b-b_spd.jpg",
+      "spd_image_thumb": "https://i.rtings.com/assets/sample-images/monitor/spd-small.jpg?format=auto",
+      "total_response_time_ms": null,
+      "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
+      "total_response_time_ms_score": null,
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
+      "image_url": "https://i.rtings.com/assets/products/LNMMMV3P/lg-39gx950b-b/design-small.jpg?format=auto",
+      "reviewed_sku_id": "16902"
     },
     {
       "product_id": "83695",
@@ -5523,7 +5591,7 @@
       "test_bench_id": "238",
       "test_bench_version": "v2.1.2",
       "released_at": "2025-03-28 00:00:00 -0400",
-      "last_updated_at": "2026-03-17 13:18:49 -0400",
+      "last_updated_at": "2026-06-01 11:13:44 -0400",
       "first_published_at": "2025-05-07 14:46:31 -0400",
       "sizes_available": "45\" (45GX950A-B)",
       "sku_count": 1,
@@ -5578,7 +5646,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/PmpdEp3r/lg-45gx950a-b/design-small.jpg?format=auto",
       "reviewed_sku_id": "12577"
     },
@@ -5646,7 +5714,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/BVs0Q1Zk/lg-42-c4-oled/design-small.jpg?format=auto",
       "reviewed_sku_id": "11055"
     },
@@ -5714,7 +5782,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/GVECns5t/lg-c5-42-oled/design-small.jpg?format=auto",
       "reviewed_sku_id": "15430"
     },
@@ -5782,7 +5850,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/C8pZ0JS4/msi-mpg-271qrx-qd-oled/design-small.jpg?format=auto",
       "reviewed_sku_id": "10441"
     },
@@ -5850,7 +5918,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/TNrCOHNJ/msi-mpg-272urx-qd-oled/design-small.jpg?format=auto",
       "reviewed_sku_id": "14760"
     },
@@ -5918,7 +5986,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/fWdxkZ6m/msi-mpg-274urdfw-e16m/design-small.jpg?format=auto",
       "reviewed_sku_id": "15884"
     },
@@ -5986,7 +6054,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/2aeDz60O/msi-mpg-321urx-qd-oled/design-small.jpg?format=auto",
       "reviewed_sku_id": "10992"
     },
@@ -6054,7 +6122,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/fo4yivlT/msi-mpg-322urx-qd-oled/design-small.jpg?format=auto",
       "reviewed_sku_id": "12213"
     },
@@ -6122,7 +6190,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/0IaIOA09/msi-mpg-341cqpx-qd-oled/design-small.jpg?format=auto",
       "reviewed_sku_id": "11812"
     },
@@ -6190,7 +6258,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/jk0cwtFB/samsung-odyssey-3d-g90xf-s27fg900x/design-small.jpg?format=auto",
       "reviewed_sku_id": "12578"
     },
@@ -6258,7 +6326,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/iWxkHsK5/samsung-odyssey-g5-g50d-s27dg50/design-small.jpg?format=auto",
       "reviewed_sku_id": "11430"
     },
@@ -6326,7 +6394,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/YvuB2EBq/samsung-odyssey-g5-g51c-s27cg51/design-small.jpg?format=auto",
       "reviewed_sku_id": "8687"
     },
@@ -6394,7 +6462,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/nTJuwimy/samsung-odyssey-neo-g7-s32bg75/design-small.jpg?format=auto",
       "reviewed_sku_id": "6841"
     },
@@ -6462,7 +6530,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/yJiseRa7/samsung-odyssey-neo-g8-s32bg85/design-small.jpg?format=auto",
       "reviewed_sku_id": "6864"
     },
@@ -6530,7 +6598,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/6E5B8xdk/samsung-odyssey-neo-g9-g95nc-s57cg95/design-small.jpg?format=auto",
       "reviewed_sku_id": "9467"
     },
@@ -6543,7 +6611,7 @@
       "test_bench_id": "238",
       "test_bench_version": "v2.1.2",
       "released_at": "2024-06-10 00:00:00 -0400",
-      "last_updated_at": "2026-03-17 13:18:49 -0400",
+      "last_updated_at": "2026-05-28 09:03:56 -0400",
       "first_published_at": "2024-07-24 09:17:15 -0400",
       "sizes_available": "27\" (LS27DG602SNXZA)",
       "sku_count": 1,
@@ -6598,7 +6666,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/EVeSarqn/samsung-odyssey-oled-g6-g60sd-s27dg60/design-small.jpg?format=auto",
       "reviewed_sku_id": "10918"
     },
@@ -6666,7 +6734,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/BR7hVWOK/samsung-odyssey-oled-g8-g80sd-s32dg80/design-small.jpg?format=auto",
       "reviewed_sku_id": "10920"
     },
@@ -6734,7 +6802,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/nS1pyI3r/samsung-odyssey-oled-g81sf-s27fg810s/design-small.jpg?format=auto",
       "reviewed_sku_id": "14138"
     },
@@ -6802,7 +6870,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/juqbbyEi/samsung-odyssey-oled-g9-g95sc-s49cg95/design-small.jpg?format=auto",
       "reviewed_sku_id": "8656"
     },
@@ -6870,7 +6938,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/zfTcNNjI/samsung-smart-monitor-m8-m80d-s32dm80/design-small.jpg?format=auto",
       "reviewed_sku_id": "11836"
     },
@@ -6938,7 +7006,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/pOTsvYdI/sony-inzone-m9-ii/design-small.jpg?format=auto",
       "reviewed_sku_id": "11849"
     },
@@ -7006,7 +7074,7 @@
       "total_response_time_ms": null,
       "total_response_time_ms_display": "<span class=\"e-blurred\">Lock</span> ms",
       "total_response_time_ms_score": null,
-      "scraped_at": "2026-05-25T15:52:07.853276+00:00",
+      "scraped_at": "2026-06-01T18:34:52.576798+00:00",
       "image_url": "https://i.rtings.com/assets/products/VOdOiTKb/xiaomi-g-pro-27i/design-small.jpg?format=auto",
       "reviewed_sku_id": "12187"
     }

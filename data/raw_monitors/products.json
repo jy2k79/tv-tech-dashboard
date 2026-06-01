@@ -1191,7 +1191,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/yI1N7IM_SdHxwOYi/review-updates-lg-lg-ultragear-oled-32gs95ue",
-      "user_comments_count": 145
+      "user_comments_count": 147
     }
   },
   {
@@ -1226,7 +1226,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/8izP13QJ4n0-g1SJ/review-updates-gigabyte-aorus-fo32u2p",
-      "user_comments_count": 123
+      "user_comments_count": 126
     }
   },
   {
@@ -1348,7 +1348,7 @@
     "published": true,
     "reviewed_sku_id": "10918",
     "approximate_released_at": "2024-06-10 00:00:00 -0400",
-    "last_updated_at": "2026-03-17 13:18:49 -0400",
+    "last_updated_at": "2026-05-28 09:03:56 -0400",
     "review": {
       "test_bench": {
         "id": "238",
@@ -1411,7 +1411,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/g9euO8hTT4tet7lB/review-updates-asus-rog-strix-oled-xg27aqdmg",
-      "user_comments_count": 379
+      "user_comments_count": 383
     }
   },
   {
@@ -2273,7 +2273,7 @@
     "published": true,
     "reviewed_sku_id": "12577",
     "approximate_released_at": "2025-03-28 00:00:00 -0400",
-    "last_updated_at": "2026-03-17 13:18:49 -0400",
+    "last_updated_at": "2026-06-01 11:13:44 -0400",
     "review": {
       "test_bench": {
         "id": "238",
@@ -2293,7 +2293,7 @@
       "early_access": false,
       "first_published_at": "2025-05-07 14:46:31 -0400"
     },
-    "published_product_recommendation_count": 2,
+    "published_product_recommendation_count": 1,
     "status_discussion": {
       "url": "/discussions/b9KFXz1Unx6HyX0w/review-updates-lg-45gx950a-b",
       "user_comments_count": 52
@@ -2678,7 +2678,7 @@
       "early_access": false,
       "first_published_at": "2025-09-12 15:35:19 -0400"
     },
-    "published_product_recommendation_count": 12,
+    "published_product_recommendation_count": 11,
     "status_discussion": {
       "url": "/discussions/7WSUV5QfMmzU6AYd/review-updates-dell-s2725qc",
       "user_comments_count": 23
@@ -3066,7 +3066,7 @@
     "published_product_recommendation_count": 1,
     "status_discussion": {
       "url": "/discussions/64BJPgPqbCroDiR6/review-updates-gigabyte-mo27q28g",
-      "user_comments_count": 147
+      "user_comments_count": 148
     }
   },
   {
@@ -3148,7 +3148,7 @@
     "published": true,
     "reviewed_sku_id": "16203",
     "approximate_released_at": "2026-02-03 00:00:00 -0500",
-    "last_updated_at": "2026-04-21 12:45:09 -0400",
+    "last_updated_at": "2026-06-01 11:13:55 -0400",
     "review": {
       "test_bench": {
         "id": "238",
@@ -3311,7 +3311,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/idxExYyOchnI5lKT/review-updates-asus-rog-strix-pulsar-xg27aqngv",
-      "user_comments_count": 33
+      "user_comments_count": 38
     }
   },
   {
@@ -3526,7 +3526,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/ZewJidnVwsYeeqf0/review-updates-lg-27gx704a-b",
-      "user_comments_count": 13
+      "user_comments_count": 14
     }
   },
   {
@@ -3635,6 +3635,41 @@
     }
   },
   {
+    "id": "127455",
+    "fullname": "LG 39GX950B-B",
+    "full_url_part": "lg-39gx950b-b",
+    "url_part": "39gx950b-b",
+    "brand_name": "LG",
+    "published": true,
+    "reviewed_sku_id": "16902",
+    "approximate_released_at": "2026-05-07 00:00:00 -0400",
+    "last_updated_at": "2026-06-01 11:09:31 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/LNMMMV3P/lg-39gx950b-b/design-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "16902",
+        "name": "39GX950B-B",
+        "variation": "39\""
+      }
+    ],
+    "page": {
+      "url": "/monitor/reviews/lg/39gx950b-b",
+      "early_access": false,
+      "first_published_at": "2026-06-01 11:09:32 -0400"
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/Em2ZsezIwO2OIktV/review-updates-lg-39gx950b-b",
+      "user_comments_count": 30
+    }
+  },
+  {
     "id": "137915",
     "fullname": "Dell Alienware AW2726DM",
     "full_url_part": "dell-alienware-aw2726dm",
@@ -3678,7 +3713,7 @@
     "published": true,
     "reviewed_sku_id": "16871",
     "approximate_released_at": "2026-04-15 00:00:00 -0400",
-    "last_updated_at": "2026-05-22 07:48:23 -0400",
+    "last_updated_at": "2026-06-01 11:13:49 -0400",
     "review": {
       "test_bench": {
         "id": "238",
@@ -3698,10 +3733,10 @@
       "early_access": false,
       "first_published_at": "2026-05-22 07:48:50 -0400"
     },
-    "published_product_recommendation_count": 1,
+    "published_product_recommendation_count": 2,
     "status_discussion": {
       "url": "/discussions/_6lvkdeONKRIC34R/review-updates-asus-rog-swift-oled-pg34wcdn",
-      "user_comments_count": 31
+      "user_comments_count": 34
     }
   }
 ]
