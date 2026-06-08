@@ -43,7 +43,7 @@ product_id,fullname,brand,url_part,panel_type,spd_classification,spd_confidence,
 117448,Samsung 100QN80F,Samsung,samsung-100qn80f,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-100qn80f_spd.jpg
 57180,Samsung DU7200,Samsung,samsung-du7200,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-du7200_spd.jpg
 55354,Samsung DU8000,Samsung,samsung-du8000,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-du8000_spd.jpg
-134691,Samsung M80H,Samsung,samsung-m80h,,ERROR: 'float' object has no attribute 'upper',,,,,,,,,,,0,ERROR: 'float' object has no attribute 'upper',
+134691,Samsung M80H,Samsung,samsung-m80h,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-m80h_spd.jpg
 56341,Samsung Q60D,Samsung,samsung-q60d,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-q60d_spd.jpg
 57710,Samsung Q70D,Samsung,samsung-q70d,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-q70d_spd.jpg
 94324,Samsung Q7F 2025,Samsung,samsung-q7f-2025,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-q7f-2025_spd.jpg
@@ -91,10 +91,11 @@ product_id,fullname,brand,url_part,panel_type,spd_classification,spd_confidence,
 88607,TCL QM6K,TCL,tcl-qm6k,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/tcl-qm6k_spd.jpg
 60899,TCL QM751G,TCL,tcl-qm751g,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/tcl-qm751g_spd.jpg
 88608,TCL QM7K,TCL,tcl-qm7k,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/tcl-qm7k_spd.jpg
+136481,TCL QM7L,TCL,tcl-qm7l,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/tcl-qm7l_spd.jpg
 60898,TCL QM851G,TCL,tcl-qm851g,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/tcl-qm851g_spd.jpg
 101781,TCL QM8K,TCL,tcl-qm8k,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/tcl-qm8k_spd.jpg
 136482,TCL QM8L,TCL,tcl-qm8l,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/tcl-qm8l_spd.jpg
 112536,TCL QM9K,TCL,tcl-qm9k,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/tcl-qm9k_spd.jpg
 60900,TCL S551G,TCL,tcl-s551g,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/tcl-s551g_spd.jpg
 127258,TCL X11L,TCL,tcl-x11l,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/tcl-x11l_spd.jpg
-132967,Vizio Mini LED Quantum 4K,Vizio,vizio-mini-led-quantum-4k,,ERROR: 'float' object has no attribute 'upper',,,,,,,,,,,0,ERROR: 'float' object has no attribute 'upper',
+132967,Vizio Mini LED Quantum 4K,Vizio,vizio-mini-led-quantum-4k,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/vizio-mini-led-quantum-4k_spd.jpg
