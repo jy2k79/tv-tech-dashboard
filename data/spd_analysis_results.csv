@@ -1,4 +1,5 @@
 product_id,fullname,brand,url_part,panel_type,spd_classification,spd_confidence,ground_truth_tech,ground_truth_qd_type,match_status,blue_peak_nm,blue_fwhm_nm,green_peak_nm,green_fwhm_nm,red_peak_nm,red_fwhm_nm,num_peaks,notes,spd_image_local
+131534,Amazon Ember Artline 2026,Amazon,amazon-ember-artline-2026,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/amazon-ember-artline-2026_spd.jpg
 82692,Amazon Ember Mini-LED Series,Amazon,amazon-ember-mini-led-series,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/amazon-ember-mini-led-series_spd.jpg
 117447,Hisense 100U8QG,Hisense,hisense-100u8qg,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/hisense-100u8qg_spd.jpg
 61045,Hisense 75U8N,Hisense,hisense-75u8n,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/hisense-75u8n_spd.jpg

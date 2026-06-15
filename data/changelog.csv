@@ -806,24 +806,42 @@ date,product_id,fullname,change_type,field,old_value,new_value
 2026-06-01,49540,LG B4 OLED,material_change,qd_material,,
 2026-06-01,118244,Panasonic Z8BA OLED,material_change,qd_material,,
 2026-06-08,136481,TCL QM7L,new_tv,,,QD-LCD
-2026-06-08,49704,Samsung S85D OLED,material_change,qd_material,nan,nan
-2026-06-08,88502,Panasonic Z95B OLED,material_change,qd_material,nan,nan
-2026-06-08,132977,LG C6 OLED 2026,material_change,qd_material,nan,nan
-2026-06-08,49542,LG G4 OLED,material_change,qd_material,nan,nan
-2026-06-08,74024,Panasonic Z95A OLED,material_change,qd_material,nan,nan
-2026-06-08,88603,LG B5 OLED,material_change,qd_material,nan,nan
-2026-06-08,127431,LG C6H OLED,material_change,qd_material,nan,nan
-2026-06-08,131546,LG G6 OLED,material_change,qd_material,nan,nan
-2026-06-08,88601,LG G5 OLED,material_change,qd_material,nan,nan
-2026-06-08,49540,LG B4 OLED,material_change,qd_material,nan,nan
+2026-06-08,49704,Samsung S85D OLED,material_change,qd_material,,
+2026-06-08,88502,Panasonic Z95B OLED,material_change,qd_material,,
+2026-06-08,132977,LG C6 OLED 2026,material_change,qd_material,,
+2026-06-08,49542,LG G4 OLED,material_change,qd_material,,
+2026-06-08,74024,Panasonic Z95A OLED,material_change,qd_material,,
+2026-06-08,88603,LG B5 OLED,material_change,qd_material,,
+2026-06-08,127431,LG C6H OLED,material_change,qd_material,,
+2026-06-08,131546,LG G6 OLED,material_change,qd_material,,
+2026-06-08,88601,LG G5 OLED,material_change,qd_material,,
+2026-06-08,49540,LG B4 OLED,material_change,qd_material,,
 2026-06-08,132967,Vizio Mini LED Quantum 4K,tech_change,color_architecture,ERROR: 'float' object has no attribute 'upper',QD-LCD
-2026-06-08,132967,Vizio Mini LED Quantum 4K,material_change,qd_material,nan,InP
-2026-06-08,58889,Sony BRAVIA 8 OLED,material_change,qd_material,nan,nan
+2026-06-08,132967,Vizio Mini LED Quantum 4K,material_change,qd_material,,InP
+2026-06-08,58889,Sony BRAVIA 8 OLED,material_change,qd_material,,
 2026-06-08,134691,Samsung M80H,tech_change,color_architecture,ERROR: 'float' object has no attribute 'upper',QD-LCD
-2026-06-08,134691,Samsung M80H,material_change,qd_material,nan,InP
-2026-06-08,92761,Philips 974 Series OLED,material_change,qd_material,nan,nan
-2026-06-08,49541,LG C4 OLED,material_change,qd_material,nan,nan
-2026-06-08,74026,Panasonic Z85A OLED,material_change,qd_material,nan,nan
-2026-06-08,118244,Panasonic Z8BA OLED,material_change,qd_material,nan,nan
-2026-06-08,135751,Samsung S90H OLED,material_change,qd_material,nan,nan
-2026-06-08,88602,LG C5 OLED,material_change,qd_material,nan,nan
+2026-06-08,134691,Samsung M80H,material_change,qd_material,,InP
+2026-06-08,92761,Philips 974 Series OLED,material_change,qd_material,,
+2026-06-08,49541,LG C4 OLED,material_change,qd_material,,
+2026-06-08,74026,Panasonic Z85A OLED,material_change,qd_material,,
+2026-06-08,118244,Panasonic Z8BA OLED,material_change,qd_material,,
+2026-06-08,135751,Samsung S90H OLED,material_change,qd_material,,
+2026-06-08,88602,LG C5 OLED,material_change,qd_material,,
+2026-06-15,131534,Amazon Ember Artline 2026,new_tv,,,QD-LCD
+2026-06-15,49704,Samsung S85D OLED,material_change,qd_material,nan,nan
+2026-06-15,132977,LG C6 OLED 2026,material_change,qd_material,nan,nan
+2026-06-15,49540,LG B4 OLED,material_change,qd_material,nan,nan
+2026-06-15,49542,LG G4 OLED,material_change,qd_material,nan,nan
+2026-06-15,88601,LG G5 OLED,material_change,qd_material,nan,nan
+2026-06-15,88502,Panasonic Z95B OLED,material_change,qd_material,nan,nan
+2026-06-15,49541,LG C4 OLED,material_change,qd_material,nan,nan
+2026-06-15,88602,LG C5 OLED,material_change,qd_material,nan,nan
+2026-06-15,92761,Philips 974 Series OLED,material_change,qd_material,nan,nan
+2026-06-15,131546,LG G6 OLED,material_change,qd_material,nan,nan
+2026-06-15,135751,Samsung S90H OLED,material_change,qd_material,nan,nan
+2026-06-15,58889,Sony BRAVIA 8 OLED,material_change,qd_material,nan,nan
+2026-06-15,118244,Panasonic Z8BA OLED,material_change,qd_material,nan,nan
+2026-06-15,74024,Panasonic Z95A OLED,material_change,qd_material,nan,nan
+2026-06-15,74026,Panasonic Z85A OLED,material_change,qd_material,nan,nan
+2026-06-15,88603,LG B5 OLED,material_change,qd_material,nan,nan
+2026-06-15,127431,LG C6H OLED,material_change,qd_material,nan,nan

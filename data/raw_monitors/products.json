@@ -553,10 +553,10 @@
       "early_access": false,
       "first_published_at": "2023-08-04 10:40:09 -0400"
     },
-    "published_product_recommendation_count": 2,
+    "published_product_recommendation_count": 1,
     "status_discussion": {
       "url": "/discussions/uKs97OdnOa7D7dS4/review-updates-samsung-odyssey-oled-g9-g95sc",
-      "user_comments_count": 119
+      "user_comments_count": 125
     }
   },
   {
@@ -903,7 +903,7 @@
       "early_access": false,
       "first_published_at": "2024-02-06 11:33:04 -0500"
     },
-    "published_product_recommendation_count": 3,
+    "published_product_recommendation_count": 1,
     "status_discussion": {
       "url": "/discussions/S1E8DRUj46oXYQjF/review-updates-dell-alienware-aw3225qf",
       "user_comments_count": 437
@@ -1191,7 +1191,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/yI1N7IM_SdHxwOYi/review-updates-lg-lg-ultragear-oled-32gs95ue",
-      "user_comments_count": 147
+      "user_comments_count": 149
     }
   },
   {
@@ -1411,7 +1411,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/g9euO8hTT4tet7lB/review-updates-asus-rog-strix-oled-xg27aqdmg",
-      "user_comments_count": 383
+      "user_comments_count": 385
     }
   },
   {
@@ -2576,7 +2576,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/8OJoqGnHaGnV11nd/review-updates-dell-s3225qs",
-      "user_comments_count": 7
+      "user_comments_count": 11
     }
   },
   {
@@ -2608,7 +2608,7 @@
       "early_access": false,
       "first_published_at": "2025-08-14 11:25:40 -0400"
     },
-    "published_product_recommendation_count": 7,
+    "published_product_recommendation_count": 6,
     "status_discussion": {
       "url": "/discussions/RdnLVFQ0177MMjcL/review-updates-dell-alienware-aw3425dw",
       "user_comments_count": 38
@@ -2678,7 +2678,7 @@
       "early_access": false,
       "first_published_at": "2025-09-12 15:35:19 -0400"
     },
-    "published_product_recommendation_count": 11,
+    "published_product_recommendation_count": 10,
     "status_discussion": {
       "url": "/discussions/7WSUV5QfMmzU6AYd/review-updates-dell-s2725qc",
       "user_comments_count": 23
@@ -2716,7 +2716,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/5-G5tdoX2-tea2lH/review-updates-msi-mpg-272urx-qd-oled",
-      "user_comments_count": 57
+      "user_comments_count": 60
     }
   },
   {
@@ -2923,7 +2923,7 @@
       "early_access": false,
       "first_published_at": "2025-11-13 12:16:01 -0500"
     },
-    "published_product_recommendation_count": 9,
+    "published_product_recommendation_count": 8,
     "status_discussion": {
       "url": "/discussions/V7UDxm_7vdF3uw28/review-updates-acer-nitro-xv275k-p5biipruzx",
       "user_comments_count": 36
@@ -3346,7 +3346,7 @@
     "published_product_recommendation_count": 2,
     "status_discussion": {
       "url": "/discussions/Vm0pJfZ-b5BOl1Wc/review-updates-asus-rog-swift-oled-pg27aqwp-w",
-      "user_comments_count": 112
+      "user_comments_count": 117
     }
   },
   {
@@ -3488,7 +3488,7 @@
       "early_access": false,
       "first_published_at": "2026-04-17 11:34:35 -0400"
     },
-    "published_product_recommendation_count": 16,
+    "published_product_recommendation_count": 17,
     "status_discussion": {
       "url": "/discussions/P9zsb1jwr2t-Q2tg/review-updates-koorui-s2741lm",
       "user_comments_count": 26
@@ -3628,7 +3628,7 @@
       "early_access": false,
       "first_published_at": "2026-05-07 14:46:38 -0400"
     },
-    "published_product_recommendation_count": 2,
+    "published_product_recommendation_count": 3,
     "status_discussion": {
       "url": "/discussions/CeBJSkL5jzjuGoVQ/review-updates-dell-se2426hgs",
       "user_comments_count": 0
@@ -3643,7 +3643,7 @@
     "published": true,
     "reviewed_sku_id": "16902",
     "approximate_released_at": "2026-05-07 00:00:00 -0400",
-    "last_updated_at": "2026-06-04 12:21:26 -0400",
+    "last_updated_at": "2026-06-08 14:51:16 -0400",
     "review": {
       "test_bench": {
         "id": "238",
@@ -3663,7 +3663,7 @@
       "early_access": false,
       "first_published_at": "2026-06-01 11:09:32 -0400"
     },
-    "published_product_recommendation_count": 0,
+    "published_product_recommendation_count": 1,
     "status_discussion": {
       "url": "/discussions/Em2ZsezIwO2OIktV/review-updates-lg-39gx950b-b",
       "user_comments_count": 39
@@ -3733,10 +3733,10 @@
       "early_access": false,
       "first_published_at": "2026-05-22 07:48:50 -0400"
     },
-    "published_product_recommendation_count": 2,
+    "published_product_recommendation_count": 7,
     "status_discussion": {
       "url": "/discussions/_6lvkdeONKRIC34R/review-updates-asus-rog-swift-oled-pg34wcdn",
-      "user_comments_count": 34
+      "user_comments_count": 36
     }
   },
   {
@@ -3748,7 +3748,7 @@
     "published": true,
     "reviewed_sku_id": "17030",
     "approximate_released_at": "2026-04-24 00:00:00 -0400",
-    "last_updated_at": "2026-06-08 09:40:32 -0400",
+    "last_updated_at": "2026-06-12 10:36:21 -0400",
     "review": {
       "test_bench": {
         "id": "238",
@@ -3771,7 +3771,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/X4sTe36FCdJgw1Rn/review-updates-msi-mpg-341cqr-qd-oled-x36",
-      "user_comments_count": 19
+      "user_comments_count": 22
     }
   }
 ]
