@@ -828,20 +828,40 @@ date,product_id,fullname,change_type,field,old_value,new_value
 2026-06-08,135751,Samsung S90H OLED,material_change,qd_material,,
 2026-06-08,88602,LG C5 OLED,material_change,qd_material,,
 2026-06-15,131534,Amazon Ember Artline 2026,new_tv,,,QD-LCD
-2026-06-15,49704,Samsung S85D OLED,material_change,qd_material,nan,nan
-2026-06-15,132977,LG C6 OLED 2026,material_change,qd_material,nan,nan
-2026-06-15,49540,LG B4 OLED,material_change,qd_material,nan,nan
-2026-06-15,49542,LG G4 OLED,material_change,qd_material,nan,nan
-2026-06-15,88601,LG G5 OLED,material_change,qd_material,nan,nan
-2026-06-15,88502,Panasonic Z95B OLED,material_change,qd_material,nan,nan
-2026-06-15,49541,LG C4 OLED,material_change,qd_material,nan,nan
-2026-06-15,88602,LG C5 OLED,material_change,qd_material,nan,nan
-2026-06-15,92761,Philips 974 Series OLED,material_change,qd_material,nan,nan
-2026-06-15,131546,LG G6 OLED,material_change,qd_material,nan,nan
-2026-06-15,135751,Samsung S90H OLED,material_change,qd_material,nan,nan
-2026-06-15,58889,Sony BRAVIA 8 OLED,material_change,qd_material,nan,nan
-2026-06-15,118244,Panasonic Z8BA OLED,material_change,qd_material,nan,nan
-2026-06-15,74024,Panasonic Z95A OLED,material_change,qd_material,nan,nan
-2026-06-15,74026,Panasonic Z85A OLED,material_change,qd_material,nan,nan
-2026-06-15,88603,LG B5 OLED,material_change,qd_material,nan,nan
-2026-06-15,127431,LG C6H OLED,material_change,qd_material,nan,nan
+2026-06-15,49704,Samsung S85D OLED,material_change,qd_material,,
+2026-06-15,132977,LG C6 OLED 2026,material_change,qd_material,,
+2026-06-15,49540,LG B4 OLED,material_change,qd_material,,
+2026-06-15,49542,LG G4 OLED,material_change,qd_material,,
+2026-06-15,88601,LG G5 OLED,material_change,qd_material,,
+2026-06-15,88502,Panasonic Z95B OLED,material_change,qd_material,,
+2026-06-15,49541,LG C4 OLED,material_change,qd_material,,
+2026-06-15,88602,LG C5 OLED,material_change,qd_material,,
+2026-06-15,92761,Philips 974 Series OLED,material_change,qd_material,,
+2026-06-15,131546,LG G6 OLED,material_change,qd_material,,
+2026-06-15,135751,Samsung S90H OLED,material_change,qd_material,,
+2026-06-15,58889,Sony BRAVIA 8 OLED,material_change,qd_material,,
+2026-06-15,118244,Panasonic Z8BA OLED,material_change,qd_material,,
+2026-06-15,74024,Panasonic Z95A OLED,material_change,qd_material,,
+2026-06-15,74026,Panasonic Z85A OLED,material_change,qd_material,,
+2026-06-15,88603,LG B5 OLED,material_change,qd_material,,
+2026-06-15,127431,LG C6H OLED,material_change,qd_material,,
+2026-06-22,131549,Hisense UR9SG,new_tv,,,QD-LCD
+2026-06-22,135325,Samsung M70H,new_tv,,,QD-LCD
+2026-06-22,127429,Samsung R95H,new_tv,,,QD-LCD
+2026-06-22,58889,Sony BRAVIA 8 OLED,material_change,qd_material,nan,nan
+2026-06-22,49704,Samsung S85D OLED,material_change,qd_material,nan,nan
+2026-06-22,49542,LG G4 OLED,material_change,qd_material,nan,nan
+2026-06-22,127431,LG C6H OLED,material_change,qd_material,nan,nan
+2026-06-22,49541,LG C4 OLED,material_change,qd_material,nan,nan
+2026-06-22,88502,Panasonic Z95B OLED,material_change,qd_material,nan,nan
+2026-06-22,118244,Panasonic Z8BA OLED,material_change,qd_material,nan,nan
+2026-06-22,74026,Panasonic Z85A OLED,material_change,qd_material,nan,nan
+2026-06-22,74024,Panasonic Z95A OLED,material_change,qd_material,nan,nan
+2026-06-22,135751,Samsung S90H OLED,material_change,qd_material,nan,nan
+2026-06-22,88602,LG C5 OLED,material_change,qd_material,nan,nan
+2026-06-22,132977,LG C6 OLED 2026,material_change,qd_material,nan,nan
+2026-06-22,49540,LG B4 OLED,material_change,qd_material,nan,nan
+2026-06-22,131546,LG G6 OLED,material_change,qd_material,nan,nan
+2026-06-22,88601,LG G5 OLED,material_change,qd_material,nan,nan
+2026-06-22,92761,Philips 974 Series OLED,material_change,qd_material,nan,nan
+2026-06-22,88603,LG B5 OLED,material_change,qd_material,nan,nan

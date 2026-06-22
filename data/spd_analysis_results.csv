@@ -18,6 +18,7 @@ product_id,fullname,brand,url_part,panel_type,spd_classification,spd_confidence,
 50406,Hisense U8N,Hisense,hisense-u8n,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/hisense-u8n_spd.jpg
 96125,Hisense U8QG,Hisense,hisense-u8qg,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/hisense-u8qg_spd.jpg
 59962,Hisense U9N,Hisense,hisense-u9n,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/hisense-u9n_spd.jpg
+131549,Hisense UR9SG,Hisense,hisense-ur9sg,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/hisense-ur9sg_spd.jpg
 49540,LG B4 OLED,LG,lg-b4-oled,OLED,WOLED,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm; panel_sub_type=WOLED,spd_images/lg-b4-oled_spd.jpg
 88603,LG B5 OLED,LG,lg-b5-oled,OLED,WOLED,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm; panel_sub_type=WOLED,spd_images/lg-b5-oled_spd.jpg
 49541,LG C4 OLED,LG,lg-c4-oled,OLED,WOLED,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm; panel_sub_type=WOLED,spd_images/lg-c4-oled_spd.jpg
@@ -44,6 +45,7 @@ product_id,fullname,brand,url_part,panel_type,spd_classification,spd_confidence,
 117448,Samsung 100QN80F,Samsung,samsung-100qn80f,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-100qn80f_spd.jpg
 57180,Samsung DU7200,Samsung,samsung-du7200,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-du7200_spd.jpg
 55354,Samsung DU8000,Samsung,samsung-du8000,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-du8000_spd.jpg
+135325,Samsung M70H,Samsung,samsung-m70h,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-m70h_spd.jpg
 134691,Samsung M80H,Samsung,samsung-m80h,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-m80h_spd.jpg
 56341,Samsung Q60D,Samsung,samsung-q60d,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-q60d_spd.jpg
 57710,Samsung Q70D,Samsung,samsung-q70d,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-q70d_spd.jpg
@@ -60,6 +62,7 @@ product_id,fullname,brand,url_part,panel_type,spd_classification,spd_confidence,
 92241,Samsung QN90F,Samsung,samsung-qn90f,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-qn90f_spd.jpg
 57722,Samsung QN95D,Samsung,samsung-qn95d,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-qn95d_spd.jpg
 88591,Samsung QN990F 8K,Samsung,samsung-qn990f-8k,LCD,QD-LCD,high,,,NO_GT,449.8,16.7,540.1,36.0,629.2,38.6,3,B:450nm/17nm; G:540nm/36nm; R:629nm/39nm,spd_images/samsung-qn990f-8k_spd.jpg
+127429,Samsung R95H,Samsung,samsung-r95h,LCD,QD-LCD,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm,spd_images/samsung-r95h_spd.jpg
 49704,Samsung S85D OLED,Samsung,samsung-s85d-oled,OLED,WOLED,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm; panel_sub_type=WOLED,spd_images/samsung-s85d-oled_spd.jpg
 92236,Samsung S85F OLED,Samsung,samsung-s85f-oled,OLED,QD-OLED,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm; panel_sub_type=QD-OLED,spd_images/samsung-s85f-oled_spd.jpg
 49703,Samsung S90D OLED,Samsung,samsung-s90d-oled,OLED,QD-OLED,high,,,NO_GT,451.8,21.5,534.3,32.6,625.8,39.3,3,B:452nm/21nm; G:534nm/33nm; R:626nm/39nm; panel_sub_type=QD-OLED,spd_images/samsung-s90d-oled_spd.jpg
