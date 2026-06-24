@@ -104,10 +104,29 @@ def get_screen_area_map(product_type):
 # ---------------------------------------------------------------------------
 # Data loading (cached)
 # ---------------------------------------------------------------------------
+def _file_mtime(path):
+    """File modification time, used as an explicit cache key.
+
+    @st.cache_data keys on the function's args, NOT on file contents — so a
+    CSV that changes on disk (e.g. the weekly data update) would otherwise
+    keep serving a stale cached DataFrame until the app is fully rebooted.
+    Passing the mtime in as an argument invalidates the cache the moment the
+    file changes.
+    """
+    try:
+        return path.stat().st_mtime
+    except OSError:
+        return 0.0
+
+
 @st.cache_data
-def _load_single(data_file, score_cols, extra_score_cols,
+def _load_single(data_file, data_mtime, score_cols, extra_score_cols,
                  price_per_score_col, input_lag_col):
-    """Load and prepare a single product-type CSV."""
+    """Load and prepare a single product-type CSV.
+
+    `data_mtime` is unused in the body — it exists only to key the cache to
+    the file's modification time (see _file_mtime).
+    """
     path = DATA_DIR / data_file
     if not path.exists():
         return pd.DataFrame()
@@ -141,9 +160,9 @@ def load_data(product_type="TVs"):
     if product_type == "All Products":
         frames = []
         for pt, cfg in PRODUCT_CONFIGS.items():
-            sub = _load_single(cfg["data_file"], cfg["score_cols"],
-                               cfg["extra_score_cols"], cfg["price_per_score_col"],
-                               cfg["input_lag_col"])
+            sub = _load_single(cfg["data_file"], _file_mtime(DATA_DIR / cfg["data_file"]),
+                               cfg["score_cols"], cfg["extra_score_cols"],
+                               cfg["price_per_score_col"], cfg["input_lag_col"])
             if len(sub) > 0:
                 if "product_type" not in sub.columns:
                     sub["product_type"] = cfg["name"] if "name" in cfg else pt.lower().rstrip("s")
@@ -152,15 +171,14 @@ def load_data(product_type="TVs"):
             return pd.concat(frames, ignore_index=True)
         return pd.DataFrame()
     cfg = PRODUCT_CONFIGS[product_type]
-    return _load_single(cfg["data_file"], cfg["score_cols"],
-                        cfg["extra_score_cols"], cfg["price_per_score_col"],
-                        cfg["input_lag_col"])
+    return _load_single(cfg["data_file"], _file_mtime(DATA_DIR / cfg["data_file"]),
+                        cfg["score_cols"], cfg["extra_score_cols"],
+                        cfg["price_per_score_col"], cfg["input_lag_col"])
 
 
 @st.cache_data
-def load_size_prices(product_type="TVs"):
-    cfg = PRODUCT_CONFIGS[product_type]
-    path = DATA_DIR / cfg["prices_file"]
+def _load_size_prices(prices_file, data_mtime):
+    path = DATA_DIR / prices_file
     if path.exists():
         df = pd.read_csv(path)
         for col in ["best_price", "amazon_price", "bestbuy_price", "rtings_price",
@@ -171,16 +189,25 @@ def load_size_prices(product_type="TVs"):
     return pd.DataFrame()
 
 
+def load_size_prices(product_type="TVs"):
+    pf = PRODUCT_CONFIGS[product_type]["prices_file"]
+    return _load_size_prices(pf, _file_mtime(DATA_DIR / pf))
+
+
 @st.cache_data
-def load_price_history(product_type="TVs"):
-    cfg = PRODUCT_CONFIGS[product_type]
-    path = DATA_DIR / cfg["history_file"]
+def _load_price_history(history_file, data_mtime):
+    path = DATA_DIR / history_file
     if path.exists():
         hist = pd.read_csv(path)
         hist["snapshot_date"] = pd.to_datetime(hist["snapshot_date"], errors="coerce")
         hist["best_price"] = pd.to_numeric(hist["best_price"], errors="coerce")
         return hist
     return pd.DataFrame()
+
+
+def load_price_history(product_type="TVs"):
+    hf = PRODUCT_CONFIGS[product_type]["history_file"]
+    return _load_price_history(hf, _file_mtime(DATA_DIR / hf))
 
 
 # ---------------------------------------------------------------------------

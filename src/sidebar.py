@@ -16,8 +16,11 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.7.0"
+VERSION = "2.7.1"
 CHANGELOG = """\
+**v2.7.1** \u2014 2026-06-24
+- Fix stale-data caching. The dashboard's `@st.cache_data` loaders were keyed on the filename only, not the file's contents \u2014 so after a data update (e.g. this morning's RGB MiniLED + pricing refresh) the app kept serving the previously-cached DataFrame until a full reboot. Symptom: the "RGB MiniLED" axis label appeared (new code) but with no bar/box and pre-update pricing on the other techs (stale data). Loaders now fold the CSV's modification time into the cache key, so any data change reloads immediately \u2014 on every weekly update, not just RGB MiniLED.
+
 **v2.7.0** \u2014 2026-06-24
 - New 7th display-technology class: **RGB MiniLED**, slotted after QD-LCD in the canonical order (WLED > KSF > Pseudo QD > QD-LCD > RGB MiniLED > WOLED > QD-OLED). RGB MiniLED backlights use discrete red/green/blue LED emitters and are spectrally *indistinguishable* from QD (a green-position/asymmetry signal false-positived on confirmed-QD TCL sets), so RTINGS exposes no field for them \u2014 they're detected by a curated model override (`RGB_MINILED_MODELS` in build_schema.py, seeded with Samsung R95H + Hisense UR9SG). Treated as **non-QD**: excluded from QD-share and qd_material, and not exported to the SKU Tracker. New teal #00A878 swatch across dashboard, report charts, and the sidebar legend.
 - Refreshed current pricing for both silos. The 15 TVs / 23 monitors still without a price have no active US retail listing (discontinued, out-of-stock, or region-limited brands like Panasonic/Philips) — not a pipeline gap.
