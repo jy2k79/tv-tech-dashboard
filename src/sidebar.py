@@ -16,8 +16,11 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.7.1"
+VERSION = "2.7.2"
 CHANGELOG = """\
+**v2.7.2** — 2026-06-24
+- Longevity hardening: pinned dependency upper bounds (prevents the pandas-2→3 class of surprise break in unattended CI). Added **RUNBOOK.md** — the monthly check-in playbook, alert reference, cookie-refresh steps, key-rotation table, and a credentials/handoff inventory for the eventual ownership transfer.
+
 **v2.7.1** \u2014 2026-06-24
 - Fix stale-data caching. The dashboard's `@st.cache_data` loaders were keyed on the filename only, not the file's contents \u2014 so after a data update (e.g. this morning's RGB MiniLED + pricing refresh) the app kept serving the previously-cached DataFrame until a full reboot. Symptom: the "RGB MiniLED" axis label appeared (new code) but with no bar/box and pre-update pricing on the other techs (stale data). Loaders now fold the CSV's modification time into the cache key, so any data change reloads immediately \u2014 on every weekly update, not just RGB MiniLED.
 
