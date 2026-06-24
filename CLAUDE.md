@@ -92,7 +92,11 @@ gh project item-edit --project-id PVT_kwHODNnfCs4BSCMM --id <ITEM_ID> \
 - Reference issues: `Fixes #N` or `Relates to #N`
 
 ## Technology Classification Order
-Least to most premium: `WLED > KSF > Pseudo QD > QD-LCD > WOLED > QD-OLED`
+Least to most premium: `WLED > KSF > Pseudo QD > QD-LCD > RGB MiniLED > WOLED > QD-OLED`
+
+`RGB MiniLED` is spectrally indistinguishable from QD-LCD — detected by a curated model
+override (`RGB_MINILED_MODELS` in `build_schema.py`, seeded with Samsung R95H, Hisense
+UR9SG), NOT by SPD. It is non-QD (excluded from `qd_material`/QD-share, not exported).
 
 ## Testing Locally
 ```bash

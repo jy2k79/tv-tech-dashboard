@@ -833,7 +833,7 @@ def print_pricing_summary(tv_df, prices_df):
     print(f"  {'Technology':<15s} {'Count':>5s} {'Min':>8s} {'Median':>8s} {'Max':>8s} {'$/m²':>8s}")
     print(f"  {'─'*15} {'─'*5} {'─'*8} {'─'*8} {'─'*8} {'─'*8}")
 
-    for tech in ['QD-OLED', 'WOLED', 'QD-LCD', 'Pseudo QD', 'KSF', 'WLED']:
+    for tech in ['QD-OLED', 'WOLED', 'RGB MiniLED', 'QD-LCD', 'Pseudo QD', 'KSF', 'WLED']:
         t = priced[priced['color_architecture'] == tech]
         if len(t) == 0:
             continue

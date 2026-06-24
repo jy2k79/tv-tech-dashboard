@@ -247,7 +247,7 @@ def render(fdf, pcfg):
         st.markdown("**Response Time: QD-LCD vs KSF & Pseudo QD**")
         st.caption("Lower = faster. QD-LCD shows statistically significant speed advantage over KSF and Pseudo QD phosphor-based technologies.")
 
-        lcd_techs = ["QD-LCD", "Pseudo QD", "KSF", "WLED"]
+        lcd_techs = ["QD-LCD", "RGB MiniLED", "Pseudo QD", "KSF", "WLED"]
         lcd_data = fdf[fdf["color_architecture"].isin(lcd_techs)].copy()
 
         resp_metrics = [

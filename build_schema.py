@@ -257,6 +257,27 @@ def build_schema():
             print(f"  {row['fullname']:45s} marketing={row['marketing_label']!r}")
 
     # =========================================================================
+    # Post-SPD override: RGB MiniLED (curated model list)
+    # RGB MiniLED backlights use discrete red/green/blue LED emitters and are
+    # spectrally indistinguishable from QD (confirmed 2026-06: the SPD-based
+    # classifier tags them QD-LCD; a green-position/asymmetry signal false-
+    # positived on genuine QD sets). RTINGS exposes no "RGB MiniLED" field, so
+    # we override by reviewed model. Non-QD: qd_present="No" and qd_material
+    # stays blank (handled by the QD-only branches below).
+    # =========================================================================
+    RGB_MINILED_MODELS = ["R95H", "UR9SG"]
+    rgb_pattern = r"\b(?:" + "|".join(RGB_MINILED_MODELS) + r")\b"
+    rgb_mask = merged["fullname"].astype(str).str.contains(
+        rgb_pattern, case=False, regex=True, na=False)
+    rgb_count = int(rgb_mask.sum())
+    if rgb_count > 0:
+        merged.loc[rgb_mask, "color_architecture"] = "RGB MiniLED"
+        merged.loc[rgb_mask, "spd_confidence"] = "high"
+        print(f"\nApplied RGB MiniLED override for {rgb_count} sets (curated model list):")
+        for _, row in merged[rgb_mask].iterrows():
+            print(f"  {row['fullname']}")
+
+    # =========================================================================
     # Column 4: qd_present
     # =========================================================================
     merged['qd_present'] = merged['color_architecture'].map(

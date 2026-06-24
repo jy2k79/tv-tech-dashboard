@@ -24,12 +24,13 @@ TECH_COLORS = {
     "QD-OLED": "#FF009F",
     "WOLED": "#4B40EB",
     "QD-LCD": "#FFC700",
+    "RGB MiniLED": "#00A878",  # teal — direct RGB-LED backlight (non-QD)
     "Pseudo QD": "#FF7E43",
     "KSF": "#90BFFF",
     "WLED": "#6E7681",  # neutral gray — baseline tech, no spectral enhancement
 }
 
-TECH_ORDER = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "WOLED", "QD-OLED"]
+TECH_ORDER = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "RGB MiniLED", "WOLED", "QD-OLED"]
 
 DARK_BG = '#1a1a2e'
 CHART_BG = '#12122a'
@@ -569,7 +570,7 @@ if __name__ == '__main__':
     for col in ['price_best', 'mixed_usage', 'green_fwhm_nm', 'red_fwhm_nm']:
         if col in db.columns:
             db[col] = pd.to_numeric(db[col], errors='coerce')
-    tech_order = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "WOLED", "QD-OLED"]
+    tech_order = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "RGB MiniLED", "WOLED", "QD-OLED"]
     db['color_architecture'] = pd.Categorical(
         db['color_architecture'], categories=tech_order, ordered=True)
 

@@ -130,8 +130,8 @@ components.html("""
 
     var colorMap = {
         'QD-OLED': '#FF009F', 'WOLED': '#4B40EB', 'QD-LCD': '#FFC700',
-        'Pseudo QD': '#FF7E43', 'KSF': '#90BFFF', 'WLED': '#6E7681',
-        'OLED': '#4B40EB', 'LCD': '#FFC700'
+        'RGB MiniLED': '#00A878', 'Pseudo QD': '#FF7E43', 'KSF': '#90BFFF',
+        'WLED': '#6E7681', 'OLED': '#4B40EB', 'LCD': '#FFC700'
     };
 
     function addDots() {

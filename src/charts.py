@@ -4,13 +4,14 @@ import numpy as np
 import pandas as pd
 
 # Canonical technology ordering (left-to-right: low → high QD content)
-TECH_ORDER = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "WOLED", "QD-OLED"]
+TECH_ORDER = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "RGB MiniLED", "WOLED", "QD-OLED"]
 
 # Nanosys brand color palette (colorblind-safe selections)
 TECH_COLORS = {
     "QD-OLED": "#FF009F",    # Nanosys magenta
     "WOLED": "#4B40EB",      # Nanosys violet
     "QD-LCD": "#FFC700",     # Nanosys gold
+    "RGB MiniLED": "#00A878", # teal — direct RGB-LED backlight (non-QD, spectrally QD-like)
     "Pseudo QD": "#FF7E43",  # Nanosys orange
     "KSF": "#90BFFF",        # Nanosys sky blue
     "WLED": "#6E7681",       # neutral gray — baseline tech, no spectral enhancement

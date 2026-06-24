@@ -44,7 +44,7 @@ REPORT_TAG = TODAY.strftime("%Y_%m")
 
 IN_CI = bool(os.environ.get("GITHUB_ACTIONS"))
 
-TECH_ORDER = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "WOLED", "QD-OLED"]
+TECH_ORDER = ["WLED", "KSF", "Pseudo QD", "QD-LCD", "RGB MiniLED", "WOLED", "QD-OLED"]
 
 SCREEN_AREA_M2 = {
     32: 0.22, 40: 0.34, 42: 0.38, 43: 0.40, 48: 0.50,

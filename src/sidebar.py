@@ -16,8 +16,13 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.6.12"
+VERSION = "2.7.0"
 CHANGELOG = """\
+**v2.7.0** \u2014 2026-06-24
+- New 7th display-technology class: **RGB MiniLED**, slotted after QD-LCD in the canonical order (WLED > KSF > Pseudo QD > QD-LCD > RGB MiniLED > WOLED > QD-OLED). RGB MiniLED backlights use discrete red/green/blue LED emitters and are spectrally *indistinguishable* from QD (a green-position/asymmetry signal false-positived on confirmed-QD TCL sets), so RTINGS exposes no field for them \u2014 they're detected by a curated model override (`RGB_MINILED_MODELS` in build_schema.py, seeded with Samsung R95H + Hisense UR9SG). Treated as **non-QD**: excluded from QD-share and qd_material, and not exported to the SKU Tracker. New teal #00A878 swatch across dashboard, report charts, and the sidebar legend.
+- Refreshed current pricing for both silos. The 15 TVs / 23 monitors still without a price have no active US retail listing (discontinued, out-of-stock, or region-limited brands like Panasonic/Philips) — not a pipeline gap.
+- Regenerated the June monthly report on the corrected data (the committed June report had been generated during the cookie outage on the collapsed 3-class data).
+
 **v2.6.12** \u2014 2026-06-24
 - Pipeline hardening so a dead RTINGS cookie can never silently auto-commit a collapsed taxonomy again (root cause of the v2.6.11 incident). Four layers: (1) the scraper now detects RTINGS' generic *sample* SPD image \u2014 served to logged-out/expired sessions \u2014 and marks the session bad even when some ratings come back unblurred; (2) the weekly orchestrator now *aborts* on session-expiry/placeholder instead of committing stale-recovered data; (3) a defense-in-depth "SPD collapse" gate aborts if >50% of products share one identical (green, red) FWHM pair (real data tops out ~3%, the placeholder failure hit 99%); (4) the CI commit step is gated on `if: success()` and the pipeline now fails closed, so any critical failure blocks the push.
 
