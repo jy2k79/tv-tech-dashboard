@@ -334,6 +334,37 @@ def download_spd_images(records: dict[str, dict], output_dir: Path,
           f"Stale (re-downloaded): {stale}, Failed: {failed}")
 
 
+def spd_session_health(test_results: list[dict], silo_cfg: dict):
+    """Detect placeholder / degenerate SPD images served to logged-out sessions.
+
+    RTINGS serves a single generic sample SPD chart
+    (`.../assets/sample-images/<silo>/spd-large.jpg`) to expired/missing
+    sessions. The rating-blur check cannot see this because SPD images come
+    from a different endpoint (`table_tool__test_results`, kind="picture"),
+    so when the cookie lapses every product gets the same placeholder, all
+    FWHM measure identically, and every LCD set collapses into one class.
+
+    Returns (spd_ok, n_distinct, n_total, reason).
+    """
+    spd_test_ids = {oid for oid, col in silo_cfg["test_ids"].items()
+                    if col == "spd_image"}
+    spd_urls = [str(tr.get("asset_url", "")) for tr in test_results
+                if tr.get("kind") == "picture"
+                and tr.get("original_id") in spd_test_ids
+                and tr.get("asset_url")]
+    n_total = len(spd_urls)
+    n_distinct = len(set(spd_urls))
+    placeholder_hits = [u for u in spd_urls if "sample-images" in u]
+    if placeholder_hits:
+        return (False, n_distinct, n_total,
+                f"{len(placeholder_hits)}/{n_total} SPD images are the generic "
+                f"sample placeholder")
+    if n_total >= 5 and n_distinct == 1:
+        return (False, n_distinct, n_total,
+                f"all {n_total} SPD image URLs are identical")
+    return True, n_distinct, n_total, ""
+
+
 # =============================================================================
 # OUTPUT
 # =============================================================================
@@ -509,11 +540,25 @@ def main(silo_cfg: dict | None = None):
     # Check if data came back unblurred (session cookie working)
     n_unblurred_ratings = sum(1 for r in ratings if r.get("unblurred"))
     n_blurred_ratings = sum(1 for r in ratings if not r.get("unblurred"))
-    session_ok = n_unblurred_ratings > 0
+    ratings_ok = n_unblurred_ratings > 0
+
+    # SPD placeholder guard — catches the failure mode the rating check can't:
+    # an expired session still returns (some) unblurred ratings but serves the
+    # generic sample SPD image for every product, collapsing the taxonomy.
+    spd_ok, n_distinct_spd, n_spd, spd_reason = spd_session_health(
+        test_results, silo_cfg)
+
+    session_ok = ratings_ok and spd_ok
+    if not ratings_ok:
+        print(f"\nWARNING: All {n_blurred_ratings} ratings are blurred — "
+              f"session cookie expired or missing")
+    if not spd_ok:
+        print(f"\nERROR: Placeholder/degenerate SPD detected — {spd_reason}. "
+              f"Session cookie almost certainly expired (SPD served as the "
+              f"logged-out sample image).")
     if session_ok:
-        print(f"\nSession OK: {n_unblurred_ratings}/{len(ratings)} ratings unblurred")
-    else:
-        print(f"\nWARNING: All {n_blurred_ratings} ratings are blurred — session cookie expired or missing")
+        print(f"\nSession OK: {n_unblurred_ratings}/{len(ratings)} ratings "
+              f"unblurred, {n_distinct_spd}/{n_spd} distinct SPD images")
     # Write flag for weekly_update.py to read
     paths["session_flag"].parent.mkdir(parents=True, exist_ok=True)
     paths["session_flag"].write_text("1" if session_ok else "0")

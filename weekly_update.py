@@ -127,6 +127,43 @@ def check_drop_guard(old_count: int, new_csv_path: Path):
     log(f"Drop guard passed: {old_count} → {new_count} TVs")
 
 
+def check_spd_collapse_guard(results_csv: Path, label: str = "TV"):
+    """Abort if SPD classifications collapsed onto one identical spectrum.
+
+    Defense-in-depth behind the scraper's placeholder guard: catches ANY cause
+    (placeholder image, analyzer regression) that makes every product measure
+    the same FWHM. Real data shows at most ~3% of analyzed rows sharing an
+    identical (green_fwhm, red_fwhm) pair; the placeholder failure drives it to
+    ~99%. Trip at 50% — far above the real-data ceiling, far below the failure.
+
+    Raises RuntimeError if >50% of analyzed rows share one identical
+    (green_fwhm_nm, red_fwhm_nm) pair.
+    """
+    if not results_csv.exists():
+        return
+    df = pd.read_csv(results_csv)
+    if "green_fwhm_nm" not in df.columns or "red_fwhm_nm" not in df.columns:
+        return
+    cls = df.get("spd_classification", pd.Series([""] * len(df))).astype(str)
+    analyzed = df[(df["green_fwhm_nm"].astype(str) != "")
+                  & (df["red_fwhm_nm"].astype(str) != "")
+                  & ~cls.str.startswith(("ERROR", "NO_SPD"))]
+    if len(analyzed) < 10:
+        return
+    combo = (analyzed["green_fwhm_nm"].astype(str) + "|"
+             + analyzed["red_fwhm_nm"].astype(str))
+    top = combo.value_counts()
+    frac = top.iloc[0] / len(analyzed)
+    if frac > 0.5:
+        raise RuntimeError(
+            f"SPD collapse guard FAILED ({label}): {top.iloc[0]}/{len(analyzed)} "
+            f"({frac:.0%}) analyzed rows share identical (green,red) FWHM "
+            f"{top.index[0]} — every product likely got the placeholder SPD "
+            f"image. Aborting to prevent committing a collapsed taxonomy."
+        )
+    log(f"SPD collapse guard passed ({label}): max identical FWHM share {frac:.0%}")
+
+
 # ---------------------------------------------------------------------------
 # Stale score fallback — recover data when session cookie expires
 # ---------------------------------------------------------------------------
@@ -576,8 +613,9 @@ def run_tv_pipeline():
         log("Session flag missing — scraper may have crashed before writing it", "WARN")
         errors.append("Session flag missing after scraper — check scraper logs")
     elif session_flag.read_text().strip() == "0":
-        log("RTINGS session cookie expired — scores will be blurred", "WARN")
-        errors.append("RTINGS session cookie expired — scores/measurements are blurred")
+        log("RTINGS session expired / placeholder SPD detected — ABORTING "
+            "(data not regenerated or committed)", "ERROR")
+        notify("TV Data Update ABORTED", "RTINGS session expired — data not committed")
         send_email(
             f"ACTION REQUIRED: RTINGS Session Expired — {TODAY}",
             '<div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;color:#e0e0e0;background:#1a1a2e;padding:24px;border-radius:8px">'
@@ -597,15 +635,29 @@ def run_tv_pipeline():
             '<p style="color:#999;font-size:13px"><b>Chrome/Edge/Brave alternative:</b> DevTools → <b>Application</b> tab → <b>Cookies</b> → <code>https://www.rtings.com</code> → copy <code>_rtings_session</code> value.</p>'
             '<p style="color:#999;font-size:13px">Note: <code>document.cookie</code> in the Console won\'t work — the cookie is HttpOnly and invisible to JS. You must use the Storage/Application panel.</p>'
             '<p style="color:#999;font-size:13px">The cookie expires ~30 days after login. '
-            'Pipeline will use stale scores until refreshed.</p>'
+            'Until refreshed, the pipeline aborts each run so the last good '
+            'data stays live (no collapsed taxonomy is committed).</p>'
             '</div>'
         )
+        if old_priced_bak.exists():
+            old_priced_bak.unlink()
+        return None, [], ["RTINGS session expired / placeholder SPD — pipeline aborted, no commit"]
 
     # --- Step 2: SPD Analysis ---
     spd_ok = run_script("spd_analyzer.py", abort_on_fail=False,
                         extra_env={"SKIP_SPD_PLOTS": "1"})
     if not spd_ok:
         errors.append("SPD analyzer failed — using previous classifications")
+
+    # --- Step 2b: SPD collapse guard (defense-in-depth vs placeholder SPD) ---
+    try:
+        check_spd_collapse_guard(DATA / "spd_analysis_results.csv", label="TV")
+    except RuntimeError as e:
+        log(str(e), "ERROR")
+        notify("TV Data Update ABORTED", str(e))
+        if old_priced_bak.exists():
+            old_priced_bak.unlink()
+        return None, [], [str(e)]
 
     # --- Step 3: Build Schema ---
     try:
@@ -705,8 +757,10 @@ def run_monitor_pipeline():
         log("Monitor session flag missing — scraper may have crashed before writing it", "WARN")
         errors.append("Monitor session flag missing — check scraper logs")
     elif monitor_session_flag.read_text().strip() == "0":
-        log("RTINGS session cookie expired — monitor scores will be blurred", "WARN")
-        errors.append("RTINGS session cookie expired — monitor scores are blurred")
+        log("RTINGS session expired / placeholder SPD (monitor) — ABORTING", "ERROR")
+        notify("Monitor Data Update ABORTED",
+               "RTINGS session expired — monitor data not committed")
+        return None, [], ["RTINGS session expired / placeholder SPD (monitor) — aborted, no commit"]
 
     # --- Step 2: SPD Analysis ---
     spd_ok = run_script("spd_analyzer.py", abort_on_fail=False,
@@ -714,6 +768,14 @@ def run_monitor_pipeline():
                         extra_env={"SKIP_SPD_PLOTS": "1"})
     if not spd_ok:
         errors.append("Monitor SPD analyzer failed — using previous classifications")
+
+    # --- Step 2b: SPD collapse guard (defense-in-depth vs placeholder SPD) ---
+    try:
+        check_spd_collapse_guard(paths["spd_results"], label="Monitor")
+    except RuntimeError as e:
+        log(str(e), "ERROR")
+        notify("Monitor Data Update ABORTED", str(e))
+        return None, [], [str(e)]
 
     # --- Step 3: Build Schema ---
     schema_ok = run_script("build_monitor_schema.py", abort_on_fail=False)
@@ -845,9 +907,12 @@ def main():
             print(f"  - {e}")
     print("=" * 70)
 
-    # Exit 1 only if a critical silo (TV) failed when running alone
-    # When running --silo all, monitor failure shouldn't block TV
-    if any_critical_failure and args.silo != "all":
+    # Fail closed: any critical silo failure (scraper crash, drop guard, or
+    # session/placeholder expiry) exits non-zero so the CI commit step — gated
+    # on `if: success()` — never commits collapsed or partially-corrupted data.
+    # A dead RTINGS cookie fails both silos at once, so the old --silo all
+    # carve-out would have let the corrupted commit through.
+    if any_critical_failure:
         sys.exit(1)
     sys.exit(0)
 

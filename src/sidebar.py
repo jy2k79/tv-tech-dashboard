@@ -16,8 +16,11 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.6.11"
+VERSION = "2.6.12"
 CHANGELOG = """\
+**v2.6.12** \u2014 2026-06-24
+- Pipeline hardening so a dead RTINGS cookie can never silently auto-commit a collapsed taxonomy again (root cause of the v2.6.11 incident). Four layers: (1) the scraper now detects RTINGS' generic *sample* SPD image \u2014 served to logged-out/expired sessions \u2014 and marks the session bad even when some ratings come back unblurred; (2) the weekly orchestrator now *aborts* on session-expiry/placeholder instead of committing stale-recovered data; (3) a defense-in-depth "SPD collapse" gate aborts if >50% of products share one identical (green, red) FWHM pair (real data tops out ~3%, the placeholder failure hit 99%); (4) the CI commit step is gated on `if: success()` and the pipeline now fails closed, so any critical failure blocks the push.
+
 **v2.6.11** \u2014 2026-06-24
 - Restore RTINGS session and recover ~5 weeks of corrupted data. The `_rtings_session` cookie expired around 2026-05-21; from the 2026-05-25 weekly run onward, CI scraped RTINGS' generic *placeholder* SPD image for every product instead of real per-product charts. Every LCD set collapsed into a single \"QD-LCD\" class, so the dashboard showed only 3 of 6 technologies. Refreshed the cookie, re-scraped both silos, and regenerated SPD classifications from real images. TVs back to 6 classes (QD-LCD 34, Pseudo QD 26, WOLED 17, KSF 11, WLED 8, QD-OLED 8); Monitors likewise (KSF 43, QD-OLED 24, WOLED 20, QD-LCD 15, Pseudo QD 3, WLED 2). Pricing preserved \u2014 only SPD-derived columns were affected.
 
