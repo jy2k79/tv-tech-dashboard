@@ -3736,7 +3736,7 @@
     "published_product_recommendation_count": 7,
     "status_discussion": {
       "url": "/discussions/_6lvkdeONKRIC34R/review-updates-asus-rog-swift-oled-pg34wcdn",
-      "user_comments_count": 40
+      "user_comments_count": 41
     }
   },
   {
@@ -3771,7 +3771,7 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/X4sTe36FCdJgw1Rn/review-updates-msi-mpg-341cqr-qd-oled-x36",
-      "user_comments_count": 22
+      "user_comments_count": 26
     }
   },
   {
@@ -3806,7 +3806,42 @@
     "published_product_recommendation_count": 0,
     "status_discussion": {
       "url": "/discussions/nGQDN73nntZA2Jrm/review-updates-asus-rog-strix-5k-xg27jcg",
-      "user_comments_count": 18
+      "user_comments_count": 19
+    }
+  },
+  {
+    "id": "131554",
+    "fullname": "LG 27GM950B-B",
+    "full_url_part": "lg-27gm950b-b",
+    "url_part": "27gm950b-b",
+    "brand_name": "LG",
+    "published": false,
+    "reviewed_sku_id": "17032",
+    "approximate_released_at": "2026-05-01 00:00:00 -0400",
+    "last_updated_at": "2026-06-22 16:02:54 -0400",
+    "review": {
+      "test_bench": {
+        "id": "238",
+        "display_name": "v2.1.2"
+      }
+    },
+    "image": "https://i.rtings.com/assets/products/DddQhei3/lg-27gm950b-b/in-test-small.jpg?format=auto",
+    "variant_skus": [
+      {
+        "id": "17032",
+        "name": "27GM950B-B",
+        "variation": "27\""
+      }
+    ],
+    "page": {
+      "url": "/early-access/monitor/reviews/lg/27gm950b-b",
+      "early_access": true,
+      "first_published_at": null
+    },
+    "published_product_recommendation_count": 0,
+    "status_discussion": {
+      "url": "/discussions/UlWoohpCb7eIUlTI/review-updates-lg-27gm950b-b",
+      "user_comments_count": 48
     }
   }
 ]

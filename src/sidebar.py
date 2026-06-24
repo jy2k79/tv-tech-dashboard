@@ -16,8 +16,11 @@ from src.data_loader import PRODUCT_CONFIGS, get_screen_area_map
 
 LOGO_PATH = Path(__file__).parent.parent / "assets" / "logo_white.png"
 
-VERSION = "2.6.10"
+VERSION = "2.6.11"
 CHANGELOG = """\
+**v2.6.11** \u2014 2026-06-24
+- Restore RTINGS session and recover ~5 weeks of corrupted data. The `_rtings_session` cookie expired around 2026-05-21; from the 2026-05-25 weekly run onward, CI scraped RTINGS' generic *placeholder* SPD image for every product instead of real per-product charts. Every LCD set collapsed into a single \"QD-LCD\" class, so the dashboard showed only 3 of 6 technologies. Refreshed the cookie, re-scraped both silos, and regenerated SPD classifications from real images. TVs back to 6 classes (QD-LCD 34, Pseudo QD 26, WOLED 17, KSF 11, WLED 8, QD-OLED 8); Monitors likewise (KSF 43, QD-OLED 24, WOLED 20, QD-LCD 15, Pseudo QD 3, WLED 2). Pricing preserved \u2014 only SPD-derived columns were affected.
+
 **v2.6.10** \u2014 2026-04-29
 - Mixed Usage Drivers: clip the correlation axis to [0, 1] now that sign-flipping puts every driver on the positive side. Drops the dead negative half-axis and roughly doubles the bar resolution.
 
